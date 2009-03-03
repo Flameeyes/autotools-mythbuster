@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink">
+  <title>autoconf 2.64</title>
+
+  <para>
+    Release 2.64 of <application>autoconf</application> is an
+    important release for developers working on old build systems
+    based on it, because it is the release where the "present but
+    cannot be compiled" warning switches behaviour.
+  </para>
+
+  <section>
+    <title>
+      Behaviour Change for "present but cannot be compiled"
+    </title>
+
+    <para>
+      Since August 2001, <application>autoconf</application> has been
+      warning users about headers that are present in the system but
+      couldn't be compiled. This particular warning is related to the
+      <function>AC_CHECK_HEADER</function> macro (and its derivations).
+    </para>
+
+    <para>
+      Before that time, the macro only checked if the header was
+      present by asking for it to the pre-processor. While this did
+      help to identify the presence of headers, it said nothing
+      regarding their usability. Without checking if the headers
+      compiled, it was impossible to say if the header was valid for
+      the language variety chosen (like C99, or C++), or if it
+      required unknown dependencies.
+    </para>
+
+    <para>
+      To solve the problem, it was decided to use the actual compiler,
+      for the current language, to look for the headers. Since it was
+      desirable not to break software relying on the old behaviour,
+      the new compiler-based check was added to the one already in
+      place. Whenever the two tests disagreed on the results, a
+      warning was issued, yet the original test was used to provide
+      the results.
+    </para>
+
+    <para>
+      With the new versions, instead, the original behaviour is
+      replaced by the new behaviour, which means that headers failing
+      the compile process will be reported as missing.
+    </para>
+
+    <para>
+      To solve this problem, you have to identify what causes the
+      header to fail the build, and then fix the
+      <filename>configure.ac</filename> script to avoid the issue.
+    </para>
+
+    <example>
+      <title>Wrong language variety</title>
+
+      <note>
+	<para>
+	  This example is based on an actual mistake in the KDE 3.5.10
+	  build system.
+	</para>
+      </note>
+    </example>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->

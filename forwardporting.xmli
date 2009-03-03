@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Forward Porting Notes</title>
+
+  <para>
+    Like most software, <application>autoconf</application>,
+    <application>automake</application> and the rest of the autotools
+    family are not set in stone. Each new release strives to improve
+    itself and the way it is used.
+  </para>
+
+  <para>
+    This causes a phenomenon of "bit-rotting", similar to the one
+    caused by compilers and interpreters on source code: sources that
+    used to work just fine will start issuing warnings, and further
+    on, it starts not to work any longer.
+  </para>
+
+  <para>
+    While the direct reason for this to happen are the changes in the
+    tools, that become stricter in what they accept, or simply change
+    their behaviour to increase compatibility and speed, the
+    underlying reasons are that buildsystems often use undocumented
+    features, or make mistakes in the way they get used.
+  </para>
+
+  <para>
+    For this reason it is important to know exactly what changes
+    between autotools versions, for the developers using them. By
+    knowing the changes in behaviour, it is possible to ensure that a
+    given build system works with the newest released version of the
+    software.
+  </para>
+
+  <section>
+    <title>
+      Changes in <application>autoconf</application> releases
+    </title>
+
+    <xi:include parse="xml"
+		href="forwardporting/autoconf/autoconf-2.64.xmli" />
+  </section>
+</chapter>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->

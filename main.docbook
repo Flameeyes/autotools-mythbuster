@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 version="5.0" xml:lang="en">
+  <info>
+    <title>Autotools Mythbuster</title>
+
+    <author>
+      <personname>
+	<firstname>Diego E.</firstname>
+	<othername>"Flameeyes"</othername>
+	<surname>Pettenò</surname>
+      </personname>
+
+      <email>flameeyes@gmail.com</email>
+    </author>
+
+    <date>February 2009</date>
+
+    <copyright>
+      <year>2009</year>
+      <holder>Diego E. Pettenò</holder>
+    </copyright>
+  </info>
+
+  <xi:include parse="xml" href="foreword.xmli" />
+  <xi:include parse="xml" href="howdoesitwork.xmli" />
+
+  <xi:include parse="xml" href="forwardporting.xmli" />
+</book>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->
