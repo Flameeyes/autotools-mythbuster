@@ -13,5 +13,4 @@ index.xhtml: main.docbook
 		$<
 
 clean:
-	rm -f *~ *.html
-
+	rm -f *~ *.html *.olinkdb
