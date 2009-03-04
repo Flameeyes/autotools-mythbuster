@@ -92,7 +92,7 @@
 
       <programlisting>
 <xi:include parse="text"
-	    href="../../examples/forwardporting/autoconf-2.64/headers/language/configure.ac.wrong"
+	    href="../../../examples/forwardporting/autoconf-2.64/headers/language/configure.ac.wrong"
 	    /></programlisting>
 
       <para>
@@ -143,7 +143,7 @@ configure:3362: $? = 1
 
       <programlisting>
 <xi:include parse="text"
-	    href="../../examples/forwardporting/autoconf-2.64/headers/language/configure.ac.correct"
+	    href="../../../examples/forwardporting/autoconf-2.64/headers/language/configure.ac.correct"
 	    /></programlisting>
 
     </example>

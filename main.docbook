@@ -25,10 +25,10 @@
     </copyright>
   </info>
 
-  <xi:include parse="xml" href="foreword.xmli" />
-  <xi:include parse="xml" href="howdoesitwork.xmli" />
+  <xi:include parse="xml" href="chapters/foreword.xmli" />
+  <xi:include parse="xml" href="chapters/howdoesitwork.xmli" />
 
-  <xi:include parse="xml" href="forwardporting.xmli" />
+  <xi:include parse="xml" href="chapters/forwardporting.xmli" />
 </book>
 <!--
    Local Variables:
