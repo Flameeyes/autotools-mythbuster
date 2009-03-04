@@ -7,12 +7,12 @@
 <xsl:import href="http://docbook.sourceforge.net/release/xsl-ns/current/xhtml/chunktoc.xsl"/>
 
 <xsl:template name="user.head.content">
-  <link rel="stylesheet" type="text/css" href="stylesheets/flameeyes.css" />
+  <link rel="stylesheet" type="text/css" href="http://www.flameeyes.eu/autotools-mythbuster/stylesheets/flameeyes.css" />
 </xsl:template>
 
 <xsl:template name="user.footer.content">
   <div id="footads">
-    <script type="text/javascript" src="scripts/footads.js">
+    <script type="text/javascript" src="http://www.flameeyes.eu/autotools-mythbuster/scripts/footads.js">
       <xsl:text> </xsl:text>
     </script>
     <script type="text/javascript"
