@@ -5,6 +5,7 @@ XSL-NS-SS = http://docbook.sourceforge.net/release/xsl-ns/current/
 index.xhtml: main.docbook
 	$(XSLTPROC) \
 		--xinclude \
+		--stringparam base.dir public/ \
 		--stringparam chunk.toc chunk.toc \
 		--stringparam section.autolabel 1 \
 		--stringparam collect.xref.targets "yes" \
