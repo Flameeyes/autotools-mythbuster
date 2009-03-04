@@ -7,7 +7,7 @@
     <tocentry linkend="howdoesitwork"><?dbhtml filename="howdoesitwork.html"?>
     </tocentry>
     <tocentry linkend="forwardporting"><?dbhtml filename="forwardporting.html"?>
-      <tocentry linkend="autoconf"><?dbhtml filename="autoconf.html"?>
+      <tocentry linkend="forwardporting.autoconf"><?dbhtml filename="forwardporting/autoconf.html"?>
       </tocentry>
     </tocentry>
   </tocentry>
