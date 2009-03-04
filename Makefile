@@ -14,14 +14,13 @@ index.xhtml: main.docbook
 
 chunk.toc.new:
 	$(XSLTPROC) \
+		--output $@ \
 		--xinclude \
 		--stringparam chunk.section.depth 8 \
 		--stringparam chunk.first.sections 1 \
 		--stringparam use.id.as.filename 1 \
 		$(XSL-NS-SS)/xhtml-1_1/maketoc.xsl \
-		main.docbook | \
-	sed -i -e 's:http://www.w3.org/1999/xhtml:http://docbook.org/ns/docbook:' \
-		> $@
+		main.docbook
 
 .PHONY: chunk.toc.new
 
