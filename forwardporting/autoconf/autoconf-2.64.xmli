@@ -60,8 +60,10 @@
 
       <note>
 	<para>
-	  This example is based on an actual mistake in the KDE 3.5.10
-	  build system.
+	  This example is based on an actual mistake in the
+	  <productname>KDE</productname>
+	  <productnumber>3.5.10</productnumber> build system for the
+	  <application>kdepim</application> package.
 	</para>
       </note>
 
