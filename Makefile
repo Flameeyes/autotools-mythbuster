@@ -2,7 +2,7 @@ XSLTPROC = xsltproc
 
 XSL-NS-SS = http://docbook.sourceforge.net/release/xsl-ns/current/
 
-index.xhtml: main.docbook
+generate: main.docbook
 	$(XSLTPROC) \
 		--xinclude \
 		--stringparam base.dir public/ \
@@ -23,9 +23,9 @@ chunk.toc.new:
 		$(XSL-NS-SS)/xhtml-1_1/maketoc.xsl \
 		main.docbook
 
-.PHONY: chunk.toc.new
-
 clean:
 	rm -f *~ *.olinkdb
 	find public -name '*.html' -delete
+
+.PHONY: generate chunk.toc.new clean
 
