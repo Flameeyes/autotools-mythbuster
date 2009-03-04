@@ -4,7 +4,7 @@
      xmlns:docbook="http://docbook.org/ns/docbook"
      version="1.0">
 
-<xsl:import href="http://docbook.sourceforge.net/release/xsl-ns/current/xhtml-1_1/chunk.xsl"/>
+<xsl:import href="http://docbook.sourceforge.net/release/xsl-ns/current/xhtml/chunktoc.xsl"/>
 
 <xsl:template name="user.head.content">
   <link rel="stylesheet" type="text/css" href="stylesheets/flameeyes.css" />

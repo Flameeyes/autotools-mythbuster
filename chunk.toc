@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<toc xmlns="http://docbook.org/ns/docbook" role="chunk-toc">
+  <tocentry linkend="index"><?dbhtml filename="index.html"?>
+    <tocentry linkend="foreword"><?dbhtml filename="foreword.html"?>
+    </tocentry>
+    <tocentry linkend="howdoesitwork"><?dbhtml filename="howdoesitwork.html"?>
+    </tocentry>
+    <tocentry linkend="forwardporting"><?dbhtml filename="forwardporting.html"?>
+      <tocentry linkend="autoconf"><?dbhtml filename="autoconf.html"?>
+      </tocentry>
+    </tocentry>
+  </tocentry>
+</toc>
+
