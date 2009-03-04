@@ -27,6 +27,8 @@
 
   <xi:include parse="xml" href="chapters/preface.xmli" />
 
+  <xi:include parse="xml" href="chapters/autoconf.xmli" />
+
   <xi:include parse="xml" href="chapters/forwardporting.xmli" />
 </book>
 <!--

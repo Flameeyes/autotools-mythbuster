@@ -4,6 +4,8 @@
   <tocentry linkend="index"><?dbhtml filename="index.html"?>
     <tocentry linkend="preface"><?dbhtml filename="preface.html"?>
     </tocentry>
+    <tocentry linkend="autoconf"><?dbhtml filename="autoconf/index.html"?>
+    </tocentry>
     <tocentry linkend="forwardporting"><?dbhtml filename="forwardporting.html"?>
       <tocentry linkend="forwardporting.autoconf"><?dbhtml filename="forwardporting/autoconf.html"?>
       </tocentry>
