@@ -11,143 +11,21 @@
     cannot be compiled" warning switches behaviour.
   </para>
 
-  <section>
-    <title>
-      Behaviour Change for "present but cannot be compiled"
-    </title>
+  <itemizedlist>
+    <title>Noteworthy changes in <application>autoconf</application>
+    version 2.64</title>
 
-    <para>
-      Since August 2001, <application>autoconf</application> has been
-      warning users about headers that are present in the system but
-      couldn't be compiled. This particular warning is related to the
-      <function>AC_CHECK_HEADER</function> macro (and its derivations).
-    </para>
-
-    <para>
-      Before that time, the macro only checked if the header was
-      present by asking for it to the pre-processor. While this did
-      help to identify the presence of headers, it said nothing
-      regarding their usability. Without checking if the headers
-      compiled, it was impossible to say if the header was valid for
-      the language variety chosen (like C99, or C++), or if it
-      required unknown dependencies.
-    </para>
-
-    <para>
-      To solve the problem, it was decided to use the actual compiler,
-      for the current language, to look for the headers. Since it was
-      desirable not to break software relying on the old behaviour,
-      the new compiler-based check was added to the one already in
-      place. Whenever the two tests disagreed on the results, a
-      warning was issued, yet the original test was used to provide
-      the results.
-    </para>
-
-    <para>
-      With the new versions, instead, the original behaviour is
-      replaced by the new behaviour, which means that headers failing
-      the compile process will be reported as missing.
-    </para>
-
-    <para>
-      To solve this problem, you have to identify what causes the
-      header to fail the build, and then fix the
-      <filename>configure.ac</filename> script to avoid the issue.
-    </para>
-
-    <example>
-      <title>Wrong language variety</title>
-
-      <note>
-	<para>
-	  This example is based on an actual mistake in the
-	  <productname>KDE</productname>
-	  <productnumber>3.5.10</productnumber> build system for the
-	  <application>kdepim</application> package.
-	</para>
-      </note>
-
+    <listitem>
       <para>
-	One situation where the header files are present but cannot be
-	compiled is when they are not designed to work with a
-	particular language variety. For instance, an header might not
-	be compatible with the C99 dialect, or with C++, or on the
-	other hand it might require C99 or C++.
+	After eight years, <function>AC_CHECK_HEADER</function> takes
+	as authoritative the result from the compiler, rather than the
+	preprocessor, when the <quote>header present but cannot be
+	compiled</quote> warning is issued. Refer to <xref
+	linkend="autoconf.headers.present-not-compiled" /> for the
+	details on how to fix the related issues.
       </para>
-
-      <para>
-	If that particular language is selected, though, and the
-	header is tested for, the behaviour of rejecting the header is
-	indeed what the developers are expecting. On the other hand,
-	it's possible that the test is being done with a different
-	language than the one where the header is going to be used.
-      </para>
-
-      <para>
-	For instance, take the following snippet, that tries to look
-	for the <filename>bluetooth/bluetooth.h</filename> header from
-	<application>bluez-libs</application>, using a strict C
-	compiler:
-      </para>
-
-      <programlisting>
-<xi:include parse="text"
-	    href="../../../examples/forwardporting/autoconf-2.64/headers/language/configure.ac.wrong"
-	    /></programlisting>
-
-      <para>
-	This will issue the warning discussed above when running
-	<filename>configure</filename>:
-      </para>
-
-      <programlisting><![CDATA[
-checking bluetooth/bluetooth.h usability... no
-checking bluetooth/bluetooth.h presence... yes
-configure: WARNING: bluetooth/bluetooth.h: present but cannot be compiled
-configure: WARNING: bluetooth/bluetooth.h:     check for missing prerequisite headers?
-configure: WARNING: bluetooth/bluetooth.h: see the Autoconf documentation
-configure: WARNING: bluetooth/bluetooth.h:     section "Present But Cannot Be Compiled"
-configure: WARNING: bluetooth/bluetooth.h: proceeding with the preprocessor's result
-configure: WARNING: bluetooth/bluetooth.h: in the future, the compiler will take precedence
-checking for bluetooth/bluetooth.h... yes
-]]></programlisting>
-
-      <para>
-	The reason for the above warnings can be found by looking at
-	the <filename>config.log</filename> file that the
-	<filename>configure</filename> script writes:
-      </para>
-
-      <programlisting><![CDATA[
-configure:3338: checking bluetooth/bluetooth.h usability
-configure:3355: gcc -c -std=iso9899:1990  conftest.c >&5
-In file included from conftest.c:51:
-/usr/include/bluetooth/bluetooth.h:117: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'int'
-/usr/include/bluetooth/bluetooth.h:121: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'void'
-configure:3362: $? = 1
-]]></programlisting>
-
-      <para>
-	Looking at those lines in the header file shows that it is
-	using the <emphasis>inline</emphasis> keyword, which is not
-	supported by the C90 language (without extensions). If the
-	header is checked for, though, it means it's going to be used,
-	and even if it does not work with the selected C90 dialect, it
-	might work with the C++ language used by the actual program.
-      </para>
-
-      <para>
-	The <filename>configure.ac</filename> file can then be fixed
-	by changing it to the following code:
-      </para>
-
-      <programlisting>
-<xi:include parse="text"
-	    href="../../../examples/forwardporting/autoconf-2.64/headers/language/configure.ac.correct"
-	    /></programlisting>
-
-    </example>
-  </section>
+    </listitem>
+  </itemizedlist>
 </section>
 <!--
    Local Variables:
