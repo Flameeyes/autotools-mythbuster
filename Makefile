@@ -26,4 +26,6 @@ chunk.toc.new:
 .PHONY: chunk.toc.new
 
 clean:
-	rm -f *~ *.html *.olinkdb
+	rm -f *~ *.olinkdb
+	find public -name '*.html' -delete
+
