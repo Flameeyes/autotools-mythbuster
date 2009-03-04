@@ -7,6 +7,7 @@ index.xhtml: main.docbook
 		--xinclude \
 		--stringparam section.autolabel 1 \
 		--stringparam chunk.section.depth 0 \
+		--stringparam use.id.as.filename 1 \
 		--stringparam collect.xref.targets "yes" \
 		--stringparam targets.filename "$(patsubst %.xhtml,%.olinkdb,$@)" \
 		stylesheets/flameeyes.eu.xsl \
