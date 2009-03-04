@@ -1,2 +1,8 @@
-*.olinkdb
 *.html
+*.olinkdb
+autom4te.cache
+config.log
+config.status
+configure
+configure.correct
+configure.wrong
