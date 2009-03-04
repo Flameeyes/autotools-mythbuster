@@ -12,3 +12,8 @@ div#footads {
     background-color: white;
     overflow: hidden;
 }
+
+div#licensing img#cc-by-nc-sa {
+    border: none;
+    float: right;
+}
