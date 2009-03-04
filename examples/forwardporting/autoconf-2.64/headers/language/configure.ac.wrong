@@ -1,0 +1,7 @@
+AC_INIT
+
+CFLAGS="-std=iso9899:1990"
+
+AC_CHECK_HEADERS([bluetooth/bluetooth.h])
+
+AC_OUTPUT

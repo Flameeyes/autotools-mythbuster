@@ -1,0 +1,9 @@
+AC_INIT
+
+CFLAGS="-std=iso9899:1990"
+
+AC_LANG_PUSH([C++])
+AC_CHECK_HEADERS([bluetooth/bluetooth.h])
+AC_LANG_POP
+
+AC_OUTPUT
