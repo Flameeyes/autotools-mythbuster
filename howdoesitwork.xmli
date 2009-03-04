@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preface xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink">
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xml:id="howdoesitwork">
   <title>How does this work?</title>
 
   <para>
