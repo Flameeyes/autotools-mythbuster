@@ -25,8 +25,7 @@
     </copyright>
   </info>
 
-  <xi:include parse="xml" href="chapters/foreword.xmli" />
-  <xi:include parse="xml" href="chapters/howdoesitwork.xmli" />
+  <xi:include parse="xml" href="chapters/preface.xmli" />
 
   <xi:include parse="xml" href="chapters/forwardporting.xmli" />
 </book>
