@@ -6,7 +6,7 @@
     </tocentry>
     <tocentry linkend="autoconf"><?dbhtml filename="autoconf/index.html"?>
     </tocentry>
-    <tocentry linkend="forwardporting"><?dbhtml filename="forwardporting.html"?>
+    <tocentry linkend="forwardporting"><?dbhtml filename="forwardporting/index.html"?>
       <tocentry linkend="forwardporting.autoconf"><?dbhtml filename="forwardporting/autoconf.html"?>
       </tocentry>
     </tocentry>
