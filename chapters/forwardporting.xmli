@@ -41,7 +41,7 @@
     </title>
 
     <xi:include parse="xml"
-		href="forwardporting/autoconf/autoconf-2.64.xmli" />
+		href="forwardporting/autoconf/2.64.xmli" />
   </section>
 </chapter>
 <!--
