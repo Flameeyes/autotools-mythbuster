@@ -9,7 +9,7 @@ index.xhtml: main.docbook
 		--stringparam chunk.section.depth 0 \
 		--stringparam collect.xref.targets "yes" \
 		--stringparam targets.filename "$(patsubst %.xhtml,%.olinkdb,$@)" \
-		$(XSL-NS-SS)/xhtml-1_1/chunk.xsl \
+		stylesheets/flameeyes.eu.xsl \
 		$<
 
 clean:
