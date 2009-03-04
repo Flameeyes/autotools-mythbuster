@@ -1,6 +1,7 @@
 *.html
 *.olinkdb
 autom4te.cache
+chunk.toc.new
 config.log
 config.status
 configure
