@@ -23,6 +23,15 @@
       <year>2009</year>
       <holder>Diego E. Pettenò</holder>
     </copyright>
+
+    <legalnotice>
+      <para>
+	This text is released under the CreativeCommons license
+	Attribution-NonCommercial-ShareAlike 3.0 Unported. Please
+	refer to <xref linkend="license" /> for the complete text of
+	the license.
+      </para>
+    </legalnotice>
   </info>
 
   <xi:include parse="xml" href="chapters/preface.xmli" />
@@ -30,6 +39,8 @@
   <xi:include parse="xml" href="chapters/autoconf.xmli" />
 
   <xi:include parse="xml" href="chapters/forwardporting.xmli" />
+
+  <xi:include parse="xml" href="license/cc-by-nc-sa.xmli" />
 </book>
 <!--
    Local Variables:

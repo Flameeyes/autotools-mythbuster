@@ -10,6 +10,8 @@
       <tocentry linkend="forwardporting.autoconf"><?dbhtml filename="forwardporting/autoconf.html"?>
       </tocentry>
     </tocentry>
+    <tocentry linkend="license"><?dbhtml filename="license.html"?>
+    </tocentry>
   </tocentry>
 </toc>
 
