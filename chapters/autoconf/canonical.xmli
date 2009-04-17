@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="autoconf.canonical">
+  <title>Canonical Systems</title>
+
+  <para>
+    When using <application>autoconf</application>, there are three
+    <emphasis>system definitions</emphasis> (or <emphasis>machine
+    definitions</emphasis>) that are used to identify the “actors” in
+    the build process; each definition relates to a similarly-named
+    variable which will be illustrated in detail later. These three
+    definitions are:
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term>host (<varname>CHOST</varname>)</term>
+
+      <listitem>
+	<para>
+	  The system that is going to execute the final software
+	  built, which is the main actor. Once the software has been
+	  built, it will execute on this particular system.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>build (<varname>CBUILD</varname>)</term>
+
+      <listitem>
+	<para>
+	  The system where the build process is being executed. For
+	  most uses this would be the same as the host system, but in
+	  case of cross-compilation the two obviously differ.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>target (<varname>CTARGET</varname>)</term>
+
+      <listitem>
+	<para>
+	  The system against which the software being built has to
+	  act. This actor only exists, or rather has a meaning, when
+	  the software being built may interact specifically with a
+	  system that differs from the one it's being executed on (our
+	  <emphasis>host</emphasis>). This is the case of compilers,
+	  debuggers, profilers and analysers in general and other
+	  tools like those.
+	</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+  <para>
+    To identify the current actors involved in the build process,
+    <application>autoconf</application> provides three macros that
+    take care of finding the so-called “canonical” values (see <xref
+    linkend="autoconf.canonical.tuples" /> for their format):
+    <function>AC_CANONICAL_HOST</function>,
+    <function>AC_CANONICAL_BUILD</function> and
+    <function>AC_CANONICAL_TARGET</function>. These three macros then
+    provides to the configure script the sh variables with the name of
+    the actor (<varname>$host</varname>, <varname>$build</varname> and
+    <varname>$target</varname>), and three parameters with the same
+    name to the <filename>configure</filename> script so that hte user
+    can override the default discovered values.
+  </para>
+
+  <para>
+    The most basic <application>autoconf</application> based build
+    systems won't need to know any of these values, at least directly:
+    some other tools, such as <application>libtool</application>, will
+    require discovery of canonical systems by themselves. Since the
+    adding these macros unconditionally adds direct and indirect code
+    to the <filename>configure</filename> script (and a dependency on
+    the two support files <filename>config.sub</filename> and
+    <filename>config.guess</filename>), it is recommended not to call
+    them unconditionally.
+  </para>
+
+  <para>
+    It is actually quite easy to decide whether canonical system
+    definitions are needed or not: you just have to look out for the
+    use of the related actor variable. For instance if the
+    <filename>configure.ac</filename> script uses the
+    <varname>$build</varname> variable, you'd need to call
+    <function>AC_CANONICAL_BUILD</function> to discover its value. If
+    the system definition variables are used in a macro, instead, you
+    should use the <function>AC_REQUIRE</function> macro to ensure
+    that they are executed before entering. Don't fear calling them
+    in more than one place, see <xref linkend="autoconf.macros.once"
+    /> fore more details.
+  </para>
+
+  <para>
+    One common mistake is to “go all the way” and just always use the
+    <function>AC_CANONICAL_TARGET</function> macro, or its misnamed
+    predecessor <function>AC_CANONICAL_SYSTEM</function>. This is
+    particularly a problem, because most of the software will not have
+    a <emphasis>target</emphasis> actor at all. This actor is only
+    meaningful when the software that is being built manages data that
+    is specific to a different system than the one it's executed on
+    (the <emphasis>host</emphasis> system).
+  </para>
+
+  <para>
+    In practice, the only places where the <emphasis>target</emphasis>
+    actor is meaningful are the parts of a compile toolchain:
+    assemblers, linkers, compilers, debuggers, profilers, analysers, …
+    For the rest of the software, the presence of an extraneous
+    <varname>--target</varname> option to
+    <filename>configure</filename> is likely to just be confusing,
+    especially for software that processes the output of the script to
+    identify some information about the package being built.
+  </para>
+
+  <section xml:id="autoconf.canonical.tuples">
+    <title>The System Definition Tuples</title>
+
+    <para>
+      The <emphasis>system definitions</emphasis> used by
+      <application>autoconf</application> (but also by other packages
+      like <productname>GCC</productname> and
+      <productname>Binutils</productname>) are simple tuples in form
+      of strings. These are designed to provide, in a format easy to
+      parse with “glob masks”, the major details that describe a
+      computer system.
+    </para>
+
+    <para>
+      The number of elements in these tuples is variable, for some
+      uses that only deal with very low-level code, there can be just
+      a single element, the system architecture (i386, x86_64,
+      powerpc, …); others will have two, defining either the operating
+      system or, most often for definition pairs, the executable
+      format (elf, coff, …). These two formats, though, usually only
+      related to components of the toolchain and not to
+      <application>autoconf</application> directly.
+    </para>
+
+    <para>
+      The tuples commonly used with
+      <application>autoconf</application> are triples and quadruples,
+      which define three components:
+      <emphasis>architecture</emphasis>, <emphasis>evendor</emphasis>
+      and <emphasis>operating system</emphasis>; these three
+      components usually map directly into the triples, but for
+      quadruple you have to split the operating system into
+      <emphasis>kernel</emphasis> and
+      <emphasis>userland</emphasis> (usually the C library).
+    </para>
+
+    <para>
+      While the architecture is almost obvious, and the operating
+      system differs slightly between one and the other (still being
+      probably the most important data), the
+      <emphasis>vendor</emphasis> value is usually just ignored. It is
+      meant to actually be the vendor of the hardware system, rather
+      than the vendor of the software, although nowadays is mostly
+      used by distributions to brand their toolchain
+      (i386-redhat-linux-gnu) or their special systems
+      (i386-gentoo-freebsd7.0) and by vendors that provide their own
+      specific toolchain (i686-apple-darwin9).
+    </para>
+
+    <para>
+      Most of the operating systems don't split their definition
+      further in kernel and userland because they only work as an
+      “ensemble”: FreeBSD, (Open)Solaris, Darwin, … There are, though,
+      a few operating systems that have a split between kernel and
+      userland, being managed by different projects or even being
+      replaceable independently. This is the case for instance of
+      Linux, which can use either the GNU C Library (GNU/Linux) or
+      uClibc, which become respectively *-linux-gnu and
+      *-linux-uclibc.
+    </para>
+
+    <para>
+      Also, most operating systems using triples also have a single
+      standardised version for both kernel and userland, and thus
+      provide it as a suffix to the element (*-freebsd7.0,
+      *-netbsd4.0). For a few operating systems, this value might not
+      be the one that is used as the “product version” used in
+      public; for instance Solaris 10 uses as definition *-solaris2.10
+      and Apple's Mac OS X 10.5 uses *-darwin9.
+    </para>
+  </section>
+
+  <section>
+    <title>When To Use System Definitions</title>
+
+    <para><emphasis>To be extended</emphasis></para>
+  </section>
+
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->

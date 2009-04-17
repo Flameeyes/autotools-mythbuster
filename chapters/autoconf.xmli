@@ -23,6 +23,8 @@
     shell script that executes the tests.
   </para>
 
+  <xi:include parse="xml" href="autoconf/canonical.xmli" />
+
   <section>
     <title>Finding Libraries</title>
 
