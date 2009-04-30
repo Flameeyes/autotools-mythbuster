@@ -10,18 +10,6 @@
   <link rel="stylesheet" type="text/css" href="http://www.flameeyes.eu/autotools-mythbuster/stylesheets/flameeyes.css" />
 </xsl:template>
 
-<xsl:template name="user.header.content">
-  <div id="footads">
-    <script type="text/javascript" src="http://www.flameeyes.eu/autotools-mythbuster/scripts/footads.js">
-      <xsl:text> </xsl:text>
-    </script>
-    <script type="text/javascript"
-	    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-      <xsl:text> </xsl:text>
-    </script>
-  </div>
-</xsl:template>
-
 <xsl:template name="user.footer.navigation">
   <div id="licensing">
     <a rel="license"
