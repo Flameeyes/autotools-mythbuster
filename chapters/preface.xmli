@@ -70,54 +70,30 @@
     </para>
 
     <para>
-      Since the effort required to complete this kind of work is
-      non-trivial, I cannot just do this solely in my spare time, so
-      while the results are offered both free of charge and free as in
-      speech, I'm going to extend the work on a donation basis.
+      My original idea was to work on this on “spare but paid” time,
+      accepting donations to extend the content. Unfortunately, this
+      idea encountered frozen responses, which meant that the content
+      was only extended in my spare time. Since I now cannot receive
+      money donation anyway, extension will no longer be tied to that.
     </para>
 
     <para>
-      It is difficult to actually provide a value to the work so I'm not
-      going to put on prices to chapters or anything like that. Instead
-      I'm going to accept donations, starting from €50, to continue with
-      the work. Depending on the flow of donations and the amount of
-      free time I can pour into this, you might see more or less content
-      appearing.
+      Unfortunately, this way the time I feel I can spend on this
+      guide also was reduced drastically, and most likely I'm just
+      going to extend it when I need to explain a particular problem
+      to someone, instead of writing a blog entry.
     </para>
-
-    <note><para>
-	The donation doesn't need to come from a single person in a
-	single moment: donations stuck up so that if ten people want
-	to pledge €5 each, I'll still count it as a donation and work
-	on a new chapter.
-    </para></note>
 
     <para>
-      If you have a request for a particular piece of information about
-      autotools, you can also specify that topic and I'll see to extend
-      the document in that regard. For this reason the growth of the
-      document might seem organic and not entirely organised. Hopefully
-      the results will be useful anyway.
+      If you are interested in a particular topic related to
+      autotools, you're still welcome to contact me at <link
+      xl:href="mailto:flameeyes@gmail.com">flameeyes@gmail.com</link>
+      to suggest me about that. If you instead are interested in
+      asking something with more emphasis than a suggestion, you'd
+      have better luck by also <link
+      xl:href="http://www.amazon.co.uk/gp/registry/265AZ8JI6XHFA">sending
+      me a gift</link>.
     </para>
-
-    <section>
-      <title>How to donate</title>
-
-      <para>
-	For the book I'm accepting donations through PayPal, through the
-	email address <emphasis>flameeyes@gmail.com</emphasis>, or, if
-	you're within <acronym>SEPA</acronym> (Single Euro Payment
-	Area), through international wire transfer. In the latter case,
-	please mail me at the same address so I can give you my
-	<acronym>IBAN</acronym> and <acronym>SWIFT</acronym> codes.
-      </para>
-
-      <para>
-	I'm also accepting equivalent hardware donations, since hardware
-	is always a commodity that is needed in this work area. Please
-	contact me in advance for this.
-      </para>
-    </section>
 
     <section>
       <title>How to contribute to the guide</title>
