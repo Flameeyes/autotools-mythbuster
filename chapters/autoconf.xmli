@@ -30,6 +30,8 @@
 
     <xi:include parse="xml" href="autoconf/headers.xmli" />
   </section>
+
+  <xi:include parse="xml" href="autoconf/macros.xmli" />
 </chapter>
 <!--
    Local Variables:
