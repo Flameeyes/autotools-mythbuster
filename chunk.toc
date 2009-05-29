@@ -10,6 +10,8 @@
       <tocentry linkend="autoconf.macros"><?dbhtml filename="autoconf/macros.html"?>
       </tocentry>
     </tocentry>
+    <tocentry linkend="automake"><?dbhtml filename="automake/index.html"?>
+    </tocentry>
     <tocentry linkend="forwardporting"><?dbhtml filename="forwardporting/index.html"?>
       <tocentry linkend="forwardporting.autoconf"><?dbhtml filename="forwardporting/autoconf.html"?>
       </tocentry>
