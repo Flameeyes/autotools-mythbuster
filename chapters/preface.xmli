@@ -99,17 +99,32 @@
       <title>How to contribute to the guide</title>
 
       <para>
+	This guide is an open publication, if you wish to contribute,
+	you're very welcome to do so, but you have to grant again the
+	same license used for the rest of the content (see <xref
+	linkend="license" />).
+      </para>
+
+      <para>
+	The sources for this text are available, in <link
+	xl:href="http://www.docbook.org/">DocBook format</link>, at
+	the <link
+	xl:href="http://gitorious.org/autotools-mythbuster">Gitorious
+	project.</link>
+      </para>
+
+      <para>
 	If you have the knowledge for improving this guide, either for
 	grammar or for actual content, you're welcome to submit your
-	patches. The sources for the guide are available via the GIT
-	source control manager, and you can send the patches to the
-	email address above.
+	changes. You can either send me the patches via email, or
+	request a merge from the Gitorious interface.
       </para>
 
       <para>
 	Please note that if you wish to submit patches, you should
 	follow the same style as the rest of the book. You're going to
-	be credited among authors and editors after your second patch.
+	be credited among authors and editors after your second patch
+	or if your contribution is substantial.
       </para>
     </section>
   </section>
