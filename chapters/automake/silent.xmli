@@ -77,6 +77,24 @@ AM_INIT_AUTOMAKE([foreign]
       </para>
     </note>
   </example>
+
+  <para>
+    Even though you can now enable silent rules by default, there are
+    a few things to be noted. The first is that silent rules are only
+    tested working with the GNU implementation of
+    <command>make</command>, and as such they also disable portability
+    warnings.
+  </para>
+
+  <para>
+    The second thing to note is that even though you do enable it in
+    the <filename>configure.ac</filename> file, silent rules are
+    <emphasis>disabled by default</emphasis>, and are only used when
+    either <command>make</command> is invoked with the
+    <parameter>V=0</parameter> parameter or when
+    <command>./configure</command> was called with the
+    <parameter>--enable-silent-rules</parameter> option.
+  </para>
 </section>
 <!--
    Local Variables:
