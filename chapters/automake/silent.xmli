@@ -65,17 +65,28 @@ make[1]: Leaving directory `/home/flame/test-hellow'
     </title>
 
     <programlisting><![CDATA[
-AM_INIT_AUTOMAKE([foreign]
-                 m4_ifdef([AM_SILENT_RULES], [silent-rules]) )
+AM_INIT_AUTOMAKE([foreign])
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 ]]></programlisting>
+  </example>
 
-    <note>
-      <para>
-	Make sure to get the correct quoting: the
-	<function>m4_ifdef</function> call is outside the quote, while
-	the rest is quoted.
-      </para>
-    </note>
+  <para>
+    This method is the best choice when keeping compatibility with
+    older <application>automake</application> versions, since the
+    extra call is well separated and would be called only if strictly
+    needed. If you just want to allow silent rules, but keep them
+    disabled by default, you can instead pass an extra parameter to
+    the <function>AM_INIT_AUTOMAKE</function> macro call:
+  </para>
+
+  <example>
+    <title>
+      Making <constant>silent-rules</constant> optionally available.
+    </title>
+
+    <programlisting><![CDATA[
+AM_INIT_AUTOMAKE([foreign silent-rules])
+]]></programlisting>
   </example>
 
   <para>
@@ -83,17 +94,27 @@ AM_INIT_AUTOMAKE([foreign]
     a few things to be noted. The first is that silent rules are only
     tested working with the GNU implementation of
     <command>make</command>, and as such they also disable portability
-    warnings.
+    warnings. This means that you cannot use silent rules when
+    portability with other <command>make</command> implementations
+    (FreeBSD, NetBSD, Sun, …).
   </para>
 
   <para>
-    The second thing to note is that even though you do enable it in
-    the <filename>configure.ac</filename> file, silent rules are
-    <emphasis>disabled by default</emphasis>, and are only used when
-    either <command>make</command> is invoked with the
-    <parameter>V=0</parameter> parameter or when
-    <command>./configure</command> was called with the
-    <parameter>--enable-silent-rules</parameter> option.
+    The second thing to note is that silent rules, even when enabled
+    in the <filename>configure.ac</filename> file, may need to be
+    enabled with the <parameter>V=0</parameter> parameter in the
+    <command>make</command> call or with the
+    <parameter>--enable-silent-rules</parameter> option to
+    <command>./configure</command>.
+  </para>
+
+  <para>
+    To actually force enabling the silent rules by default (and thus
+    requiring the reverse parameters to disable those rules), you can
+    use the <function>AM_SILENT_RULES</function> macro with
+    <parameter>yes</parameter> as its only parameter (instead of using
+    <function>AM_INIT_AUTOMAKE</function>), which defaults to enable
+    the silent rules.
   </para>
 </section>
 <!--
