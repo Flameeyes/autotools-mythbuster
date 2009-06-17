@@ -25,7 +25,7 @@
 
   <xi:include parse="xml" href="autoconf/canonical.xmli" />
 
-  <section>
+  <section xml:id="autoconf.lib-discovery">
     <title>Finding Libraries</title>
 
     <xi:include parse="xml" href="autoconf/headers.xmli" />
