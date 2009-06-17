@@ -71,6 +71,8 @@
       <xref linkend="libtool.alternatives" />.
     </para>
   </section>
+
+  <xi:include parse="xml" href="libtool/plugins.xmli" />
 </chapter>
 <!--
    Local Variables:

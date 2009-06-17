@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="libtool.plugins">
+  <title>Building plugins</title>
+
+  <para>
+    The shared objects technology is used, among other things, also to
+    provide the so-called “plug-in system”, that allows to link in
+    compiled code at runtime providing (eventually optional) features.
+  </para>
+
+  <para>
+    To implement plug-in systems, you usually need to call into the
+    dynamic linker at runtime to ask for loading the plug-in shared
+    object. This object might just be a standard shared object or
+    might require further details to be taken into consideration.
+  </para>
+
+  <para>
+    The call into the dynamic linker also varies for what concerns
+    interface and implementation. Since most Unix-like systems provide
+    this interface through the <function>dlopen()</function> function,
+    which is pretty much identical among them, lots of software relies
+    on just this interface, and leave to
+    <application>libtool</application> just the task of building the
+    plugins.
+  </para>
+
+  <para>
+    Software that is interested in a wider portability among different
+    operating systems will be interested instead in using the wrapper
+    library and interface called <application>libltdl</application>.
+  </para>
+
+  <section xml:id="libtool.plugins.dlopen">
+    <title>Building plug-ins for <function>dlopen()</function></title>
+
+    <para>
+      When building plug-ins that are to be used directly with the
+      <function>dlopen()</function> interface (or equivalent) and not
+      through the <application>libltdl</application> interface, you
+      usually just need the shared object files, without versioning or
+      other frills. In particular, given the plug-ins cannot be
+      wrapped statically, you don't need to build the static version
+      at all.
+    </para>
+
+    <para>
+      For this reason when building this very easygoing type of
+      plug-ins, you just rely on three flags for the
+      <command>libtool</command> script:
+    </para>
+
+    <variablelist>
+      <varlistentry>
+	<term><parameter>-module</parameter></term>
+
+	<listitem>
+	  <para>
+	    Ignore the restriction about the <filename>lib-</filename>
+	    prefix for the plug-in file name, allowing free-form
+	    names.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><parameter>-avoid-version</parameter></term>
+
+	<listitem>
+	  <para>
+	    Allow the target to not provide any version information,
+	    removing the need to provide it. Almost all the plug-in
+	    systems don't use the library versioning to decide whether
+	    to load the objects, and rely instead on the path they are found.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><parameter>-disable-static</parameter></term>
+
+	<listitem>
+	  <para>
+	    Disable entirely the build of the static verison of the
+	    object, this reduces the amount of installed files, as
+	    well as avoiding the double-build that would be needed for
+	    all the systems where static libraries and shared objects
+	    have different build requirements.
+	  </para>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+
+    <example>
+      <title>
+	Building plug-ins for <function>dlopen()</function> usage
+      </title>
+
+      <programlisting><![CDATA[
+pkglibdir_LTLIBRARIES = foo_example_plugin.la
+
+foo_example_plugin_la_SOURCES = example.c
+foo_example_plugin_la_LDFLAGS = -avoid-version -module -disable-static
+]]></programlisting>
+    </example>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->
