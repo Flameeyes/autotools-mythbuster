@@ -96,7 +96,7 @@ AM_INIT_AUTOMAKE([foreign silent-rules])
     <command>make</command>, and as such they also disable portability
     warnings. This means that you cannot use silent rules when
     portability with other <command>make</command> implementations
-    (FreeBSD, NetBSD, Sun, …).
+    (FreeBSD, NetBSD, Sun, …) is a requirement.
   </para>
 
   <para>
