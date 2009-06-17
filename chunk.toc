@@ -12,6 +12,8 @@
     </tocentry>
     <tocentry linkend="automake"><?dbhtml filename="automake/index.html"?>
     </tocentry>
+    <tocentry linkend="libtool"><?dbhtml filename="libtool/index.html"?>
+    </tocentry>
     <tocentry linkend="forwardporting"><?dbhtml filename="forwardporting/index.html"?>
       <tocentry linkend="forwardporting.autoconf"><?dbhtml filename="forwardporting/autoconf.html"?>
       </tocentry>
