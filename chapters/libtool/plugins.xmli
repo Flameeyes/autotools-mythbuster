@@ -34,6 +34,172 @@
     library and interface called <application>libltdl</application>.
   </para>
 
+  <section xml:id="libtool.plugins.ltdl">
+    <title>
+      Using <application>libltdl</application> for plug-ins
+    </title>
+
+    <section xml:id="libtool.plugins.ltdl.discovery">
+      <title>
+	Linking, bundling, installing <application>libtldl</application>
+      </title>
+
+      <para>
+	Because of the wide adoption of
+	<application>libltdl</application> in many type of
+	applications, its support in autotools is available with huge
+	flexibility. This because its wrapping abilities can easily be
+	used on systems where libtool proper is not usually installed,
+	and thus it's often convenient to have a local copy of it.
+      </para>
+
+      <para>
+	But with bundling libraries, problems ensure, and especially
+	it can be a problem to choose between bundling a local copy of
+	the library or just using the system one. The macros provided
+	by <application>libtool</application>, even the recent version
+	2, support three styles for bundling
+	<application>libltdl</application>: sub-configured
+	directory (see <xref linkend="autoconf.subconfigure" />),
+	non-recursive inline build, or finally recursive inline
+	build.
+      </para>
+
+      <para>
+	Beside these three options there is also the more “standard”
+	option of simply requesting the presence of the library in the
+	system, as any other dependency and checking for it. This
+	method is neither assisted nor well-documented by the
+	<application>libtool</application> manual and is thus rarely
+	used.
+      </para>
+
+      <para>
+	For all the three bundling styles as provided by
+	<application>libtool</application>, the reference macros in
+	the <filename>configure.ac</filename> file are
+	<function>LT_CONFIG_LTDL_DIR</function> and
+	<function>LTDL_INIT</function>. When using the sub-configured,
+	these two are the only two calls that you need; when using the
+	inline build, you need some extra calls:
+      </para>
+
+      <example>
+	<title>
+	  Buildsystem changes for bundled <application>libltdl</application>
+	</title>
+
+	<para>
+	  In <filename>configure.ac</filename>, for the various cases, commented
+	</para>
+
+	<programlisting><![CDATA[
+# automake needed when not using sub-configured libltdl
+# subdir-objects only needed when using non-recursive inline build
+AM_INIT_AUTOMAKE([subdir-objects]
+
+# the inline build *require* the configure header, although the name
+# is not really important
+AC_CONFIG_HEADERS([config.h])
+
+# the inline build *require* libtool with dlopen support
+LT_INIT([dlopen])
+
+# find the libltdl sources in the libltdl sub-directory
+LT_CONFIG_LTDL_DIR([libltdl])
+
+# only for the recursive case
+AC_CONFIG_FILES([libltdl/Makefile])
+
+# choose one
+LTDL_INIT([subproject])
+LTDL_INIT([recursive])
+LTDL_INIT([nonrecursive])
+]]></programlisting>
+
+	<para>
+	  The changes for <filename>Makefile.am</filename> (or
+	  equivalent) are trivial for the sub-configured and recursive
+	  options (just add the new directory to
+	  <varname>SUBDIRS</varname>), but are a bit more complicated
+	  for the non-recursive case; the following is a snippet from
+	  the <application>libtool</application> manual to support
+	  non-recursive <application>libltdl</application> inline
+	  build:
+	</para>
+
+	<programlisting><![CDATA[
+AM_CPPFLAGS =
+AM_LDFLAGS =
+
+BUILT_SOURCES =
+EXTRA_DIST =
+CLEANFILES =
+MOSTLYCLEANFILES =
+
+include_HEADERS =
+noinst_LTLIBRARIES =
+lib_LTLIBRARIES =
+EXTRA_LTLIBRARIES =
+
+include libltdl/Makefile.inc
+]]></programlisting>
+      </example>
+
+      <para>
+	Whatever option you choose to follow at this point, you've got
+	to actually bundle the sources in your tree; you probably
+	don't want to add them to your source control system (see
+	<xref linkend="tricks.generated-scm" />), but you want to add
+	the <command>libtoolize --ltdl</command> command to your
+	<filename>autogen.sh</filename> script or similar.
+      </para>
+
+      <para>
+	As the title of this section suggests, you can technically
+	even install the <application>libltdl</application> that you
+	just built. This is not enabled by default, and rightly so
+	(you'd be installing software that is not your competence
+	to). The reason why this is at all possible is that the macros
+	used by the <application>libtool</application> package are
+	just the same that are provided to third-party developers.
+      </para>
+
+      <para>
+	Finally, as said before, there is no provided macro to check
+	for the library in the system to simply rely on that; since it
+	also does not provide a <link
+	linkend="pkgconfig">pkg-config</link> datafile, the
+	best way choice is simply to <link
+	linkend="autoconf.lib-discovery"> discover the
+	library through <function>AC_CHECK_LIB</function></link>.
+      </para>
+
+      <para>
+	To do that you can use the following snipped, for instance:
+      </para>
+
+      <example>
+	<title>Checking for <application>libltdl</application></title>
+
+	<programlisting><![CDATA[
+AC_CHECK_HEADER([ltdl.h],
+    [AC_CHECK_LIB([ltdl], [lt_dladvise_init],
+        [LIBLTDL=-lltdl], [LIBLTDL=])],
+    [LIBLTDL=])
+]]></programlisting>
+
+	<para>
+	  It's important to check for a function that is present in
+	  the currently-supported version of
+	  <application>libltdl</application>. This snippet checks for
+	  the <function>lt_dladvise_init</function> function that is a
+	  new interface present in libtool 2.2 and later.
+	</para>
+      </example>
+    </section>
+  </section>
+
   <section xml:id="libtool.plugins.dlopen">
     <title>Building plug-ins for <function>dlopen()</function></title>
 
