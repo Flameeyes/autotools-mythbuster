@@ -7,6 +7,10 @@
     <tocentry linkend="autoconf"><?dbhtml filename="autoconf/index.html"?>
       <tocentry linkend="autoconf.canonical"><?dbhtml filename="autoconf/canonical.html"?>
       </tocentry>
+      <tocentry linkend="autoconf.arguments"><?dbhtml filename="autoconf/arguments.html"?>
+      </tocentry>
+      <tocentry linkend="autoconf.lib-discovery"><?dbhtml filename="autoconf/finding.html"?>
+      </tocentry>
       <tocentry linkend="autoconf.macros"><?dbhtml filename="autoconf/macros.html"?>
       </tocentry>
     </tocentry>
