@@ -250,7 +250,7 @@ AC_CHECK_HEADER([ltdl.h],
 
 	<listitem>
 	  <para>
-	    Disable entirely the build of the static verison of the
+	    Disable entirely the build of the static version of the
 	    object, this reduces the amount of installed files, as
 	    well as avoiding the double-build that would be needed for
 	    all the systems where static libraries and shared objects
