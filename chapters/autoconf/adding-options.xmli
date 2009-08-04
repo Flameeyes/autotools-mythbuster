@@ -234,6 +234,71 @@ AS_IF([test "x$enable_foo" = "xyes"], [
     </example>
   </section>
 
+  <section>
+    <title>Environment Variables as Arguments</title>
+
+    <para>
+      The <function>AC_ARG_VAR</function> macro is used to declare a
+      particular (environment) variable as an argument for the script,
+      giving it a description and a particular use. While this feature
+      has been added relatively recently in the history of
+      <application>autoconf</application>, it is really important.
+
+      Reflecting its younger presence, the macro does not need the
+      <function>AS_HELP_STRING</function> helper, and only takes two
+      parameters: the name of the variable and the string printed
+      during <command>./configure --help</command>:
+    </para>
+
+    <programlisting><![CDATA[
+AC_ARG_VAR(var-name, help-string)
+]]></programlisting>
+
+    <para>
+      By default, <filename>configure</filename> picks up the
+      variables from the environment like any other sh script. Most of
+      those are, though, ignored; those who are not, should be
+      declared through this macro. This way, they are marked as
+      <emphasis>precious</emphasis> variable.
+    </para>
+
+    <para>
+      A variable marked as <emphasis>precious</emphasis> gets replaced
+      in the <filename>Makefile.in</filename> without having to call
+      an explicit <function>AC_SUBST</function>, but that's not the
+      most important part of the definition. What is important is that
+      the variable is cached.
+    </para>
+
+    <para>
+      When running <command>./configure</command> with the variable
+      set (both when setting it in the environment and when setting it
+      just for the execution via <command>./configure
+      FOO=bar</command>), its value is saved in either the proper
+      cache file (if requested, see <link linkend="autoconf.caching"
+      />) or in the configuration status. This in turn produces two
+      effects:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+	<para>
+	  the variable is compared for consistency between different
+	  cached runs, to avoid re-using an incompatible cache file;
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  the variable is saved for re-execution when using
+	  <command>./config.status --recheck</command> (as used by
+	  <link linkend="automake.maintainer-mode">maintainer
+	  mode</link>).
+	</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
 </section>
 <!--
    Local Variables:
