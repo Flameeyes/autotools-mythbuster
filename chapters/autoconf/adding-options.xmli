@@ -73,6 +73,13 @@
   </para>
 
   <para>
+    While there is no technical difference between the two, it's
+    helpful for both users and distribution to follow the indications
+    given above about the use of the two parameters' kind. This allows
+    to identify exactly what the parameters are used for.
+  </para>
+
+  <para>
     The environment variables are a recent additions to
     <application>autoconf</application> and are indeed used by a
     minority of the projects based on this build system.
