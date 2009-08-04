@@ -20,6 +20,8 @@
     </tocentry>
     <tocentry linkend="license"><?dbhtml filename="license.html"?>
     </tocentry>
+    <tocentry linkend="furtherreadings"><?dbhtml filename="furtherreadings.html"?>
+    </tocentry>
   </tocentry>
 </toc>
 

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appendix xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 version="5.0" xml:lang="en"
+	 xml:id="furtherreadings">
+  <title>Further Readings</title>
+
+  <para>
+    While the goal of this guide is to provide a comprehensive and
+    extensive documentation on autotools and all the tools related to
+    those, it will take a long time before it can be said to be
+    self-sufficient.
+  </para>
+
+  <para>
+    Until that time, I'd like to point out some further readings that
+    will provide pointers, or reference material, that can be useful
+    to those of you interested in working with autotools.
+  </para>
+
+  <para>
+    Some of the material (most at the time I'm writing this) is
+    actually content I have written for various different targets, and
+    that is available online already. Compatibly with the goal of this
+    guide and the license of the published content, it will be merged
+    in it, in due time.
+  </para>
+
+  <simplelist>
+    <member>
+      The <link
+      xl:href="http://www.gnu.org/software/autoconf/manual/html_node/index.html">autoconf
+      manual</link>.
+    </member>
+
+    <member>
+      The <link
+      xl:href="http://www.gnu.org/software/automake/manual/html_node/index.html">automake
+      manual</link>.
+    </member>
+
+    <member>
+      The <link
+      xl:href="http://www.gnu.org/software/libtool/manual/html_node/index.html">libtool
+      manual</link>.
+    </member>
+
+    <member>
+      <link
+	  xl:href="http://www.linux.com/archive/articles/114061">
+	Best Practices With Autotools</link>. Diego Elio
+	Pettenò. August 2005.
+    </member>
+
+    <member>
+      <link
+	  xl:href="http://www.gentoo.org/proj/en/qa/automagic.xml">
+	Automagic dependencies, what they are and how to fix
+	them</link>. Diego Elio Pettenò, et al.
+    </member>
+
+    <member>
+      <link
+	  xl:href="http://www.gentoo.org/proj/en/qa/asneeded.xml">
+	<parameter>--as-needed</parameter> introduction and fixing
+	guide</link>. Diego Elio Pettenò, et al.
+    </member>
+  </simplelist>
+</appendix>
+
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->
