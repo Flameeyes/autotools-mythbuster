@@ -176,6 +176,55 @@ AC_ARG_ENABLE(option-name, help-string, action-if-present, action-if-not-present
 	macro, you cannot really use this macro with those meanings.
       </para>
     </warning>
+
+    <para>
+      For most uses, there is no actual need to define actions, since
+      the default for <application>autoconf</application> when no
+      action is defined for the case the user give a parameter is to
+      set a special variable named with the <varname>enable_</varname>
+      (or <varname>with_</varname>) prefix, like
+      <varname>enable_foo</varname>.
+    </para>
+
+    <example>
+      <title>
+	Using <function>AC_ARG_ENABLE</function> without actions
+      </title>
+
+      <programlisting><![CDATA[
+dnl Example of default-enabled feature
+AC_ARG_ENABLE([foo],
+    AS_HELP_STRING([--disable-foo], [Disable feature foo]))
+
+AS_IF([test "x$enable_foo" != "xno"], [
+  dnl Do the stuff needed for enabling the feature
+])
+
+dnl Enable of default-disabled feature
+AC_ARG_ENABLE([bar],
+    AS_HELP_STRING([--enable-bar], [Enable feature foo]))
+
+AS_IF([test "x$enable_foo" = "xyes"], [
+  dnl Do the stuff needed for enabling the feature
+])
+]]></programlisting>
+
+      <para>
+	In the above example, only the recognised options of
+	<constant>no</constant> and <constant>yes</constant>
+	(respectively for each case) are used; any other value given
+	(e.g. <command>--enable-foo=baz</command> or
+	<command>--enable-bar=fnord</command>) would be ignored and
+	treated in the same way as the default value of no parameter
+	given.
+      </para>
+
+      <para>
+	Further safety check for the value to not be anything but
+	<constant>yes</constant> or <constant>no</constant> can be
+	added, but are usually not necessary for the simplest cases.
+      </para>
+    </example>
   </section>
 
 </section>
