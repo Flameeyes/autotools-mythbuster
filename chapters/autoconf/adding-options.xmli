@@ -235,6 +235,83 @@ AS_IF([test "x$enable_foo" = "xyes"], [
   </section>
 
   <section>
+    <title>Automatic Dependencies with AC_ARG_WITH</title>
+
+    <para>
+      Sometimes, the external dependencies of a project can be an
+      hassle, especially if they enable optional features that not
+      every operating system supports or that some users don't really
+      care about. For this reason, they are often made optional,
+      non-mandatory.
+    </para>
+
+    <para>
+      When the option is non-mandatory, but it's desirable if certain
+      software is present in the system, it's usual to make the
+      dependency automatic. Automatic dependencies are enabled only if
+      the needed libraries are found, and “soft-fail” in disabling the
+      features if they are not.
+
+      Distributions further specialise this class in automatic and
+      <emphasis>automagic</emphasis> dependencies; this latter name is
+      used for those dependencies that don't allow to be overridden,
+      and thus will always enable the features if the libraries are
+      found, and always soft-fail when they are not found.
+
+      For distributions like Gentoo Linux that build on users'
+      systems, this situation is actually a problem and has to be
+      resolved for properly packaging the software.
+    </para>
+
+    <para>
+      To avoid this kind of problem, the best thing is to implement a
+      <command>--with</command> parameter that allows to override the
+      automatic detection: forcing it to yes would make the code fail
+      entirely when the library is not detected, and forcing it to no
+      would make the code skip over the check entirely.
+    </para>
+
+    <example>
+      <title>
+	Using <function>AC_ARG_WITH</function> to declare automatic
+	dependencies.
+      </title>
+
+      <programlisting><![CDATA[
+AC_ARG_WITH([foo],
+    AS_HELP_STRING([--without-foo], [Ignore presence of foo and disable it]))
+
+AS_IF([test "x$with_foo" != "xno"],
+      [CHECK_FOR_FOO([have_foo=yes], [have_foo=no])],
+      [have_foo=no])
+
+AS_IF([test "x$have_foo" = "xyes"],
+      [do_whatever_needed],
+      [AS_IF([test "x$with_foo" = "xyes"],
+             [AC_MSG_ERROR([foo requested but not found])
+      ])
+])
+]]></programlisting>
+
+      <para>
+	Once again, the empty value, and any other value from
+	<constant>yes</constant> and <constant>no</constant> are
+	handled together as a default case (that we could call the
+	<constant>auto</constant> case), and no extra sanity check is
+	added.
+      </para>
+
+      <para>
+	The library is checked for unless explicitly requested not to,
+	and the <varname>$have_foo</varname> variable is set
+	accordingly. If foo hasn't been found, but there was an
+	explicit request for it, an error message is displayed and the
+	<filename>configure</filename> script stops there.
+      </para>
+    </example>
+  </section>
+
+  <section>
     <title>Environment Variables as Arguments</title>
 
     <para>
