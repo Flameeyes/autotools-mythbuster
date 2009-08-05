@@ -16,12 +16,7 @@
     build.
   </para>
 
-  <example>
-    <title>
-      example of hellow build with and without silent-make
-    </title>
-
-    <programlisting><![CDATA[
+  <programlisting><![CDATA[
 test-hellow % make V=1
 make  all-am
 make[1]: Entering directory `/home/flame/test-hellow'
@@ -37,85 +32,148 @@ make[1]: Entering directory `/home/flame/test-hellow'
   CCLD   hellow
 make[1]: Leaving directory `/home/flame/test-hellow'
 ]]></programlisting>
-  </example>
 
   <para>
-    To enable this behaviour you have one of two options: the first is
-    to use the macro <function>AM_SILENT_RULES</function> in the
-    <filename>configure.ac</filename> file, and the other is the
-    equivalent use of the <constant>silent-rules</constant> option at
-    the call for <function>AM_INIT_AUTOMAKE</function>. Unfortunately
-    using either, by default, require use of
-    <application>automake</application> version 1.11, and breaks
-    compatibility with older versions that might still be in use and
-    desirable.
+    Even though <application>automake</application> version 1.11
+    implements this build method, it is not enabled by default, and
+    actually requires a double opt-in to be enabled by default. The
+    reason for this is that the new functionality is only tested
+    working with the GNU implementation of
+    <application>make</application>, and so disables the <link
+    linkend="automake.portability">portability warnings</link>.
   </para>
 
   <para>
-    To avoid this problem one can make use of the underlying
-    <application>m4</application> macro language, and check whether
-    the feature is available or not during
-    <application>autoconf</application> execution:
+    The first opt-in is to enable the behaviour, which is done inside
+    <filename>configure.ac</filename> in either of two methods:
   </para>
 
-  <example>
-    <title>
-      Enabling <constant>silent-rules</constant> only when actually
-      available
-    </title>
+  <itemizedlist>
+    <listitem>
+      <para>
+	passing the <option>silent-rules</option> option at the call
+	to <function>AM_INIT_AUTOMAKE</function> like done with many
+	other options;
+      </para>
+    </listitem>
 
-    <programlisting><![CDATA[
+    <listitem>
+      <para>
+	using the <function>AM_SILENT_RULES</function> macro directly
+	after the initialisation;
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <para>
+    In this guide, the recommended way to do so is using the explicit
+    macro; this has two main advantages: the first is that you can
+    easily make the call conditional to its actual presence, keeping
+    backward compatibility with older
+    <application>automake</application> versions; the second is that
+    the call can also change the default behaviour.
+  </para>
+
+  <para>
+    Indeed, just enabling the feature through either
+    <function>AM_SILENT_RULES</function> or the
+    <option>silent-rules</option> option, will not build
+    silently, because the silent rules are, by default, turned
+    off. Once again, you have two methods to enable them:
+  </para>
+    
+  <itemizedlist>
+    <listitem>
+      <para>
+	running <command>./configure --enable-silent-rules</command>
+	that enable the silent rules by default;
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	running <command>make V=0</command> to disable the “verbose”
+	build;
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <para>
+    To enable the silent rules by default (which can be turned off
+    with the opposite options (<command>./configure
+    --disable-silent-rules</command> and <command>make V=1</command>),
+    you have to pass as first parameter of the
+    <function>AM_SILENT_RULES</function> the value
+    <constant>yes</constant>:
+  </para>
+
+  <programlisting><![CDATA[
+AM_SILENT_RULES([yes])
+]]></programlisting>
+
+  <section>
+    <title>Silent Rules and Backward Compatibility</title>
+
+    <para>
+      Since the feature of building with silent rules is only
+      available starting from <application>automake</application>
+      1.11, just enabling the feature in
+      <filename>configure.ac</filename> is going to stop all the older
+      versions from building the project.
+    </para>
+
+    <para>
+      If this is a desired situation, you can also add the
+      <option>1.11</option> token to
+      <function>AM_INIT_AUTOMAKE</function> to explicit that at least
+      version 1.11 of <application>automake</application> is needed
+      for regeneration. See <link linkend="automake.options.version"
+      />.
+    </para>
+
+    <para>
+      If, instead, backward compatibility is still needed, for
+      instance because there are some systems where the code is tested
+      during developed that don't have a new enough
+      <application>automake</application> yet, it's quite simple to
+      implement the silent rules support conditionally, by using
+      explicitly the <function>AM_SILENT_RULES</function> macro.
+    </para>
+
+    <example>
+      <title>Using Silent Rules Without Forcing Automake 1.11</title>
+
+      <programlisting><![CDATA[
 AM_INIT_AUTOMAKE([foreign])
-m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 ]]></programlisting>
-  </example>
 
-  <para>
-    This method is the best choice when keeping compatibility with
-    older <application>automake</application> versions, since the
-    extra call is well separated and would be called only if strictly
-    needed. If you just want to allow silent rules, but keep them
-    disabled by default, you can instead pass an extra parameter to
-    the <function>AM_INIT_AUTOMAKE</function> macro call:
-  </para>
+      <para>
+	This fragment (the actual important part is the call to
+	<function>m4_ifdef</function>, but it <emphasis>has</emphasis>
+	to go after <function>AM_INIT_AUTOMAKE</function>, will call
+	the silent rules macro only if it's actually defined. On older
+	<application>automake</application> versions, this will not be
+	defined and the whole macro will be skipped.
+      </para>
 
-  <example>
-    <title>
-      Making <constant>silent-rules</constant> optionally available.
-    </title>
+      <note>
+	<para>
+	  While this allows for backward compatibility, it is
+	  suggested never to keep an overly long backward
+	  compatibility, as that increases the number of workarounds
+	  and tricks needed to avoid breaking the older versions, as
+	  features are implemented and made use of.
+	</para>
 
-    <programlisting><![CDATA[
-AM_INIT_AUTOMAKE([foreign silent-rules])
-]]></programlisting>
-  </example>
-
-  <para>
-    Even though you can now enable silent rules by default, there are
-    a few things to be noted. The first is that silent rules are only
-    tested working with the GNU implementation of
-    <command>make</command>, and as such they also disable portability
-    warnings. This means that you cannot use silent rules when
-    portability with other <command>make</command> implementations
-    (FreeBSD, NetBSD, Sun, …) is a requirement.
-  </para>
-
-  <para>
-    The second thing to note is that silent rules, even when enabled
-    in the <filename>configure.ac</filename> file, may need to be
-    enabled with the <parameter>V=0</parameter> parameter in the
-    <command>make</command> call or with the
-    <parameter>--enable-silent-rules</parameter> option to
-    <command>./configure</command>.
-  </para>
-
-  <para>
-    To actually force enabling the silent rules by default (and thus
-    requiring the reverse parameters to disable those rules), you can
-    use the <function>AM_SILENT_RULES</function> macro with
-    <parameter>yes</parameter> as its only parameter (instead of using
-    <function>AM_INIT_AUTOMAKE</function>), which defaults to enable
-    the silent rules.
-  </para>
+	<para>
+	  As of today, this trick should probably be used only to keep
+	  backward compatibility with very old systems where only
+	  <application>automake</application> 1.10 is available.
+	</para>
+      </note>
+    </example>
+  </section>
 </section>
 <!--
    Local Variables:
