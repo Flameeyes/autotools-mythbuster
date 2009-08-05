@@ -232,6 +232,74 @@ AS_IF([test "x$enable_foo" = "xyes"], [
 	added, but are usually not necessary for the simplest cases.
       </para>
     </example>
+
+    <section xml:id="autoconf.arguments.helpstrings">
+      <title>The Help Strings</title>
+
+      <para>
+	Some words have to be spent for the help strings used for
+	declaring parameters with both
+	<function>AC_ARG_ENABLE</function> and
+	<function>AC_ARG_WITH</function>, since they have changed in
+	the past versions of <application>autoconf</application> and
+	they tend to be often mistakenly used.
+      </para>
+
+      <para>
+	The second parameter for the two macros above is the
+	description string as outputted by <command>./configure
+	--help</command>; since proper formatting of that string is
+	almost impossible to achieve by hand, there is a macro that
+	<application>autoconf</application> provides to generate it:
+	<function>AS_HELP_STRING</function> (replacing the former,
+	deprecated macro <function>AC_HELP_STRING</function>, which is
+	virtually identical, but has a less clear name).
+      </para>
+
+      <para>
+	This macro takes care of properly aligning the text, breaking
+	the lines where needed. For instance take the following
+	fragment:
+      </para>
+
+      <programlisting><![CDATA[
+
+dnl configure.ac text…
+
+dnl to give an example of default-provided help text
+AC_HEADER_ASSERT
+AC_ARG_ENABLE([foo], [  --enable-foo		enable the use of foo through this very long and boring help text])
+AC_ARG_ENABLE([bar],
+  AS_HELP_STRING([--enable-bar],
+    [enable the use of foo through this very long and boring help text])
+)
+
+# output from ./configure --help
+  --disable-assert        turn off assertions
+  --enable-foo		enable the use of foo through this very long and boring help text
+  --enable-bar            enable the use of foo through this very long and
+                          boring help text
+]]></programlisting>
+
+      <para>
+	As you can see the text that is not typeset through the use of
+	<function>AS_HELP_STRING</function> is not properly aligned
+	(the distance used in the example is two tabulations, at most
+	sixteen spaces, depending on the length of the option text,
+	which falls short of two spaces).
+      </para>
+
+      <para>
+	It's not really important for what concerns the functionality
+	of the script, but it's useful to keep for consistency. Also,
+	this allows software inspecting
+	<filename>configure.ac</filename> files to identify the
+	available options (for eventual graphical frontends to
+	<command>./configure</command> or auto-generation of
+	packaging description files (RPM specifications, Gentoo
+	ebuilds, …).
+      </para>
+    </section>
   </section>
 
   <section>
