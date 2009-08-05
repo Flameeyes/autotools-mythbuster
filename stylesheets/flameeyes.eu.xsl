@@ -24,7 +24,7 @@
     <p>
       <span xmlns:dc="http://purl.org/dc/elements/1.1/"
       href="http://purl.org/dc/dcmitype/Text" property="dc:title"
-      rel="dc:type">Autotools Muthbuster</span> by <a
+      rel="dc:type">Autotools Mythbuster</span> by <a
       xmlns:cc="http://creativecommons.org/ns#"
       href="http://www.flameeyes.eu/autotools-mythbuster/"
       property="cc:attributionName" rel="cc:attributionURL">Diego Elio
