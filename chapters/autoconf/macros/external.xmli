@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="autoconf.macros.external">
+  <title>External Macro Files</title>
+
+  <para>
+    Since <application>autoconf</application> macros are often
+    developed to solve generic problems, rather than specific problems
+    of a project (otherwise direct M4sh code would be good enough for
+    most uses), they are often shared across packages and across
+    projects.
+  </para>
+
+  <para>
+    In the past, most packages shipped their own macro file with a
+    standardised macro to search for them in a system at build time,
+    making use of particularities of the package, or through
+    configuration helper scripts. For most projects these have been
+    phased out in favour of <link
+    linkend="pkgconfig"><application>pkg-config</application></link>.
+  </para>
+
+  <para>
+    There are, though, reusable macros, shipped with various projects
+    or present in archives, such as the <link
+    xl:href="http://www.nongnu.org/autoconf-archive/">Autoconf
+    Archive</link>. Depending on the nature of the macro, the file
+    where it is written is either installed in the system (to be used
+    by <application>autoconf</application> directly) or is simply
+    available to be picked up from the source distribution.
+  </para>
+
+  <para>
+    To take two examples, the <filename>pkg.m4</filename> file that is
+    shipped with <application>pkg-config</application> is installed in
+    the system, while the <filename>attributes.m4</filename> macro
+    file, shipped with <productname>xine-lib</productname>,
+    <productname>PulseAudio</productname> and the
+    <productname>LScube</productname> projects, is simply shared by
+    copying it out of the source distribution or repositories.
+  </para>
+
+  <para>
+    When using external macro files to store custom and generic macros
+    (which is, most of the time, the suggested approach), you have to
+    tell <application>autoconf</application> where to look for
+    them. Many different approaches are available for this task, and
+    this guide will try to explain most, if not all, of them.
+  </para>
+
+  <note>
+    <para>
+      While there is no functional requirement for that, the guide will
+      assume that all your macro files are inside the
+      <filename>m4/</filename> directory; this is the most common
+      directory used to keep the macro files, and for the principle of
+      least surprise, you probably want to also put yours there.
+    </para>
+
+    <para>
+      Some projects use other directory names
+      (<filename>autoconf/</filename>,
+      <filename>ac-macros/</filename>, …) but this often adds more
+      work for the distributors packaging or fixing the software,
+      since they have to check where to find the macros.
+    </para>
+  </note>
+
+  <section>
+    <title>With Just <application>autoconf</application></title>
+
+    <para>
+      When not using <application>automake</application>, and just
+      relying on <application>autoconf</application>, the macro files
+      are not picked up by default.
+    </para>
+
+    <para>
+      Indeed, if you just added your testing macro in the
+      <filename>configure.ac</filename> file, you'll be finding it
+      just copied over in the final <filename>configure</filename>:
+    </para>
+
+    <programlisting><![CDATA[
+% cat m4/test.m4 
+AC_DEFUN([AUTOTOOLS_MYTHBUSTER], [
+  AC_MSG_CHECKING([testing])
+  AC_MSG_RESULT([ok])
+])
+% fgrep AUTOTOOLS_MYTHBUSTER configure.ac
+AUTOTOOLS_MYTHBUSTER()
+% fgrep AUTOTOOLS_MYTHBUSTER configure   
+AUTOTOOLS_MYTHBUSTER()
+]]></programlisting>
+
+    <para>
+      Indeed, what you have to do is to force the actual inclusion of
+      the macro file in the <filename>configure.ac</filename> file.
+    </para>
+
+    <example>
+      <title>
+	Including an External Macro File without <application>automake</application>
+      </title>
+
+      <programlisting><![CDATA[
+AC_INIT
+
+m4_include([m4/autotools_mythbuster.m4])
+
+AUTOTOOLS_MYTHBUSTER
+]]></programlisting>
+
+      <para>
+	The <function>m4_include</function> directive works quite like
+	the <function>#include</function> directive of the C
+	programming language, and simply copies over the content of
+	the file.
+      </para>
+    </example>
+
+    <para>
+      The only file that is read by
+      <application>autoconf</application> beside the
+      <filename>configure.ac</filename> file is the
+      <filename>aclocal.m4</filename> file. This file is often managed
+      with the <application>aclocal</application> utility that ships
+      with <link linkend="automake">automake</link>, so it's really
+      suggested not to make use of it manually.
+    </para>
+
+    <section>
+      <title>
+	What About <function>AC_CONFIG_MACRO_DIR</function>?
+      </title>
+
+      <para>
+	Recent <application>autoconf</application> versions provide a
+	macro called <function>AC_CONFIG_MACRO_DIR</function>, which
+	is often set to the value <constant>m4</constant> accordingly
+	to which directory holds the macro files.
+      </para>
+
+      <para>
+	This directory is not, by default, scanned for either macros
+	nor files, when using straight
+	<application>autoconf</application>. As of version 2.64, the
+	use of this macro is considered for future use by
+	<command>autoreconf</command> (see the following sections).
+      </para>
+
+      <para>
+	What it really is useful for, nowadays, is to tell the
+	<command>libtoolize</command> tool where to put <link
+	linkend="libtool">libtool</link>'s macro files when copying it
+	in the package's sources.
+      </para>
+    </section>
+
+    <section>
+      <title>
+	What About <command>-I m4</command>?
+      </title>
+
+      <para>
+	The <application>autoconf</application> tool have a parameter
+	<command>-I</command> that allows to add a directory to the
+	search path for the conversion. This command is also not used
+	to discover macro files.
+      </para>
+
+      <para>
+	What is useful for is to avoid using the full path name of a
+	macro file, letting it to be picked up either from the system
+	or from the local directory (giving priority to the system
+	copy).
+      </para>
+
+      <programlisting><![CDATA[
+AC_INIT
+
+m4_include([pkg.m4])
+
+PKG_PROG_PKG_CONFIG
+]]></programlisting>
+
+      <para>
+	In this case, the macro file is included with the generic base
+	name value of <filename>pkg.m4</filename> instead of
+	<filename>m4/pkg.m4</filename>. If the macro file is available
+	to the system (in <filename>/usr/share/autoconf</filename> for
+	instance) the macro will be picked up from there; otherwise,
+	if <command>autoconf -I m4</command> is used, the one in the
+	<filename>m4</filename> directory will be used.
+      </para>
+    </section>
+  </section>
+</section>
+<!--
+    Local Variables:
+    mode: nxml
+    mode: auto-fill
+    mode: flyspell
+    ispell-local-dictionary: "english"
+    End:
+-->

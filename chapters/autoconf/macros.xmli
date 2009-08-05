@@ -33,6 +33,8 @@
     </para>
   </note>
 
+  <xi:include parse="xml" href="macros/external.xmli" />
+
   <xi:include parse="xml" href="macros/once.xmli" />
 </section>
 <!--
