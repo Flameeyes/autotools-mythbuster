@@ -17,43 +17,41 @@
     </para>
 
     <para>
-      This collection finds its roots on my <link
-      xl:href="http://blog.flameeyes.eu/">blog</link>, where I've been
+      This collection finds its roots in my <link
+      xl:href="http://blog.flameeyes.eu/">blog</link>. I've been
       writing notes, quick and dirty tutorials and commentaries about
-      autotools usage and their practises, usually oriented toward
+      autotools usage and their practices. The intent is to facilitate 
       solving common problems found during Gentoo development. While
-      these entries were always as accurate as I could make them, they
+      these entries were always as accurate as I could make them; they
       had some obvious limits imposed by the form of blog they were
       written in.
     </para>
 
     <para>
-      Like most blogs, these entries were often opinionated, and
-      scattered throughout a long period of time, often interspersed
-      with entries that have nothing to with autotools, nor with
-      development at all. This all made the material bad to access and
-      especially bad to search for.
+      Like most blogs; these entries were often opinionated and scattered 
+      over a long period of time. They were often interspersed with 
+      entries that have nothing to with autotools or with development 
+      at all. This made it difficult to search for and/or access the material.
     </para>
 
     <para>
-      Since trying to get these in a series of articles would have
-      probably been just as bad, and it's unlikely that I would have
-      found a publisher ready to accept my writings, I've decided to try
-      finding a way to organise my notes without having to solely spend
-      my own time doing so.
+      Trying to get the blog entries into a series of articles would 
+      probably have been just as difficult. It's unlikely that I would
+      have found a publisher ready to accept such a document, I've decided
+      to try to find a way to organize my notes and facilitate collaboration.
     </para>
 
     <para>
       This document is going to be extended, updated, corrected and
       indexed so that the content is easily browsable and usable by
-      everyone who's looking for information about autotools.
+      everyone who is looking for information about autotools.
     </para>
 
     <para>
-      I sincerely hope that this guide can be useful to others to read
-      just as much as it has been useful for me to learn the stuff I
-      write about. And I hope that through this, the overall quality of
-      build systems based on autotools is going to increase.
+      I sincerely hope that this guide can be useful to others just
+      as it has been useful for me to learn the subject. I am hopeful
+      that this will improve the overall quality of build systems based
+      on autotools.
     </para>
   </section>
 
@@ -70,25 +68,24 @@
     </para>
 
     <para>
-      My original idea was to work on this on “spare but paid” time,
-      accepting donations to extend the content. Unfortunately, this
-      idea encountered frozen responses, which meant that the content
-      was only extended in my spare time. Since I now cannot receive
-      money donation anyway, extension will no longer be tied to that.
+      My original idea was to work on this in my spare (but paid) time, 
+      accepting donations to extend the content. Unfortunately, this idea 
+      encountered no responses; which meant that the content was only extended
+      in my spare time. Since I now cannot receive monetary donations;
+      extension will no longer be tied to that.
     </para>
 
     <para>
-      Unfortunately, this way the time I feel I can spend on this
-      guide also was reduced drastically, and most likely I'm just
-      going to extend it when I need to explain a particular problem
-      to someone, instead of writing a blog entry.
+      Unfortunately,  the time I feel I can spend on this guide was
+      also reduced drastically, and likely I will just extend it as needed
+      to explain a particular problem, instead of writing a blog entry.
     </para>
 
     <para>
       If you are interested in a particular topic related to
       autotools, you're still welcome to contact me at <link
       xl:href="mailto:flameeyes@gmail.com">flameeyes@gmail.com</link>
-      to suggest me about that. If you instead are interested in
+      and make suggestions. If you instead are interested in
       asking something with more emphasis than a suggestion, you'd
       have better luck by also <link
       xl:href="http://www.amazon.co.uk/gp/registry/265AZ8JI6XHFA">sending
@@ -100,8 +97,8 @@
 
       <para>
 	This guide is an open publication, if you wish to contribute,
-	you're very welcome to do so, but you have to grant again the
-	same license used for the rest of the content (see <xref
+	you're very welcome to do so, but you have to grant the
+	same license as the rest of the content (see <xref
 	linkend="license" />).
       </para>
 
@@ -114,10 +111,9 @@
       </para>
 
       <para>
-	If you have the knowledge for improving this guide, either for
-	grammar or for actual content, you're welcome to submit your
-	changes. You can either send me the patches via email, or
-	request a merge from the Gitorious interface.
+	If you are able to improve this guide grammatically or contextually,
+	you're welcome to submit your changes. You can either send me the
+	patches via email, or request a merge from the Gitorious interface.
       </para>
 
       <para>
