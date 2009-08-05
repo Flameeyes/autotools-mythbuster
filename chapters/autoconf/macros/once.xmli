@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="autoconf.macros.once">
+  <title>Once-Expansion</title>
+
+  <para>
+    Since macro calls are expanded inline, multiple call to the same
+    macro will cause more code to be emitted in the final
+    <filename>configure</filename> script. In turn, this will
+    require a longer time to execute the configure phase, both
+    because more code is to be executed, and because
+    <application>bash</application> gets easily slow with long
+    scripts.
+  </para>
+
+  <para>
+    To solve this problem, a subset of macros can be called through
+    the so-called “Once-Expansion”. Such a macro is usually immune
+    to most of the changes in the current environment, so that the
+    place in the <filename>configure</filename> script where it is
+    called is not important for the successful completion of the
+    configure phase.
+  </para>
+
+  <para>
+    Of course, this comes with a price: <emphasis>once</emphasis>
+    macros might not be called conditionally, and they lack
+    configurable side effects on success or failure (they can have
+    standard side effects like setting variables and cache values,
+    and generating definitions).
+  </para>
+
+  <para>
+    To create a <emphasis>once</emphasis> macro, you just define it
+    almost normally, but using the
+    <function>AC_DEFUN_ONCE</function> definition macro. A macro
+    created this way should not make use of parameters that can
+    change between calls; it either has to take parameters used to
+    identify the project or the options to enable (think
+    <function>AC_INIT</function>) or none at all.
+  </para>
+
+  <section xml:id="autoconf.macros.once.check">
+    <title>Once-expanded checks</title>
+
+    <para>
+      Similarly to once-expanded macros, recent
+      <application>autoconf</application> versions provide the
+      so-called “once-expanded checks” for functions, headers,
+      declarations, …
+    </para>
+
+    <para>
+      The use of these macros is slightly different from the
+      standard checks, since they follow, for the most part, the
+      same rules as once-expanded macros: with the exclusion of the
+      parameter with the list of elements to check for, there can be
+      no parameters executing side-effects or changing the default
+      behaviour.
+    </para>
+
+    <para>
+      For instance when checking for a series of headers with
+      once-expansion, you'd just write it as this:
+    </para>
+
+    <programlisting><![CDATA[
+    AC_CHECK_HEADERS_ONCE([header1.h header2.h header3.h])
+    ]]></programlisting>
+
+    <para>
+      In this case you cannot stop when the first of these is found,
+      you cannot error out when one is not found either, and finally
+      you cannot pass further headers, not even to fix problems with
+      <link linkend="autoconf.headers.present-not-compiled">headers
+      present that cannot be compiled</link>.
+    </para>
+
+    <para>
+      Like once-expanded macros, once-expanded checks are expanded
+      as early as possible, bundled together, and at most one
+      time. This reduces the amount of code generated, especially if
+      multiple code paths would check for the same header multiple
+      times.
+    </para>
+
+  </section>
+</section>
+<!--
+    Local Variables:
+    mode: nxml
+    mode: auto-fill
+    mode: flyspell
+    ispell-local-dictionary: "english"
+    End:
+-->
