@@ -328,7 +328,8 @@ AC_ARG_ENABLE([bar],
 
       For distributions like Gentoo Linux that build on users'
       systems, this situation is actually a problem and has to be
-      resolved for properly packaging the software.
+      resolved for properly packaging the software (<biblioref
+      linkend="bib.gentoo.automagic" />).
     </para>
 
     <para>
