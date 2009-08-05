@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appendix xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 version="5.0" xml:lang="en"
-	 xml:id="furtherreadings">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         version="5.0" xml:lang="en"
+         xml:id="furtherreadings">
   <title>Further Readings</title>
 
   <para>
@@ -27,46 +27,107 @@
     in it, in due time.
   </para>
 
-  <simplelist>
-    <member>
-      The <link
-      xl:href="http://www.gnu.org/software/autoconf/manual/html_node/index.html">autoconf
-      manual</link>.
-    </member>
+  <bibliolist>
+    <biblioentry xml:id="bib.manual.autoconf">
+      <abbrev>AutoconfManual</abbrev>
+      <title>
+        <link
+            xl:href="http://www.gnu.org/software/autoconf/manual/html_node/index.html"
+            >GNU autoconf manual</link>
+      </title>
+    </biblioentry>
 
-    <member>
-      The <link
-      xl:href="http://www.gnu.org/software/automake/manual/html_node/index.html">automake
-      manual</link>.
-    </member>
+    <biblioentry xml:id="bib.manual.automake">
+      <abbrev>AutomakeManual</abbrev>
+      <title>
+        <link
+            xl:href="http://www.gnu.org/software/automake/manual/html_node/index.html"
+            >GNU automake manual</link>
+      </title>
+    </biblioentry>
 
-    <member>
-      The <link
-      xl:href="http://www.gnu.org/software/libtool/manual/html_node/index.html">libtool
-      manual</link>.
-    </member>
+    <biblioentry xml:id="bib.manual.libtool">
+      <abbrev>LibtoolManual</abbrev>
+      <title>
+        <link
+            xl:href="http://www.gnu.org/software/libtool/manual/html_node/index.html"
+            >GNU libtool manual</link>
+      </title>
+    </biblioentry>
 
-    <member>
-      <link
-	  xl:href="http://www.linux.com/archive/articles/114061">
-	Best Practices With Autotools</link>. Diego Elio
-	Pettenò. August 2005.
-    </member>
+    <biblioentry xml:id="bib.autotools.pratcises">
+      <abbrev>AutotoolsBestPractices</abbrev>
+      <title>
+        <link
+            xl:href="http://www.linux.com/archive/articles/114061"
+            >Best Practices With Autotools
+        </link>
+      </title>
 
-    <member>
-      <link
-	  xl:href="http://www.gentoo.org/proj/en/qa/automagic.xml">
-	Automagic dependencies, what they are and how to fix
-	them</link>. Diego Elio Pettenò, et al.
-    </member>
+      <author>
+        <personname>
+          <firstname>Diego E.</firstname>
+          <othername>"Flameeyes"</othername>
+          <surname>Pettenò</surname>
+        </personname>
 
-    <member>
-      <link
-	  xl:href="http://www.gentoo.org/proj/en/qa/asneeded.xml">
-	<parameter>--as-needed</parameter> introduction and fixing
-	guide</link>. Diego Elio Pettenò, et al.
-    </member>
-  </simplelist>
+        <email>flameeyes@gmail.com</email>
+      </author>
+
+      <date>August 2005</date>
+    </biblioentry>
+
+    <biblioentry xml:id="bib.gentoo.automagic">
+      <abbrev>GentooAutomagic</abbrev>
+
+      <title>
+        <link
+          xl:href="http://www.gentoo.org/proj/en/qa/automagic.xml"
+          >Automagic dependencies, what they are and how to fix
+        them</link>
+      </title>
+
+      <author>
+        <personname>
+          <firstname>Diego E.</firstname>
+          <othername>"Flameeyes"</othername>
+          <surname>Pettenò</surname>
+        </personname>
+
+        <email>flameeyes@gmail.com</email>
+      </author>
+
+      <othercredit>
+        <orgname>et al</orgname>
+      </othercredit>
+    </biblioentry>
+
+    <biblioentry xml:id="bib.gentoo.asneeded">
+      <abbrev>GentooAsNeeded</abbrev>
+
+      <title>
+        <link
+            xl:href="http://www.gentoo.org/proj/en/qa/asneeded.xml"
+            ><parameter>--as-needed</parameter> introduction and fixing
+        guide</link>
+      </title>
+
+      <author>
+        <personname>
+          <firstname>Diego E.</firstname>
+          <othername>"Flameeyes"</othername>
+          <surname>Pettenò</surname>
+        </personname>
+
+        <email>flameeyes@gmail.com</email>
+      </author>
+
+      <othercredit>
+        <orgname>et al</orgname>
+      </othercredit>
+    </biblioentry>
+  </bibliolist>
+
 </appendix>
 
 <!--
