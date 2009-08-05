@@ -7,6 +7,8 @@
     Harnessing Make - <application>automake</application>
   </title>
 
+  <xi:include parse="xml" href="automake/nonrecursive.xmli" />
+
   <xi:include parse="xml" href="automake/silent.xmli" />
 </chapter>
 <!--

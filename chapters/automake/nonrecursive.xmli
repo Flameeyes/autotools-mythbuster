@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="automake.nonrecursive">
+  <title>Non-recursive <application>Automake</application></title>
+
+  <para>
+    One of the common critiques on <application>automake</application>
+    is that most projects that make use of it use multiple
+    <filename>Makefile.am</filename> files, one per sub-directory of
+    the project, causing pollution, confusion and further
+    problems. For quite a while, though,
+    <application>automake</application> supports non-recursive builds,
+    with a single <filename>Makefile.am</filename> (or at least a
+    reduced number of thos).
+  </para>
+
+  <para>
+    This is, actually, the best method to use
+    <application>automake</application>, since this not only covers
+    the problems discussed in <biblioref linkend="bib.rmch" /> but
+    also avoids the need for multiple convenience libraries to store
+    the partial results.
+  </para>
+
+  <para>
+    To summarise, the advantages of non-recursive
+    <application>make</application> over the recursive “classic”
+    version are:
+  </para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+	<application>make</application> knows all the dependencies of
+	all the files, and thus only rebuilds object files when their
+	sources (or headers used by the sources) have changed;
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	the sources from the sub-directories are compiled and linked
+	in directly in the final target, without requiring convenience
+	libraries to be created, which spend time for the archiving or
+	linking tasks;
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	as an extension, <application>make</application> don't have to
+	serialise the calls to sub-directories, which allows for
+	an higher number of build processes to be executable in
+	parallel if so requested; this is particularly important for
+	modern multi-core systems;
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	the working directory for all the build is not changed, which
+	allows to have a single point of reference for relative paths;
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	there is a single <filename>Makefile.am</filename> to edit,
+	and a single <filename>Makefile.in</filename> to be processed
+	during <command>./configure</command>.
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <section>
+    <title>Achieving Non-Recursive Make</title>
+
+    <para>
+      The use of non-recursive <application>automake</application> is
+      actually simpler than the use of the recursive variant; instead
+      of creating multiple files,  you just need a top-level
+      <filename>Makefile.am</filename> file that references source
+      files with a relative path:
+    </para>
+
+    <programlisting><![CDATA[
+bin_PROGRAMS = foo
+
+foo_SOURCES = \
+	src/component1/component1.c \
+	src/component2/component2.c \
+	src/main.c
+]]></programlisting>
+
+    <para>
+      This will compile all the source files in object files directly
+      inside the top build directory; this works fine for most cases,
+      but it might not be desirable if either the source tree is very
+      big (and thus a high number of files would be added to the same
+      directory) or there are source file with the same name minus the
+      path.
+    </para>
+
+    <para>
+      To solve this problem, you just have to ask
+      <application>automake</application> to create objects in
+      sub-directories, following the same structure the sources are
+      in. To do so, you just have to change the
+      <function>AM_INIT_AUTOMAKE</function> call in
+      <filename>configure.ac</filename> and add the option
+      <option>subdir-objects</option>:
+    </para>
+
+    <programlisting><![CDATA[
+AM_INIT_AUTOMAKE([subdir-objects])
+]]></programlisting>
+
+    <para>
+      For most needs, this will solve the problem of non-recursive
+      <application>automake</application> just fine, and no more tweak
+      will be needed. For more specific cases, check the following
+      sections as well.
+    </para>
+  </section>
+
+  <section>
+    <title>Sub-dividing results</title>
+
+    <para>
+      While the previous section has shown the use of
+      <option>subdir-objects</option> to keep the object files in the
+      same structure of the source files, it has only declared the
+      main program to be built in the top-level build
+      directory. Sometimes this is not the needed behaviour.
+    </para>
+
+    <para>
+      It is certainly common to desire some organisations for the
+      products of the build, for instance grouping together libraries,
+      tools examples and tests. And of course
+      <application>automake</application> allows to do that just fine,
+      without having to resort to the recursive variant.
+    </para>
+
+    <example>
+      <title>
+	Grouping tests together in a non-recursive <filename>Makefile.am</filename>
+      </title>
+
+      <programlisting><![CDATA[
+FOO_BUILT_TESTS = tests/foo_test1 tests/foo_test2 tests/foo_test3
+TESTS = $(FOO_BUILT_TESTS) tests/foo_test4.sh
+check_PROGRAMS = $(FOO_BUILT_TESTS)
+
+tests_foo_test1_SOURCES = tests/foo_test1.c
+tests_foo_test1_LDADD = libfoo.la
+
+tests_foo_test2_SOURCES = tests/foo_test2.c
+tests_foo_test2_LDADD = libfoo.la
+
+tests_foo_test3_SOURCES = tests/foo_test3.c
+tests_foo_test3_LDADD = libfoo.la
+]]></programlisting>
+
+      <para>
+	In the fragment of <filename>Makefile.am</filename> above, you
+	can see that the tests for the package are listed with their
+	relative path even in the <varname>check_PROGRAMS</varname>
+	variable, where the output names are used.
+      </para>
+
+      <para>
+	Further down the file, the variables used for passing sources
+	and libraries to the tests also use the full relative path,
+	replacing the <constant>/</constant> character with the
+	safe value for variable names <constant>_</constant>.
+      </para>
+    </example>
+  </section>
+
+  <section>
+    <title>
+      Custom Rules and Non-Recursive <filename>Makefile.am</filename>
+    </title>
+
+    <para>
+      When using custom rules to generate files, there are a few
+      catches to be considered. Rules that don't use full relative
+      paths for targets and dependencies could be fooled up by stray
+      files left around. Take for instance the following snippet:
+    </para>
+
+    <programlisting><![CDATA[
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = pkgconfig/foo.pc pkgconfig/foo-bar.pc
+
+%-bar.pc: %.pc
+	$(LN_S) $^ $@
+]]></programlisting>
+
+    <para>
+      If a <filename>Makefile.am</filename> is using the code above,
+      it would fail, creating a symbolic link that also contain the
+      relative path: <filename>pkgconfig/foo-bar.pc</filename> →
+      <filename>pkgconfig/pkgconfig/foo.pc</filename>.
+    </para>
+
+    <para>
+      To avoid this kind of problems, you can make use of
+      <application>GNU make</application> extended functions in the
+      rules, to transform the path from full-relative form to base
+      form (without the path). For instance the fragment above should
+      be replaced by the following:
+    </para>
+
+    <programlisting><![CDATA[
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = pkgconfig/foo.pc pkgconfig/foo-bar.pc
+
+%-bar.pc: %.pc
+	$(LN_S) $(notdir $^) $@
+]]></programlisting>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->

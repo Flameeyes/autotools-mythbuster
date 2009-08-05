@@ -126,6 +126,31 @@
         <orgname>et al</orgname>
       </othercredit>
     </biblioentry>
+
+    <biblioentry xml:id="bib.rmch">
+      <abbrev>MillerRecursiveMake</abbrev>
+
+      <title>
+	<link
+	    xl:href="http://miller.emu.id.au/pmiller/books/rmch/"
+	    >Recursive Make Considered Harmful</link>
+      </title>
+
+      <biblioid class="uri">
+	http://miller.emu.id.au/pmiller/books/rmch/
+      </biblioid>
+
+      <author>
+	<personname>
+	  <firstname>Peter</firstname>
+	  <surname>Miller</surname>
+	</personname>
+
+	<email>millerp@canb.auug.org.au</email>
+      </author>
+
+      <date>1997</date>
+    </biblioentry>
   </bibliolist>
 
 </appendix>

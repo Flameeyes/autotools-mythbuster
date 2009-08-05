@@ -15,6 +15,10 @@
       </tocentry>
     </tocentry>
     <tocentry linkend="automake"><?dbhtml filename="automake/index.html"?>
+      <tocentry linkend="automake.nonrecursive"><?dbhtml filename="automake/nonrecursive.html"?>
+      </tocentry>
+      <tocentry linkend="automake.silent"><?dbhtml filename="automake/silent.html"?>
+      </tocentry>
     </tocentry>
     <tocentry linkend="libtool"><?dbhtml filename="libtool/index.html"?>
     </tocentry>
