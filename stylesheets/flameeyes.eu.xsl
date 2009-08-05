@@ -8,6 +8,7 @@
 
 <xsl:template name="user.head.content">
   <link rel="stylesheet" type="text/css" href="http://www.flameeyes.eu/autotools-mythbuster/stylesheets/flameeyes.css" />
+  <link rel="stylesheet" type="text/css" href="http://www.flameeyes.eu/autotools-mythbuster/stylesheets/kernel-blue.css" />
 </xsl:template>
 
 <xsl:template name="user.footer.navigation">
