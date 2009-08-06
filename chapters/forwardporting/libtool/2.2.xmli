@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title><application>libtool</application> 2.2</title>
+
+  <para>
+    The 2.2 series of <application>libtool</application> is a major
+    overhaul and partial rewrite over the previous, widely adopted 1.5
+    series. Featuring an only partially compatible
+    <filename>libltdl</filename>, this version introduced new macro
+    names for initialisation and configuration, as well as new,
+    slimmed down macro files, and smarter checks.
+  </para>
+
+  <para>
+    The amount of problems related to porting to
+    <application>libtool</application> 2.2 is quite high, but some do
+    come to attention.
+  </para>
+
+  <section>
+    <title>
+      The C++ and Fortran support
+    </title>
+    
+    <para>
+      Before <application>libtool 2.2</application>, as soon as a
+      project started using the support provided by this package,
+      checks for C++ and Fortran compilers were added. These checks,
+      lengthy, and pointless for C-only projects, often caused grief
+      to the point that many different hacks, using M4 directives,
+      were used and suggested between different guides.
+    </para>
+
+    <para>
+      With the new release series, this problem has been solved,
+      <function>LT_INIT</function> now only checks for the actual
+      compilers as declared by the project itself. While this works
+      for most projects, there are a few where this caused further
+      problems, and further grief.
+    </para>
+
+    <para>
+      The problem appears evident when building packages written in
+      C++ (but Fortran is mostly the same) that don't check for the
+      proper compiler, since the <application>automake</application>
+      execution will start reporting problems that
+      “<function>am__fastdepCXX</function> does not appear in
+      <function>AM_CONDITIONAL</function>”:
+    </para>
+
+    <programlisting><![CDATA[
+% automake --add-missing --copy --foreign
+/usr/share/automake-1.10/am/depend2.am: am__fastdepCXX does not appear in AM_CONDITIONAL
+/usr/share/automake-1.10/am/depend2.am:   The usual way to define `am__fastdepCXX' is to add `AC_PROG_CXX'
+/usr/share/automake-1.10/am/depend2.am:   to `configure.ac' and run `aclocal' and `autoconf' again.
+cjeca32/Makefile.am: C++ source seen but `CXX' is undefined
+cjeca32/Makefile.am:   The usual way to define `CXX' is to add `AC_PROG_CXX'
+cjeca32/Makefile.am:   to `configure.ac' and run `autoconf' again.
+]]></programlisting>
+
+    <para>
+      The main problem here is that the error (divided in two parts)
+      is actually meaningful only in the second part, for most people,
+      since the first three lines sound like gibberish for the common
+      users.
+    </para>
+
+    <para>
+      The second part of the error actually tells you exactly what to
+      do: adding <function>AC_PROG_CXX</function> to
+      <filename>configure.ac</filename>; even better, before the
+      initialisation call.
+    </para>
+
+    <example>
+      <title>
+	Properly Fix missing C++ support with libtool 2.2
+      </title>
+
+      <programlisting><![CDATA[
+dnl configure.ac
+AC_INIT
+AM_INIT_AUTOMAKE
+
+dnl add this
+AC_PROG_CXX
+
+AC_PROG_LIBTOOL
+]]></programlisting>
+
+      <para>
+	Please note here, that the function
+	<function>AC_PROG_LIBTOOL</function> in this snipped is the
+	deprecated 1.5-compatible form of
+	<function>LT_INIT</function>. Since the error shown above
+	happens during porting <emphasis>to</emphasis>
+	<application>libtool</application> 2.2, it's unlikely that the
+	new form is found. See <link linkend="libtool.init" />.
+      </para>
+    </example>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->
