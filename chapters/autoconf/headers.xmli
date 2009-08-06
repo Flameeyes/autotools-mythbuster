@@ -14,7 +14,7 @@
 
   <para>
     Especially in the Unix world, where a shared library already
-    defines its public binary interface or (<acronym>ABI</acronym>), the
+    defines its public binary interface or <acronym>ABI</acronym>, the
     presence of headers can tell you whether the development packages
     needed to build against that library are present.
     </para>
@@ -24,28 +24,27 @@
     <application>autoconf</application> provides two macros:
     <function>AC_CHECK_HEADER</function> to find a single header or
     <function>AC_CHECK_HEADERS</function> to look for more than one
-    header at a time (either replacement headers or independent headers).
+    header at a time (either replacement headers or independent
+    headers).
   </para>
 
   <section xml:id="autoconf.headers.multiple-headers">
     <title>Checking for one out of Multiple Headers</title>
 
     <para>
-      It's not unlikely that we have to look for one out
-      of a series of possible replacement headers in our
-      software. That's the case when we've got to support libraries
-      that might be installed at top level, in subdirectories, or
-      when older non-standard headers are replaced with new equivalent
-      ones.
+      It's not unlikely that we have to look for one out of a series
+      of possible replacement headers in our software. That's the case
+      when we've got to support libraries that might be installed at
+      top level, in subdirectories, or when older non-standard headers
+      are replaced with new equivalent ones.
     </para>
 
     <para>
       A very common case is looking for either one of
       <filename>stdint.h</filename>, <filename>inttypes.h</filename>
       or <filename>sys/types.h</filename> headers to declare the
-      proper standard integer types (such as
-      <type>uint32_t</type>) for backward compatibility with older
-      non-standard C libraries.
+      proper standard integer types (such as <type>uint32_t</type>)
+      for backward compatibility with older non-standard C libraries.
     </para>
 
     <para>
@@ -57,31 +56,31 @@
     </para>
 
     <para>
-      The macro <function>AC_CHECK_HEADERS</function> provides 
-      all the needed parameters to implement just that. The first
-      parameter of the macro is a sh-compatible list, rather than an
-      M4 list, and it's argument to a <function>for</function> call in
-      the <filename>configure</filename> file and there is an action
+      The macro <function>AC_CHECK_HEADERS</function> provides all the
+      needed parameters to implement just that. The first parameter of
+      the macro is a sh-compatible list, rather than an M4 list, and
+      it's argument to a <function>for</function> call in the
+      <filename>configure</filename> file and there is an action
       executed once the header is found (actually, there is one also
-      when the header is <emphasis>not</emphasis> found, but we're
-      not going to use that one.
+      when the header is <emphasis>not</emphasis> found, but we're not
+      going to use that one.
     </para>
 
     <programlisting><![CDATA[
 AC_CHECK_HEADERS([stdint.h inttypes.h sys/types.h],
-        [mypj_found_int_headers=yes; break;])
+	[mypj_found_int_headers=yes; break;])
 
 AS_IF([test "x$mypj_found_int_headers" != "xyes"],
-        [AC_MSG_ERROR([Unable to find the standard integers headers])])
+	[AC_MSG_ERROR([Unable to find the standard integers headers])])
 ]]></programlisting>
 
     <para>
       In this case, the <filename>configure</filename> script will
-      check for the headers in sequence, stopping at the first it finds
-      (thanks to the <function>break</function> instruction). This reduces
-      the amount of work needed for the best case scenario (a modern
-      operating system providing the standard header
-      <filename>stdint.h</filename>).
+      check for the headers in sequence, stopping at the first it
+      finds (thanks to the <function>break</function>
+      instruction). This reduces the amount of work needed for the
+      best case scenario (a modern operating system providing the
+      standard header <filename>stdint.h</filename>).
     </para>
 
     <para>
@@ -90,8 +89,8 @@ AS_IF([test "x$mypj_found_int_headers" != "xyes"],
       action to error out of the script, otherwise any system lacking
       <filename>stdint.h</filename> (the first header tested) will be
       unable to complete the step. To solve this, we just set a
-      convenience variable once a header is found and test that it
-      has been set.
+      convenience variable once a header is found and test that it has
+      been set.
     </para>
   </section>
 
@@ -107,22 +106,22 @@ AS_IF([test "x$mypj_found_int_headers" != "xyes"],
 
     <para>
       Before that time, the macros only checked if the header was
-      present by asking the preprocessor for it. While this did
-      find the whereabouts of headers, it included no information
-      regarding their usability. Without checking if the headers compiled, 
-      it was impossible to say if the header was valid for the language
+      present by asking the preprocessor for it. While this did find
+      the whereabouts of headers, it included no information regarding
+      their usability. Without checking if the headers compiled, it
+      was impossible to say if the header was valid for the language
       variety chosen (like C99, or C++), or if it required unknown
       dependencies.
     </para>
 
     <para>
       To solve the problem, it was decided to use the actual compiler
-      for the currently selected language to look for the headers,
-      but for compatibility with the previous version at the moment
-      of writing, both tests are performed for each header checked,
-      and the <quote>header present but cannot be compiled</quote>
-      warning is reported if the preprocessor accepts an header while
-      the compiler refuses it.
+      for the currently selected language to look for the headers, but
+      for compatibility with the previous version at the moment of
+      writing, both tests are performed for each header checked, and
+      the <quote>header present but cannot be compiled</quote> warning
+      is reported if the preprocessor accepts an header while the
+      compiler refuses it.
     </para>
 
     <para>

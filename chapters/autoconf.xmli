@@ -8,18 +8,19 @@
   </title>
 
   <para>
-    Configuring the build consists of running a series of 
-    tests to identify the build environment and the presence of the
-    required tools and libraries. It is a crucial step in allowing portability 
-    between different operating systems to detect this build environment system.
-    In the autotools chain, this is done by the <command>autoconf</command> tool.
+    Configuring the build consists of running a series of tests to
+    identify the build environment and the presence of the required
+    tools and libraries. It is a crucial step in allowing portability
+    between different operating systems to detect this build
+    environment system.  In the autotools chain, this is done by the
+    <command>autoconf</command> tool.
   </para>
 
   <para>
     The <command>autoconf</command> tool translates a
     <filename>configure.ac</filename> file, written in a mixture of m4
     and shell scripting, into a <filename>configure</filename> POSIX
-    shell script that executes the tests that determines what the build 
+    shell script that executes the tests that determines what the build
     environment is.
   </para>
 
