@@ -84,14 +84,14 @@
     </para>
 
     <programlisting><![CDATA[
-% cat m4/test.m4 
+% cat m4/test.m4
 AC_DEFUN([AUTOTOOLS_MYTHBUSTER], [
   AC_MSG_CHECKING([testing])
   AC_MSG_RESULT([ok])
 ])
 % fgrep AUTOTOOLS_MYTHBUSTER configure.ac
 AUTOTOOLS_MYTHBUSTER()
-% fgrep AUTOTOOLS_MYTHBUSTER configure   
+% fgrep AUTOTOOLS_MYTHBUSTER configure
 AUTOTOOLS_MYTHBUSTER()
 ]]></programlisting>
 
