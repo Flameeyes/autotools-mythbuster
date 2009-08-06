@@ -174,6 +174,42 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
       </note>
     </example>
   </section>
+
+  <section>
+    <title>Custom Silent Rules</title>
+
+    <para>
+      While <application>automake</application> have support for
+      silencing all its default rules, when using custom rules you end
+      up outside the scope of the provided support. Adding support for
+      silent rules to custom rules is not exceedingly difficult.
+    </para>
+
+    <para>
+      The code that hides the actual command and just replaces it with
+      the <constant>CC</constant> string is exported in the form of
+      the variable <varname>AM_V_CC</varname>, and so on replacing the
+      output string. Since most custom rules are used for generating
+      extra files, the <varname>AM_V_GEN</varname> variable is also
+      available.
+    </para>
+
+    <para>
+      Just prefixing the correct variable expansion in front of the
+      rule is enough to support silent rules; the same method
+      explained above allows for selecting the verbose output or the
+      silent one for the custom rules.
+    </para>
+
+    <example>
+      <title>Silent Custom Rule to Generate a File</title>
+
+      <programlisting><![CDATA[
+%-bar.pc: %.pc
+	$(AM_V_GEN)$(LN_S) $(notdir $^) $@
+]]></programlisting>
+    </example>
+  </section>
 </section>
 <!--
    Local Variables:
