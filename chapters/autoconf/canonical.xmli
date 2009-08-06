@@ -20,7 +20,7 @@
 
       <listitem>
 	<para>
-	  The system that is going to execute the final software
+	  The system that is going to run the software once it is 
 	  built, which is the main actor. Once the software has been
 	  built, it will execute on this particular system.
 	</para>
@@ -44,13 +44,12 @@
 
       <listitem>
 	<para>
-	  The system against which the software being built has to
-	  act. This actor only exists, or rather has a meaning, when
+	  The system against on which the software being built will
+	  run. This actor only exists, or rather has a meaning, when
 	  the software being built may interact specifically with a
 	  system that differs from the one it's being executed on (our
-	  <emphasis>host</emphasis>). This is the case of compilers,
-	  debuggers, profilers and analysers in general and other
-	  tools like those.
+	  <emphasis>host</emphasis>). This is the case for compilers,
+	  debuggers, profilers and analyzers and other tools in general.
 	</para>
       </listitem>
     </varlistentry>
@@ -64,7 +63,7 @@
     <function>AC_CANONICAL_HOST</function>,
     <function>AC_CANONICAL_BUILD</function> and
     <function>AC_CANONICAL_TARGET</function>. These three macros then
-    provides to the configure script the sh variables with the name of
+    provide to the configure script the sh variables with the name of
     the actor (<varname>$host</varname>, <varname>$build</varname> and
     <varname>$target</varname>), and three parameters with the same
     name to the <filename>configure</filename> script so that the user
@@ -75,7 +74,7 @@
     The most basic <application>autoconf</application> based build
     systems won't need to know any of these values, at least directly:
     some other tools, such as <application>libtool</application>, will
-    require discovery of canonical systems by themselves. Since the
+    require discovery of canonical systems by themselves. Since 
     adding these macros unconditionally adds direct and indirect code
     to the <filename>configure</filename> script (and a dependency on
     the two support files <filename>config.sub</filename> and
@@ -94,7 +93,7 @@
     should use the <function>AC_REQUIRE</function> macro to ensure
     that they are executed before entering. Don't fear calling them
     in more than one place, see <xref linkend="autoconf.macros.once"
-    /> fore more details.
+    /> for more details.
   </para>
 
   <para>
@@ -138,8 +137,8 @@
       a single element, the system architecture (i386, x86_64,
       powerpc, …); others will have two, defining either the operating
       system or, most often for definition pairs, the executable
-      format (elf, coff, …). These two formats, though, usually only
-      related to components of the toolchain and not to
+      format (elf, coff, …). These two formats; though usually, only to
+      related components of the toolchain and not to
       <application>autoconf</application> directly.
     </para>
 
@@ -186,7 +185,7 @@
       provide it as a suffix to the element (*-freebsd7.0,
       *-netbsd4.0). For a few operating systems, this value might not
       be the one that is used as the “product version” used in
-      public; for instance Solaris 10 uses as definition *-solaris2.10
+      public; for instance Solaris 10 uses as a definition *-solaris2.10
       and Apple's Mac OS X 10.5 uses *-darwin9.
     </para>
   </section>
