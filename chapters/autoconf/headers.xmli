@@ -14,27 +14,27 @@
 
   <para>
     Especially in the Unix world, where a shared library already
-    defines its public binary interface (<acronym>ABI</acronym>), the
+    defines its public binary interface or (<acronym>ABI</acronym>), the
     presence of headers can tell you whether the development packages
-    needed to build against that library are presents.
-  </para>
+    needed to build against that library are present.
+    </para>
 
   <para>
     To make sure that headers can be found properly,
     <application>autoconf</application> provides two macros:
     <function>AC_CHECK_HEADER</function> to find a single header or
     <function>AC_CHECK_HEADERS</function> to look for more than one
-    header a time (either replacement headers or independent headers).
+    header at a time (either replacement headers or independent headers).
   </para>
 
   <section xml:id="autoconf.headers.multiple-headers">
     <title>Checking for one out of Multiple Headers</title>
 
     <para>
-      It's not unlikely that you're going to have to look for one out
-      of a series of possible replacement headers in your
-      software. That's the case when you've got to support libraries
-      that might be installed at top level or in subdirectories, or
+      It's not unlikely that we have to look for one out
+      of a series of possible replacement headers in our
+      software. That's the case when we've got to support libraries
+      that might be installed at top level, in subdirectories, or
       when older non-standard headers are replaced with new equivalent
       ones.
     </para>
@@ -44,24 +44,24 @@
       <filename>stdint.h</filename>, <filename>inttypes.h</filename>
       or <filename>sys/types.h</filename> headers to declare the
       proper standard integer types (such as
-      <type>uint32_t</type>) for backward compatibility with older,
+      <type>uint32_t</type>) for backward compatibility with older
       non-standard C libraries.
     </para>
 
     <para>
       In this situation, the order used above is also a priority
-      order, since the first is the preferred header, and the third is
+      order; since the first is the preferred header and the third is
       the least favourite one. It doesn't make sense to test for any
-      other header once the first is found, and there has to be an
+      other headers once the first is found. There also has to be an
       error message if none at all of those is available.
     </para>
 
     <para>
-      The macro <function>AC_CHECK_HEADERS</function> does provide the
+      The macro <function>AC_CHECK_HEADERS</function> provides 
       all the needed parameters to implement just that. The first
-      parameter of the macro is an sh-compatible list, rather than an
+      parameter of the macro is a sh-compatible list, rather than an
       M4 list, and it's argument to a <function>for</function> call in
-      the <filename>configure</filename> file; and there is an action
+      the <filename>configure</filename> file and there is an action
       executed once the header is found (actually, there is one also
       when the header is <emphasis>not</emphasis> found, but we're
       not going to use that one.
@@ -77,8 +77,8 @@ AS_IF([test "x$mypj_found_int_headers" != "xyes"],
 
     <para>
       In this case, the <filename>configure</filename> script will
-      check for the headers in sequence, stopping at the first found
-      (thanks to the <function>break</function> instruction), reducing
+      check for the headers in sequence, stopping at the first it finds
+      (thanks to the <function>break</function> instruction). This reduces
       the amount of work needed for the best case scenario (a modern
       operating system providing the standard header
       <filename>stdint.h</filename>).
@@ -86,11 +86,11 @@ AS_IF([test "x$mypj_found_int_headers" != "xyes"],
 
     <para>
       Since exactly one of the actions (found or not found) is
-      executed per each header tested, we cannot use the “not found”
+      executed per each header tested, we cannot use the 'not found'
       action to error out of the script, otherwise any system lacking
       <filename>stdint.h</filename> (the first header tested) will be
       unable to complete the step. To solve this, we just set a
-      convenience variable once an header is found, and test that it
+      convenience variable once a header is found and test that it
       has been set.
     </para>
   </section>
@@ -107,18 +107,18 @@ AS_IF([test "x$mypj_found_int_headers" != "xyes"],
 
     <para>
       Before that time, the macros only checked if the header was
-      present by asking for it to the preprocessor. While this did
-      find the whereabouts of headers, it said nothing regarding their
-      usability. Without checking if the headers compiled, it was
-      impossible to say if the header was valid for the language
+      present by asking the preprocessor for it. While this did
+      find the whereabouts of headers, it included no information
+      regarding their usability. Without checking if the headers compiled, 
+      it was impossible to say if the header was valid for the language
       variety chosen (like C99, or C++), or if it required unknown
       dependencies.
     </para>
 
     <para>
-      To solve the problem, it was decided to use the actual compiler,
-      for the currently selected language, to look for the headers,
-      but for compatibility with the previous version, at the moment
+      To solve the problem, it was decided to use the actual compiler
+      for the currently selected language to look for the headers,
+      but for compatibility with the previous version at the moment
       of writing, both tests are performed for each header checked,
       and the <quote>header present but cannot be compiled</quote>
       warning is reported if the preprocessor accepts an header while
