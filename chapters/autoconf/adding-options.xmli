@@ -6,17 +6,17 @@
   <title>Adding Options</title>
 
   <para>
-    One of the most important features that are available to
-    developers using <application>autoconf</application> is certainly
+    One of the most important features available to
+    developers who use <application>autoconf</application> is certainly
     the ability to add new options to the
     <command>./configure</command> execution, to provide optional
     build-time support to users. Unfortunately, because of the
-    importance of this feature, it's also one that is most commonly
+    importance of this feature, it's also one the most commonly
     misused.
   </para>
 
   <para>
-    There are three type of options (or, most properly, arguments)
+    There are three types of options (or properly, arguments)
     that can be added to the <filename>configure</filename> script:
   </para>
 
@@ -30,8 +30,8 @@
       <listitem><para>
 	The arguments starting with <command>--enable-</command>
 	prefix are usually used to enable features of the
-	program. They usually add or remove dependencies only if these
-	are needed just for the particular feature being enabled or
+	program. They usually add or remove dependencies only if they
+	are needed for that particular feature being enabled or
 	disabled.
       </para></listitem>
     </varlistentry>
@@ -80,7 +80,7 @@
   </para>
 
   <para>
-    The environment variables are a recent additions to
+    The environment variables are a recent addition to
     <application>autoconf</application> and are indeed used by a
     minority of the projects based on this build system.
   </para>
@@ -102,7 +102,7 @@
       Keeping in mind what has been said above, about the parameters
       actually taking a value, and defaulting to either
       <constant>yes</constant> or <constant>no</constant>, the
-      parameters of the macro are as follow: 
+      parameters of the macro are as follows 
     </para>
 
     <programlisting><![CDATA[
@@ -306,7 +306,7 @@ AC_ARG_ENABLE([bar],
     <title>Automatic Dependencies with AC_ARG_WITH</title>
 
     <para>
-      Sometimes, the external dependencies of a project can be an
+      Sometimes, the external dependencies of a project can be a
       hassle, especially if they enable optional features that not
       every operating system supports or that some users don't really
       care about. For this reason, they are often made optional,
@@ -405,7 +405,7 @@ AC_ARG_VAR(var-name, help-string)
       variables from the environment like any other sh script. Most of
       those are, though, ignored; those who are not, should be
       declared through this macro. This way, they are marked as
-      <emphasis>precious</emphasis> variable.
+      a <emphasis>precious</emphasis> variable.
     </para>
 
     <para>
