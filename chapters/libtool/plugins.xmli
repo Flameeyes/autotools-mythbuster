@@ -6,14 +6,14 @@
   <title>Building plugins</title>
 
   <para>
-    The shared objects technology is used, among other things, also to
-    provide the so-called “plug-in system”, that allows to link in
+    The shared objects technology is used, among other things, to
+    provide the so-called “plug-in system”, that allows us to link in
     compiled code at runtime providing (eventually optional) features.
   </para>
 
   <para>
-    To implement plug-in systems, you usually need to call into the
-    dynamic linker at runtime to ask for loading the plug-in shared
+    To implement plug-in systems, you usually need to call the
+    dynamic linker at runtime to ask it load the plug-in's shared
     object. This object might just be a standard shared object or
     might require further details to be taken into consideration.
   </para>
@@ -24,7 +24,7 @@
     this interface through the <function>dlopen()</function> function,
     which is pretty much identical among them, lots of software relies
     on just this interface, and leave to
-    <application>libtool</application> just the task of building the
+    <application>libtool</application> the task of building the
     plugins.
   </para>
 
@@ -46,9 +46,9 @@
 
       <para>
 	Because of the wide adoption of
-	<application>libltdl</application> in many type of
+	<application>libltdl</application> in many types of
 	applications, its support in autotools is available with huge
-	flexibility. This because its wrapping abilities can easily be
+	flexibility. This is because its wrapping abilities can easily be
 	used on systems where libtool proper is not usually installed,
 	and thus it's often convenient to have a local copy of it.
       </para>
@@ -66,7 +66,7 @@
       </para>
 
       <para>
-	Beside these three options there is also the more “standard”
+	Besides these three options there is also the more “standard”
 	option of simply requesting the presence of the library in the
 	system, as any other dependency and checking for it. This
 	method is neither assisted nor well-documented by the
@@ -98,11 +98,11 @@
 # subdir-objects only needed when using non-recursive inline build
 AM_INIT_AUTOMAKE([subdir-objects]
 
-# the inline build *require* the configure header, although the name
+# the inline build *requires* the configure header, although the name
 # is not really important
 AC_CONFIG_HEADERS([config.h])
 
-# the inline build *require* libtool with dlopen support
+# the inline build *requires* libtool with dlopen support
 LT_INIT([dlopen])
 
 # find the libltdl sources in the libltdl sub-directory
@@ -162,7 +162,7 @@ include libltdl/Makefile.inc
 	(you'd be installing software that is not your competence
 	to). The reason why this is at all possible is that the macros
 	used by the <application>libtool</application> package are
-	just the same that are provided to third-party developers.
+	exactly the same as are provided to third-party developers.
       </para>
 
       <para>
@@ -176,7 +176,7 @@ include libltdl/Makefile.inc
       </para>
 
       <para>
-	To do that you can use the following snipped, for instance:
+	To do that you can use the following snippet of code, for instance:
       </para>
 
       <example>
@@ -214,8 +214,8 @@ AC_CHECK_HEADER([ltdl.h],
     </para>
 
     <para>
-      For this reason when building this very easygoing type of
-      plug-ins, you just rely on three flags for the
+      For this reason when building these very easy going types of
+      plug-ins, we just rely on three flags for the
       <command>libtool</command> script:
     </para>
 
@@ -240,7 +240,7 @@ AC_CHECK_HEADER([ltdl.h],
 	    Allow the target to not provide any version information,
 	    removing the need to provide it. Almost all the plug-in
 	    systems don't use the library versioning to decide whether
-	    to load the objects, and rely instead on the path they are found.
+	    to load the objects, and rely instead on the path they find.
 	  </para>
 	</listitem>
       </varlistentry>
@@ -251,7 +251,7 @@ AC_CHECK_HEADER([ltdl.h],
 	<listitem>
 	  <para>
 	    Disable entirely the build of the static version of the
-	    object, this reduces the amount of installed files, as
+	    object, this reduces the number of installed files, as
 	    well as avoiding the double-build that would be needed for
 	    all the systems where static libraries and shared objects
 	    have different build requirements.
