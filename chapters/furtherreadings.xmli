@@ -8,8 +8,8 @@
 
   <para>
     While the goal of this guide is to provide a comprehensive and
-    extensive documentation on autotools and all the tools related to
-    those, it will take a long time before it can be said to be
+    extensive documentation on autotools and all tools related to
+    them, it will take a long time before it can be said to be
     self-sufficient.
   </para>
 
@@ -22,9 +22,9 @@
   <para>
     Some of the material (most at the time I'm writing this) is
     actually content I have written for various different targets, and
-    that is available online already. Compatibly with the goal of this
+    that is available online already. If compatable with the goal of this
     guide and the license of the published content, it will be merged
-    in it, in due time.
+	in this guide, in due time.
   </para>
 
   <bibliolist>
