@@ -84,12 +84,12 @@
 
   <para>
     It is actually quite easy to decide whether canonical system
-    definitions are needed or not: you just have to look out for the
+    definitions are needed or not:  we just have to look out for the
     use of the related actor variable. For instance if the
     <filename>configure.ac</filename> script uses the
-    <varname>$build</varname> variable, you'd need to call
+    <varname>$build</varname> variable, we would need to call
     <function>AC_CANONICAL_BUILD</function> to discover its value. If
-    the system definition variables are used in a macro, instead, you
+    the system definition variables are used in a macro, instead, we
     should use the <function>AC_REQUIRE</function> macro to ensure
     that they are executed before entering. Don't fear calling them
     in more than one place, see <xref linkend="autoconf.macros.once"
@@ -109,7 +109,7 @@
 
   <para>
     In practice, the only places where the <emphasis>target</emphasis>
-    actor is meaningful are the parts of a compile toolchain:
+    actor is meaningful are to the parts of a compile toolchain:
     assemblers, linkers, compilers, debuggers, profilers, analysers, …
     For the rest of the software, the presence of an extraneous
     <varname>--target</varname> option to
@@ -160,7 +160,7 @@
       probably the most important data), the
       <emphasis>vendor</emphasis> value is usually just ignored. It is
       meant to actually be the vendor of the hardware system, rather
-      than the vendor of the software, although nowadays is mostly
+      than the vendor of the software, although presently it is mostly
       used by distributions to brand their toolchain
       (i386-redhat-linux-gnu) or their special systems
       (i386-gentoo-freebsd7.0) and by vendors that provide their own
