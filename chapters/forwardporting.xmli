@@ -23,7 +23,7 @@
     While the direct reason for this to happen are the changes in the
     tools, that become stricter in what they accept, or simply change
     their behaviour to increase compatibility and speed, the
-    underlying reasons are that buildsystems often use undocumented
+    underlying reasons are that build systems often use undocumented
     features, or make mistakes in the way they get used.
   </para>
 
