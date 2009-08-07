@@ -120,7 +120,7 @@ AS_IF([test "x$mypj_found_int_headers" != "xyes"],
       for compatibility with the previous version at the moment of
       writing, both tests are performed for each header checked, and
       the <quote>header present but cannot be compiled</quote> warning
-      is reported if the preprocessor accepts an header while the
+      is reported if the preprocessor accepts a header while the
       compiler refuses it.
     </para>
 
@@ -128,7 +128,7 @@ AS_IF([test "x$mypj_found_int_headers" != "xyes"],
       <!-- TODO: write something about the config.log file and link it here! -->
       There are multiple causes for this problem, and thus to solve
       this warning, you have to identify the actual cause of it. For
-      reference, you can found here some examples.
+      reference, you can find some examples here.
     </para>
 
     <example>
@@ -148,7 +148,7 @@ AS_IF([test "x$mypj_found_int_headers" != "xyes"],
       <para>
 	One situation where the header files are present but cannot be
 	compiled is when they are not designed to work with a
-	particular language variety. For instance, an header might not
+	particular language variety. For instance, a header might not
 	be compatible with the C99 dialect, or with C++, or on the
 	other hand it might require C99 or C++.
       </para>
