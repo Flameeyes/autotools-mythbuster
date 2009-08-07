@@ -23,15 +23,15 @@
       allows the developers to ignore, at least partially, all the
       complex details related to <emphasis>shared objects</emphasis>
       and their creation. This is needed because this is one of the
-      areas that changes most between operating systems, both in term
-      of actual technical requirements and in term of conventions.
+      areas that changes most between operating systems, both in terms
+      of actual technical requirements and in terms of conventions.
     </para>
 
     <note>
       <para>
 	Among the different conventions between different operating
 	systems, the first one to disambiguate is the name used to
-	identify this type of files; almost every other operating
+	identify these types of files; almost every other operating
 	system changed the name used.
       </para>
 
@@ -46,7 +46,7 @@
 
     <para>
       Some (older) operating systems might not provide any support for
-      shared objects at all; others might require they are built in a
+      shared objects at all; others might require they be built in a specific
       (non-default) file format. Some architectures insist that shared
       objects are built with Position-Independent Code (a feature
       enabled by the compiler). For those operating systems that do
