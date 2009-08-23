@@ -36,7 +36,8 @@
       some sanity check so that the user hasn't changed settings like
       compiler and flags used for build between different calls, it
       does not verify that the tests are executed under the same
-      conditions.
+      conditions. For instance, it does not take into consideration
+      the current selected language dialect. 
     </para>
   </section>
 </section>
