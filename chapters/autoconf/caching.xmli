@@ -21,7 +21,24 @@
     tests that might lead to wrong results.
   </para>
 
-  <section>
+  <warning>
+    <para>
+      The use of this feature is designed for a very narrow use case,
+      as you can see in <xref linkend="autoconf.caching.whynot"
+      />. Please think twice before deciding to make use of this
+      technique when <emphasis>running</emphasis> a
+      <filename>configure</filename> script.
+    </para>
+
+    <para>
+      If you're writing a <filename>configure.ac</filename> file,
+      though, read on, and follow the advices for properly caching the
+      values, as having cached tests available becomes pretty useful
+      especially when debugging mistakes.
+    </para>
+  </warning>
+
+  <section id="autoconf.caching.whynot">
     <title>Why Caching is Not What You're Looking For</title>
 
     <para>
@@ -37,7 +54,116 @@
       compiler and flags used for build between different calls, it
       does not verify that the tests are executed under the same
       conditions. For instance, it does not take into consideration
-      the current selected language dialect. 
+      the current selected language dialect.
+    </para>
+
+    <para>
+      For instance, take two almost identical
+      <filename>configure.ac</filename> files available as examples of
+      this guide: a <link
+      xl:href="../examples/autoconf/caching/whynot/configure.c.ac">default
+      C variant</link> and a <link
+      xl:href="../examples/autoconf/caching/whynot/configure.c99.ac">C99
+      variant</link>. These two scripts only check for <link
+      xl:href="../examples/autoconf/caching/whynot/thisonlyworksonc99.h"><filename>thisonlyworksonc99.h</filename></link>
+      simply changing the language dialect (not even the full
+      language). The results coming from the two, though, are
+      different:
+    </para>
+
+    <programlisting><![CDATA[
+whynot % ./configure.c CPPFLAGS="-I."
+[ ... ]
+checking thisonlyworksonc99.h usability... no
+checking thisonlyworksonc99.h presence... no
+checking for thisonlyworksonc99.h... no
+configure.c: creating ./config.status
+
+whynot % ./configure.c99 CPPFLAGS="-I."
+[ ... ]
+checking thisonlyworksonc99.h usability... yes
+checking thisonlyworksonc99.h presence... yes
+checking for thisonlyworksonc99.h... yes
+configure.c99: creating ./config.status
+
+]]></programlisting>
+
+    <para>
+      Because of the way the header is designed, it will only be found
+      when C99 is used (remember that starting from
+      <application>autoconf</application> 2.64, the “usability” test
+      is the dominant one; see <xref linkend="autoconf.headers" />),
+      but if you were to use the same cache file for both scripts,
+      you'd be having some funky, unstable results:
+    </para>
+
+    <programlisting><![CDATA[
+whynot % ./configure.c CPPFLAGS="-I." -C
+configure.c: creating cache config.cache
+[ ... ]
+checking thisonlyworksonc99.h usability... no
+checking thisonlyworksonc99.h presence... no
+checking for thisonlyworksonc99.h... no
+configure.c: updating cache config.cache
+configure.c: creating ./config.status
+
+whynot % ./configure.c99 CPPFLAGS="-I." -C
+configure.c99: loading cache config.cache
+[ ... ]
+checking for thisonlyworksonc99.h... (cached) no
+configure.c99: updating cache config.cache
+configure.c99: creating ./config.status
+
+whynot % rm config.cache
+
+whynot % ./configure.c99 CPPFLAGS="-I." -C
+configure.c99: creating cache config.cache
+[ ... ]
+checking thisonlyworksonc99.h usability... yes
+checking thisonlyworksonc99.h presence... yes
+checking for thisonlyworksonc99.h... yes
+configure.c99: updating cache config.cache
+configure.c99: creating ./config.status
+
+whynot % ./configure.c CPPFLAGS="-I." -C 
+configure.c: loading cache config.cache
+[ ... ]
+checking for thisonlyworksonc99.h... (cached) yes
+configure.c: creating ./config.status
+]]></programlisting>
+
+    <para>
+      As you can see, <application>autoconf</application> does not
+      validate whether the cache comes from the same
+      <filename>configure</filename> script, nor if the same compiler
+      options are enabled in both runs.
+    </para>
+
+    <para>
+      It doesn't stop here though, since you can write your own tests,
+      you can easily re-use the same cache value variable name for way
+      different meanings, and that will also produce bogus results. In
+      turn bogus results can create multi-layer failures that are also
+      difficult to debug unless it is know that the cache was
+      polluted.
+    </para>
+
+    <para>
+      To make matter worse, a common but subtle problems with cache
+      pollution is related to <link
+      linkend="pkgconfig"><application>pkg-config</application></link>,
+      and the fact that it allows the developer to choose any given
+      keyword to check for any package: using the same name, like
+      <constant>NEEDED</constant> or <constant>COMMON</constant>, to
+      look for different libraries in different projects also deem the
+      cache to be unusable between them.
+    </para>
+
+    <para>
+      Bottom-line suggestion is that you should make use of caching
+      sparingly, when developing code, without touching the
+      <filename>configure.ac</filename> file nor changing the
+      environment, which is, indeed, a very limited use of caching.
     </para>
   </section>
 </section>

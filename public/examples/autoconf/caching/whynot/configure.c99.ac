@@ -1,0 +1,7 @@
+AC_INIT
+AC_PROG_CC
+AC_PROG_CC_C99
+
+AC_CHECK_HEADERS([thisonlyworksonc99.h])
+
+AC_OUTPUT
