@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="autoconf.caching">
+  <title>Caching Results</title>
+
+  <para>
+    For the way <application>autoconf</application> is designed, some
+    tests are quite expensive, in term of required work from the
+    system running the <filename>configure</filename> script. For this
+    reason, in the design of <application>autoconf</application> there
+    is place for a caching system.
+  </para>
+
+  <para>
+    This system provides caching both for the current run (so that the
+    same check in multiple code paths will not require execution of
+    the same test twice) and on-disk caching for multiple run. At the
+    same time it's also often used to provide fake values to sidestep
+    tests that might lead to wrong results.
+  </para>
+
+  <section>
+    <title>Why Caching is Not What You're Looking For</title>
+
+    <para>
+      Often enough, ideas appear of using the caching system of
+      <application>autoconf</application> to avoid repeating the same
+      tests when configuring different projects. This approach is
+      dangerous and unstable, for very good reasons.
+    </para>
+
+    <para>
+      The first problem is that, while the caching system does provide
+      some sanity check so that the user hasn't changed settings like
+      compiler and flags used for build between different calls, it
+      does not verify that the tests are executed under the same
+      conditions.
+    </para>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->

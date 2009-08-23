@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="autoconf.caching">
+  <title>Caching Results</title>
+
+  <para>
+    For the way <application>autoconf</application> is designed, some
+    tests are quite expensive, in term of required work from the
+    system running the <filename>configure</filename> script. This
+    lead to the presence of a system for caching the results out of
+    the 
+  </para>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->

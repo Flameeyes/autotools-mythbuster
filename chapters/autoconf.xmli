@@ -35,6 +35,7 @@
   </section>
 
   <xi:include parse="xml" href="autoconf/macros.xmli" />
+  <xi:include parse="xml" href="autoconf/caching.xmli" />
 </chapter>
 <!--
    Local Variables:
