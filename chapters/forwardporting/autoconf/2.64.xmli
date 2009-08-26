@@ -25,6 +25,22 @@
 	details on how to fix the related issues.
       </para>
     </listitem>
+
+    <listitem>
+      <para>
+	The internal macro <function>AH_CHECK_HEADERS</function> has
+	been removed; while this is an internal change that should not
+	mean anything to properly-written autotools, this actually
+	breaks packages using the KDE 3.x autotools-based build
+	system, in particular the
+	<function>KDE_CHECK_HEADERS</function> macro. To work with
+	<application>autoconf</application> 2.64, KDE3-based software
+	should replace the calls to the KDE-specific macro with
+	equivalent calls to the proper, standard
+	<function>AC_CHECK_HEADERS</function> macro, after properly
+	setting up the language to C++ if needed.
+      </para>
+    </listitem>
   </itemizedlist>
 </section>
 <!--
