@@ -5,6 +5,8 @@
     <tocentry linkend="preface"><?dbhtml filename="preface.html"?>
     </tocentry>
     <tocentry linkend="autoconf"><?dbhtml filename="autoconf/index.html"?>
+      <tocentry linkend="autoconf.m4sh"><?dbhtml filename="autoconf/m4sh.html"?>
+      </tocentry>
       <tocentry linkend="autoconf.canonical"><?dbhtml filename="autoconf/canonical.html"?>
       </tocentry>
       <tocentry linkend="autoconf.arguments"><?dbhtml filename="autoconf/arguments.html"?>

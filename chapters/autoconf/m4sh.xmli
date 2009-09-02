@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="autoconf.m4sh">
+  <title>M4sh</title>
+
+  <para>
+    While the result of the <application>autoconf</application> stage
+    is a complete script compatible with POSIX <command>sh</command>,
+    the language used to write the <filename>configure.ac</filename>
+    is called <emphasis>M4sh</emphasis>, to make clear that it's based
+    off both sh and the macro language M4.
+  </para>
+
+  <para>
+    The reason why the M4sh language is often confused with simply the
+    sh syntax is because it actually is based on that, augmented with
+    the autoconf proper macros and a few more macros that replace part
+    of the sh syntax.
+  </para>
+
+  <para>
+    The major change between the standard sh syntax and M4sh is found
+    in two macros: <function>AS_IF</function> and
+    <function>AS_CASE</function>. The two macros, as it's easy to
+    guess, replace two constructs from sh:
+    <function>if..then..elif..else..fi</function> and
+    <function>case..esac</function>.
+  </para>
+
+  <para>
+    The two macros are actually replaced with the standard sh syntax
+    after <application>autoconf</application> processing, but they
+    exist for good reasons: they make it known to
+    <application>autoconf</application> the conditional segments of
+    the script.  This in turn helps resolving issues with macros and
+    conditionality.
+  </para>
+
+  <section>
+    <title>M4sh syntax</title>
+
+    <para>
+      The basic M4sh macros have a syntax that is directly translable
+      to sh syntax. It is thus easier to just see how the macros
+      translate:
+    </para>
+
+    <programlisting><![CDATA[
+AS_IF([test], [true], [false])
+
+if test; then
+  true
+else
+  false
+fi
+
+AS_IF([test1], [true], [test2], [true2], [false])
+if test; then
+  true
+elif test2; then
+  true2
+else
+  false
+fi
+]]></programlisting>
+
+    <para>
+      As you can see, the parameters to the macro aren't in a fixed
+      number: you can chain a series of alternative conditions as you
+      would with the usual sh script.
+    </para>
+
+    <para>
+      The parameters are positional: the parameters in odd position
+      (the first, the third, …) with the exception of the last one are
+      the truth conditions (the tests); the parameters in even
+      position are the conditional code executed if the previous
+      parameter results true, and if there is a last odd parameter,
+      it's considered the final alternative condition (the
+      <function>else</function> condition).
+    </para>
+
+    <para>
+      Similarly, for <function>AS_CASE</function>:
+    </para>
+
+    <programlisting><![CDATA[
+AS_CASE([$variable], [foo*], [run1], [bar*], [run2], [catchall])
+
+case $variable in
+  foo*) run1 ;;
+  bar*) run2 ;;
+  *) catchall ;;
+esac
+]]></programlisting>
+
+    <para>
+      As for <function>AS_IF</function>, the parameters here are
+      positional, but since the first parameter is reserved to be the
+      argument to the <function>case</function> statement, the even
+      places are for the compared expressions, and the odd ones
+      (starting from the third) contain the code that is executed,
+      conditionally. Finally, almost identical to the previous macro,
+      the last parameter is the code executed when nothing else
+      matched up.
+    </para>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->
