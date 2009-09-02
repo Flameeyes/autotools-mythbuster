@@ -421,7 +421,7 @@ AC_ARG_VAR(var-name, help-string)
       set (both when setting it in the environment and when setting it
       just for the execution via <command>./configure
       FOO=bar</command>), its value is saved in either the proper
-      cache file (if requested, see <link linkend="autoconf.caching"
+      cache file (if requested, see <xref linkend="autoconf.caching"
       />) or in the configuration status. This in turn produces two
       effects:
     </para>
