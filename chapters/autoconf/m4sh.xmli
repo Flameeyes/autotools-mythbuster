@@ -14,10 +14,10 @@
   </para>
 
   <para>
-    The reason why the M4sh language is often confused with simply the
-    sh syntax is because it actually is based on that, augmented with
-    the autoconf proper macros and a few more macros that replace part
-    of the sh syntax.
+    The reason the M4sh language is often confused with simple sh
+    syntax is because it actually is based on that, augmented with the
+    autoconf proper macros and a few more macros that replace part of
+    the sh syntax.
   </para>
 
   <para>
@@ -42,9 +42,9 @@
     <title>M4sh syntax</title>
 
     <para>
-      The basic M4sh macros have a syntax that is directly translable
-      to sh syntax. It is thus easier to just see how the macros
-      translate:
+      The basic M4sh macros have a syntax that is directly
+      translatable to sh syntax. It is thus easier to just see how the
+      macros translate:
     </para>
 
     <programlisting><![CDATA[
