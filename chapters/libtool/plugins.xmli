@@ -246,7 +246,7 @@ AC_CHECK_HEADER([ltdl.h],
       </varlistentry>
 
       <varlistentry>
-	<term><parameter>-disable-static</parameter></term>
+	<term><parameter>-shared</parameter></term>
 
 	<listitem>
 	  <para>
@@ -256,6 +256,15 @@ AC_CHECK_HEADER([ltdl.h],
 	    all the systems where static libraries and shared objects
 	    have different build requirements.
 	  </para>
+
+	  <note>
+	    <para>
+	      This option will make the package incompatible with the
+	      <parameter>--disable-static</parameter> option during
+	      <command>./configure</command> call, as well as stopping
+	      the build when shared objects are not supported at all.
+	    </para>
+	  </note>
 	</listitem>
       </varlistentry>
     </variablelist>
@@ -269,7 +278,7 @@ AC_CHECK_HEADER([ltdl.h],
 pkglibdir_LTLIBRARIES = foo_example_plugin.la
 
 foo_example_plugin_la_SOURCES = example.c
-foo_example_plugin_la_LDFLAGS = -avoid-version -module -disable-static
+foo_example_plugin_la_LDFLAGS = -avoid-version -module -shared
 ]]></programlisting>
     </example>
   </section>
