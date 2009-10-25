@@ -67,7 +67,7 @@
     provides to the configure script the sh variables with the name of
     the actor (<varname>$host</varname>, <varname>$build</varname> and
     <varname>$target</varname>), and three parameters with the same
-    name to the <filename>configure</filename> script so that hte user
+    name to the <filename>configure</filename> script so that the user
     can override the default discovered values.
   </para>
 
