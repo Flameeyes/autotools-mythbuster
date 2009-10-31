@@ -29,6 +29,8 @@
     <tocentry linkend="forwardporting"><?dbhtml filename="forwardporting/index.html"?>
       <tocentry linkend="forwardporting.autoconf"><?dbhtml filename="forwardporting/autoconf.html"?>
       </tocentry>
+      <tocentry linkend="forwardporting.libtool"><?dbhtml filename="forwardporting/libtool.html"?>
+      </tocentry>
     </tocentry>
     <tocentry linkend="license"><?dbhtml filename="license.html"?>
     </tocentry>
