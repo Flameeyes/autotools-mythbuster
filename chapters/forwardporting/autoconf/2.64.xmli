@@ -2,7 +2,7 @@
 <section xmlns="http://docbook.org/ns/docbook"
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>autoconf 2.64</title>
+  <title><application>autoconf</application> 2.64</title>
 
   <para>
     Release 2.64 of <application>autoconf</application> is an
