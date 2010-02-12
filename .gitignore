@@ -8,3 +8,4 @@ config.status
 configure
 configure.correct
 configure.wrong
+generate
