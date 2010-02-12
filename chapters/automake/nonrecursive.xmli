@@ -6,18 +6,18 @@
   <title>Non-recursive <application>Automake</application></title>
 
   <para>
-    One of the common critiques on <application>automake</application>
+    One of the common criticisms of <application>automake</application>
     is that most projects that make use of it use multiple
     <filename>Makefile.am</filename> files, one per sub-directory of
     the project, causing pollution, confusion and further
     problems. For quite a while, though,
     <application>automake</application> supports non-recursive builds,
     with a single <filename>Makefile.am</filename> (or at least a
-    reduced number of thos).
+    reduced number of those).
   </para>
 
   <para>
-    This is, actually, the best method to use
+    This is, actually, the best method to use with
     <application>automake</application>, since this not only covers
     the problems discussed in <biblioref linkend="bib.rmch" /> but
     also avoids the need for multiple convenience libraries to store
@@ -50,18 +50,18 @@
 
     <listitem>
       <para>
-	as an extension, <application>make</application> don't have to
-	serialise the calls to sub-directories, which allows for
-	an higher number of build processes to be executable in
-	parallel if so requested; this is particularly important for
+	as an extension, <application>make</application> doesn't have to
+	serialize the calls to sub-directories, which allows for
+	a higher number of build processes to be executable in
+	parallel, if so requested; this is particularly important for
 	modern multi-core systems;
       </para>
     </listitem>
 
     <listitem>
       <para>
-	the working directory for all the build is not changed, which
-	allows to have a single point of reference for relative paths;
+	the entire builds working directory is not changed, which
+	allows for a single point of reference for relative paths;
       </para>
     </listitem>
 
@@ -99,7 +99,7 @@ foo_SOURCES = \
       inside the top build directory; this works fine for most cases,
       but it might not be desirable if either the source tree is very
       big (and thus a high number of files would be added to the same
-      directory) or there are source file with the same name minus the
+      directory) or there are source files with the same name minus the
       path.
     </para>
 
@@ -119,7 +119,7 @@ AM_INIT_AUTOMAKE([subdir-objects])
 
     <para>
       For most needs, this will solve the problem of non-recursive
-      <application>automake</application> just fine, and no more tweak
+      <application>automake</application> just fine, and no more tweaks
       will be needed. For more specific cases, check the following
       sections as well.
     </para>
@@ -137,10 +137,10 @@ AM_INIT_AUTOMAKE([subdir-objects])
     </para>
 
     <para>
-      It is certainly common to desire some organisations for the
-      products of the build, for instance grouping together libraries,
-      tools examples and tests. And of course
-      <application>automake</application> allows to do that just fine,
+      It is certainly common to desire some organisation of the
+      build products. For grouping together libraries,
+      tools, examples and tests for instance and 
+    <application>automake</application> allows that
       without having to resort to the recursive variant.
     </para>
 
