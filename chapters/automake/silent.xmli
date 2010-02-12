@@ -52,7 +52,7 @@ make[1]: Leaving directory `/home/flame/test-hellow'
     <listitem>
       <para>
 	passing the <option>silent-rules</option> option at the call
-	to <function>AM_INIT_AUTOMAKE</function> like done with many
+	to <function>AM_INIT_AUTOMAKE</function> as is done with many
 	other options;
       </para>
     </listitem>
@@ -66,7 +66,7 @@ make[1]: Leaving directory `/home/flame/test-hellow'
   </itemizedlist>
 
   <para>
-    In this guide, the recommended way to do so is using the explicit
+    In this guide, the recommended way is to use the explicit
     macro; this has two main advantages: the first is that you can
     easily make the call conditional to its actual presence, keeping
     backward compatibility with older
@@ -134,7 +134,7 @@ AM_SILENT_RULES([yes])
     <para>
       If, instead, backward compatibility is still needed, for
       instance because there are some systems where the code is tested
-      during developed that don't have a new enough
+      during development that don't have a new enough
       <application>automake</application> yet, it's quite simple to
       implement the silent rules support conditionally, by using
       explicitly the <function>AM_SILENT_RULES</function> macro.
@@ -179,7 +179,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
     <title>Custom Silent Rules</title>
 
     <para>
-      While <application>automake</application> have support for
+      While <application>automake</application> has support for
       silencing all its default rules, when using custom rules you end
       up outside the scope of the provided support. Adding support for
       silent rules to custom rules is not exceedingly difficult.
