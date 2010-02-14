@@ -13,7 +13,7 @@
 
   <para>
     To implement plug-in systems, you usually need to call the
-    dynamic linker at runtime to ask it load the plug-in's shared
+    dynamic linker at runtime to ask it to load the plug-in's shared
     object. This object might just be a standard shared object or
     might require further details to be taken into consideration.
   </para>
@@ -29,7 +29,7 @@
   </para>
 
   <para>
-    Software that is interested in a wider portability among different
+    Software that is interested in wider portability among different
     operating systems will be interested instead in using the wrapper
     library and interface called <application>libltdl</application>.
   </para>
@@ -47,15 +47,15 @@
       <para>
 	Because of the wide adoption of
 	<application>libltdl</application> in many types of
-	applications, its support in autotools is available with huge
-	flexibility. This is because its wrapping abilities can easily be
+	applications, it's support in autotools is available with huge
+	flexibility. This is because it's wrapping abilities can easily be
 	used on systems where libtool proper is not usually installed,
 	and thus it's often convenient to have a local copy of it.
       </para>
 
       <para>
-	But with bundling libraries, problems ensure, and especially
-	it can be a problem to choose between bundling a local copy of
+	But with bundling libraries, problems ensue, and it can especially
+	be a problem to choose between bundling a local copy of
 	the library or just using the system one. The macros provided
 	by <application>libtool</application>, even the recent version
 	2, support three styles for bundling
@@ -170,7 +170,7 @@ include libltdl/Makefile.inc
 	for the library in the system to simply rely on that; since it
 	also does not provide a <link
 	linkend="pkgconfig">pkg-config</link> datafile, the
-	best way choice is simply to <link
+	best practices choice is simply to <link
 	linkend="autoconf.lib-discovery"> discover the
 	library through <function>AC_CHECK_LIB</function></link>.
       </para>
@@ -239,7 +239,7 @@ AC_CHECK_HEADER([ltdl.h],
 	  <para>
 	    Allow the target to not provide any version information,
 	    removing the need to provide it. Almost all the plug-in
-	    systems don't use the library versioning to decide whether
+	    systems don't use the library version to decide whether
 	    to load the objects, and rely instead on the path they find.
 	  </para>
 	</listitem>
@@ -291,3 +291,4 @@ foo_example_plugin_la_LDFLAGS = -avoid-version -module -shared
    ispell-local-dictionary: "english"
    End:
 -->
+
