@@ -14,9 +14,9 @@
   </para>
 
   <para>
-    The amount of problems related to porting to
-    <application>libtool</application> 2.2 is quite high, but some do
-    come to attention.
+    The number of problems related to porting to
+    <application>libtool</application> 2.2 is quite high and some do
+    require builder attention.
   </para>
 
   <section>
