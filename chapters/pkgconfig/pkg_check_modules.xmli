@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="pkgconfig.pkg_check_modules">
+  <title>
+    The <function>PKG_CHECK_MODULES</function> Macro
+  </title>
+
+  <para>
+    The main interface between <application>autoconf</application> and
+    <application>pkg-config</application> is the
+    <function>PKG_CHECK_MODULES</function> macro, which provides a
+    very basic and easy way to check for the presence of a given
+    package in the system. Nonetheless, there are some caveats that
+    require attention when using the macro.
+  </para>
+
+  <section>
+    <title>Syntax</title>
+
+    <programlisting><![CDATA[
+PKG_CHECK_MODULES(prefix, list-of-modules, action-if-found, action-if-not-found)
+]]></programlisting>
+
+    <variablelist>
+      <varlistentry>
+	<term><parameter>prefix</parameter></term>
+	<listitem>
+	  <para>
+	    Each call to <function>PKG_CHECK_MODULES</function> should
+	    have a different <parameter>prefix</parameter> value (with
+	    a few exceptions discussed later on). This value, usually
+	    provided in uppercase, is used as prefix to the variables
+	    holding the compiler flags and libraries reported by
+	    <application>pkg-config</application>.
+	  </para>
+
+	  <para>
+	    For instance, if your prefix was to be
+	    <literal>FOO</literal> you'll be provided two variables
+	    <varname>FOO_CFLAGS</varname> and
+	    <varname>FOO_LIBS</varname>.
+	  </para>
+
+	  <para>
+	    This will also be used as message during the configure
+	    checks: <literal>checking for FOO...</literal>.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><parameter>list-of-modules</parameter></term>
+	<listitem>
+	  <para>
+	    A single call to the macro can check for the presence of
+	    one or more packages; you'll see later how to make good use
+	    of this feature. Each entry in the list can have a version
+	    comparison specifier.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><parameter>action-if-found</parameter></term>
+	<term><parameter>action-if-not-found</parameter></term>
+
+	<listitem>
+	  <para>
+	    As most of the original
+	    <application>autoconf</application> macros, there are
+	    boolean values provided, for the cases when the check
+	    succeeded or failed. In contrast with almost all of the
+	    original macros, though, the default
+	    <parameter>action-if-not-fault</parameter> will end the
+	    execution with an error for not having found the
+	    dependency.
+	  </para>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>Default variables</title>
+
+    <para>
+      By default, the macro will set up two variables, joining the
+      given prefix with the suffixes <varname>_CFLAGS</varname> and
+      <varname>_LIBS</varname>. The names of these variables can
+      be somewhat misleading, since the former will generally provide
+      the flags to pass to the preprocessor, rather than the compiler,
+      such as include paths and macro definitions, and the latter will
+      provide the library paths as well as the libraries themselves.
+    </para>
+
+    <para>
+      On older versions of <application>pkg-config</application>, the
+      macro will <emphasis>not</emphasis> call
+      <function>AC_SUBST</function> on these variables; modern
+      versions (at least version 0.24) will take care of that
+      already. Running it twice, though, will not cause problems, so
+      if you have doubts, you should add a snippet like the following.
+    </para>
+
+    <programlisting><![CDATA[
+AC_SUBST([FOO_CFLAGS])
+AC_SUBST([FOO_LIBS])
+]]></programlisting>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "en_GB"
+   End:
+-->

@@ -27,10 +27,10 @@
       <email>olbrannon@gmail.com</email>
     </editor>
 
-    <date>April 2009</date>
+    <date>June 2010</date>
 
     <copyright>
-      <year>2009</year>
+      <year>2009-2010</year>
       <holder>Diego E. Pettenò</holder>
     </copyright>
 
@@ -51,6 +51,8 @@
   <xi:include parse="xml" href="chapters/automake.xmli" />
 
   <xi:include parse="xml" href="chapters/libtool.xmli" />
+
+  <xi:include parse="xml" href="chapters/pkgconfig.xmli" />
 
   <xi:include parse="xml" href="chapters/forwardporting.xmli" />
 

@@ -26,6 +26,10 @@
     </tocentry>
     <tocentry linkend="libtool"><?dbhtml filename="libtool/index.html"?>
     </tocentry>
+    <tocentry linkend="pkgconfig"><?dbhtml filename="pkgconfig/index.html"?>
+      <tocentry linkend="pkgconfig.pkg_check_modules"><?dbhtml filename="pkconfig/pkg_check_modules.html"?>
+      </tocentry>
+    </tocentry>
     <tocentry linkend="forwardporting"><?dbhtml filename="forwardporting/index.html"?>
       <tocentry linkend="forwardporting.autoconf"><?dbhtml filename="forwardporting/autoconf.html"?>
       </tocentry>
