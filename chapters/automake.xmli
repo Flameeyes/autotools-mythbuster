@@ -4,7 +4,7 @@
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="automake">
   <title>
-    Harnessing Make - <application>automake</application>
+    Harnessing Make — <application>automake</application>
   </title>
 
   <xi:include parse="xml" href="automake/nonrecursive.xmli" />
