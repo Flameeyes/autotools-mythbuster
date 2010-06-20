@@ -235,6 +235,56 @@ PKG_CHECK_MODULES([GLIB], [glib-2.0])
 ]]></programlisting>
 
   </section>
+
+  <section>
+    <title>Alternatives</title>
+
+    <para>
+      Sometimes you need to check for alternative modules; for
+      instance you might fall-back from
+      <application>udev</application> to
+      <application>HAL</application> if the former cannot be
+      found. You can easily write this by chaining the
+      <function>PKG_CHECK_MODULES</function> call, through the
+      <parameter>action-if-not-found</parameter> parameter, keeping
+      the best choice outward:
+    </para>
+
+    <programlisting><![CDATA[
+PKG_CHECK_MODULES([UDEV], [libudev],
+   [AC_DEFINE([HAVE_UDEV], [1], [Use UDEV])],
+   [PKG_CHECK_MODULES([HAL], [hal],
+       [AC_DEFINE([HAVE_HAL], [1], [Use HAL])
+    ])
+])
+]]></programlisting>
+
+    <para>
+      It's important here to note that all the parameters here are
+      quoted; this is important; if you don't quote the chained
+      <function>PKG_CHECK_MODULES</function> call properly, you will
+      receive a syntax error when executing
+      <command>./configure</command>.
+    </para>
+
+    <para>
+      As an exception to the rule declared earlier, it's possible to
+      use two chained calls to <function>PKG_CHECK_MODULES</function>
+      with the same prefix; this is useful to identify cases where you
+      need co-variant versions of two packages (explicitly) or if a
+      package renames its own data file.
+    </para>
+
+    <programlisting><![CDATA[
+PKG_CHECK_MODULES([NM], [libnm-glib],, [
+   PKG_CHECK_MODULES([NM], [libnm_glib])
+])
+]]></programlisting>
+
+    <para>
+      Even here, remember to quote the chained call.
+    </para>
+  </section>
 </section>
 <!--
    Local Variables:
