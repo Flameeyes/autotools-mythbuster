@@ -108,6 +108,132 @@ PKG_CHECK_MODULES(prefix, list-of-modules, action-if-found, action-if-not-found)
 AC_SUBST([FOO_CFLAGS])
 AC_SUBST([FOO_LIBS])
 ]]></programlisting>
+
+    <para>
+      In addition to defining these variables, the macro also declare
+      them as important variables through <link
+      linkend="autoconf.adding-options.ac_arg_var"><function>AC_ARG_VAR</function></link>
+      so that the user can override the values if needed.
+    </para>
+  </section>
+
+  <section>
+    <title>Modules specification</title>
+
+    <para>
+      Beside checking for the presence of a package,
+      <application>pkg-config</application> can also check for a
+      minimum (or maximum) version of a package, by using C-style
+      comparison operators, so that you can ensure that the correct
+      version of a package will be used, and not an older or newer
+      version.
+    </para>
+
+    <para>
+      You can also check for multiple packages at the same time, by
+      listing one after the other separated by whitespace. This has
+      the positive effect of emitting a reduced amount of code rather
+      than testing them separately, but also brings one further
+      problem: since the variables are supposed to be overridden,
+      merging multiple packages together will require the users to
+      parse the file to make sure they are passing the values for all
+      of them.
+    </para>
+
+    <example>
+      <title>
+	Example of module specifications for <function>PKG_CHECK_MODULES</function>
+      </title>
+
+      <programlisting><![CDATA[
+PKG_CHECK_MODULES([FOO], [foo >= 3])
+PKG_CHECK_MODULES([BAR], [bar < 4])
+PKG_CHECK_MODULES([BAZ], [baz = 2])
+
+PKG_CHECK_MODULES([DEPENDENCIES], [foo >= 3 bar baz <= 4])
+]]></programlisting>
+    </example>
+  </section>
+
+  <section>
+    <title>Optional Modules</title>
+
+    <para>
+      Sometimes, you're supposed to check for given modules only under
+      some conditions; it's a trivial setup, but it's one of the most
+      common mistakes. The <application>pkg-config</application>
+      command is discovered through a separate macro,
+      <function>PKG_PROG_PKG_CONFIG</function> that takes care of
+      identifying the presence (and version) of
+      <application>pkg-config</application> itself. This macro is
+      called through <function>AC_REQUIRE</function> so that is
+      expanded before <function>PKG_CHECK_MODULES</function>.
+    </para>
+
+    <para>
+      If you have the <emphasis>first</emphasis> call to
+      <function>PKG_CHECK_MODULES</function> inside a bash conditional
+      block, the expansion of <function>PKG_PROG_PKG_CONFIG</function>
+      will also be conditional, so the following code will fail to
+      work, when the condition is false:
+    </para>
+
+    <programlisting><![CDATA[
+AC_ARG_WITH([gtk], AS_HELP_STRING([--with-gtk], [Build with the GTK+ interface]))
+
+if test "x$with_gtk" = "xyes"; then
+   PKG_CHECK_MODULES([GTK], [gtk+-2.0])
+fi
+
+PKG_CHECK_MODULES([GLIB], [glib-2.0])
+]]></programlisting>
+
+    <para>
+      Since the check for GKT+ will not work by default, you'll
+      receive the following error if you try to execute
+      <filename>configure</filename> without any argument:
+    </para>
+
+    <programlisting><![CDATA[
+% ./configure
+checking for GLIB... no
+configure: error: in `/path':
+configure: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables GLIB_CFLAGS
+and GLIB_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See `config.log' for more details.
+    ]]></programlisting>
+
+    <para>
+      You can solve this problem in two ways; you can either
+      explicitly call <function>PKG_PROG_PKG_CONFIG</function> outside
+      of any conditional, forcing checking for
+      <application>pkg-config</application> as soon as possible; or
+      you can rewrite your conditionals to use the proper syntax, as
+      discussed in <xref linkend="autoconf.m4sh" />.
+    </para>
+
+    <para>
+      The proper code written in M4sh for the above logic is the
+      following:
+    </para>
+
+    <programlisting><![CDATA[
+AC_ARG_WITH([gtk], AS_HELP_STRING([--with-gtk], [Build with the GTK+ interface]))
+
+AS_IF([test "x$with_gtk" = "xyes"], [
+   PKG_CHECK_MODULES([GTK], [gtk+-2.0])
+])
+
+PKG_CHECK_MODULES([GLIB], [glib-2.0])
+]]></programlisting>
+
   </section>
 </section>
 <!--
