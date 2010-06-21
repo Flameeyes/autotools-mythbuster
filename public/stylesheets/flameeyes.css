@@ -1,8 +1,20 @@
-body {
-    padding-bottom: 15px;
+div#custom-footer {
+    border-top: 1px solid silver;
+    margin-top: 1em;
+    padding-top: 1em;
 }
 
-div#licensing img#cc-by-nc-sa {
+div#widgets {
+    float: left;
+    padding: 1em;
+    text-align: center;
+}
+
+div#flattr {
+    margin: 1em;
+}
+
+img#cc-by-nc-sa {
     border: none;
-    float: right;
+    margin: 1em;
 }
