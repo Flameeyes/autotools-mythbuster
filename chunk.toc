@@ -27,6 +27,8 @@
     <tocentry linkend="libtool"><?dbhtml filename="libtool/index.html"?>
     </tocentry>
     <tocentry linkend="pkgconfig"><?dbhtml filename="pkgconfig/index.html"?>
+      <tocentry linkend="pkgconfig.file-format"><?dbhtml filename="pkgconfig/file-format.html"?>
+      </tocentry>
       <tocentry linkend="pkgconfig.pkg_check_modules"><?dbhtml filename="pkgconfig/pkg_check_modules.html"?>
       </tocentry>
     </tocentry>
