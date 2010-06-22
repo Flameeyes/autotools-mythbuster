@@ -7,70 +7,66 @@
     Building All Kinds of Libraries — <application>libtool</application>
   </title>
 
-  <section>
-    <title>Introduction</title>
+  <para>
+    While autotools are vastly considered black magic, because they
+    tend to show a black box abstracting lots of details about
+    compilers, makefiles and dependencies, the component that can be
+    truly said to be black magic is certainly
+    <application>libtool</application>.
+  </para>
 
+  <para>
+    The <command>libtool</command> script is a huge script that
+    allows the developers to ignore, at least partially, all the
+    complex details related to <emphasis>shared objects</emphasis>
+    and their creation. This is needed because this is one of the
+    areas that changes most between operating systems, both in terms
+    of actual technical requirements and in terms of conventions.
+  </para>
+
+  <note>
     <para>
-      While autotools are vastly considered black magic, because they
-      tend to show a black box abstracting lots of details about
-      compilers, makefiles and dependencies, the component that can be
-      truly said to be black magic is certainly
-      <application>libtool</application>.
+      Among the different conventions between different operating
+      systems, the first one to disambiguate is the name used to
+      identify these types of files; almost every other operating
+      system changed the name used.
     </para>
 
     <para>
-      The <command>libtool</command> script is a huge script that
-      allows the developers to ignore, at least partially, all the
-      complex details related to <emphasis>shared objects</emphasis>
-      and their creation. This is needed because this is one of the
-      areas that changes most between operating systems, both in terms
-      of actual technical requirements and in terms of conventions.
+      Unix systems classically called these <emphasis>shared
+      objects</emphasis> and this is the name that will be used in
+      this guide. People more involved in other operating system
+      might known them as “dynamically-linked libraries” (DLL) or
+      simply “dynamic libraries”.
     </para>
+  </note>
 
-    <note>
-      <para>
-	Among the different conventions between different operating
-	systems, the first one to disambiguate is the name used to
-	identify these types of files; almost every other operating
-	system changed the name used.
-      </para>
+  <para>
+    Some (older) operating systems might not provide any support for
+    shared objects at all; others might require they be built in a specific
+    (non-default) file format. Some architectures insist that shared
+    objects are built with Position-Independent Code (a feature
+    enabled by the compiler). For those operating systems that do
+    support them, the versioning rules might vary enormously.
+  </para>
 
-      <para>
-	Unix systems classically called these <emphasis>shared
-	objects</emphasis> and this is the name that will be used in
-	this guide. People more involved in other operating system
-	might known them as “dynamically-linked libraries” (DLL) or
-	simply “dynamic libraries”.
-      </para>
-    </note>
+  <para>
+    All these details make it difficult to simply build shared
+    objects in the same way on all operating systems, and here is
+    where <application>libtool</application> enters the scene: the
+    <command>libtool</command> script is a frontend to various
+    compilers and linkers that takes care of abstracting most of the
+    syntax, and of the details for building the libraries.
+  </para>
 
-    <para>
-      Some (older) operating systems might not provide any support for
-      shared objects at all; others might require they be built in a specific
-      (non-default) file format. Some architectures insist that shared
-      objects are built with Position-Independent Code (a feature
-      enabled by the compiler). For those operating systems that do
-      support them, the versioning rules might vary enormously.
-    </para>
-
-    <para>
-      All these details make it difficult to simply build shared
-      objects in the same way on all operating systems, and here is
-      where <application>libtool</application> enters the scene: the
-      <command>libtool</command> script is a frontend to various
-      compilers and linkers that takes care of abstracting most of the
-      syntax, and of the details for building the libraries.
-    </para>
-
-    <para>
-      Because of these changes, the <application>libtool</application>
-      package is probably the most complex part of the autotools
-      stack, and also one that is often avoided by those looking for a
-      simpler build system. Alternatives to using straight
-      <application>libtool</application> are explained in the section
-      <xref linkend="libtool.alternatives" />.
-    </para>
-  </section>
+  <para>
+    Because of these changes, the <application>libtool</application>
+    package is probably the most complex part of the autotools
+    stack, and also one that is often avoided by those looking for a
+    simpler build system. Alternatives to using straight
+    <application>libtool</application> are explained in the section
+    <xref linkend="libtool.alternatives" />.
+  </para>
 
   <xi:include parse="xml" href="libtool/plugins.xmli" />
 </chapter>
