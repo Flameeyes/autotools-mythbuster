@@ -3,9 +3,7 @@
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="pkgconfig.pkg_check_modules">
-  <title>
-    The <function>PKG_CHECK_MODULES</function> Macro
-  </title>
+  <title>The <function>PKG_CHECK_MODULES</function> Macro</title>
 
   <para>
     The main interface between <application>autoconf</application> and
