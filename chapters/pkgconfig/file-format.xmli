@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="pkgconfig.file-format">
+  <title>
+    File Format of <filename>*.pc</filename> Files
+  </title>
+
+  <para>
+    The heart of <application>pkg-config</application> workings is
+    in the data files that the various applications install. These
+    data files are actually simple text files with some special syntax
+    thrown in. They are neither INI-style configuration files, nor
+    simple key-value pairs, but are not even complete scripts.
+  </para>
+
+  <para>
+    The name of the file is the name of the module that can be tested
+    with <link
+    linkend="pkgconfig.pkg_check_modules"><function>PKG_CHECK_MODULES</function></link>
+    function. The content, as I said, is simple text, which can be
+    divided into variables definitions and keyword declaration. Both
+    are designed to be kept in a single line.
+  </para>
+
+  <para>
+    Variables can be used to define temporary values, but they can
+    also provide arbitrary information to
+    <application>pkg-config</application> users when needed. Keywords
+    instead are pre-defined and are used by the commands available as
+    part of <application>pkg-config</application> itself.
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term>Name</term>
+      <listitem>
+	<para>
+	  Provides a human-readable name for the package; it does not
+	  have to be the same as the module name, that is instead
+	  decided based on the datafile's name.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Version</term>
+      <listitem>
+	<para>
+	  Complete version of the package; it supports most of the
+	  sane version specifications. Please note that only a single
+	  data file for a module can be used so you might have to
+	  duplicate part of the version information in both the module
+	  name and this keyword.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="pkgconfig.file-format.requires">
+      <term>Requires</term>
+      <term>Conflicts</term>
+      <listitem>
+	<para>
+	  Specifies the dependencies of a module, with or without
+	  version limitations. As the names leave to intend,
+	  <varname>Requires</varname> lists the other modules that
+	  need to be present, while <varname>Conflicts</varname>
+	  lists the packages that <emphasis>cannot</emphasis> be
+	  present when making use of the current module.
+	</para>
+
+	<para>
+	  You cannot list the same module more than once in the
+	  requirements, but you can list it as many time as you want
+	  in the conflicts. All the modules can optionally have a
+	  version specifier, and you can use the seven basic
+	  comparisons as defined by the C language:
+	  <function>=</function>, <function>&lt;</function>,
+	  <function>&gt;</function>, <function>&lt;=</function> and
+	  <function>&gt;=</function>.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Cflags</term>
+      <term>Libs</term>
+      <listitem>
+	<para>
+	  The two basic information that the
+	  <application>pkg-config</application> call will report to
+	  its caller, such as the macro discussed in <xref
+	  linkend="pkgconfig.pkg_check_modules" />. They represent the
+	  parameters to pass to the compiler and linker command-lines
+	  to make use of the current module.
+	</para>
+
+	<para>
+	  It's important not to list the entries related to further
+	  dependencies, as <application>pkg-config</application> will
+	  take care of running transitive dependency discovery, see
+	  also <xref linkend="pkgconfig.file-format.dependencies" />.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Requires.private</term>
+      <term>Libs.private</term>
+      <listitem>
+	<para>
+	  More specific details about the dependencies of a
+	  module. Will be discussed in much detail in <xref
+	  linkend="pkgconfig.static-linking" />.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Description</term>
+      <term>URL</term>
+      <listitem>
+	<para>
+	  Brief information about the package, mostly self-explaining.
+	</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "en_GB"
+   End:
+-->

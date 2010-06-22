@@ -53,9 +53,12 @@ PKG_CHECK_MODULES(prefix, list-of-modules, action-if-found, action-if-not-found)
 	<listitem>
 	  <para>
 	    A single call to the macro can check for the presence of
-	    one or more packages; you'll see later how to make good use
-	    of this feature. Each entry in the list can have a version
-	    comparison specifier.
+	    one or more packages; you'll see later how to make good
+	    use of this feature. Each entry in the list can have a
+	    version comparison specifier, with the same syntax as the
+	    <link
+	    linkend="pkgconfig.file-format.requires"><varname>Requires</varname>
+	    keyword</link> in the data files themselves.
 	  </para>
 	</listitem>
       </varlistentry>
