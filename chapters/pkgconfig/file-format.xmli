@@ -127,6 +127,30 @@
       </listitem>
     </varlistentry>
   </variablelist>
+
+  <section>
+    <title>Search paths</title>
+
+    <para>
+      By default, <application>pkg-config</application> will search
+      for modules installing data files in two directories: one for
+      the architecture-specific modules, that is installed in a
+      sub-directory of the libdir (usually
+      <filename>/usr/lib/pkgconfig</filename>), and one for
+      non-architecture specific modules, that can be shared among
+      multiple architectures (usually
+      <filename>/usr/share/pkgconfig</filename>).
+    </para>
+
+    <para>
+      You can add further paths to its search by defining the
+      <varname>PKG_CONFIG_PATH</varname>, or you can replace the
+      default search paths by setting the
+      <varname>PKG_CONFIG_LIBDIR</varname>. These tricks are often
+      used to create wrappers to <application>pkg-config</application>
+      for cross-compilation.
+    </para>
+  </section>
 </section>
 <!--
    Local Variables:
