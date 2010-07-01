@@ -207,7 +207,7 @@ AS_IF([test "x$enable_foo" != "xno"], [
   dnl Do the stuff needed for enabling the feature
 ])
 
-dnl Enable of default-disabled feature
+dnl Example of default-disabled feature
 AC_ARG_ENABLE([bar],
     AS_HELP_STRING([--enable-bar], [Enable feature bar]))
 
