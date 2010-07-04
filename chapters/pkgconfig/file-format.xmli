@@ -8,18 +8,18 @@
   </title>
 
   <para>
-    The heart of <application>pkg-config</application> workings is
+    The heart of <application>pkg-config</application> lies 
     in the data files that the various applications install. These
     data files are actually simple text files with some special syntax
     thrown in. They are neither INI-style configuration files, nor
-    simple key-value pairs, but are not even complete scripts.
+    simple key-value pairs and are not even complete scripts.
   </para>
 
   <para>
     The name of the file is the name of the module that can be tested
     with <link
     linkend="pkgconfig.pkg_check_modules"><function>PKG_CHECK_MODULES</function></link>
-    function. The content, as I said, is simple text, which can be
+    function. The content is simple text, which can be
     divided into variables definitions and keyword declaration. Both
     are designed to be kept in a single line.
   </para>
@@ -62,8 +62,8 @@
       <term>Conflicts</term>
       <listitem>
 	<para>
-	  Specifies the dependencies of a module, with or without
-	  version limitations. As the names leave to intend,
+	  These terms specify the dependencies of a module, with or without
+	  version limitations. As the names of the terms indicate,
 	  <varname>Requires</varname> lists the other modules that
 	  need to be present, while <varname>Conflicts</varname>
 	  lists the packages that <emphasis>cannot</emphasis> be
@@ -88,7 +88,7 @@
       <term>Libs</term>
       <listitem>
 	<para>
-	  The two basic information that the
+	  The two fundamental specifications that the
 	  <application>pkg-config</application> call will report to
 	  its caller, such as the macro discussed in <xref
 	  linkend="pkgconfig.pkg_check_modules" />. They represent the
@@ -98,7 +98,7 @@
 
 	<para>
 	  It's important not to list the entries related to further
-	  dependencies, as <application>pkg-config</application> will
+	  dependencies, since <application>pkg-config</application> will
 	  take care of running transitive dependency discovery, see
 	  also <xref linkend="pkgconfig.file-format.dependencies" />.
 	</para>
