@@ -13,7 +13,7 @@
     linkend="autoconf.lib-discovery" /> is somewhat limiting; it
     does not allow for the library to provide specific information
     about the flags it needs to compile against (such as threading
-    flags), nor it allows to properly pass other libraries you need
+    flags), nor does it allow us to properly pass other libraries we need
     to link to.
   </para>
 
@@ -37,8 +37,8 @@
   </para>
 
   <para>
-    Nowadays, the script is used for much more than simply discover
-    the libraries and compiler flags, as it grew to allow for
+    Nowadays, the script is used for much more than to simply discover
+    the libraries and compiler flags, as it has grown to allow for
     special handling of static linking, and can provide data from
     arbitrary variables.
   </para>
