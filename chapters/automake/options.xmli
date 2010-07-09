@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="automake.options">
+  <title>Available options</title>
+
+  <para>
+    There are a series of options that can be given to
+    <application>automake</application>, to change its default
+    behaviour in something that more suits the need of the single
+    project.
+  </para>
+
+  <para>
+    These options are usually passed to the
+    <function>AM_INIT_AUTOMAKE</function> macro, but can also be
+    passed via the variable <varname>AUTOMAKE_OPTIONS</varname> in the
+    top-level <filename>Makefile.am</filename>. Of the two
+    alternatives, the former is preferred. In either case, the list of
+    options is a simple list of tokens separated by whitespace.
+  </para>
+
+  <example>
+    <title>Passing simple <application>automake</application> options</title>
+
+    <programlisting><![CDATA[AM_INIT_AUTOMAKE([1.11 silent-rules])]]></programlisting>
+  </example>
+
+  <para>
+    Since each option (or option group) might require a different
+    explanation in different contexts, you can use the following list
+    as reference for them.
+  </para>
+
+  <variablelist>
+    <varlistentry xml:id="automake.options.version">
+      <term>
+        <literal>1.8</literal>, <literal>1.9</literal>, …,
+        <literal>1.11</literal>
+      </term>
+
+      <listitem>
+        <para>
+          The minimum (minor) version of
+          <application>automake</application> needed to properly
+          rebuild the current project.
+        </para>
+
+        <para>
+          This is usually only used to indicate that the project make
+          use of features that have been introduced with a given
+          version, which means that it doesn't list micro/patchlevel
+          versions (such as <literal>1.11.1</literal>), nor it can be
+          used to stop newer versions of
+          <application>automake</application> from rebuilding the
+          project.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>
+        <literal>gnu</literal>, <literal>cygnus</literal>,
+        <literal>gnits</literal>, <literal>foreign</literal>
+      </term>
+
+      <listitem>
+        <para>
+          Choose the “flavor” to use, which specifies some further
+          particular options and warning levels for the current
+          project. See <xref linkend="automake.options.flavors" />.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><literal>silent-rules</literal></term>
+
+      <listitem>
+        <para>
+          Allows the use of Linux kernel-style “silent” output when
+          building. See <xref linkend="automake.silent" />.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><literal>subdir-objects</literal></term>
+
+      <listitem>
+        <para>
+          Compile source files in the relative sub-directories, rather
+          than in the directory of the
+          <filename>Makefile.am</filename> that declares them. See
+          <xref linkend="automake.nonrecursive" />.
+        </para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->
