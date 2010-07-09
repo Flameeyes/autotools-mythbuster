@@ -9,6 +9,7 @@ generate: main.docbook
 		--stringparam chunk.toc chunk.toc \
 		--stringparam section.autolabel 1 \
 		--stringparam collect.xref.targets "yes" \
+		--stringparam toc.section.depth 1 \
 		--stringparam targets.filename "$(patsubst %.xhtml,%.olinkdb,$@)" \
 		stylesheets/flameeyes.eu.xsl \
 		$<
