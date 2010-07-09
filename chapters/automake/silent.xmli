@@ -127,7 +127,7 @@ AM_SILENT_RULES([yes])
       <option>1.11</option> token to
       <function>AM_INIT_AUTOMAKE</function> to explicit that at least
       version 1.11 of <application>automake</application> is needed
-      for regeneration. See <link linkend="automake.options.version"
+      for regeneration. See <xref linkend="automake.options.version"
       />.
     </para>
 
