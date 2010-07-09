@@ -3,7 +3,7 @@
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 version="5.0" xml:lang="en"
-	 xml:id="index">
+	 xml:id="main">
   <info>
     <title>Autotools Mythbuster</title>
 
@@ -59,6 +59,8 @@
   <xi:include parse="xml" href="license/cc-by-nc-sa.xmli" />
 
   <xi:include parse="xml" href="chapters/furtherreadings.xmli" />
+
+  <index xml:id="index" />
 </book>
 <!--
    Local Variables:
