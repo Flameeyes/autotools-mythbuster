@@ -36,18 +36,16 @@
   </para>
 
   <section xml:id="forwardporting.autoconf">
-    <title>
-      Changes in <application>autoconf</application> releases
-    </title>
+    <title>Changes in <application>autoconf</application>
+    releases</title>
 
     <xi:include parse="xml"
 		href="forwardporting/autoconf/2.64.xmli" />
   </section>
 
   <section xml:id="forwardporting.libtool">
-    <title>
-      Changes in <application>libtool</application> releases
-    </title>
+    <title>Changes in <application>libtool</application>
+    releases</title>
 
     <xi:include parse="xml"
 		href="forwardporting/libtool/2.2.xmli" />

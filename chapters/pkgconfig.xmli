@@ -3,9 +3,8 @@
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="pkgconfig">
-  <title>
-    Dependency discovery — <application>pkg-config</application>
-  </title>
+  <title>Dependency discovery —
+  <application>pkg-config</application></title>
 
   <para>
     Dicovering the presence of libraries through

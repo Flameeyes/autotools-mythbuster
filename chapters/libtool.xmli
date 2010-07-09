@@ -3,9 +3,8 @@
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="libtool">
-  <title>
-    Building All Kinds of Libraries — <application>libtool</application>
-  </title>
+  <title>Building All Kinds of Libraries —
+  <application>libtool</application></title>
 
   <para>
     While autotools are vastly considered black magic, because they

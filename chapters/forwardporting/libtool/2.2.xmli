@@ -20,9 +20,7 @@
   </para>
 
   <section>
-    <title>
-      The C++ and Fortran support
-    </title>
+    <title>The C++ and Fortran support</title>
     
     <para>
       Before <application>libtool 2.2</application>, as soon as a
@@ -75,9 +73,7 @@ cjeca32/Makefile.am:   to `configure.ac' and run `autoconf' again.
     </para>
 
     <example>
-      <title>
-	Properly Fix missing C++ support with libtool 2.2
-      </title>
+      <title>Properly Fix missing C++ support with libtool 2.2</title>
 
       <programlisting><![CDATA[
 dnl configure.ac

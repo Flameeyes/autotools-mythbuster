@@ -35,14 +35,12 @@
   </para>
 
   <section xml:id="libtool.plugins.ltdl">
-    <title>
-      Using <application>libltdl</application> for plug-ins
-    </title>
+    <title>Using <application>libltdl</application> for
+    plug-ins</title>
 
     <section xml:id="libtool.plugins.ltdl.discovery">
-      <title>
-	Linking, bundling, installing <application>libtldl</application>
-      </title>
+      <title>Linking, bundling, installing
+      <application>libtldl</application></title>
 
       <para>
 	Because of the wide adoption of
@@ -85,9 +83,8 @@
       </para>
 
       <example>
-	<title>
-	  Buildsystem changes for bundled <application>libltdl</application>
-	</title>
+	<title>Buildsystem changes for bundled
+	<application>libltdl</application></title>
 
 	<para>
 	  In <filename>configure.ac</filename>, for the various cases, commented
@@ -270,9 +267,8 @@ AC_CHECK_HEADER([ltdl.h],
     </variablelist>
 
     <example>
-      <title>
-	Building plug-ins for <function>dlopen()</function> usage
-      </title>
+      <title>Building plug-ins for <function>dlopen()</function>
+      usage</title>
 
       <programlisting><![CDATA[
 pkglibdir_LTLIBRARIES = foo_example_plugin.la

@@ -194,9 +194,7 @@ AC_ARG_ENABLE(option-name, help-string, action-if-present, action-if-not-present
     </para>
 
     <example>
-      <title>
-	Using <function>AC_ARG_ENABLE</function> without actions
-      </title>
+      <title>Using <function>AC_ARG_ENABLE</function> without actions</title>
 
       <programlisting><![CDATA[
 dnl Example of default-enabled feature
@@ -341,10 +339,8 @@ AC_ARG_ENABLE([bar],
     </para>
 
     <example>
-      <title>
-	Using <function>AC_ARG_WITH</function> to declare automatic
-	dependencies.
-      </title>
+      <title>Using <function>AC_ARG_WITH</function> to declare
+      automatic dependencies.</title>
 
       <programlisting><![CDATA[
 AC_ARG_WITH([foo],

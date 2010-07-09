@@ -132,9 +132,8 @@ AS_IF([test "x$mypj_found_int_headers" != "xyes"],
     </para>
 
     <example>
-      <title>
-	header present but cannot be compiled: wrong language dialect
-      </title>
+      <title>header present but cannot be compiled: wrong language
+      dialect</title>
 
       <note>
 	<para>

@@ -142,9 +142,7 @@ AC_SUBST([FOO_LIBS])
     </para>
 
     <example>
-      <title>
-	Example of module specifications for <function>PKG_CHECK_MODULES</function>
-      </title>
+      <title>Example of module specifications for <function>PKG_CHECK_MODULES</function></title>
 
       <programlisting><![CDATA[
 PKG_CHECK_MODULES([FOO], [foo >= 3])

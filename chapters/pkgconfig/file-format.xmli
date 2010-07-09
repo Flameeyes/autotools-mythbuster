@@ -3,9 +3,7 @@
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="pkgconfig.file-format">
-  <title>
-    File Format of <filename>*.pc</filename> Files
-  </title>
+  <title>File Format of <filename>*.pc</filename> Files</title>
 
   <para>
     The heart of <application>pkg-config</application> lies 

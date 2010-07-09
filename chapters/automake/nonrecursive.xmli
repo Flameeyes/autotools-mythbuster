@@ -145,9 +145,8 @@ AM_INIT_AUTOMAKE([subdir-objects])
     </para>
 
     <example>
-      <title>
-	Grouping tests together in a non-recursive <filename>Makefile.am</filename>
-      </title>
+      <title>Grouping tests together in a non-recursive
+      <filename>Makefile.am</filename></title>
 
       <programlisting><![CDATA[
 FOO_BUILT_TESTS = tests/foo_test1 tests/foo_test2 tests/foo_test3
@@ -181,9 +180,8 @@ tests_foo_test3_LDADD = libfoo.la
   </section>
 
   <section>
-    <title>
-      Custom Rules and Non-Recursive <filename>Makefile.am</filename>
-    </title>
+    <title>Custom Rules and Non-Recursive
+    <filename>Makefile.am</filename></title>
 
     <para>
       When using custom rules to generate files, there are a few

@@ -68,8 +68,8 @@
     </para>
   </note>
 
-  <section>
-    <title>With Just <application>autoconf</application></title>
+  <section><title>With Just
+  <application>autoconf</application></title>
 
     <para>
       When not using <application>automake</application>, and just
@@ -101,9 +101,8 @@ AUTOTOOLS_MYTHBUSTER()
     </para>
 
     <example>
-      <title>
-	Including an External Macro File without <application>automake</application>
-      </title>
+      <title>Including an External Macro File without
+      <application>automake</application></title>
 
       <programlisting><![CDATA[
 AC_INIT
@@ -132,9 +131,8 @@ AUTOTOOLS_MYTHBUSTER
     </para>
 
     <section>
-      <title>
-	What About <function>AC_CONFIG_MACRO_DIR</function>?
-      </title>
+      <title>What About
+      <function>AC_CONFIG_MACRO_DIR</function>?</title>
 
       <para>
 	Recent <application>autoconf</application> versions provide a
@@ -160,9 +158,7 @@ AUTOTOOLS_MYTHBUSTER
     </section>
 
     <section>
-      <title>
-	What About <command>-I m4</command>?
-      </title>
+      <title>What About <command>-I m4</command>?</title>
 
       <para>
 	The <application>autoconf</application> tool have a parameter
@@ -199,10 +195,8 @@ PKG_PROG_PKG_CONFIG
   </section>
 
   <section>
-    <title>
-      Using the <application>aclocal</application> tool from
-      <application>automake</application>
-    </title>
+    <title>Using the <application>aclocal</application> tool from
+    <application>automake</application></title>
 
     <para>
       While there is no strict requirement for
@@ -316,10 +310,8 @@ checking testing... ok
   </section>
 
   <section>
-    <title>
-      With <application>automake</application> and
-      <application>aclocal</application>
-    </title>
+    <title>With <application>automake</application> and
+    <application>aclocal</application></title>
 
     <para>
       When using <application>automake</application> for the build,
