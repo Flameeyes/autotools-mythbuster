@@ -5,6 +5,10 @@
 	 xml:id="pkgconfig.pkg_check_modules">
   <title>The <function>PKG_CHECK_MODULES</function> Macro</title>
 
+  <indexterm>
+    <primary>PKG_CHECK_MODULES (macro)</primary>
+  </indexterm>
+
   <para>
     The main interface between <application>autoconf</application> and
     <application>pkg-config</application> is the

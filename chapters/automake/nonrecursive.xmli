@@ -113,6 +113,11 @@ foo_SOURCES = \
       <option>subdir-objects</option>:
     </para>
 
+    <indexterm>
+      <primary>automake options</primary>
+      <secondary>subdir-objects</secondary>
+    </indexterm>
+
     <programlisting><![CDATA[
 AM_INIT_AUTOMAKE([subdir-objects])
 ]]></programlisting>

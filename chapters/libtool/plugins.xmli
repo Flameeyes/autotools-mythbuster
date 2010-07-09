@@ -38,6 +38,10 @@
     <title>Using <application>libltdl</application> for
     plug-ins</title>
 
+    <indexterm zone="libtool.plugins.ltdl">
+      <primary>libltdl</primary>
+    </indexterm>
+
     <section xml:id="libtool.plugins.ltdl.discovery">
       <title>Linking, bundling, installing
       <application>libtldl</application></title>
@@ -71,6 +75,14 @@
 	<application>libtool</application> manual and is thus rarely
 	used.
       </para>
+
+      <indexterm>
+	<primary>LT_CONFIG_LTDL_DIR (macro)</primary>
+      </indexterm>
+
+      <indexterm>
+	<primary>LTDL_INIT (macro)</primary>
+      </indexterm>
 
       <para>
 	For all the three bundling styles as provided by

@@ -16,6 +16,10 @@
     version 2.64</title>
 
     <listitem>
+      <indexterm>
+	<primary>AC_CHECK_HEADER</primary>
+      </indexterm>
+
       <para>
 	After eight years, <function>AC_CHECK_HEADER</function> takes
 	as authoritative the result from the compiler, rather than the
@@ -27,6 +31,10 @@
     </listitem>
 
     <listitem>
+      <indexterm>
+	<primary>AH_CHECK_HEADERS (macro)</primary>
+      </indexterm>
+
       <para>
 	The internal macro <function>AH_CHECK_HEADERS</function> has
 	been removed; while this is an internal change that should not

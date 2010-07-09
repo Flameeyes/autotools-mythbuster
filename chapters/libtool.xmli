@@ -6,6 +6,15 @@
   <title>Building All Kinds of Libraries —
   <application>libtool</application></title>
 
+  <indexterm zone="libtool">
+    <primary>libtool</primary>
+  </indexterm>
+
+  <indexterm>
+    <primary>GNU libtool</primary>
+    <see>libtool</see>
+  </indexterm>
+
   <para>
     While autotools are vastly considered black magic, because they
     tend to show a black box abstracting lots of details about

@@ -6,6 +6,10 @@
   <title>Dependency discovery —
   <application>pkg-config</application></title>
 
+  <indexterm zone="pkgconfig">
+    <primary>pkg-config</primary>
+  </indexterm>
+
   <para>
     Dicovering the presence of libraries through
     <application>autoconf</application> as described in <xref

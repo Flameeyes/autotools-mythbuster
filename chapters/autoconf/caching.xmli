@@ -5,6 +5,14 @@
 	 xml:id="autoconf.caching">
   <title>Caching Results</title>
 
+  <indexterm zone="autoconf.caching">
+    <primary>AC_CACHE_VAL (macro)</primary>
+  </indexterm>
+
+  <indexterm zone="autoconf.caching">
+    <primary>config.cache (file)</primary>
+  </indexterm>
+
   <para>
     For the way <application>autoconf</application> is designed, some
     tests are quite expensive, in term of required work from the

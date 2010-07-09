@@ -5,6 +5,10 @@
 	 xml:id="autoconf.macros.once">
   <title>Once-Expansion</title>
 
+  <indexterm>
+    <primary>AC_DEFUN_ONCE (macro)</primary>
+  </indexterm>
+
   <para>
     Since macro calls are expanded inline, multiple call to the same
     macro will cause more code to be emitted in the final
@@ -44,6 +48,10 @@
 
   <section xml:id="autoconf.macros.once.check">
     <title>Once-expanded checks</title>
+
+    <indexterm zone="autoconf.macros.once.check">
+      <primary>AC_CHECK_HEADERS_ONCE (macro)</primary>
+    </indexterm>
 
     <para>
       Similarly to once-expanded macros, recent

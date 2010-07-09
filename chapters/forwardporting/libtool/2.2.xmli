@@ -39,6 +39,12 @@
       problems, and further grief.
     </para>
 
+    <indexterm>
+      <primary>common errors</primary>
+      <secondary><function>am__fastdepCXX</function> does not appear in
+      <function>AM_CONDITIONAL</function></secondary>
+    </indexterm>
+
     <para>
       The problem appears evident when building packages written in
       C++ (but Fortran is mostly the same) that don't check for the

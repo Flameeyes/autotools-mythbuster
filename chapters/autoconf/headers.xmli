@@ -5,6 +5,14 @@
 	 xml:id="autoconf.headers">
   <title>Checking For Headers</title>
 
+  <indexterm zone="autoconf.headers">
+    <primary>AC_CHECK_HEADER (macro)</primary>
+  </indexterm>
+
+  <indexterm zone="autoconf.headers">
+    <primary>AC_CHECK_HEADERS (macro)</primary>
+  </indexterm>
+
   <para>
     The header files describe the public interface of a C (or C++)
     library. To use a library you need its public headers, so to make
@@ -96,6 +104,11 @@ AS_IF([test "x$mypj_found_int_headers" != "xyes"],
 
   <section xml:id="autoconf.headers.present-not-compiled">
     <title>Headers Present But Cannot Be Compiled</title>
+
+    <indexterm>
+      <primary>common errors</primary>
+      <secondary>present but cannot be compiled</secondary>
+    </indexterm>
 
     <para>
       Since August 2001, <application>autoconf</application> has been

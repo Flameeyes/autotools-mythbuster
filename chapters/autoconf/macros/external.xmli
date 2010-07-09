@@ -100,6 +100,10 @@ AUTOTOOLS_MYTHBUSTER()
       the macro file in the <filename>configure.ac</filename> file.
     </para>
 
+    <indexterm>
+      <primary>m4_include (macro)</primary>
+    </indexterm>
+
     <example>
       <title>Including an External Macro File without
       <application>automake</application></title>
@@ -133,6 +137,10 @@ AUTOTOOLS_MYTHBUSTER
     <section>
       <title>What About
       <function>AC_CONFIG_MACRO_DIR</function>?</title>
+
+      <indexterm>
+	<primary>AC_CONFIG_MACRO_DIR (macro)</primary>
+      </indexterm>
 
       <para>
 	Recent <application>autoconf</application> versions provide a
@@ -197,6 +205,10 @@ PKG_PROG_PKG_CONFIG
   <section>
     <title>Using the <application>aclocal</application> tool from
     <application>automake</application></title>
+
+    <indexterm>
+      <primary>aclocal</primary>
+    </indexterm>
 
     <para>
       While there is no strict requirement for
@@ -312,6 +324,14 @@ checking testing... ok
   <section>
     <title>With <application>automake</application> and
     <application>aclocal</application></title>
+
+    <indexterm>
+      <primary>aclocal</primary>
+    </indexterm>
+
+    <indexterm>
+      <primary>ACLOCAL_AMFLAGS (Makefile variable)</primary>
+    </indexterm>
 
     <para>
       When using <application>automake</application> for the build,

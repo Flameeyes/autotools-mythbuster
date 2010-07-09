@@ -5,6 +5,14 @@
 	 xml:id="automake.options">
   <title>Available options</title>
 
+  <indexterm zone="automake.options">
+    <primary>automake options</primary>
+  </indexterm>
+
+  <indexterm>
+    <primary>AM_INIT_AUTOMAKE (macro)</primary>
+  </indexterm>
+
   <para>
     There are a series of options that can be given to
     <application>automake</application>, to change its default

@@ -5,6 +5,18 @@
 	 xml:id="autoconf.m4sh">
   <title>M4sh</title>
 
+  <indexterm>
+    <primary>M4sh</primary>
+  </indexterm>
+
+  <indexterm>
+    <primary>AS_IF (macro)</primary>
+  </indexterm>
+
+  <indexterm>
+    <primary>AS_CASE (macro)</primary>
+  </indexterm>
+
   <para>
     While the result of the <application>autoconf</application> stage
     is a complete script compatible with POSIX <command>sh</command>,

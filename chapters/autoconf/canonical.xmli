@@ -5,6 +5,18 @@
 	 xml:id="autoconf.canonical">
   <title>Canonical Systems</title>
 
+  <indexterm zone="autoconf.canonical">
+    <primary>AC_CANONICAL_HOST (macro)</primary>
+  </indexterm>
+
+  <indexterm zone="autoconf.canonical">
+    <primary>AC_CANONICAL_BUILD (macro)</primary>
+  </indexterm>
+
+  <indexterm zone="autoconf.canonical">
+    <primary>AC_CANONICAL_TARGET (macro)</primary>
+  </indexterm>
+
   <para>
     When using <application>autoconf</application>, there are three
     <emphasis>system definitions</emphasis> (or <emphasis>machine
@@ -19,6 +31,15 @@
       <term>host (<varname>CHOST</varname>)</term>
 
       <listitem>
+	<indexterm>
+	  <primary>CHOST (variable)</primary>
+	</indexterm>
+
+	<indexterm>
+	  <primary>$host (variable)</primary>
+	  <see>CHOST (variable)</see>
+	</indexterm>
+
 	<para>
 	  The system that is going to run the software once it is 
 	  built, which is the main actor. Once the software has been
@@ -31,6 +52,15 @@
       <term>build (<varname>CBUILD</varname>)</term>
 
       <listitem>
+	<indexterm>
+	  <primary>CBUILD (variable)</primary>
+	</indexterm>
+
+	<indexterm>
+	  <primary>$build (variable)</primary>
+	  <see>CBUILD (variable)</see>
+	</indexterm>
+
 	<para>
 	  The system where the build process is being executed. For
 	  most uses this would be the same as the host system, but in
@@ -43,6 +73,15 @@
       <term>target (<varname>CTARGET</varname>)</term>
 
       <listitem>
+	<indexterm>
+	  <primary>CTARGET (variable)</primary>
+	</indexterm>
+
+	<indexterm>
+	  <primary>$target (variable)</primary>
+	  <see>CTARGET (variable)</see>
+	</indexterm>
+
 	<para>
 	  The system against on which the software being built will
 	  run. This actor only exists, or rather has a meaning, when

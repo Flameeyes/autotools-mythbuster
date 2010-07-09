@@ -85,8 +85,16 @@
     minority of the projects based on this build system.
   </para>
 
-  <section>
+  <section xml:id="autoconf.adding-options.ac-arg-enable-with">
     <title>AC_ARG_ENABLE and AC_ARG_WITH</title>
+
+    <indexterm zone="autoconf.adding-options.ac-arg-enable-with">
+      <primary>AC_ARG_ENABLE (macro)</primary>
+    </indexterm>
+
+    <indexterm zone="autoconf.adding-options.ac-arg-enable-with">
+      <primary>AC_ARG_WITH (macro)</primary>
+    </indexterm>
 
     <para>
       For declaring the arguments with <command>--enable</command> and
@@ -378,6 +386,10 @@ AS_IF([test "x$have_foo" = "xyes"],
 
   <section xml:id="autoconf.adding-options.ac_arg_var">
     <title>Environment Variables as Arguments</title>
+
+    <indexterm zone="autoconf.adding-options.ac_arg_var">
+      <primary>AC_ARG_VAR (macro)</primary>
+    </indexterm>
 
     <para>
       The <function>AC_ARG_VAR</function> macro is used to declare a

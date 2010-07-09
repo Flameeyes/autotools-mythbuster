@@ -6,6 +6,15 @@
   <title>Configuring The Build —
   <application>autoconf</application></title>
 
+  <indexterm zone="autoconf">
+    <primary>autoconf</primary>
+  </indexterm>
+
+  <indexterm>
+    <primary>GNU autoconf</primary>
+    <see>autoconf</see>
+  </indexterm>
+
   <para>
     Configuring the build consists of running a series of tests to
     identify the build environment and the presence of the required

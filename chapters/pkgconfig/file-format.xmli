@@ -129,6 +129,14 @@
   <section>
     <title>Search paths</title>
 
+    <indexterm>
+      <primary>PKG_CONFIG_PATH (variable)</primary>
+    </indexterm>
+
+    <indexterm>
+      <primary>PKG_CONFIG_LIBDIR (variable)</primary>
+    </indexterm>
+
     <para>
       By default, <application>pkg-config</application> will search
       for modules installing data files in two directories: one for
