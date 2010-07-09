@@ -38,7 +38,7 @@
     </para>
   </warning>
 
-  <section id="autoconf.caching.whynot">
+  <section xml:id="autoconf.caching.whynot">
     <title>Why Caching is Not What You're Looking For</title>
 
     <para>
