@@ -14,15 +14,17 @@
 <xsl:template name="user.footer.navigation">
   <div id="custom-footer">
     <div id="widgets">
-      <a rel="license"
-	 href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
-	<img id="cc-by-nc-sa"
-	     alt="Creative Commons License"
-	     src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"
-	     />
-      </a>
+      <div>
+	<a rel="cc:license"
+	   href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+	  <img id="cc-by-nc-sa"
+	       alt="Creative Commons License"
+	       src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"
+	       />
+	</a>
+      </div>
 
-      <div id="flattr">
+      <div>
 	<script type="text/javascript">
 	  var flattr_url = 'http://www.flameeyes.eu/autotools-mythbuster/';
 	  var flattr_btn='compact';
