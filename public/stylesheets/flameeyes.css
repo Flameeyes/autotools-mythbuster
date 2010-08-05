@@ -9,6 +9,10 @@ div#widgets {
     text-align: center;
 }
 
+@media print {
+  div#widgets { display: none; }
+}
+
 div#widgets > div {
     margin-top: 1em;
     margin-left: 1em;
