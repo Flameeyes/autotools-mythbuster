@@ -111,6 +111,42 @@
   <section id="automake.options.flavors">
     <title>Automake flavours</title>
 
+    <indexterm zone="automake.options.flavors">
+      <primary>gnu (automake flavour)</primary>
+    </indexterm>
+
+    <indexterm zone="automake.options.flavors">
+      <primary>foreign (automakeflavour)</primary>
+    </indexterm>
+
+    <indexterm zone="automake.options.flavors">
+      <primary>gnits (automake flavour)</primary>
+    </indexterm>
+
+    <indexterm zone="automake.options.flavors">
+      <primary>cygnus (automake flavour)</primary>
+    </indexterm>
+
+    <indexterm zone="automake.options.flavors">
+      <primary>automake options</primary>
+      <secondary>gnu</secondary>
+    </indexterm>
+
+    <indexterm zone="automake.options.flavors">
+      <primary>automake options</primary>
+      <secondary>foreign</secondary>
+    </indexterm>
+
+    <indexterm zone="automake.options.flavors">
+      <primary>automake options</primary>
+      <secondary>gnits</secondary>
+    </indexterm>
+
+    <indexterm zone="automake.options.flavors">
+      <primary>automake options</primary>
+      <secondary>cygnus</secondary>
+    </indexterm>
+
     <para>
       Among different projects, <application>automake</application> is
       used with different options and settings. Some of the most
