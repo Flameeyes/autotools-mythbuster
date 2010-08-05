@@ -26,9 +26,7 @@ pre {
 }*/
 
 div.note {
-	background: url("./stock_notes.png") center left;
-	background-repeat: no-repeat;
-	padding: 0em 1em 1em 4em;
+	padding: 0em 1em 1em 1em;
 	border: 1px solid silver;
 	background-color: #FFFFC5;
 	-moz-border-radius: 0.5em;
