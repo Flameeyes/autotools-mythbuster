@@ -5,6 +5,10 @@
 	 xml:id="autoconf.system-libraries">
   <title>Searching For System Libraries</title>
 
+  <indexterm zone="autoconf.system-libraries">
+    <primary>AC_SEARCH_LIBS (macro)</primary>
+  </indexterm>
+
   <para>
     When using <application>autoconf</application> for portability,
     it's necessary to consider that some functions, even standard
