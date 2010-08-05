@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="autoconf.system-libraries">
+  <title>Searching For System Libraries</title>
+
+  <para>
+    When using <application>autoconf</application> for portability,
+    it's necessary to consider that some functions, even standard
+    system ones, are often in different libraries on different
+    operating systems. For instance, the <function>dlopen()</function>
+    function is in <filename>libdl</filename> on GNU/Linux, and in the
+    standard C library on FreeBSD and other BSD-derived systems.
+  </para>
+
+  <para>
+    This is one of the most common things to test, but the
+    commonly-documented solution to this, which involves the use of
+    the <function>AC_CHECK_LIBS</function> macro, leads to either
+    wrong solutions, or over-engineered ones. This macro is used to
+    check for the presence of a known (usually, third-party) library —
+    as documented in <xref linkend="autoconf.library-presence" /> —
+    but it does not work that well when you have a list of
+    alternatives to check.
+  </para>
+
+  <para>
+    The correct macro to use for this task is
+    <function>AC_SEARCH_LIBS</function>, which is designed keeping
+    into consideration at least two important points:
+  </para>
+
+  <itemizedlist>
+    <listitem><para>
+      there might be no need for further libraries to be added for the
+      function to be available; this may either be because the
+      function is in the C library, or because the library that it's
+      found in is already present in the <varname>LIBS</varname>
+      variable's list; this does not mean the function is present in a
+      library called <filename>libc</filename>;
+    </para></listitem>
+
+    <listitem><para>
+      only one library carrying the function is needed, so testing
+      should stop at the first hit – testing further libraries might
+      very well lead to false positives and will certainly slow down
+      the configuration step.
+    </para></listitem>
+  </itemizedlist>
+
+  <para>
+    Other than these configuration, the interface of the macro is
+    nothing special for <application>autoconf</application>:
+  </para>
+
+  <programlisting><![CDATA[
+AC_ARG_ENABLE(function, libraries-list, action-if-found, action-if-not-found, extra-libraries)
+]]></programlisting>
+
+  <variablelist>
+    <varlistentry>
+      <term><parameter>function</parameter></term>
+
+      <listitem><para>
+	The name of the symbol to look for in the libraries.
+      </para></listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>libraries-list</parameter></term>
+
+      <listitem><para>
+	A whitespace-separated list of libraries, in library-name
+	format, <!-- document what library-name format is! --> that
+	have to be searched for the function listed before. This list
+	does not require the C library to be specified, as the first
+	test will be done with just the libraries present in the
+	<varname>LIBS</varname> variable.
+      </para></listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>action-if-found</parameter></term>
+      <term><parameter>action-if-not-found</parameter></term>
+
+      <listitem><para>
+	As usual, the macro supports expanding code for success and
+	failure. In this instance, each will be called at most once,
+	and the default <parameter>action-if-found</parameter> code,
+	adding the library to the <varname>LIBS</varname> variables,
+	is <emphasis>always</emphasis> executed, even if a parameter
+	is passed.
+      </para></listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>extra-libraries</parameter></term>
+
+      <listitem>
+	<para>
+	  Technically, on some, if not most, operating system, it is
+	  possible for libraries to have undefined symbols that require
+	  other libraries to be linked in to satisfy. This is the case
+	  for most static libraries, but it can also happen for some
+	  shared libraries.
+	</para>
+
+	<para>
+	  To make it possible to search in those libraries, the macro
+	  provides this parameters. There is an implicit value for
+	  this parameter: the <varname>LIBS</varname> variable, which
+	  is always passed at link-time after the value of this
+	  parameter. This list is <emphasis>not</emphasis> added to
+	  the variable even on success.
+	</para>
+
+	<para>
+	  It is important to note that if you were to find the symbol
+	  in one of these libraries, you'd be hitting the same case as
+	  if the symbol is already available in the libraries listed
+	  in <varname>LIBS</varname>.
+	</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+  <para>
+    Using this macro it's possible to ignore in the
+    <filename>Makefile</filename> the different libraries that are
+    used to provide the functions on different operating systems. The
+    <varname>LIBS</varname> variable is set up to list all the
+    libraries, hiding the need for anything beside the standard
+    library.
+  </para>
+
+  <example>
+    <title>Looking for two common system libraries with
+    <function>AC_SEARCH_LIBS</function></title>
+
+    <programlisting><![CDATA[
+dnl The dlopen() function is in the C library for *BSD and in
+dnl libdl on GLIBC-based systems
+AC_SEARCH_LIBS([dlopen], [dl dld], [], [
+  AC_MSG_ERROR([unable to find the dlopen() function])
+])
+
+dnl Haiku does not use libm for the math functions, they are part
+dnl of the C library
+AC_SEACH_LIBS([cos], [m], [], [
+  AC_MSG_ERROR([unable to find the cos() function])
+])
+
+]]></programlisting>
+  </example>
+
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->
