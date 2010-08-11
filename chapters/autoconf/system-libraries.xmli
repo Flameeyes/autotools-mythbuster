@@ -59,7 +59,7 @@
   </para>
 
   <programlisting><![CDATA[
-AC_ARG_ENABLE(function, libraries-list, action-if-found, action-if-not-found, extra-libraries)
+AC_SEARCH_LIBS(function, libraries-list, action-if-found, action-if-not-found, extra-libraries)
 ]]></programlisting>
 
   <variablelist>
