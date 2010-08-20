@@ -55,6 +55,24 @@
       </title>
     </biblioentry>
 
+    <biblioentry xml:id="bib.book.calcote">
+      <abbrev>CalcoteAutotools</abbrev>
+      <title>Autotools</title>
+
+      <subtitle>A Practical Guide To GNU Autoconf, Automake, And
+      Libtool</subtitle>
+
+      <author>
+        <personname>
+          <firstname>John</firstname>
+          <surname>Calcote</surname>
+        </personname>
+      </author>
+
+      <publishername>No Starch Press</publishername>
+      <pubdate>July 2010</pubdate>
+    </biblioentry>
+
     <biblioentry xml:id="bib.autotools.pratcises">
       <abbrev>AutotoolsBestPractices</abbrev>
       <title>
