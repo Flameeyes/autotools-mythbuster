@@ -26,7 +26,7 @@
     <para>
       Confusingly enough, the macro to define new macros is called
       <function>AC_DEFUN</function> which often confuses the
-      developers in thinking about them in terms of functions. This
+      developers into thinking about them in terms of functions. This
       can lead to many problems, which is why I suggest to always
       explicitly think and talk about them in terms of
       <emphasis>macros</emphasis>.

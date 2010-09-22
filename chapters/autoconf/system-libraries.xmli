@@ -111,9 +111,9 @@ AC_ARG_ENABLE(function, libraries-list, action-if-found, action-if-not-found, ex
 	</para>
 
 	<para>
-	  To make it possible to search in those libraries, the macro
-	  provides this parameters. There is an implicit value for
-	  this parameter: the <varname>LIBS</varname> variable, which
+	  To make it possible to search in the libraries, the macro
+	  provides this parameter. There is an implicit value for
+	  the parameter: the <varname>LIBS</varname> variable, which
 	  is always passed at link-time after the value of this
 	  parameter. This list is <emphasis>not</emphasis> added to
 	  the variable even on success.
@@ -134,7 +134,7 @@ AC_ARG_ENABLE(function, libraries-list, action-if-found, action-if-not-found, ex
     <filename>Makefile</filename> the different libraries that are
     used to provide the functions on different operating systems. The
     <varname>LIBS</varname> variable is set up to list all the
-    libraries, hiding the need for anything beside the standard
+    libraries, hiding the need for anything besides the standard
     library.
   </para>
 
