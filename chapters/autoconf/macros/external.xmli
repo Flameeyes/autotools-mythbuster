@@ -126,7 +126,7 @@ AUTOTOOLS_MYTHBUSTER
 
     <para>
       The only file that is read by
-      <application>autoconf</application> beside the
+      <application>autoconf</application> other than the
       <filename>configure.ac</filename> file is the
       <filename>aclocal.m4</filename> file. This file is often managed
       with the <application>aclocal</application> utility that ships
@@ -151,14 +151,14 @@ AUTOTOOLS_MYTHBUSTER
 
       <para>
 	This directory is not, by default, scanned for either macros
-	nor files, when using straight
+	or files, when using straight
 	<application>autoconf</application>. As of version 2.64, the
 	use of this macro is considered for future use by
 	<command>autoreconf</command> (see the following sections).
       </para>
 
       <para>
-	What it really is useful for, nowadays, is to tell the
+	What it really is useful for presently, is to tell the
 	<command>libtoolize</command> tool where to put <link
 	linkend="libtool">libtool</link>'s macro files when copying it
 	in the package's sources.
@@ -171,7 +171,7 @@ AUTOTOOLS_MYTHBUSTER
       <para>
 	The <application>autoconf</application> tool has a parameter
 	<command>-I</command> that allows adding a directory to the
-	search path for the conversion. This command is not also used
+	search path for the conversion. This command is also not used
 	to discover macro files.
       </para>
 
