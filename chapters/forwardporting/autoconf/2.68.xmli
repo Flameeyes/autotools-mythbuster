@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title><application>autoconf</application> 2.68</title>
+
+  <para>
+    There aren't many specific chagne sin
+    <application>autoconf</application> 2.68; but it provides a new
+    milestone in the package's history as it solves the (many)
+    regressions that were introduced in the past two versions. For
+    this reason, for the scope of this document, I'll be documenting
+    the changes in 2.66, 2.67 and 2.68 as a single section.
+  </para>
+
+  <warning>
+    <para>
+      You are encouraged to avoid as much as possible version 2.66 and
+      2.67 of <application>autoconf</application>. While they do
+      include a few regression fixes against 2.65, they also introduce
+      a much longer series of mistakes and regressions that were fixed
+      only in 2.68.
+    </para>
+  </warning>
+
+  <itemizedlist>
+    <title>Noteworthy changes in <application>autoconf</application>
+    version 2.66 through 2.68</title>
+
+    <listitem>
+      <indexterm>
+	<primary>AC_FUNC_ERROR_AT_LINE</primary>
+      </indexterm>
+      <indexterm>
+	<primary>AC_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK</primary>
+      </indexterm>
+      <indexterm>
+	<primary>AC_FUNC_MKTIME</primary>
+      </indexterm>
+      <indexterm>
+	<primary>AC_FUNC_STRTOD</primary>
+      </indexterm>
+
+      <para>
+	Macros designed to check for functionality (more than
+	presence) of common library functions are being deprecated in
+	favour of using the gnulib project framework. Eventually,
+	alternative, slimmer macros might be looked up at the Autoconf
+	archive. These macros are involved:
+	<function>AC_FUNC_ERROR_AT_LINE</function>;
+	<function>AC_FUNC_LSTAT_FOLLOWS_SLASHED</function>;
+	<function>AC_FUNC_MKTIME</function>,
+	<function>AC_FUNC_STRTOD</function>.
+      </para>
+    </listitem>
+
+    <listitem>
+      <indexterm>
+	<primary>AC_PREPROC_IFELSE</primary>
+      </indexterm>
+      <indexterm>
+	<primary>AC_COMPILE_IFELSE</primary>
+      </indexterm>
+      <indexterm>
+	<primary>AC_LINK_IFELSE</primary>
+      </indexterm>
+      <indexterm>
+	<primary>AC_RUN_IFELSE</primary>
+      </indexterm>
+      <indexterm>
+	<primary>AC_LANG_SOURCE</primary>
+      </indexterm>
+      <indexterm>
+	<primary>AC_LANG_PROGRAM</primary>
+      </indexterm>
+      <indexterm>
+	<primary>AC_LANG_DEFINES_PROVIDED</primary>
+      </indexterm>
+
+      <para>
+	The If-Else family of macros (see <xref
+	linkend="autoconf.lib-discovery.specific-checks" />) has
+	gained a new safety switch to ensure that the source code
+	being compiled is setting the expected defines that were
+	discovered up to that point. If you call any of those macros
+	with a literal text with the source code to work on, you'll be
+	presented with a warning similar to the following:
+      </para>
+
+      <programlisting>
+	<computeroutput>
+configure.ac:XX: warning: AC_LANG_CONFTEST: no AC_LANG_SOURCE call detected in body
+../../lib/autoconf/lang.m4:194: AC_LANG_CONFTEST is expanded from...
+../../lib/autoconf/general.m4:2591: _AC_COMPILE_IFELSE is expanded from...
+../../lib/autoconf/general.m4:2607: AC_COMPILE_IFELSE is expanded from...
+configure.ac:XX: the top level
+	</computeroutput>
+      </programlisting>
+
+      <para>
+	This means that calling macros such as
+	<function>AC_PREPROC_IFELSE</function> or
+	<function>AC_LINK_IFELSE</function> now requires the use of
+	<function>AC_LANG_SOURCE</function> or
+	<function>AC_LANG_PROGRAM</function> to generate the source
+	code to compile. As an alternative, the
+	<function>AC_LANG_DEFINES_PROVIDED</function> macro can be
+	used within the first parameter to stop
+	<application>autoconf</application> from warning you about it.
+      </para>
+
+      <para>
+	It is important to note that you need to ensure that the call
+	to <function>AC_LANG_SOURCE</function> is quoted and not
+	expanded, otherwise that will cause the warning to appear
+	nonetheless. See the following code:
+      </para>
+
+      <programlisting>
+dnl Old-style code (will issue a warning)
+AC_LINK_IFELSE([int main() { return 0; }],
+  [some=thing], [some=other])
+
+dnl Wrongly updated code (will still issue a warning)
+AC_LINK_IFELSE(AC_LANG_SOURCE([int main() { return 0; }]),
+  [some=thing], [some=other])
+
+dnl Correctly updated code
+AC_LINK_IFELSE([AC_LANG_SOURCE([int main() { return 0; }])],
+  [some=thing], [some=other])
+      </programlisting>
+    </listitem>
+
+  </itemizedlist>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->
