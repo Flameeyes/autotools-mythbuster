@@ -5,12 +5,13 @@
   <title><application>autoconf</application> 2.68</title>
 
   <para>
-    There aren't many specific chagne sin
-    <application>autoconf</application> 2.68; but it provides a new
-    milestone in the package's history as it solves the (many)
-    regressions that were introduced in the past two versions. For
-    this reason, for the scope of this document, I'll be documenting
-    the changes in 2.66, 2.67 and 2.68 as a single section.
+    There aren't many specific changes in
+    <application>autoconf</application> 2.68; but this version
+    provides a new milestone in the package's history as it solves the
+    (many) regressions that were introduced in the past two
+    versions. For this reason, for the scope of this document, I'll be
+    documenting the changes in 2.66, 2.67 and 2.68 as a single
+    section.
   </para>
 
   <warning>
