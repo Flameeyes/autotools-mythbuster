@@ -76,6 +76,7 @@
     <xref linkend="libtool.alternatives" />.
   </para>
 
+  <xi:include parse="xml" href="libtool/wrappers.xmli" />
   <xi:include parse="xml" href="libtool/plugins.xmli" />
 </chapter>
 <!--

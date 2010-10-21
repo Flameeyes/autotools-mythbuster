@@ -25,6 +25,8 @@
       </tocentry>
     </tocentry>
     <tocentry linkend="libtool"><?dbhtml filename="libtool/index.html"?>
+      <tocentry linkend="libtool.wrappers"><?dbhtml filename="libtool/wrappers.html"?></tocentry>
+      <tocentry linkend="libtool.plugins"><?dbhtml filename="libtool/plugins.html"?></tocentry>
     </tocentry>
     <tocentry linkend="pkgconfig"><?dbhtml filename="pkgconfig/index.html"?>
       <tocentry linkend="pkgconfig.file-format"><?dbhtml filename="pkgconfig/file-format.html"?>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="libtool.wrappers">
+  <title><application>libtool</application> wrappers</title>
+
+  <para>
+    When building programs with the help of <application>libtool</application>, instead of final ELF
+    executable files, in the build director you're going to find shell scripts. These shell scripts
+    are designed to workaround some limitations present when working with shared objects in
+    different operating systems.
+  </para>
+
+  <para>
+    The most important problem is that, if one of the executable files is referencing a library that
+    was just built, and is not installed in the system already, you have to tell the dynamic loader
+    where the library has to be found — this is even more important when you are building a new
+    version of a library that is already installed on the system. To do so you have either to use
+    the <emphasis>rpath</emphasis> feature, or you have to set some special environment variables.
+  </para>
+
+  <para>
+    While the <emphasis>rpath</emphasis> feature has the least overhead during the build phase, it
+    has a few drawbacks including, but not limited to, the fact that can usually only be set by the
+    link editor at build time, it shouldn't be present on the final file that is installed on the
+    system; and finally it is not supported by many operating systems.
+  </para>
+
+  <para>
+    On the other hand the environment variables trick is much more portable because all the
+    operating systems have one way or another to provide the library search path to the runtime
+    loader; on most Unix-based operating systems, the environment variable is
+    <envar>LD_LIBRARY_PATH</envar>, but variations are commonplace.
+  </para>
+
+  <para>
+    When using the wrapper script, your output file becomes, as said above, a POSIX
+    <command>sh</command> script, while the actual linked executable file is generated within the
+    <filename>.libs</filename> directory. For instance if your target is called
+    <filename>foo</filename>, the actual executable will be <filename>.libs/lt-foo</filename>.
+  </para>
+
+  <indexterm>
+    <primary><option>-no-install</option> (<command>libtool</command> option)</primary>
+  </indexterm>
+
+  <para>
+    Obviously, the wrapper/launcher script adds some overhead over the startup of the files
+    themselves; since sometimes you're building test programs that are executed many times on the
+    same build process, <application>libtool</application> provides you with a system to disable
+    the wrapper scripts and instead optimise the output to be executed in place. This is done by
+    providing the <option>-no-install</option> flag to the <varname>LDFLAGS</varname> list.
+  </para>
+
+  <example>
+    <title>building a test program optimised for in-place execution</title>
+
+    <programlisting><![CDATA[
+check_PROGRAMS = test1
+test1_SOURCES = test1.c
+test1_LDADD = libmylib.la
+test1_LDFLAGS = -no-install
+]]></programlisting>
+  </example>
+
+  <para>
+    When using <option>-no-install</option>, <command>libtool</command> tells the linker to set the
+    <emphasis>rpath</emphasis> for the output file to the full path of the
+    <filename>.libs</filename> directory. This, as said, makes starting up the executable much faster.
+  </para>
+
+  <para>
+    But the <option>-no-install</option> option also is very useful when building a work-copy of a
+    project to be tested, when passed directly to the <envar>LDFLAGS</envar> environment variable on
+    the <command>./configure</command> call.
+  </para>
+
+  <para>
+    Using the wrapper also makes debugging more difficult, and the environment variables are ignored
+    by some security protocols (for instance executable files with the <emphasis>setuid</emphasis>
+    bit set will ignore <envar>LD_LIBRARY_PATH</envar> in most operating systems); the
+    <emphasis>rpath</emphasis> feature, when available, instead works properly with most (if not
+    all) tools, and has no side effect on most security protocols.
+  </para>
+
+  <example>
+    <title>calling <command>./configure</command> for a local test-build</title>
+
+    <programlisting>$ ./configure LDFLAGS="-no-install"</programlisting>
+  </example>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   fill-column: 100
+   End:
+-->
+
