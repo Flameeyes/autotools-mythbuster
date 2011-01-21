@@ -269,7 +269,7 @@ AC_CHECK_HEADER([ltdl.h],
 	  <note>
 	    <para>
 	      This option will make the package incompatible with the
-	      <parameter>--disable-static</parameter> option during
+	      <parameter>--disable-shared</parameter> option during
 	      <command>./configure</command> call, as well as stopping
 	      the build when shared objects are not supported at all.
 	    </para>
