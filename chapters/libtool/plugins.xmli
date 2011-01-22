@@ -276,6 +276,22 @@ AC_CHECK_HEADER([ltdl.h],
 	  </note>
 	</listitem>
       </varlistentry>
+
+      <varlistentry>
+	<term><parameter>-export-dynamic</parameter></term>
+
+	<listitem>
+	  <para>
+	    The current object's exposed symbols have to be accessible
+	    through <function>dlsym()</function> or equivalent
+	    interfaces.
+	  </para>
+
+	  <para>
+	    See <xref linkend="libtool.symbols.export_dynamic" />.
+	  </para>
+	</listitem>
+      </varlistentry>
     </variablelist>
 
     <example>
@@ -286,7 +302,7 @@ AC_CHECK_HEADER([ltdl.h],
 pkglibdir_LTLIBRARIES = foo_example_plugin.la
 
 foo_example_plugin_la_SOURCES = example.c
-foo_example_plugin_la_LDFLAGS = -avoid-version -module -shared
+foo_example_plugin_la_LDFLAGS = -avoid-version -module -shared -export-dynamic
 ]]></programlisting>
     </example>
   </section>
