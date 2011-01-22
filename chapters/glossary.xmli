@@ -62,6 +62,26 @@
   </glossentry>
 
   <glossentry>
+    <glossterm>ELF</glossterm>
+    <glosssee otherterm="glossary.elf" />
+  </glossentry>
+
+  <glossentry xml:id="glossary.elf">
+    <glossterm>Executable and Linkable Format</glossterm>
+
+    <glossdef>
+      <para>
+	The file format used in Linux, Solaris, FreeBSD and other operating systems to represent
+	executable files (programs), shared objects as well as intermediate object files. The format
+	is designed to be extensible, so that not all modern features are supported on each
+	operating system.
+      </para>
+
+      <glossseealso otherterm="glossary.pe" />
+    </glossdef>
+  </glossentry>
+
+  <glossentry>
     <glossterm>ld</glossterm>
     <glosssee otherterm="glossary.linkeditor" />
   </glossentry>
@@ -90,6 +110,28 @@
   <glossentry>
     <glossterm>Linker</glossterm>
     <glosssee otherterm="glossary.linkeditor" />
+  </glossentry>
+
+  <glossentry>
+    <glossterm>PE</glossterm>
+    <glosssee otherterm="glossary.pe" />
+  </glossentry>
+
+  <glossentry xml:id="glossary.pe">
+    <glossterm>Portable Executable</glossterm>
+    <glossdef>
+      <para>
+	The file format used by Microsoft Windows to represent executable files (programs) as well
+	as shared objects. While for a long time it was almost impossible to find PE files for
+	architectures different from i386, the format was originally designed to be usable on a wide
+	range of CPU architectures, at Windows NT originally supported MIPS, PowerPC and Alpha as
+	well as i386; nowadays non-i386 PE files are commonly used on Windows CE embedded systems as
+	well as alternative Windows-based platforms.
+      </para>
+
+      <glossseealso otherterm="glossary.elf" />
+    </glossdef>
+
   </glossentry>
 
   <glossentry xml:id="glossary.runtimeloader">
