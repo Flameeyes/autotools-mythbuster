@@ -10,12 +10,12 @@
   </indexterm>
 
   <para>
-    Since macro calls are expanded inline, multiple call to the same
+    Since macro calls are expanded inline, multiple calls to the same
     macro will cause more code to be emitted in the final
     <filename>configure</filename> script. In turn, this will
     require a longer time to execute the configure phase, both
     because more code is to be executed, and because
-    <application>bash</application> gets easily slow with long
+    <application>bash</application> gets easily slowed by long
     scripts.
   </para>
 

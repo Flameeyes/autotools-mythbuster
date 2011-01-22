@@ -126,7 +126,7 @@ AUTOTOOLS_MYTHBUSTER
 
     <para>
       The only file that is read by
-      <application>autoconf</application> beside the
+      <application>autoconf</application> other than the
       <filename>configure.ac</filename> file is the
       <filename>aclocal.m4</filename> file. This file is often managed
       with the <application>aclocal</application> utility that ships
@@ -151,14 +151,14 @@ AUTOTOOLS_MYTHBUSTER
 
       <para>
 	This directory is not, by default, scanned for either macros
-	nor files, when using straight
+	or files, when using straight
 	<application>autoconf</application>. As of version 2.64, the
 	use of this macro is considered for future use by
 	<command>autoreconf</command> (see the following sections).
       </para>
 
       <para>
-	What it really is useful for, nowadays, is to tell the
+	What it really is useful for presently, is to tell the
 	<command>libtoolize</command> tool where to put <link
 	linkend="libtool">libtool</link>'s macro files when copying it
 	in the package's sources.
@@ -169,15 +169,15 @@ AUTOTOOLS_MYTHBUSTER
       <title>What About <command>-I m4</command>?</title>
 
       <para>
-	The <application>autoconf</application> tool have a parameter
-	<command>-I</command> that allows to add a directory to the
+	The <application>autoconf</application> tool has a parameter
+	<command>-I</command> that allows adding a directory to the
 	search path for the conversion. This command is also not used
 	to discover macro files.
       </para>
 
       <para>
-	What is useful for is to avoid using the full path name of a
-	macro file, letting it to be picked up either from the system
+	What it is useful for is to avoid using the full path name of a
+	macro file, letting it be picked up either from the system
 	or from the local directory (giving priority to the system
 	copy).
       </para>
@@ -214,8 +214,8 @@ PKG_PROG_PKG_CONFIG
       While there is no strict requirement for
       <application>automake</application> when using
       <application>autoconf</application>, it's often said that the
-      two of them need to always go in pair in the installed system at
-      least; the reason for this is that there are many projects that
+      two of them need to always go in pair, in the installed system at
+      least. The reason for this is that there are many projects that
       make use of the <application>aclocal</application> tool to
       overcome the limitations shown above.
     </para>
@@ -250,7 +250,7 @@ checking pkg-config is at least version 0.9.0... yes
       In contrast to what <application>autoconf</application> does,
       <application>aclocal</application> takes its macro files from
       the <filename>/usr/share/aclocal</filename> path, where most
-      software install them, and copy the macro file where they are
+      software installs them, and copies the macro files where they are
       defined directly inside <filename>aclocal.m4</filename>,
       appending them to one another. As we've seen,
       <application>autoconf</application> reads that file when looking
@@ -306,7 +306,7 @@ checking testing... ok
 
       <para>
 	This file is often used to put together multiple macros from
-	different macro files, without having to use a
+	different macro files, without having to use an
 	<filename>m4/</filename> directory or equivalent. This usage
 	is discouraged by this guide, because it often leads to overly
 	long files, with no logic distinction between macros.

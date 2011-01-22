@@ -15,7 +15,7 @@
 
   <para>
     For the way <application>autoconf</application> is designed, some
-    tests are quite expensive, in term of required work from the
+    tests are quite expensive, in terms of the required work from the
     system running the <filename>configure</filename> script. For this
     reason, in the design of <application>autoconf</application> there
     is place for a caching system.
@@ -24,7 +24,7 @@
   <para>
     This system provides caching both for the current run (so that the
     same check in multiple code paths will not require execution of
-    the same test twice) and on-disk caching for multiple run. At the
+    the same test twice) and on-disk caching for multiple runs. At the
     same time it's also often used to provide fake values to sidestep
     tests that might lead to wrong results.
   </para>
@@ -40,7 +40,7 @@
 
     <para>
       If you're writing a <filename>configure.ac</filename> file,
-      though, read on, and follow the advices for properly caching the
+      though, read on, and follow this advice for properly caching the
       values, as having cached tests available becomes pretty useful
       especially when debugging mistakes.
     </para>
@@ -53,20 +53,20 @@
       Often enough, ideas appear of using the caching system of
       <application>autoconf</application> to avoid repeating the same
       tests when configuring different projects. This approach is
-      dangerous and unstable, for very good reasons.
+      dangerous and unstable for very good reasons.
     </para>
 
     <para>
       The first problem is that, while the caching system does provide
-      some sanity check so that the user hasn't changed settings like
-      compiler and flags used for build between different calls, it
+      some sanity checks to ensure that the user hasn't changed
+      settings like compiler and flags used to build between different calls; it
       does not verify that the tests are executed under the same
       conditions. For instance, it does not take into consideration
       the current selected language dialect.
     </para>
 
     <para>
-      For instance, take two almost identical
+      As an example, take two almost identical
       <filename>configure.ac</filename> files available as examples of
       this guide: a <link
       xl:href="../examples/autoconf/caching/whynot/configure.c.ac">default
@@ -75,8 +75,8 @@
       variant</link>. These two scripts only check for <link
       xl:href="../examples/autoconf/caching/whynot/thisonlyworksonc99.h"><filename>thisonlyworksonc99.h</filename></link>
       simply changing the language dialect (not even the full
-      language). The results coming from the two, though, are
-      different:
+      language) changes the results coming from the two different
+      runs:
     </para>
 
     <programlisting><![CDATA[
@@ -149,21 +149,21 @@ configure.c: creating ./config.status
 
     <para>
       It doesn't stop here though, since you can write your own tests,
-      you can easily re-use the same cache value variable name for way
+      you can easily re-use the same cache value variable name for very
       different meanings, and that will also produce bogus results. In
       turn bogus results can create multi-layer failures that are also
-      difficult to debug unless it is know that the cache was
+      difficult to debug unless it is known that the cache was
       polluted.
     </para>
 
     <para>
-      To make matter worse, a common but subtle problems with cache
+      To make the matter worse, a common but subtle problem with cache
       pollution is related to <link
       linkend="pkgconfig"><application>pkg-config</application></link>,
       and the fact that it allows the developer to choose any given
-      keyword to check for any package: using the same name, like
+      keyword to check for any package using the same name; like
       <constant>NEEDED</constant> or <constant>COMMON</constant>, to
-      look for different libraries in different projects also deem the
+      look for different libraries in different projects also deems the
       cache to be unusable between them.
     </para>
 
