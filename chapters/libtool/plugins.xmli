@@ -306,6 +306,86 @@ foo_example_plugin_la_LDFLAGS = -avoid-version -module -shared -export-dynamic
 ]]></programlisting>
     </example>
   </section>
+
+  <section>
+    <title>Exposing fixed and variable plugins' interfaces</title>
+
+    <para>
+      When designing plugin interfaces you have two main choices available: either you use a fixed
+      interface or a variable one. In the former case, all plugins exports a set of symbols with a
+      pre-selected name, not dependent on the names of the plugins themselves; with the latter
+      option instead, the symbols exported by each plugin are named after the plugin. Both
+      alternatives have up- and downsides, but this is not the place to discuss it.
+    </para>
+
+    <para>
+      For instance, a fixed interface can consists of three functions
+      <function>plugin_init()</function>, <function>plugin_open()</function> and
+      <function>plugin_close()</function>, that need to be implemented by each plugin. On the other
+      hand, in the case of a variable interface, the <emphasis>foo</emphasis> plugin would export
+      <function>foo_init()</function>, <function>foo_open()</function> and
+      <function>foo_close()</function>.
+    </para>
+
+    <para>
+      Depending on which of the two alternative solutions is chosen, you have alternative approaches
+      to tell the link editor to only show the interface symbols and nothing else, as delineated in
+      <xref linkend="libtool.symbols.export_symbols" />, and exemplified below.
+    </para>
+
+    <example>
+      <title>Exposing symbols for plugins with fixed interface</title>
+
+      <para>
+	Since each plugin with a fixed interface exports the same set of symbols, and such interface
+	is rarely extended or reduced, the easiest solution here is to use the static
+	<option>-export-symbols</option> option with a fixed list of symbols:
+      </para>
+
+      <programlisting><![CDATA[
+AM_LDFLAGS = -avoid-version -module -shared -export-dynamic \
+             -export-symbols $(srcdir)/plugins.syms
+
+pkglib_LTLIBRARIES = foo.la bar.la baz.la
+
+foo_SOURCES = foo1.c foo2.c foo3.c
+
+bar_SOURCES = bar1.c bar2.c bar3.c
+
+baz_SOURCES = baz1.c baz2.c baz3.c
+]]></programlisting>
+    </example>
+
+    <example>
+      <title>Exposing symbols for plugins with variable interface</title>
+
+      <para>
+	When the interface is variable, it is common to have either a prefix or a suffix with the
+	name of the plugin itself; you could then use a generic list of symbols and produce its
+	specific symbol list, or you can make use of <option>-export-symbols-regex</option> with a
+	wider match on the interface.
+      </para>
+
+      <para>
+	One of the downsides of using this method is that you then have to carefully name the
+	functions within the plugin's translation units, but the build system should not be used to
+	add workarounds for badly written code.
+      </para>
+
+      <programlisting><![CDATA[
+AM_LDFLAGS = -avoid-version -module -shared -export-dynamic \
+             -export-symbols-regex '^([a-zA-Z0-9]+)_(init|open|close)$'
+
+pkglib_LTLIBRARIES = foo.la bar.la baz.la
+
+foo_SOURCES = foo1.c foo2.c foo3.c
+
+bar_SOURCES = bar1.c bar2.c bar3.c
+
+baz_SOURCES = baz1.c baz2.c baz3.c
+]]></programlisting>
+    </example>
+  </section>
 </section>
 <!--
    Local Variables:
@@ -313,6 +393,7 @@ foo_example_plugin_la_LDFLAGS = -avoid-version -module -shared -export-dynamic
    mode: auto-fill
    mode: flyspell
    ispell-local-dictionary: "english"
+   fill-column: 100
    End:
 -->
 
