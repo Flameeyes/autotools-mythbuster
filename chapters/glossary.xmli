@@ -101,7 +101,7 @@
 	up a dynamic executable file and its dependencies. Loosely referred to as <emphasis>dynamic
 	linker</emphasis>, <emphasis>runtime linker</emphasis> or <emphasis>dynamic
 	loader</emphasis> or by its shorthand <command>ld.so</command> as it is called on Unix
-	systems. Not to ve confused with the <emphasis>linker</emphasis>, which in this context is
+	systems. Not to be confused with the <emphasis>linker</emphasis>, which in this context is
 	referred to as link editor.
       </para>
     </glossdef>
