@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="libtool.symbols">
+  <title>Exposing and Hiding Symbols</title>
+
+  <indexterm zone="libtool.symbols">
+    <primary>libtool options</primary>
+    <secondary>-export-symbols</secondary>
+  </indexterm>
+
+  <indexterm zone="libtool.symbols">
+    <primary>libtool options</primary>
+    <secondary>-export-symbols-regex</secondary>
+  </indexterm>
+
+  <para>
+    For shared objects to be helpful, both in case of dynamic libraries and plugins, they have to
+    expose (or export) an interface to the other programs. This interface is composed of named
+    functions and data symbols, that can be accessed either by linking to the library or by using
+    <function>dlsym()</function> and similar interfaces provided by the runtime loader.
+  </para>
+
+  <para>
+    Not all symbols defined within a shared object need to be exported, though. In the vast majority
+    of cases, a dynamic library will provide a set of symbols corresponding to its public API, while
+    for plugins, the interface to be exposed is usually mandated by the host application or library.
+  </para>
+
+  <para>
+    Exposing more symbols than necessary can have negative effects on the object in many ways: it
+    almost always increases the time necessary for the dynamic loader to completely load the object,
+    and – if the internal symbols are not properly guarded – it can cause collisions between
+    different objects, on operating systems using flat namespaces, as it is the case for Linux and
+    most Unix-based systems.
+  </para>
+
+  <para>
+    Most, if not all, link editors allow to avoid this problem by defining a list of symbols to
+    export; any symbol not in such lists will be hidden and thus not be part of the public interface
+    of the object. Since the options used by the link editors to provide this function are not
+    standard, <application>libtool</application> leverages it via three main options:
+    <option>-export-dynamic</option>, <option>-export-symbols</option> and
+    <option>-export-symbols-regex</option>.
+  </para>
+
+  <section xml:id="libtool.symbols.export_dynamic">
+    <title><option>-export-dynamic</option></title>
+
+    <indexterm zone="libtool.symbols.export_dynamic">
+      <primary>libtool options</primary>
+      <secondary>-export-dynamic</secondary>
+    </indexterm>
+
+    <para>
+      The <option>-export-dynamic</option> option is used to declare that the interface exposed by
+      the current object is to be used with the <function>dlopen()</function> and
+      <function>dlsym()</function> functions (or their equivalent on non-Unix operating
+      systems). This is the case for instance of all plugins, as seen in <xref
+      linkend="libtool.plugins" />.
+    </para>
+
+    <para>
+      This option is not commonly used for projects whose main target is Linux or other operating
+      systems using ELF for their objects, as any symbol exposed by an ELF object is available to be
+      accessed through the <function>dlsym()</function> function. It is a requirement, though, of
+      other operating system that make difference whether the symbol should be resolved at build
+      time or during execution, such as Windows.
+    </para>
+  </section>
+
+  <section xml:id="libtool.symbols.export_symbols">
+    <title><option>-export-symbols</option> and <option>-export-symbols-regex</option></title>
+
+    <para>
+      As the title implies, the <option>-export-symbols</option> and
+      <option>-export-symbols-regex</option> are tightly related. They both are used to provide
+      <application>libtool</application> with a list of symbols that should be exposed (the
+      interface of the object).
+    </para>
+
+    <para>
+      The first option takes as a single parameter the path to a file, containing the list of
+      symbols to expose, one per line. The second instead takes as a parameter a regular expression:
+      symbols whose name matches the expression will be exposed by the object;
+      <application>libtool</application> takes care of producing the list in that case.
+    </para>
+
+    <para>
+      Once <application>libtool</application> knows the list of symbols to expose, it then uses the
+      link editor's own interface to complete the task; this is done through either <emphasis>linker
+      scripts</emphasis> for Unix-derived link editors, or through <emphasis>definition
+      lists</emphasis> for link editors for Windows, as they both serve similar purposes.
+    </para>
+
+    <example xml:id="libtool.symbols.export_symbols.library">
+      <title>Exposing only the public interface of a library via
+      <option>-export-symbols-regex</option></title>
+
+      <programlisting><![CDATA[
+lib_LTLIBRARIES = libfoo.la
+
+libfoo_la_SOURCES = foo1.c foo2.c foo3.c
+libfoo_la_LDFLAGS = -export-symbols-regex '^foo_'
+]]></programlisting>
+    </example>
+
+    <para>
+      Using the <option>-export-symbols-regex</option> option makes it very easy to hide unnecessary
+      symbols from a library's interface, but relies on the library being designed to use a regular
+      pattern for naming of non-static functions and data symbols. In the earlier example, for
+      instance, <application>libtool</application> will export all the symbols whose name start with
+      <literal>foo_</literal>, assuming that the internal symbols use instead a prefix like
+      <literal>x_foo</literal> or something along those lines.
+    </para>
+
+    <para>
+      When this assumption cannot be applied, you have instead to use the other option,
+      <option>-export-symbols</option>, providing it with a complete list of the interfaces to
+      export. The main downside to this method is, obviously, that you have to either manually
+      compile it (which is prone to errors) or find a different, automated way to produce it,
+      similarly to what <application>libtool</application> does when provided with a regular
+      expression.
+    </para>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   fill-column: 100
+   End:
+-->

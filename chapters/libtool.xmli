@@ -78,6 +78,7 @@
 
   <xi:include parse="xml" href="libtool/wrappers.xmli" />
   <xi:include parse="xml" href="libtool/plugins.xmli" />
+  <xi:include parse="xml" href="libtool/symbols.xmli" />
 </chapter>
 <!--
    Local Variables:
