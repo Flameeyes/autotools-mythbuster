@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<glossary xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="glossary">
+  <title>Glossary</title>
+
+  <para>
+    Some of the terms used throughout the guide are not of common usage, but are almost always used
+    to refer to simple concepts. The choice of more technical, less common names is often to be
+    found in the requirement to be as little ambiguous as possible. For this reason I'm trying to
+    avoid using, for instance, the term <emphasis>linker</emphasis>, that can be easily refer to two
+    quite different, but near, pieces of software. To solve doubts regarding these terms, you can
+    thus refer to the following glossary.
+  </para>
+
+  <glossentry>
+    <glossterm>ABI</glossterm>
+    <glosssee otherterm="glossary.abi" />
+  </glossentry>
+
+  <glossentry>
+    <glossterm>API</glossterm>
+    <glosssee otherterm="glossary.api" />
+  </glossentry>
+
+  <glossentry xml:id="glossary.abi">
+    <glossterm>Application Binary Interface</glossterm>
+
+    <glossdef>
+      <para>
+	With ABI we refer to the interface of a library, as exposed to its consumers (other
+	libraries or executables alike), after the build step. In case of software written in
+	languages similar to C, the ABI is comprised of at least the name of the functions, the type
+	and order of their parameters, the type and size of the data it exports, and the content,
+	order and size of its structures.
+      </para>
+
+      <glossseealso otherterm="glossary.api" />
+    </glossdef>
+  </glossentry>
+
+  <glossentry xml:id="glossary.api">
+    <glossterm>Application Programming Interface</glossterm>
+    <acronym>API</acronym>
+
+    <glossdef>
+      <para>
+	The generic term API refers to all the interfaces (or points of contact) between one
+	application and another. When referring to libraries, the term takes the specific meaning of
+	the set of functions, constants and variables defined in the library's public headers, to be
+	further transformed into an ABI during the build step.
+      </para>
+
+      <glossseealso otherterm="glossary.abi" />
+    </glossdef>
+  </glossentry>
+
+  <glossentry>
+    <glossterm>Dynamic Linker</glossterm>
+    <glosssee otherterm="glossary.runtimeloader" />
+  </glossentry>
+
+  <glossentry>
+    <glossterm>ld</glossterm>
+    <glosssee otherterm="glossary.linkeditor" />
+  </glossentry>
+
+  <glossentry>
+    <glossterm>ld.so</glossterm>
+    <glosssee otherterm="glossary.runtimeloader" />
+  </glossentry>
+
+  <glossentry xml:id="glossary.linkeditor">
+    <glossterm>Link Editor</glossterm>
+
+    <glossdef>
+      <para>
+	The application used to transform any number of translation units into a different object of
+	different nature. Loosely referred to as <emphasis>linker</emphasis>, or by the common
+	shorthand <command>ld</command> used on Unix systems to execute it. Not to be confused with
+	the <emphasis>dynamic linker</emphasis>, which in this context is referred to as runtime
+	loader.
+      </para>
+
+      <glossseealso otherterm="glossary.runtimeloader" />
+    </glossdef>
+  </glossentry>
+
+  <glossentry>
+    <glossterm>Linker</glossterm>
+    <glosssee otherterm="glossary.linkeditor" />
+  </glossentry>
+
+  <glossentry xml:id="glossary.runtimeloader">
+    <glossterm>Runtime Loader</glossterm>
+
+    <glossdef>
+      <para>
+	The software component, usually invoked by the kernel, that reads, loads in memory, and sets
+	up a dynamic executable file and its dependencies. Loosely referred to as <emphasis>dynamic
+	linker</emphasis>, <emphasis>runtime linker</emphasis> or <emphasis>dynamic
+	loader</emphasis> or by its shorthand <command>ld.so</command> as it is called on Unix
+	systems. Not to ve confused with the <emphasis>linker</emphasis>, which in this context is
+	referred to as link editor.
+      </para>
+    </glossdef>
+  </glossentry>
+
+  <glossentry>
+    <glossterm>Runtime Linker</glossterm>
+    <glosssee otherterm="glossary.runtimeloader" />
+  </glossentry>
+
+</glossary>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   fill-column: 100
+   End:
+-->
+

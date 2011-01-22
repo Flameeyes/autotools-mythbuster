@@ -45,8 +45,8 @@
     </tocentry>
     <tocentry linkend="furtherreadings"><?dbhtml filename="furtherreadings.html"?>
     </tocentry>
-    <tocentry linkend="index"><?dbhtml filename="terms-index.html"?>
-    </tocentry>
+    <tocentry linkend="glossary"><?dbhtml filename="glossary.html"?></tocentry>
+    <tocentry linkend="index"><?dbhtml filename="terms-index.html"?></tocentry>
   </tocentry>
 </toc>
 
