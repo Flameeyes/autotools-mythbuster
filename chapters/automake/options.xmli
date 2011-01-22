@@ -56,7 +56,7 @@
         </para>
 
         <para>
-          This is usually only used to indicate that the project make
+          This is usually only used to indicate that the project makes
           use of features that have been introduced with a given
           version, which means that it doesn't list micro/patchlevel
           versions (such as <literal>1.11.1</literal>), nor it can be
@@ -75,7 +75,7 @@
 
       <listitem>
         <para>
-          Choose the “flavor” to use, which specifies some further
+          Choose the “flavour” to use, which specifies some further
           particular options and warning levels for the current
           project. See <xref linkend="automake.options.flavors" />.
         </para>
@@ -116,7 +116,7 @@
     </indexterm>
 
     <indexterm zone="automake.options.flavors">
-      <primary>foreign (automakeflavour)</primary>
+      <primary>foreign (automake flavour)</primary>
     </indexterm>
 
     <indexterm zone="automake.options.flavors">
@@ -170,7 +170,7 @@
     <para>
       In particular, the <literal>gnits</literal> standard is
       non-existent, only exists as an historical reference in the GNU
-      website – it may as well not exist at all for the scope of this
+      web site – it may as well not exist at all for the scope of this
       guide. The <literal>cygnus</literal> flavour instead is to be
       used with projects using a hierarchical tree, such as GCC. It
       also is suggested not to use this.
@@ -202,7 +202,7 @@
     </note>
 
     <para>
-      Another important setting that changing the flavour achieve is
+      Another important setting that changing the flavour achieves is
       disabling some of the portability warnings, letting you cleanly
       use the GNU <command>make</command> extensions, which makes it
       much cleaner, nicer and faster to write proper build systems.

@@ -253,7 +253,7 @@ AS_IF([test "x$enable_bar" = "xyes"], [
 
       <para>
 	The second parameter for the two macros above is the
-	description string as outputted by <command>./configure
+	description string as output by <command>./configure
 	--help</command>; since proper formatting of that string is
 	almost impossible to achieve by hand, there is a macro that
 	<application>autoconf</application> provides to generate it:

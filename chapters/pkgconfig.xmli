@@ -11,7 +11,7 @@
   </indexterm>
 
   <para>
-    Dicovering the presence of libraries through
+    Discovering the presence of libraries through
     <application>autoconf</application> as described in <xref
     linkend="autoconf.lib-discovery" /> is somewhat limiting; it
     does not allow for the library to provide specific information
@@ -35,7 +35,7 @@
     years ago an unified interface for them, in the form of the
     <link xl:href="http://pkg-config.freedesktop.org/wiki/">
       <application>pkg-config</application></link> command, that
-      instad of including the data within the script uses simple text
+      instead of including the data within the script uses simple text
       files to store and access it.
   </para>
 
