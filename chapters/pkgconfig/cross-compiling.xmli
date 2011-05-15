@@ -48,6 +48,62 @@
       </para>
     </important>
   </section>
+
+  <section>
+    <title>Tool Calling Conventions</title>
+
+    <para>
+      Often, during cross-compilation, builds are mixed of tools to use on the host, and libraries
+      to install on the target, making it unfeasible to simply set
+      <varname>PKG_CONFIG_SYSROOT_DIR</varname> during the build. To cope with this, the usual
+      method to set the variable is to use a wrapper script, with either a custom a general
+      <command>${CHOST}-pkg-config</command> name.
+    </para>
+
+    <para>
+      This is supported by the <application>autoconf</application> macros provided by the package,
+      as they all respect <varname>$PKG_CONFIG</varname> if set in the environment, and look for a
+      target tool (<command>${CHOST}-pkg-config</command>) before falling back to the usual
+      <command>pkg-config</command> command.
+    </para>
+
+    <important>
+      <para>
+	When using the tool to identify variables within a <filename>configure.ac</filename> or
+	<filename>Makefile.am</filename> file, it is thus important to not call it directly, but to
+	rather call <varname>$PKG_CONFIG</varname> so to not bypass sysroot awareness.
+      </para>
+
+      <para>
+	It also requires other build systems to respect the value set into the environment, the code
+	for which depends on a system by system basis.
+      </para>
+    </important>
+
+    <para>
+      The wrapper script should not only set the <varname>PKG_CONFIG_SYSROOT_DIR</varname> variable:
+      when cross-compiling you want to ignore the packages installed in the system, and instead rely
+      only on those installed in the cross-compiled environment. This is achieved by resetting
+      <varname>PKG_CONFIG_DIR</varname> (which lists additional search paths), and at the same time
+      setting <varname>PKG_CONFIG_LIBDIR</varname> to override the default base search paths.
+    </para>
+
+    <example>
+      <title>Common <command>pkg-config</command> wrapper script for cross-compilation</title>
+
+      <programlisting><![CDATA[
+#!/bin/sh
+
+SYSROOT=/build/root
+
+export PKG_CONFIG_DIR=
+export PKG_CONFIG_LIBDIR=${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig
+export PKG_CONFIG_SYSROOT_DIR=${SYSROOT}
+
+exec pkg-config "$@"
+]]></programlisting>
+    </example>
+  </section>
 </section>
 <!--
    Local Variables:
