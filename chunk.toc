@@ -34,6 +34,7 @@
       </tocentry>
       <tocentry linkend="pkgconfig.pkg_check_modules"><?dbhtml filename="pkgconfig/pkg_check_modules.html"?>
       </tocentry>
+      <tocentry linkend="pkgconfig.cross-compiling"><?dbhtml filename="pkgconfig/cross-compiling.html"?></tocentry>
     </tocentry>
     <tocentry linkend="forwardporting"><?dbhtml filename="forwardporting/index.html"?>
       <tocentry linkend="forwardporting.autoconf"><?dbhtml filename="forwardporting/autoconf.html"?>
