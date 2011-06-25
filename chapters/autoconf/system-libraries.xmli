@@ -37,24 +37,24 @@
 
   <itemizedlist>
     <listitem><para>
-      there might be no need for further libraries to be added for the
-      function to be available; this may either be because the
-      function is in the C library, or because the library that it's
+      There might be no need for further libraries to be added for the
+      function to be available. This may either be because the
+      function is in the C library or because the library that it's
       found in is already present in the <varname>LIBS</varname>
-      variable's list; this does not mean the function is present in a
+      variable's list. This does not mean the function is present in a
       library called <filename>libc</filename>;
     </para></listitem>
 
     <listitem><para>
-      only one library carrying the function is needed, so testing
-      should stop at the first hit – testing further libraries might
+      Only one library carrying the function is needed, so testing
+      should stop at the first hit. Testing further libraries might
       very well lead to false positives and will certainly slow down
       the configuration step.
     </para></listitem>
   </itemizedlist>
 
   <para>
-    Other than these configuration, the interface of the macro is
+    Other than these configurations, the interface of the macro is
     nothing special for <application>autoconf</application>:
   </para>
 
@@ -103,7 +103,7 @@ AC_SEARCH_LIBS(function, libraries-list, action-if-found, action-if-not-found, e
 
       <listitem>
 	<para>
-	  Technically, on some, if not most, operating system, it is
+	  Technically, on some if not most operating systems, it is
 	  possible for libraries to have undefined symbols that require
 	  other libraries to be linked in to satisfy. This is the case
 	  for most static libraries, but it can also happen for some
