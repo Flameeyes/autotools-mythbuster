@@ -83,8 +83,8 @@
 	</indexterm>
 
 	<para>
-	  The system against on which the software being built will
-	  run. This actor only exists, or rather has a meaning, when
+	  The system against which the software being built will
+	  run on. This actor only exists, or rather has a meaning, when
 	  the software being built may interact specifically with a
 	  system that differs from the one it's being executed on (our
 	  <emphasis>host</emphasis>). This is the case for compilers,
@@ -111,38 +111,38 @@
 
   <para>
     The most basic <application>autoconf</application> based build
-    systems won't need to know any of these values, at least directly:
-    some other tools, such as <application>libtool</application>, will
+    systems won't need to know any of these values, at least directly.
+    Some other tools, such as <application>libtool</application>, will
     require discovery of canonical systems by themselves. Since 
     adding these macros unconditionally adds direct and indirect code
     to the <filename>configure</filename> script (and a dependency on
     the two support files <filename>config.sub</filename> and
-    <filename>config.guess</filename>), it is recommended not to call
+    <filename>config.guess</filename>); it is recommended not to call
     them unconditionally.
   </para>
 
   <para>
     It is actually quite easy to decide whether canonical system
-    definitions are needed or not:  we just have to look out for the
+    definitions are needed or not.  We just have to look for the
     use of the related actor variable. For instance if the
     <filename>configure.ac</filename> script uses the
     <varname>$build</varname> variable, we would need to call
     <function>AC_CANONICAL_BUILD</function> to discover its value. If
-    the system definition variables are used in a macro, instead, we
+    the system definition variables are used in a macro instead, we
     should use the <function>AC_REQUIRE</function> macro to ensure
     that they are executed before entering. Don't fear calling them
-    in more than one place, see <xref linkend="autoconf.macros.once"
+    in more than one place. See <xref linkend="autoconf.macros.once"
     /> for more details.
   </para>
 
   <para>
-    One common mistake is to “go all the way” and just always use the
+    One common mistake is to “go all the way” and always use the
     <function>AC_CANONICAL_TARGET</function> macro, or its misnamed
     predecessor <function>AC_CANONICAL_SYSTEM</function>. This is
-    particularly a problem, because most of the software will not have
+    particularly a problem; because most of the software will not have
     a <emphasis>target</emphasis> actor at all. This actor is only
     meaningful when the software that is being built manages data that
-    is specific to a different system than the one it's executed on
+    is specific to a different system than the one it is being executed on
     (the <emphasis>host</emphasis> system).
   </para>
 
@@ -152,8 +152,8 @@
     assemblers, linkers, compilers, debuggers, profilers, analysers, …
     For the rest of the software, the presence of an extraneous
     <varname>--target</varname> option to
-    <filename>configure</filename> is likely to just be confusing,
-    especially for software that processes the output of the script to
+    <filename>configure</filename> is likely to just be confusing.
+    Especially for software that processes the output of the script to
     identify some information about the package being built.
   </para>
 
@@ -164,9 +164,9 @@
       The <emphasis>system definitions</emphasis> used by
       <application>autoconf</application> (but also by other packages
       like <productname>GCC</productname> and
-      <productname>Binutils</productname>) are simple tuples in form
+      <productname>Binutils</productname>) are simple tuples in the form
       of strings. These are designed to provide, in a format easy to
-      parse with “glob masks”, the major details that describe a
+      parse with “glob masks”; the major details that describe a
       computer system.
     </para>
 
@@ -176,8 +176,8 @@
       a single element, the system architecture (i386, x86_64,
       powerpc, …); others will have two, defining either the operating
       system or, most often for definition pairs, the executable
-      format (elf, coff, …). These two formats; though usually, only to
-      related components of the toolchain and not to
+      format (elf, coff, …). These two formats though are usually, only
+      related to components of the toolchain and not to
       <application>autoconf</application> directly.
     </para>
 
@@ -186,7 +186,7 @@
       <application>autoconf</application> are triples and quadruples,
       which define three components:
       <emphasis>architecture</emphasis>, <emphasis>evendor</emphasis>
-      and <emphasis>operating system</emphasis>; these three
+      and <emphasis>operating system</emphasis>. These three
       components usually map directly into the triples, but for
       quadruple you have to split the operating system into
       <emphasis>kernel</emphasis> and
@@ -194,8 +194,8 @@
     </para>
 
     <para>
-      While the architecture is almost obvious, and the operating
-      system differs slightly between one and the other (still being
+      While the architecture is most obvious; and operating systems
+      differ slightly from one another (still being
       probably the most important data), the
       <emphasis>vendor</emphasis> value is usually just ignored. It is
       meant to actually be the vendor of the hardware system, rather
@@ -207,7 +207,7 @@
     </para>
 
     <para>
-      Most of the operating systems don't split their definition
+      Most operating systems don't split their definitions
       further in kernel and userland because they only work as an
       “ensemble”: FreeBSD, (Open)Solaris, Darwin, … There are, though,
       a few operating systems that have a split between kernel and
@@ -222,9 +222,9 @@
       Also, most operating systems using triples also have a single
       standardised version for both kernel and userland, and thus
       provide it as a suffix to the element (*-freebsd7.0,
-      *-netbsd4.0). For a few operating systems, this value might not
-      be the one that is used as the “product version” used in
-      public; for instance Solaris 10 uses as a definition *-solaris2.10
+      *-netbsd4.0). For a few operating systems, this value might differ
+      from the one that is used as the “product version” used in
+      public. For instance Solaris 10 uses as a definition *-solaris2.10
       and Apple's Mac OS X 10.5 uses *-darwin9.
     </para>
   </section>
