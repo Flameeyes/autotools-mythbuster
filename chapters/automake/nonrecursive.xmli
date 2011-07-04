@@ -35,7 +35,7 @@
       <para>
 	<application>make</application> knows all the dependencies of
 	all the files, and thus only rebuilds object files when their
-	sources (or headers used by the sources) have changed;
+	sources (or the headers used by the sources) have changed;
       </para>
     </listitem>
 
@@ -80,7 +80,7 @@
     <para>
       The use of non-recursive <application>automake</application> is
       actually simpler than the use of the recursive variant; instead
-      of creating multiple files,  you just need a top-level
+      of creating multiple files, you just need a top-level
       <filename>Makefile.am</filename> file that references source
       files with a relative path:
     </para>
@@ -136,7 +136,7 @@ AM_INIT_AUTOMAKE([subdir-objects])
     <para>
       While the previous section has shown the use of
       <option>subdir-objects</option> to keep the object files in the
-      same structure of the source files, it has only declared the
+      same structure as the source files, it has only declared the
       main program to be built in the top-level build
       directory. Sometimes this is not the needed behaviour.
     </para>
@@ -190,8 +190,8 @@ tests_foo_test3_LDADD = libfoo.la
 
     <para>
       When using custom rules to generate files, there are a few
-      catches to be considered. Rules that don't use full relative
-      paths for targets and dependencies could be fooled up by stray
+      problems to be considered. Rules that don't use full relative
+      paths for targets and dependencies could be fouled up by stray
       files left around. Take for instance the following snippet:
     </para>
 
@@ -205,13 +205,13 @@ pkgconfig_DATA = pkgconfig/foo.pc pkgconfig/foo-bar.pc
 
     <para>
       If a <filename>Makefile.am</filename> is using the code above,
-      it would fail, creating a symbolic link that also contain the
+      it would fail, creating a symbolic link that also contains the
       relative path: <filename>pkgconfig/foo-bar.pc</filename> →
       <filename>pkgconfig/pkgconfig/foo.pc</filename>.
     </para>
 
     <para>
-      To avoid this kind of problems, you can make use of
+      To avoid this kind of problem, you can make use of
       <application>GNU make</application> extended functions in the
       rules, to transform the path from full-relative form to base
       form (without the path). For instance the fragment above should
