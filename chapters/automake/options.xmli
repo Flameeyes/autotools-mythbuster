@@ -14,9 +14,9 @@
   </indexterm>
 
   <para>
-    There are a series of options that can be given to
+    There is a series of options that can be given to
     <application>automake</application>, to change its default
-    behaviour in something that more suits the need of the single
+    behaviour to something that more suits the need of the single
     project.
   </para>
 
@@ -58,8 +58,8 @@
         <para>
           This is usually only used to indicate that the project makes
           use of features that have been introduced with a given
-          version, which means that it doesn't list micro/patchlevel
-          versions (such as <literal>1.11.1</literal>), nor it can be
+          version, which means that it doesn't list micro/patch-level
+          versions (such as <literal>1.11.1</literal>), nor can it be
           used to stop newer versions of
           <application>automake</application> from rebuilding the
           project.
@@ -159,7 +159,7 @@
     </para>
 
     <para>
-      Out of these, you generally ought to know only two: the default
+      Out of these, you generally ought to employ only two: the default
       settings (which are <literal>gnu</literal>) and the
       <literal>foreign</literal> setting. Most of your projects are
       likely to use the latter, even though that is not the default,
@@ -195,7 +195,7 @@
 	flavour, and manually list these files in
 	<filename>Makefile.am</filename> so that they are actually
 	installed in the correct place; the <literal>gnu</literal>
-	flavour only require them to be distributed, not to be
+	flavour only requires them to be distributed, not to be
 	actually installed. See <xref
 	linkend="automake.install.documentation" />.
       </para>
