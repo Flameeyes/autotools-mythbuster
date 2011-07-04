@@ -43,8 +43,8 @@
     <para>
       Unix systems classically called these <emphasis>shared
       objects</emphasis> and this is the name that will be used in
-      this guide. People more involved in other operating system
-      might known them as “dynamically-linked libraries” (DLL) or
+      this guide. People more involved in another operating system
+      might know them as “dynamically-linked libraries” (DLL) or
       simply “dynamic libraries”.
     </para>
   </note>
