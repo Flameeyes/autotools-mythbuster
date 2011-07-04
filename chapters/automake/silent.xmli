@@ -51,7 +51,7 @@ make[1]: Leaving directory `/home/flame/test-hellow'
     implements this build method, it is not enabled by default, and
     actually requires a double opt-in to be enabled by default. The
     reason for this is that the new functionality is only tested
-    working with the GNU implementation of
+    to work with the GNU implementation of
     <application>make</application>, and so disables the <link
     linkend="automake.portability">portability warnings</link>.
   </para>
@@ -138,7 +138,7 @@ AM_SILENT_RULES([yes])
     <para>
       If this is a desired situation, you can also add the
       <option>1.11</option> token to
-      <function>AM_INIT_AUTOMAKE</function> to explicit that at least
+      <function>AM_INIT_AUTOMAKE</function> to declare that at least
       version 1.11 of <application>automake</application> is needed
       for regeneration. See <xref linkend="automake.options.version"
       />.
