@@ -23,7 +23,7 @@
     interface and implementation. Since most Unix-like systems provide
     this interface through the <function>dlopen()</function> function,
     which is pretty much identical among them, lots of software relies
-    on just this interface, and leave to
+    on just this interface, and leaves to
     <application>libtool</application> the task of building the
     plugins.
   </para>
@@ -49,7 +49,7 @@
       <para>
 	Because of the wide adoption of
 	<application>libltdl</application> in many types of
-	applications, it's support in autotools is available with huge
+	applications, its support in autotools is available with great
 	flexibility. This is because it's wrapping abilities can easily be
 	used on systems where libtool proper is not usually installed,
 	and thus it's often convenient to have a local copy of it.
@@ -68,9 +68,9 @@
       </para>
 
       <para>
-	Besides these three options there is also the more “standard”
+	As well as these three options, there is also the more “standard”
 	option of simply requesting the presence of the library in the
-	system, as any other dependency and checking for it. This
+	system, as is done for any other dependency and checking for it. This
 	method is neither assisted nor well-documented by the
 	<application>libtool</application> manual and is thus rarely
 	used.
@@ -85,13 +85,13 @@
       </indexterm>
 
       <para>
-	For all the three bundling styles as provided by
+	For all three bundling styles as provided by
 	<application>libtool</application>, the reference macros in
 	the <filename>configure.ac</filename> file are
 	<function>LT_CONFIG_LTDL_DIR</function> and
-	<function>LTDL_INIT</function>. When using the sub-configured,
-	these two are the only two calls that you need; when using the
-	inline build, you need some extra calls:
+	<function>LTDL_INIT</function>. When using the sub-configured option,
+	these two are the only two calls that you need. When using the
+	inline build, you need some extra calls.
       </para>
 
       <example>
@@ -131,10 +131,9 @@ LTDL_INIT([nonrecursive])
 	  equivalent) are trivial for the sub-configured and recursive
 	  options (just add the new directory to
 	  <varname>SUBDIRS</varname>), but are a bit more complicated
-	  for the non-recursive case; the following is a snippet from
+	  for the non-recursive case. The following is a snippet from
 	  the <application>libtool</application> manual to support
-	  non-recursive <application>libltdl</application> inline
-	  build:
+	  non-recursive <application>libltdl</application> inline builds.
 	</para>
 
 	<programlisting><![CDATA[
@@ -156,8 +155,8 @@ include libltdl/Makefile.inc
       </example>
 
       <para>
-	Whatever option you choose to follow at this point, you've got
-	to actually bundle the sources in your tree; you probably
+	Whatever option you choose to follow at this point, you must
+	actually bundle the sources in your tree. You probably
 	don't want to add them to your source control system (see
 	<xref linkend="tricks.generated-scm" />), but you want to add
 	the <command>libtoolize --ltdl</command> command to your
@@ -168,17 +167,16 @@ include libltdl/Makefile.inc
 	As the title of this section suggests, you can technically
 	even install the <application>libltdl</application> that you
 	just built. This is not enabled by default, and rightly so
-	(you'd be installing software that is not your competence
-	to). The reason why this is at all possible is that the macros
+	(you'd be installing unrequired software outside of the scope of the build process).
+	The reason why this is at all possible is that the macros
 	used by the <application>libtool</application> package are
-	exactly the same as are provided to third-party developers.
+	exactly the same as is provided to third-party developers.
       </para>
 
       <para>
-	Finally, as said before, there is no provided macro to check
-	for the library in the system to simply rely on that; since it
-	also does not provide a <link
-	linkend="pkgconfig">pkg-config</link> datafile, the
+	Finally there is no provided macro to check for the library in the system to 
+	rely on; since it also does not provide a <link
+	linkend="pkgconfig">pkg-config</link> datafile. The
 	best practices choice is simply to <link
 	linkend="autoconf.lib-discovery"> discover the
 	library through <function>AC_CHECK_LIB</function></link>.
@@ -200,7 +198,7 @@ AC_CHECK_HEADER([ltdl.h],
 
 	<para>
 	  It's important to check for a function that is present in
-	  the currently-supported version of
+	  the currently supported version of
 	  <application>libltdl</application>. This snippet checks for
 	  the <function>lt_dladvise_init</function> function that is a
 	  new interface present in libtool 2.2 and later.
@@ -223,7 +221,7 @@ AC_CHECK_HEADER([ltdl.h],
     </para>
 
     <para>
-      For this reason when building these very easy going types of
+      For this reason when building these very 'casual' types of
       plug-ins, we just rely on three flags for the
       <command>libtool</command> script:
     </para>
@@ -312,18 +310,18 @@ foo_example_plugin_la_LDFLAGS = -avoid-version -module -shared -export-dynamic
 
     <para>
       When designing plugin interfaces you have two main choices available: either you use a fixed
-      interface or a variable one. In the former case, all plugins exports a set of symbols with a
-      pre-selected name, not dependent on the names of the plugins themselves; with the latter
-      option instead, the symbols exported by each plugin are named after the plugin. Both
-      alternatives have up- and downsides, but this is not the place to discuss it.
+      interface or a variable one. In the former case, all plugins export a set of symbols with a
+      pre-selected name, independent of the names of the plugins themselves. With the latter
+      option, the symbols exported by each plugin are instead named after the plugin. Both
+      alternatives have up- and downsides, but these are another topic altogether.
     </para>
 
     <para>
-      For instance, a fixed interface can consists of three functions
-      <function>plugin_init()</function>, <function>plugin_open()</function> and
+      For instance, a fixed interface can consist of three functions
+      <function>plugin_init()</function>, <function>plugin_open()</function> and the
       <function>plugin_close()</function>, that need to be implemented by each plugin. On the other
       hand, in the case of a variable interface, the <emphasis>foo</emphasis> plugin would export
-      <function>foo_init()</function>, <function>foo_open()</function> and
+      <function>foo_init()</function>, <function>foo_open()</function> and the
       <function>foo_close()</function>.
     </para>
 
