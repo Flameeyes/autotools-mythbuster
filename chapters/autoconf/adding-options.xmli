@@ -243,10 +243,9 @@ AS_IF([test "x$enable_bar" = "xyes"], [
       <title>The Help Strings</title>
 
       <para>
-	Some discussion of the help strings used for
-	declaring parameters with both <function>AC_ARG_ENABLE</function> and
-	<function>AC_ARG_WITH</function> is warranted; since past versions
-	have changed <application>autoconf</application> and
+	Some discussion of the help strings used for declaring parameters with both
+	<function>AC_ARG_ENABLE</function> and <function>AC_ARG_WITH</function> is
+	 warranted; since past versions have changed <application>autoconf</application> and
 	they tend to be often mistakenly used.
       </para>
 
@@ -410,8 +409,8 @@ AC_ARG_VAR(var-name, help-string)
     <para>
       By default, <filename>configure</filename> picks up the
       variables from the environment like any other sh script. Most of
-      those are, though, ignored; those who are not, should be
-      declared through this macro. This way, they are marked as
+      those are ignored. Those that are not should be
+      declared through this macro. This way they are marked as
       a <emphasis>precious</emphasis> variable.
     </para>
 
