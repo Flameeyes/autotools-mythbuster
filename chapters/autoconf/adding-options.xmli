@@ -16,7 +16,7 @@
   </para>
 
   <para>
-    There are three types of options (or properly, arguments)
+    There are three types of options (or properly <emphasis> arguments </emphasis>)
     that can be added to the <filename>configure</filename> script:
   </para>
 
@@ -183,7 +183,7 @@ AC_ARG_ENABLE(option-name, help-string, action-if-present, action-if-not-present
 	<parameter>action-if-disabled</parameter>.
       </para>
 
-      <para><emphasis>This is not the case!</emphasis></para>
+      <para><emphasis>This is not the case!</emphasis> </para>
 
       <para>
 	Since using <command>--disable-foo</command> or
@@ -195,7 +195,7 @@ AC_ARG_ENABLE(option-name, help-string, action-if-present, action-if-not-present
     <para>
       For most uses, there is no actual need to define actions, since
       the default for <application>autoconf</application> when no
-      action is defined for the case the user give a parameter is to
+      action is defined for the case the user gives a parameter is to
       set a special variable named with the <varname>enable_</varname>
       (or <varname>with_</varname>) prefix, like
       <varname>enable_foo</varname>.
@@ -233,9 +233,9 @@ AS_IF([test "x$enable_bar" = "xyes"], [
       </para>
 
       <para>
-	Further safety check for the value to not be anything but
+	Further safety checking of the value to exclude anything but
 	<constant>yes</constant> or <constant>no</constant> can be
-	added, but are usually not necessary for the simplest cases.
+	added, but is usually not necessary for the simplest cases.
       </para>
     </example>
 
@@ -243,11 +243,10 @@ AS_IF([test "x$enable_bar" = "xyes"], [
       <title>The Help Strings</title>
 
       <para>
-	Some words have to be spent for the help strings used for
-	declaring parameters with both
-	<function>AC_ARG_ENABLE</function> and
-	<function>AC_ARG_WITH</function>, since they have changed in
-	the past versions of <application>autoconf</application> and
+	Some discussion of the help strings used for
+	declaring parameters with both <function>AC_ARG_ENABLE</function> and
+	<function>AC_ARG_WITH</function> is warranted; since past versions
+	have changed <application>autoconf</application> and
 	they tend to be often mistakenly used.
       </para>
 
@@ -328,21 +327,21 @@ AC_ARG_ENABLE([bar],
 
       Distributions further specialise this class in automatic and
       <emphasis>automagic</emphasis> dependencies; this latter name is
-      used for those dependencies that don't allow to be overridden,
+      used for those dependencies that don't allow being overridden,
       and thus will always enable the features if the libraries are
       found, and always soft-fail when they are not found.
 
       For distributions like Gentoo Linux that build on users'
-      systems, this situation is actually a problem and has to be
-      resolved for properly packaging the software (<biblioref
+      systems, this situation is actually problematic and has to be
+      resolved to properly package the software (<biblioref
       linkend="bib.gentoo.automagic" />).
     </para>
 
     <para>
       To avoid this kind of problem, the best thing is to implement a
-      <command>--with</command> parameter that allows to override the
-      automatic detection: forcing it to yes would make the code fail
-      entirely when the library is not detected, and forcing it to no
+      <command>--with</command> parameter that allows overriding
+      automatic detection: forcing it to <constant>yes</constant> would make the code fail
+      entirely when the library is not detected, and forcing it to <constant>no</constant>
       would make the code skip over the check entirely.
     </para>
 
@@ -398,7 +397,7 @@ AS_IF([test "x$have_foo" = "xyes"],
       has been added relatively recently in the history of
       <application>autoconf</application>, it is really important.
 
-      Reflecting its younger presence, the macro does not need the
+      Reflecting its more recent presence, the macro does not need the
       <function>AS_HELP_STRING</function> helper, and only takes two
       parameters: the name of the variable and the string printed
       during <command>./configure --help</command>:
