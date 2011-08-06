@@ -108,7 +108,7 @@
 
   </variablelist>
 
-  <section id="automake.options.flavors">
+  <section xml:id="automake.options.flavors">
     <title>Automake flavours</title>
 
     <indexterm zone="automake.options.flavors">
