@@ -57,35 +57,33 @@
 
     <listitem>
       <indexterm>
-	<primary>AC_PREPROC_IFELSE</primary>
+	<primary>AC_PREPROC_IFELSE (macro)</primary>
       </indexterm>
       <indexterm>
-	<primary>AC_COMPILE_IFELSE</primary>
+	<primary>AC_COMPILE_IFELSE (macro)</primary>
       </indexterm>
       <indexterm>
-	<primary>AC_LINK_IFELSE</primary>
+	<primary>AC_LINK_IFELSE (macro)</primary>
       </indexterm>
       <indexterm>
-	<primary>AC_RUN_IFELSE</primary>
+	<primary>AC_RUN_IFELSE (macro)</primary>
       </indexterm>
       <indexterm>
-	<primary>AC_LANG_SOURCE</primary>
+	<primary>AC_LANG_SOURCE (macro)</primary>
       </indexterm>
       <indexterm>
-	<primary>AC_LANG_PROGRAM</primary>
+	<primary>AC_LANG_PROGRAM (macro)</primary>
       </indexterm>
       <indexterm>
-	<primary>AC_LANG_DEFINES_PROVIDED</primary>
+	<primary>AC_LANG_DEFINES_PROVIDED (macro)</primary>
       </indexterm>
 
       <para>
-	The If-Else family of macros (see <xref
-	linkend="autoconf.lib-discovery.specific-checks" />) has
-	gained a new safety switch to ensure that the source code
-	being compiled is setting the expected defines that were
-	discovered up to that point. If you call any of those macros
-	with a literal text with the source code to work on, you'll be
-	presented with a warning similar to the following:
+	The If-Else family of macros (see <xref linkend="autoconf.custom-tests" />) has gained a
+	new safety switch to ensure that the source code being compiled is setting the expected
+	defines that were discovered up to that point. If you call any of those macros with a
+	literal text with the source code to work on, you'll be presented with a warning similar to
+	the following:
       </para>
 
       <programlisting>
@@ -99,22 +97,18 @@ configure.ac:XX: the top level
       </programlisting>
 
       <para>
-	This means that calling macros such as
-	<function>AC_PREPROC_IFELSE</function> or
+	This means that calling macros such as <function>AC_PREPROC_IFELSE</function> or
 	<function>AC_LINK_IFELSE</function> now requires the use of
-	<function>AC_LANG_SOURCE</function> or
-	<function>AC_LANG_PROGRAM</function> to generate the source
-	code to compile. As an alternative, the
-	<function>AC_LANG_DEFINES_PROVIDED</function> macro can be
-	used within the first parameter to stop
-	<application>autoconf</application> from warning you about it.
+	<function>AC_LANG_SOURCE</function> or <function>AC_LANG_PROGRAM</function> to generate the
+	source code to compile. As an alternative, the <function>AC_LANG_DEFINES_PROVIDED</function>
+	macro can be used within the first parameter to stop <application>autoconf</application>
+	from warning you about it.
       </para>
 
       <para>
-	It is important to note that you need to ensure that the call
-	to <function>AC_LANG_SOURCE</function> is quoted and not
-	expanded, otherwise that will cause the warning to appear
-	nonetheless. See the following code:
+	It is important to note that you need to ensure that the call to
+	<function>AC_LANG_SOURCE</function> is quoted and not expanded, otherwise that will cause
+	the warning to appear nonetheless. See the following code:
       </para>
 
       <programlisting>
@@ -139,6 +133,7 @@ AC_LINK_IFELSE([AC_LANG_SOURCE([int main() { return 0; }])],
    mode: nxml
    mode: auto-fill
    mode: flyspell
-   ispell-local-dictionary: "english"
+   ispell-local-dictionary: "en_GB"
+   fill-column: 100
    End:
 -->

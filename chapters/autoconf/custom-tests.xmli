@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="autoconf.custom-tests">
+  <title>Custom Autoconf Tests</title>
+
+  <para>
+    While <application>autoconf</application> provides a number of pre-written tests to identify
+    presence of headers, symbols and libraries, they obviously don't cover the whole range of
+    possible situations that software developers might be facing to recognise the environment that
+    their software is being built on.
+  </para>
+
+  <para>
+    For this reason, <application>autoconf</application> also provides interfaces to write custom
+    testing routines, which can be divided in two main groups: “build tests” and “run tests”,
+    depending on how the test is performed. The former group can then be further split into
+    “pre-processing tests”, “compile tests” and “link tests”, to denote the different finishing step
+    in the tests' process.
+  </para>
+
+  <section xml:id="autoconf.custom-tests.build-tests">
+    <title>“Build Tests”</title>
+
+    <indexterm zone="autoconf.custom-tests.build-tests">
+      <primary>AC_PREPROC_IFELSE (macro)</primary>
+    </indexterm>
+
+    <indexterm>
+      <primary>AC_TRY_CPP (macro, obsolete)</primary>
+      <see>AC_PREPROC_IFELSE</see>
+    </indexterm>
+
+    <indexterm zone="autoconf.custom-tests.build-tests">
+      <primary>AC_COMPILE_IFELSE (macro)</primary>
+    </indexterm>
+
+    <indexterm zone="autoconf.custom-tests.build-tests">
+      <primary>AC_LINK_IFELSE (macro)</primary>
+    </indexterm>
+
+    <para>
+      Most of the tests implemented within <filename>configure</filename> scripts are designed to
+      identify whether the compiler supports a particular syntax, or a given symbol, constant or
+      header file is available at build time. These tests, the generic version of which is available
+      with predefined macros such as <function>AC_CHECK_HEADERS</function> and
+      <function>AC_CHECK_LIB</function> are the so-called “build tests”.
+    </para>
+
+    <para>
+      Since the predefined tests don't cover the whole range of tests that could be needed (e.g.:
+      they don't provide a way to check for a reported minimum version of an API library),
+      <application>autoconf</application> exports macros that allows to check whether some given
+      source code preprocesses, compiles or links properly: <function>AC_PREPROC_IFELSE</function>
+      (formerly <function>AC_TRY_CPP</function>), <function>AC_COMPILE_IFELSE</function> and
+      <function>AC_LINK_IFELSE</function>.
+    </para>
+
+    <para>
+      The three macros share the same interface, which itself follows the usual actions-based
+      behaviour of other predefined macros:
+    </para>
+
+    <programlisting><![CDATA[
+AC_PREPROC_IFELSE(input, [action-if-true], [action-if-false])
+AC_COMPILE_IFELSE(input, [action-if-true], [action-if-false])
+AC_LINK_IFELSE(input, [action-if-true], [action-if-false])
+]]></programlisting>
+
+    <para>
+      The three macros have a progressively more strict requirement for the sources they are
+      provided, given that each brings its input a step further in the usual build chain. This means
+      that you don't <emphasis>require</emphasis> proper C code to be passed to the preprocessor,
+      but you have to do so when compiling, whereas then you don't need a
+      <function>main()</function> entrypoint, the link test will require one (as it can only link an
+      executable, not a shared object).
+    </para>
+
+    <para>
+      Compared to the “run tests” discussed later on, the “build tests” are safe for
+      cross-compilation, as long as the proper compiler and linker are present in the system.
+    </para>
+
+    <para>
+      Even though <application>autoconf</application> makes it available, the use of
+      <function>AC_PREPROC_IFELSE</function> is actively discouraged. When invoked directly, the
+      preprocessor lacks some of the definitions set up by the compiler frontend, and some features
+      might behave inconsistently between the two. For this reason, it is suggested that tests for
+      macro definitions and header presence to be performed using
+      <function>AC_COMPILE_IFELSE</function> instead.
+    </para>
+  </section>
+
+  <section xml:id="autoconf.custom-tests.run-tests">
+    <title>“Run Tests”</title>
+
+    <indexterm zone="autoconf.custom-tests.run-tests">
+      <primary>AC_RUN_IFELSE (macro)</primary>
+    </indexterm>
+
+    <indexterm>
+      <primary>AC_TRY_RUN (macro, renamed)</primary>
+      <see>AC_RUN_IFELSE</see>
+    </indexterm>
+
+    <indexterm>
+      <primary>AC_TEST_PROGRAM (macro, renamed)</primary>
+      <see>AC_RUN_IFELSE</see>
+    </indexterm>
+
+    <para>
+      Sometimes, the mere presence of a function, or of a constant's definition, is not enough for
+      a test to be considered successful. For instance an interface's optional function might be
+      present as a stub returning a “not implemented” error condition, or a constant might be
+      declared but ignored by the functions that are supposed to make use of it. For these reasons,
+      it is sometimes a necessity to execute the code after building it, and wait for its results.
+    </para>
+
+    <important>
+      <para>
+        Executing test code in a build scenario can be tricky: the system used to build a package
+        might very well not be the same where the code would be executed (this is the case for most
+        Linux – and not – distributions' build farms) which could lead to erroneous results or, in
+        case the architectures of the two systems are not compatible, an unusable test, which will
+        interrupt the course of the <command>./configure</command> execution.
+      </para>
+
+      <para>
+        For those reasons it is important to make sure that the results of all the tests executed on
+        the build host can be overridden. To do so, the best solution is to <link
+        linkend="autoconf.caching">cache the results</link>, so that a simple environment variable can
+        be used to skip over the test execution, providing the correct, precalculated value.
+      </para>
+    </important>
+
+    <para>
+      The basic macro to support “run tests” is <function>AC_RUN_IFELSE</function> (formerly
+      <function>AC_TRY_RUN</function> and <function>AC_TEST_PROGRAM</function>), which extends the
+      <function>AC_LINK_IFELSE</function> flow by executing the just-linked program, and follows the
+      usual actions paradigm, adding one third case for cross-compilation (when the test code cannot
+      run because of architecture incompatibility).
+    </para>
+
+    <programlisting><![CDATA[
+AC_RUN_IFELSE(input, [action-if-true], [action-if-false], [action-if-cross-compiling])
+]]></programlisting>
+
+    <variablelist>
+      <varlistentry>
+        <term><parameter>input</parameter></term>
+
+        <listitem>
+          <para>
+            The test program's source code; just like the “build test” macros it has to be provided
+            through <function>AC_LANG_SOURCE</function> or variation thereof. Since this macro can
+            be considered the next step after <function>AC_LINK_IFELSE</function>, the same
+            requirements apply. Additionally, the <function>main()</function> function should return
+            a zero status for success, and any non-zero status for failure, as any other shell
+            program.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>action-if-true</parameter></term>
+
+        <listitem>
+          <para>
+            This block of M4sh code is executed if the test executable was cleanly executed and
+            returned a zero status. If more verbose results are required out of the test case, the
+            code can execute <command>./conftest$EXEEXT</command> (literally).
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>action-if-false</parameter></term>
+
+        <listitem>
+          <para>
+            This block of M4sh code is executed if either the test couldn't be compiled, linked,
+            executed or if the executed test returns a non-zero status. The status of the latest
+            command executed is available in <varname>$?</varname>, but there is no way to discern
+            whether that is the compiler's, linker's or the test's status.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>action-if-cross-compiling</parameter></term>
+
+        <listitem>
+          <para>
+            Finally, this block of M4sh code is executed if the <command>./configure</command>
+            script is executed for cross-compilation. The default content of this section causes the
+            script to abort (through <function>AC_MSG_FAILURE</function>), which is the main reason
+            why “run tests” are frown upon on cross-compiling prone environments.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section xml:id="autoconf.custom-tests.sources">
+    <title>Tests' Input Sources</title>
+
+    <indexterm zone="autoconf.custom-tests.sources">
+      <primary>AC_LANG_PROGRAM (macro)</primary>
+    </indexterm>
+
+    <indexterm zone="autoconf.custom-tests.sources">
+      <primary>AC_LANG_SOURCE (macro)</primary>
+    </indexterm>
+
+    <indexterm zone="autoconf.custom-tests.sources">
+      <primary>AC_LANG_DEFINES_PROVIDED (macro)</primary>
+    </indexterm>
+
+    <indexterm zone="autoconf.custom-tests.sources">
+      <primary>AC_LANG_CALL (macro, deprecated)</primary>
+    </indexterm>
+
+    <indexterm zone="autoconf.custom-tests.sources">
+      <primary>AC_LANG_FUNC_LINK_TRY (macro, deprecated)</primary>
+    </indexterm>
+
+    <para>
+      All the test macros discussed in the previous sections require properly formatted and saved
+      input sources; to help proper generation of these, <application>autoconf</application>
+      provides the developer with a set of macros, starting with
+      <function>AC_LANG_SOURCE</function>. Starting from <application>autoconf</application>
+      version 2.68, it is no longer possible to provide sources that are not generated by this
+      family of macros without it reporting a warning. It is possible that future versions will
+      disallow such behaviour altogether.
+    </para>
+
+    <para>
+      The <function>AC_LANG_SOURCE</function> macro is the basis for providing sources to the
+      <parameter>input</parameter> parameter of the above-described If-Else macros. it only has one
+      parameter, which is the raw sources for the test program in the currently selected
+      language. The generated source file will not only contain the provided sources, but will also
+      include the list of macro definition emitted by calls to <function>AC_DEFINE</function>.
+    </para>
+
+    <important>
+      <para>
+        The sources provided in this macro are expanded twice. This means that you have to quote
+        them twice as well when providing them. So for instance, a test with a simple
+        <function>main()</function> function would be declared this way:
+      </para>
+
+    <programlisting><![CDATA[
+AC_LINK_IFELSE([
+  AC_LANG_SOURCE(
+    [[int main() { return 0; }]]
+  )
+]) ]]></programlisting>
+    </important>
+
+    <para>
+      For a matter of pure convenience, <application>autoconf</application> provides a
+      <function>AC_LANG_PROGRAM</function> macro that takes two distinct arguments: a
+      <parameter>prologue</parameter> parameter that is used to emit code outside of the main
+      function's body, and a <parameter>body</parameter> parameter that is emitted within the main
+      function's body (<function>main()</function> for C and C++, but might differ for other
+      languages).
+    </para>
+
+    <para>
+      This macro is especially helpful if your test is designed to only check for compiler or linker
+      flags, as the entry point will be generated by <application>autoconf</application> and will
+      return a non-error condition by default. Otherwise, it is simply a wrapper around the already
+      defined <function>AC_LANG_SOURCE</function> macro.
+    </para>
+
+    <note>
+      <para>
+        As of <application>autoconf</application> 2.68, there are a few more wrapper macros around
+        <function>AC_LANG_SOURCE</function>, which are documented for completeness's sake in the
+        official documentation. They will be not named or documented further from here, as their
+        design makes them incompatible with the Erlang language, and their limitation make them
+        unsuitable for the use in modern build systems.
+      </para>
+    </note>
+
+    <para>
+      
+    </para>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "en_GB"
+   fill-column: 100
+   End:
+-->

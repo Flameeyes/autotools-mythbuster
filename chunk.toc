@@ -13,6 +13,8 @@
       </tocentry>
       <tocentry linkend="autoconf.lib-discovery"><?dbhtml filename="autoconf/finding.html"?>
       </tocentry>
+      <tocentry linkend="autoconf.custom-tests"><?dbhtml filename="autoconf/custom-tests.html"?>
+      </tocentry>
       <tocentry linkend="autoconf.macros"><?dbhtml filename="autoconf/macros.html"?>
       </tocentry>
       <tocentry linkend="autoconf.caching"><?dbhtml filename="autoconf/caching.html"?>

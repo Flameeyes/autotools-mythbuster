@@ -46,6 +46,7 @@
     <xi:include parse="xml" href="autoconf/headers.xmli" />
   </section>
 
+  <xi:include parse="xml" href="autoconf/custom-tests.xmli" />
   <xi:include parse="xml" href="autoconf/macros.xmli" />
   <xi:include parse="xml" href="autoconf/caching.xmli" />
 </chapter>
@@ -54,6 +55,7 @@
    mode: nxml
    mode: auto-fill
    mode: flyspell
-   ispell-local-dictionary: "english"
+   ispell-local-dictionary: "en_GB"
+   fill-column: 100
    End:
 -->
