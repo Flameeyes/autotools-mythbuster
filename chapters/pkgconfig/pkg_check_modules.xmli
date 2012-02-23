@@ -192,7 +192,7 @@ PKG_CHECK_MODULES([GLIB], [glib-2.0])
 ]]></programlisting>
 
     <para>
-      Since the check for GKT+ will not work by default, you'll
+      Since the check for GTK+ will not work by default, you'll
       receive the following error if you try to execute
       <filename>configure</filename> without any argument:
     </para>
