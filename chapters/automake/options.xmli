@@ -153,9 +153,10 @@
       important projects have their own flavour settings supported by
       <application>automake</application> directly, as a single
       option, these are <literal>gnu</literal> (the default),
-      <literal>cygnus</literal>, <literal>gnits</literal> and the
-      final <literal>foreign</literal> which is meant as a "none of
-      the above" option.
+      <literal>cygnus</literal> (removed in <application>automake
+      1.13</application>), <literal>gnits</literal> and the final
+      <literal>foreign</literal> which is meant as a "none of the
+      above" option.
     </para>
 
     <para>
@@ -171,9 +172,11 @@
       In particular, the <literal>gnits</literal> standard is
       non-existent, only exists as an historical reference in the GNU
       web site – it may as well not exist at all for the scope of this
-      guide. The <literal>cygnus</literal> flavour instead is to be
-      used with projects using a hierarchical tree, such as GCC. It
-      also is suggested not to use this.
+      guide. Similarly the <literal>cygnus</literal> flavour, used by
+      hierarchical tree projects such as GCC, has been deemed obsolete
+      starting from <application>automake</application> 1.12 and is no
+      longer accepted starting version 1.13, so it's similarly ignored
+      by the rest of the guide.
     </para>
 
     <para>
