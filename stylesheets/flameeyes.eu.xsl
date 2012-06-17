@@ -9,6 +9,7 @@
 <xsl:template name="user.head.content">
   <link rel="stylesheet" type="text/css" href="http://www.flameeyes.eu/autotools-mythbuster/stylesheets/flameeyes.css" />
   <link rel="stylesheet" type="text/css" href="http://www.flameeyes.eu/autotools-mythbuster/stylesheets/kernel-blue.css" />
+  <meta name="description" content="A no-nonsense guide to Autotools by Diego Elio Pettenò" />
 </xsl:template>
 
 <xsl:template name="user.footer.navigation">
