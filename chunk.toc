@@ -25,6 +25,8 @@
       </tocentry>
       <tocentry linkend="automake.silent"><?dbhtml filename="automake/silent.html"?>
       </tocentry>
+      <tocentry linkend="automake.parallel"><?dbhtml filename="automake/parallel.html"?>
+      </tocentry>
     </tocentry>
     <tocentry linkend="libtool"><?dbhtml filename="libtool/index.html"?>
       <tocentry linkend="libtool.wrappers"><?dbhtml filename="libtool/wrappers.html"?></tocentry>
@@ -40,6 +42,8 @@
     </tocentry>
     <tocentry linkend="forwardporting"><?dbhtml filename="forwardporting/index.html"?>
       <tocentry linkend="forwardporting.autoconf"><?dbhtml filename="forwardporting/autoconf.html"?>
+      </tocentry>
+      <tocentry linkend="forwardporting.automake"><?dbhtml filename="forwardporting/automake.html"?>
       </tocentry>
       <tocentry linkend="forwardporting.libtool"><?dbhtml filename="forwardporting/libtool.html"?>
       </tocentry>
