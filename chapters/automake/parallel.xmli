@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="automake.parallel">
+  <title>Parallel Building Tricks</title>
+
+  <para>
+    Due to the high focus on parallelisation by modern processor
+    manufacturers, it's extremely important to make sure that your
+    build system supports parallel building, testing and install,
+    especially for the sake of distributions such as Gentoo Linux and
+    FreeBSD ports, which build software from source.
+  </para>
+
+  <para>
+    While the default rules for <application>automake</application>
+    are properly designed to allow for the highest level of
+    parallelisation, there are a few important details that have to be
+    considered to make your build system properly parallelisable.
+  </para>
+
+  <para>
+    The first rule of thumb is to make use of the non-recursive
+    features discussed in <xref linkend="automake.nonrecursive"
+    />. Since <command>make</command> can only run rules in parallel
+    that are in the same directory, while directories are built
+    serially, by moving everything in a single
+    <filename>Makefile.am</filename> you can run everything in
+    parallel.
+  </para>
+
+  <section xml:id="automake.parallel.install">
+    <title>Parallel Install</title>
+
+    <para>
+      Parallelising the <command>make install</command> process is
+      something that is often overseen simply because it's an
+      I/O-bound task, rather than a CPU-bound one. Unfortunately, in
+      some cases, <command>libtool</command> will have to perform
+      again the linking on libraries, if the destination folders don't
+      match those used during build, for whatever reason. Since
+      linking is a CPU-bound task, running the install phase in
+      parallel can save you time on multi-core systems.
+    </para>
+
+    <para>
+      There are very few issues that you need to consider when dealing
+      with parallel install, as the only tricky part is handling of
+      custom install targets, such as
+      <literal>install-exec-local</literal>. It's common when writing
+      these targets, to assume that the target directory has already
+      been created. This would be correct both when the targets are
+      executed in series (as the local targets are executed after the
+      main ones by default) and when not using the
+      <varname>DESTDIR</varname> (as most of the time the directory is
+      already present on the live filesystem).
+    </para>
+
+    <example>
+      <title>Common case of broken <command>install-exec-local</command>
+      target (directory assumed to be present)</title>
+
+      <programlisting><![CDATA[
+bin_PROGRAMS = multicall
+
+install-exec-local:
+	cd $(DESTDIR)/$(bindir) && \
+		$(LN_S) multicall command1 && \
+		$(LN_S) multicall command2
+]]></programlisting>
+
+      <para>
+	In this case, the <literal>multicall</literal> executable
+	changes its behaviour depending on the name it has been called
+	as. The build system intends to create multiple symlinks for
+	it during install, but the first call to
+	<command>cd</command> is likely going to fail during a
+	parallel <command>make install</command> execution.
+      </para>
+    </example>
+
+    <para>
+      There is only one real way to solve these situations, and that
+      is making sure that the directory exists before proceeding; a
+      common mistake in this situation is to test whether the
+      directory exists, and then calling <command>mkdir</command> to
+      create it. This will also fail, if by reason of parallel
+      execution, the directory is created after the test, but before
+      <command>mkdir</command>.
+    </para>
+
+    <example>
+      <title>Common case of broken <command>install-exec-local</command>
+      target (directory created on a race condition)</title>
+
+      <programlisting><![CDATA[
+bin_PROGRAMS = multicall
+
+install-exec-local:
+	test -d $(DESTDIR)/$(bindir) || mkdir $(DESTDIR)/$(bindir)
+	cd $(DESTDIR)/$(bindir) && \
+		$(LN_S) multicall command1 && \
+		$(LN_S) multicall command2
+]]></programlisting>
+
+      <para>
+	This tries to solve the issue noted in the previous example,
+	but if the <filename>Makefile.am</filename> is complex enough,
+	parallel targets execution can likely cause
+	<varname>$(bindir)</varname> to be created after the test,
+	before the <command>mkdir</command>.
+      </para>
+    </example>
+
+    <para>
+      All modern <command>mkdir</command> implementations, though
+      provide the option <option>-p</option> which not only creates
+      the directory's parents, but also will consider it a success if
+      the directory exists already, contary to its default behaviour.
+    </para>
+
+    <para>
+      To make use of <command>mkdir -p</command>, one has to make sure
+      it is supported by the current operating system;
+      <application>autoconf</application> provides a simple way to
+      test for its presence, as well as a replacement script if that
+      wouldn't be enough, via the macro
+      <function>AC_PROG_MKDIR_P</function>. After calling that macro
+      from you <filename>configure.ac</filename> file, you can then
+      make use of <varname>$(MKDIR_P)</varname> to transparently call
+      the program or the replacement script.
+    </para>
+
+    <example>
+      <title>Correct <command>install-exec-local</command> using
+      <function>AC_PROG_MKDIR_P</function></title>
+
+      <programlisting><![CDATA[
+bin_PROGRAMS = multicall
+
+install-exec-local:
+	$(MKDIR_P) $(DESTDIR)/$(bindir)
+	cd $(DESTDIR)/$(bindir) && \
+		$(LN_S) multicall command1 && \
+		$(LN_S) multicall command2
+]]></programlisting>
+    </example>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->
