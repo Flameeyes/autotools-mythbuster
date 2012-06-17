@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title><application>automake</application> 1.13</title>
+
+  <itemizedlist>
+    <title>Unsupported behaviour in
+    <application>automake</application> starting from version
+    1.13</title>
+
+    <listitem>
+      <indexterm>
+	<primary>configure.in (file)</primary>
+      </indexterm>
+
+      <para>
+	Projects still using the old <filename>configure.in</filename>
+	name for the <application>autoconf</application> script are no
+	longer supported. Simply rename the file to the modern name of
+	<filename>configure.ac</filename>.
+      </para>
+    </listitem>
+
+    <listitem>
+      <indexterm>
+	<primary>automake options</primary>
+	<secondary>parallel-tests</secondary>
+      </indexterm>
+
+      <indexterm>
+	<primary>automake options</primary>
+	<secondary>serial-tests</secondary>
+      </indexterm>
+
+      <para>
+	Tests are now executed in parallel, rather than in series. You
+	can return to the the old behaviour with the
+	<literal>serial-tests</literal> option. For more information
+	see <xref linkend="automake.parallel.tests" />.
+      </para>
+    </listitem>
+
+    <listitem>
+      <indexterm>
+	<primary>AM_INIT_AUTOMAKE (macro)</primary>
+      </indexterm>
+
+      <para>
+	The multi-argument <function>AM_INIT_AUTOMAKE</function>
+	syntax is no longer supported. This syntax was long
+	discontinued and has never been documented in this guide.
+      </para>
+    </listitem>
+
+    <listitem>
+      <indexterm>
+	<primary>cygnus (automake flavour)</primary>
+      </indexterm>
+
+      <indexterm>
+	<primary>automake options</primary>
+	<secondary>cygnus</secondary>
+      </indexterm>
+
+      <para>
+	The <literal>cygnus</literal> flavour for Automake has been
+	removed. This might require a vast overhaul of the very few
+	projects who still relied on this build flavour.
+      </para>
+    </listitem>
+  </itemizedlist>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->

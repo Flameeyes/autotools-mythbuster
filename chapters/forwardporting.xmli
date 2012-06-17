@@ -49,6 +49,21 @@
 		href="forwardporting/autoconf/2.68.xmli" />
   </section>
 
+  <section xml:id="forwardporting.automake">
+    <title>Changes in <application>automake</application>
+    release</title>
+
+    <indexterm zone="forwardporting.automake">
+      <primary>automake</primary>
+    </indexterm>
+
+    <xi:include parse="xml"
+		href="forwardporting/automake/1.12.xmli" />
+
+    <xi:include parse="xml"
+		href="forwardporting/automake/1.13.xmli" />
+  </section>
+
   <section xml:id="forwardporting.libtool">
     <title>Changes in <application>libtool</application>
     releases</title>

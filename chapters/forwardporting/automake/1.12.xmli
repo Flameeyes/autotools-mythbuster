@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title><application>automake</application> 1.12</title>
+
+  <itemizedlist>
+    <title>Unsupported behaviour in
+    <application>automake</application> starting from version
+    1.12</title>
+
+    <listitem>
+      <indexterm>
+	<primary>mkdir -p</primary>
+      </indexterm>
+
+      <indexterm>
+	<primary>AM_PROG_MKDIR (macro, deprecated)</primary>
+      </indexterm>
+
+      <indexterm>
+	<primary>AC_PROG_MKDIR_P (macro)</primary>
+      </indexterm>
+
+      <para>
+	The long-deprecated <varname>$(mkdir_p)</varname> variable
+	(and the equivalent <literal>@mkdir_p@</literal> substitution)
+	have been removed.
+      </para>
+
+      <para>
+	To execute <command>mkdir -p</command> (or a replacement) use
+	instead the <application>autoconf</application> macro
+	<function>AC_PROG_MKDIR_P</function> and the corresponding
+	<varname>$(MKDIR_P)</varname> variable.
+      </para>
+
+      <para>
+	See also <xref linkend="automake.parallel.install" /> for
+	further details.
+      </para>
+    </listitem>
+  </itemizedlist>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "english"
+   End:
+-->
