@@ -40,6 +40,29 @@
 	further details.
       </para>
     </listitem>
+
+    <listitem>
+      <indexterm>
+	<primary>automake options</primary>
+	<secondary>dist-lzma (deprecated)</secondary>
+      </indexterm>
+
+      <para>
+	The <literal>dist-lzma</literal>, used to produce
+	<filename>.tar.lzma</filename> archives has been removed.
+      </para>
+
+      <para>
+	The LZMA compression format has undergone different,
+	incompatible revisions over its short life, and has been
+	deprecated for most uses. In its place you can use the new
+	<literal>dist-xz</literal> option.
+      </para>
+
+      <para>
+	See also <xref linkend="automake.dist" /> for further details.
+      </para>
+    </listitem>
   </itemizedlist>
 </section>
 <!--
