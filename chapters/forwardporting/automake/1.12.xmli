@@ -63,6 +63,92 @@
 	See also <xref linkend="automake.dist" /> for further details.
       </para>
     </listitem>
+
+    <listitem>
+      <indexterm>
+	<primary>automake options</primary>
+	<secondary>ansi2knr (deprecated)</secondary>
+      </indexterm>
+
+      <indexterm>
+	<primary>AM_C_PROTOTYPES (macro, deprecated)</primary>
+      </indexterm>
+
+      <indexterm>
+	<primary>AC_C_PROTOTYPES (macro)</primary>
+      </indexterm>
+
+      <para>
+	The support for de-ANSI-fication (<literal>ansi2knr</literal>
+	Automake option) that was deprecated in version 1.11 has been
+	removed from this version.
+      </para>
+
+      <para>
+	This feature allowed for code to be writteh as
+	specially-formatted ANSI C code, to be translated at build
+	time through the <filename>ansi2knr</filename> tool, bundled
+	in the source distribution.
+      </para>
+
+      <para>
+	Since K&amp;R C has been standardized in 1989, there should be
+	no concern that any compiler will only accept ANSI
+	code. Furthermore, the use of <filename>ansi2knr</filename> is
+	not supported during cross-compilation, so there is no real
+	benefit in using this feature any longer.
+      </para>
+
+      <para>
+	Even though this feature is hardly ever used, there are
+	projects that still rely on the initialisation macro
+	<function>AM_C_PROTOTYPES</function>; this macro is defined in
+	automake 1.11 this way:
+      </para>
+
+      <programlisting>
+AC_DEFUN([AM_C_PROTOTYPES],
+[AC_REQUIRE([AC_C_PROTOTYPES])
+AC_DIAGNOSE([obsolete],
+            [$0: automatic de-ANSI-fication support is deprecated])
+if test "$ac_cv_prog_cc_stdc" != no; then
+  U= ANSI2KNR=
+else
+  U=_ ANSI2KNR=./ansi2knr
+fi
+# Ensure some checks needed by ansi2knr itself.
+AC_REQUIRE([AC_HEADER_STDC])
+AC_CHECK_HEADERS([string.h])
+AC_SUBST([U])dnl
+AC_SUBST([ANSI2KNR])dnl
+_AM_SUBST_NOTMAKE([ANSI2KNR])dnl
+])
+</programlisting>
+
+      <para>
+	This means that whenever the package is using
+	<function>AM_C_PROTOTYPES</function> but doesn't have the
+	<filename>ansi2knr.c</filename> source file in its
+	distribution, the intended behaviour was probably to call for
+	<function>AC_C_PROTOTYPES</function>.
+      </para>
+
+      <example>
+	<title>Conversion of a <filename>configure.ac</filename>
+	relying on <function>AM_C_PROTOTYPES</function> without
+	de-ANSI-fication.</title>
+
+	<programlisting>
+⋮
+
+AC_C_PROTOYPES
+AC_HEADER_STDC
+AC_CHECK_HEADERS([string.h])
+
+⋮
+	</programlisting>
+      </example>
+    </listitem>
   </itemizedlist>
 </section>
 <!--
