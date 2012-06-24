@@ -40,7 +40,8 @@
   </para>
 
   <indexterm>
-    <primary><option>-no-install</option> (<command>libtool</command> option)</primary>
+    <primary>libtool options</primary>
+    <secondary>-no-install</secondary>
   </indexterm>
 
   <para>
