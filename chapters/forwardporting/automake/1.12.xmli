@@ -85,15 +85,15 @@
       </para>
 
       <para>
-	This feature allowed for code to be writteh as
+	This feature allowed for code to be written as
 	specially-formatted ANSI C code, to be translated at build
 	time through the <filename>ansi2knr</filename> tool, bundled
 	in the source distribution.
       </para>
 
       <para>
-	Since K&amp;R C has been standardized in 1989, there should be
-	no concern that any compiler will only accept ANSI
+	Since C has been standardized first in 1989, there should be
+	no concern that any compiler will only accept pre-standard C
 	code. Furthermore, the use of <filename>ansi2knr</filename> is
 	not supported during cross-compilation, so there is no real
 	benefit in using this feature any longer.
@@ -109,8 +109,6 @@
       <programlisting>
 AC_DEFUN([AM_C_PROTOTYPES],
 [AC_REQUIRE([AC_C_PROTOTYPES])
-AC_DIAGNOSE([obsolete],
-            [$0: automatic de-ANSI-fication support is deprecated])
 if test "$ac_cv_prog_cc_stdc" != no; then
   U= ANSI2KNR=
 else
@@ -133,13 +131,24 @@ _AM_SUBST_NOTMAKE([ANSI2KNR])dnl
 	<function>AC_C_PROTOTYPES</function>.
       </para>
 
+      <para>
+	Unfortunately as with other non-trivial macros, it's possible
+	that projects rely on more than just the main side-effect of
+	said macro, which means that if you want to replace its use,
+	you have to also verify that there is no reliance on calls to
+	<function>AC_HEADER_STDC</function> or on the check on
+	<filename>string.h</filename> header that is not otherwise
+	executed.
+      </para>
+
       <example>
-	<title>Conversion of a <filename>configure.ac</filename>
+	<title>Safe conversion of a <filename>configure.ac</filename>
 	relying on <function>AM_C_PROTOTYPES</function> without
 	de-ANSI-fication.</title>
 
 	<programlisting>
 ⋮
+
 
 AC_C_PROTOYPES
 AC_HEADER_STDC
@@ -147,7 +156,22 @@ AC_CHECK_HEADERS([string.h])
 
 ⋮
 	</programlisting>
+
+	<note>
+	  <para>
+	    Please consider verifying whether the calls to
+	    <function>AC_HEADER_STDC</function> and
+	    <function>AC_CHECK_HEADERS</function> are actually needed.
+	  </para>
+	</note>
       </example>
+
+      <para>
+	It is important to note that as of writing (July 2012), the
+	<function>AC_C_PROTOTYPES</function> macro is not considered
+	deprecated by <application>autoconf</application> but it is
+	considered obsolete.
+      </para>
     </listitem>
   </itemizedlist>
 </section>
