@@ -76,6 +76,21 @@
     <xref linkend="libtool.alternatives" />.
   </para>
 
+  <warning>
+    <para>
+      OpenBSD is known as of July 2012 to use their own implementation
+      of <command>libtool</command> which is not 100% compatible with
+      the original GNU implementation.
+    </para>
+
+    <para>
+      Unless otherwise stated, all the documentation in this guide and
+      in particular in this chapter is discussing the original GNU
+      projects and packages, and might or might not apply to OpenBSD's
+      own versions.
+    </para>
+  </warning>
+
   <xi:include parse="xml" href="libtool/wrappers.xmli" />
   <xi:include parse="xml" href="libtool/plugins.xmli" />
   <xi:include parse="xml" href="libtool/symbols.xmli" />
