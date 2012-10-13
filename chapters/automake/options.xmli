@@ -45,7 +45,7 @@
     <varlistentry xml:id="automake.options.version">
       <term>
         <literal>1.8</literal>, <literal>1.9</literal>, …,
-        <literal>1.11</literal>
+        <literal>1.12</literal>
       </term>
 
       <listitem>
@@ -59,7 +59,7 @@
           This is usually only used to indicate that the project makes
           use of features that have been introduced with a given
           version, which means that it doesn't list micro/patch-level
-          versions (such as <literal>1.11.1</literal>), nor can it be
+          versions (such as <literal>1.12.4</literal>), nor can it be
           used to stop newer versions of
           <application>automake</application> from rebuilding the
           project.
