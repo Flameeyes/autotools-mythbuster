@@ -11,22 +11,6 @@
 
     <listitem>
       <indexterm>
-	<primary>AM_PROG_MKDIR (macro, deprecated)</primary>
-      </indexterm>
-
-      <indexterm>
-	<primary>AC_PROG_MKDIR_P (macro)</primary>
-      </indexterm>
-
-      <para>
-	As noted previously, starting from this version the
-	<function>AM_PROG_MKDIR</function> is removed and no longer
-	usable.
-      </para>
-    </listitem>
-
-    <listitem>
-      <indexterm>
 	<primary>configure.in (file)</primary>
       </indexterm>
 
