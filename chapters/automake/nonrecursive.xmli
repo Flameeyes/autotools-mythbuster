@@ -232,6 +232,7 @@ pkgconfig_DATA = pkgconfig/foo.pc pkgconfig/foo-bar.pc
    mode: nxml
    mode: auto-fill
    mode: flyspell
-   ispell-local-dictionary: "english"
+   ispell-local-dictionary: "british"
+   fill-column: 100
    End:
 -->

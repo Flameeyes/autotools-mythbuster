@@ -368,10 +368,11 @@ ACLOCAL_AMFLAGS = -I m4
   </section>
 </section>
 <!--
-    Local Variables:
-    mode: nxml
-    mode: auto-fill
-    mode: flyspell
-    ispell-local-dictionary: "english"
-    End:
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "british"
+   fill-column: 100
+   End:
 -->

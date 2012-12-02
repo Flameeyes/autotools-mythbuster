@@ -153,6 +153,7 @@ install-exec-local:
    mode: nxml
    mode: auto-fill
    mode: flyspell
-   ispell-local-dictionary: "english"
+   ispell-local-dictionary: "british"
+   fill-column: 100
    End:
 -->

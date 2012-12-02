@@ -110,7 +110,7 @@ exec pkg-config "$@"
    mode: nxml
    mode: auto-fill
    mode: flyspell
-   ispell-local-dictionary: "en_GB"
+   ispell-local-dictionary: "british"
    fill-column: 100
    End:
 -->

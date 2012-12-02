@@ -133,7 +133,7 @@ AC_LINK_IFELSE([AC_LANG_SOURCE([int main() { return 0; }])],
    mode: nxml
    mode: auto-fill
    mode: flyspell
-   ispell-local-dictionary: "en_GB"
+   ispell-local-dictionary: "british"
    fill-column: 100
    End:
 -->

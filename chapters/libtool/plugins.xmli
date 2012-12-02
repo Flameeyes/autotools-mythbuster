@@ -390,7 +390,7 @@ baz_SOURCES = baz1.c baz2.c baz3.c
    mode: nxml
    mode: auto-fill
    mode: flyspell
-   ispell-local-dictionary: "english"
+   ispell-local-dictionary: "british"
    fill-column: 100
    End:
 -->
