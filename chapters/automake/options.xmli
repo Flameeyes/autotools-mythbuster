@@ -120,6 +120,20 @@
 	</para>
       </listitem>
     </varlistentry>
+
+    <varlistentry>
+      <term>
+	<literal>-Wgnu</literal>, <literal>-Wportability</literal>, …, <literal>-Werror</literal>
+      </term>
+
+      <listitem>
+	<para>
+	  Enable (or disable) warning categories in automake. These options correspond to the
+	  warning options available on <command>automake</command> command line. See <xref
+	  linkend="automake.warnings" /> for further information.
+	</para>
+      </listitem>
+    </varlistentry>
   </variablelist>
 
   <section xml:id="automake.options.flavors">
