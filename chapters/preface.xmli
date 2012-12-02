@@ -8,50 +8,79 @@
     <title>Foreword</title>
 
     <para>
-      This book is an organised collection of documentation on the suite
-      of software usually referred to as <emphasis>autotools</emphasis>;
-      this suite, developed by the GNU project, consists of tools such
-      as <command>autoconf</command>, <command>automake</command>,
-      <command>libtool</command> and other minor tools or backends that
-      will be introduced later on.
+      This book is an organised collection of documentation on the suite of software usually
+      referred to as <emphasis>autotools</emphasis>; this suite, developed by the GNU project,
+      consists of tools such as <command>autoconf</command>, <command>automake</command>,
+      <command>libtool</command> and other tools that were introduced by FreeDesktop.org, such as
+      <command>pkg-config</command>.
     </para>
 
     <para>
       This collection finds its roots in my <link
-      xl:href="http://blog.flameeyes.eu/">blog</link>. I've been
-      writing notes, quick and dirty tutorials and commentaries about
-      autotools usage and their practices. The intent is to facilitate 
-      solving common problems found during Gentoo development. While
-      these entries were always as accurate as I could make them; they
-      had some obvious limits imposed by the form of blog they were
-      written in.
+      xl:href="http://blog.flameeyes.eu/">blog</link>. I've been writing notes, quick and dirty
+      tutorials and commentaries about autotools usage and their practices. The intent is to
+      facilitate solving common problems found during Gentoo Linux development. While these entries
+      were always as accurate as I could make them; they had some obvious limits imposed by the form
+      of blog they were written in.
     </para>
 
     <para>
-      Like most blogs; these entries were often opinionated and scattered 
-      over a long period of time. They were often interspersed with 
-      entries that have nothing to with autotools or with development 
-      at all. This made it difficult to search for and/or access the material.
+      Indeed, like most blogs; these entries were often opinionated and scattered over a long period
+      of time. They were often interspersed with entries that have nothing to with autotools or with
+      development at all. This made it difficult to search for and/or access the material.
     </para>
 
     <para>
-      Trying to get the blog entries into a series of articles would 
-      probably have been just as difficult. It's unlikely that I would
-      have found a publisher ready to accept such a document. I've decided
-      to try to find a way to organise my notes and facilitate collaboration.
+      Trying to get the blog entries into a series of articles would probably have been just as
+      difficult: it would have been extremely unlikely to find a publisher ready to accept such a
+      document. I've thus decided to try to find a way to organise my notes and facilitate
+      collaboration.
     </para>
 
     <para>
-      This document is going to be extended, updated, corrected and
-      indexed so that the content is easily browsable and usable by
-      everyone who is looking for information about autotools.
+      This document is going to be extended, updated, corrected and indexed so that the content is
+      easily browsable and usable by everyone who is looking for information about autotools.
     </para>
 
     <para>
-      I sincerely hope that this guide can be useful to others just
-      as it has been useful for me to learn the subject. I am hopeful
-      that this will improve the overall quality of build systems based
-      on autotools.
+      I honestly hope that this guide can be useful to others just as it has been useful for me to
+      learn the subject. I am hopeful that this will improve the overall quality of build systems
+      based on autotools, this way reducing the headaches that developers like me have to sustain to
+      package new software.
+    </para>
+  </section>
+
+  <section>
+    <title>Why another guide about autotools?</title>
+
+    <para>
+      When I started writing this guide, there weren't many updated guides on autotools in general;
+      the <command>autoconf</command> and <command>automake</command> manuals often referred to
+      corner-cases rather than general ones, and made it difficult to understand how to write a
+      proper <filename>configure.ac</filename> or <filename>Makefile.am</filename>.
+    </para>
+
+    <para>
+      The "autobook", by Vaughan, Elliston, Tromey and Taylor was pretty much obsolete by the time I
+      started working in Gentoo, and John Calcote's book (<biblioref linkend="bib.book.calcote" />)
+      was not out yet. I originally intended working myself on a complete book, but I couldn't find
+      a publisher accepting it — partly because of my critical failure in being a native English
+      speaker.
+    </para>
+
+    <para>
+      For a while I wanted to just drop it, but then the time I spend on fixing build systems for
+      packages I maintain piled up enough that I decided spending time on the guide would probably
+      be better employed. The idea behind my guide was to present an integrated guide that shows the
+      best practices, rather than showing all the possibilities, including those that distributions
+      would have a hard time dealing with.
+    </para>
+
+    <para>
+      This reason is why the document is spotty at best: it started by covering the issues that
+      I had to fix more often, as a way to describe them to the upstream projects when submitting
+      them. Over time, I have been working on filling the gaps, which should make for a more
+      complete documentation project.
     </para>
   </section>
 
