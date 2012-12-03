@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="automake.options.flavors">
+  <title>Automake flavours</title>
+
+  <indexterm zone="automake.options.flavors">
+    <primary>gnu (automake flavour)</primary>
+  </indexterm>
+
+  <indexterm zone="automake.options.flavors">
+    <primary>foreign (automake flavour)</primary>
+  </indexterm>
+
+  <indexterm zone="automake.options.flavors">
+    <primary>gnits (automake flavour)</primary>
+  </indexterm>
+
+  <indexterm zone="automake.options.flavors">
+    <primary>cygnus (automake flavour)</primary>
+  </indexterm>
+
+  <indexterm zone="automake.options.flavors">
+    <primary>automake options</primary>
+    <secondary>gnu</secondary>
+  </indexterm>
+
+  <indexterm zone="automake.options.flavors">
+    <primary>automake options</primary>
+    <secondary>foreign</secondary>
+  </indexterm>
+
+  <indexterm zone="automake.options.flavors">
+    <primary>automake options</primary>
+    <secondary>gnits</secondary>
+  </indexterm>
+
+  <indexterm zone="automake.options.flavors">
+    <primary>automake options</primary>
+    <secondary>cygnus</secondary>
+  </indexterm>
+
+  <para>
+    Among different projects, <application>automake</application> is
+    used with different options and settings. Some of the most
+    important projects have their own flavour settings supported by
+    <application>automake</application> directly, as a single
+    option, these are <literal>gnu</literal> (the default),
+    <literal>cygnus</literal> (removed in <application>automake
+    1.13</application>), <literal>gnits</literal> and the final
+    <literal>foreign</literal> which is meant as a "none of the
+    above" option.
+  </para>
+
+  <para>
+    Out of these, you generally ought to employ only two: the default
+    settings (which are <literal>gnu</literal>) and the
+    <literal>foreign</literal> setting. Most of your projects are
+    likely to use the latter, even though that is not the default,
+    because it relaxes some checks that are, otherwise, often worked
+    around in tutorials.
+  </para>
+
+  <para>
+    In particular, the <literal>gnits</literal> standard is
+    non-existent, only exists as an historical reference in the GNU
+    web site – it may as well not exist at all for the scope of this
+    guide. Similarly the <literal>cygnus</literal> flavour, used by
+    hierarchical tree projects such as GCC, has been deemed obsolete
+    starting from <application>automake</application> 1.12 and is no
+    longer accepted starting version 1.13, so it's similarly ignored
+    by the rest of the guide.
+  </para>
+
+  <para>
+    The two main differences between the <literal>gnu</literal> and
+    <literal>foreign</literal> flavours is that the former requires
+    the presence of a number of files in the top-level of the
+    projects, such as <filename>NEWS</filename>,
+    <filename>COPYING</filename>, <filename>AUTHORS</filename>,
+    <filename>ChangeLog</filename>,
+    <filename>README</filename>. Often enough, at least the first
+    file in this list is just <command>touch</command>-ed to stop
+    <command>automake</command> from failing.
+  </para>
+
+  <note>
+    <para>
+      Even if you plan on using these files the way GNU does, it is
+      still recommended to use the <literal>foreign</literal>
+      flavour, and manually list these files in
+      <filename>Makefile.am</filename> so that they are actually
+      installed in the correct place; the <literal>gnu</literal>
+      flavour only requires them to be distributed, not to be
+      actually installed. See <xref
+      linkend="automake.install.documentation" />.
+    </para>
+  </note>
+
+  <para>
+    Another important setting that changing the flavour achieves is
+    disabling some of the portability warnings, letting you cleanly
+    use the GNU <command>make</command> extensions, which makes it
+    much cleaner, nicer and faster to write proper build systems.
+  </para>
+</section>
+<!--
+    Local Variables:
+    mode: nxml
+    mode: auto-fill
+    mode: flyspell
+    ispell-local-dictionary: "british"
+    fill-column: 100
+    End:
+-->
