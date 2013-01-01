@@ -87,8 +87,9 @@
 
       <listitem>
         <para>
-          Allows the use of Linux kernel-style “silent” output when
-          building. See <xref linkend="automake.silent" />.
+          Allows the use of Linux kernel-style “silent” output when building. See <xref
+          linkend="automake.silent" />. As of <application>automake</application> 1.13, this option
+          is implied by default, and is a complete no-op.
         </para>
       </listitem>
     </varlistentry>
