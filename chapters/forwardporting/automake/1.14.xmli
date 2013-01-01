@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title><application>automake</application> 1.14</title>
+
+  <itemizedlist>
+    <title>
+      Unsupported and changed behaviour in <application>automake</application> starting from version
+      1.14
+    </title>
+
+    <listitem>
+      <indexterm>
+	<primary>configure.in (file)</primary>
+      </indexterm>
+
+      <para>
+	Projects still using the old <filename>configure.in</filename> name for the
+	<application>autoconf</application> script are no longer supported. Simply rename the file
+	to the modern name of <filename>configure.ac</filename>.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	A number of macros that have been marked as deprecated in the previous versions are removed
+	starting from this <application>automake</application> version. What follows is the current
+	list of removed macros and replacements.
+      </para>
+
+      <variablelist>
+	<varlistentry>
+	  <term><function>AM_PROG_MKDIR_P</function></term>
+
+	  <listitem>
+	    <indexterm>
+	      <primary>AM_PROG_MKDIR_P (macro, deprecated)</primary>
+	    </indexterm>
+
+	    <para>
+	      Deprecated as of <application>automake</application> 1.12, this function has been
+	      dropped. This function would be replaced by <application>autoconf</application>'s
+	      <function>AC_PROG_MKDIR_P</function> macro, which is called by
+	      <function>AM_INIT_AUTOMAKE</function> itself. It's still suggested to explicit a call
+	      to the macro, as it would only be expanded once anyway.
+	    </para>
+
+	    <para>
+	      The <varname>$(mkdir_p)</varname> variable and <literal>@mkdir_p@</literal>
+	      substitutions are kept as aliases to <varname>$(MKDIR_P)</varname> for compatibility,
+	      but should not be used on new <filename>Makefile.am</filename>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><function>AM_PROG_CC_STDC</function></term>
+
+	  <listitem>
+	    <indexterm>
+	      <primary>AM_PROG_CC_STDC (macro, deprecated)</primary>
+	    </indexterm>
+
+	    <para>
+	      Deprecated as of <application>automake</application> 1.13, this function has been
+	      replaced by <function>AC_PROG_CC</function> as provided by
+	      <application>autoconf</application>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><function>AM_CONFIG_HEADER</function></term>
+
+	  <listitem>
+	    <indexterm>
+	      <primary>AM_CONFIG_HEADER (macro, deprecated)</primary>
+	    </indexterm>
+
+	    <para>
+	      Deprecated as of <application>automake</application> 1.13, this function has been
+	      replaced by <function>AC_CONFIG_HEADERS</function> as provided by
+	      <application>autoconf</application>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </listitem>
+
+    <listitem>
+      <indexterm>
+	<primary><filename>Makefile.am</filename> variables</primary>
+	<secondary>INCLUDES (deprecated)</secondary>
+      </indexterm>
+
+      <para>
+	The <varname>INCLUDES</varname> variable in <filename>Makefile.am</filename> has been marked
+	as fully obsolete. Users of the variable should be now using <varname>AM_CPPFLAGS</varname>.
+      </para>
+    </listitem>
+  </itemizedlist>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "british"
+   fill-column: 100
+   End:
+-->

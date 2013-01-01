@@ -57,11 +57,40 @@
       <primary>automake</primary>
     </indexterm>
 
+    <note>
+      <title>
+	About deprecation of <application>automake</application> features
+      </title>
+
+      <para>
+	The development, both historical and contemporary, of <application>automake</application>
+	is full of features that are introduced, obsoleted, deprecated and removed. Due to this,
+	it's important to know a few things about its deprecation process.
+      </para>
+
+      <para>
+	First of all, it's unfortunately common for newly-released series (1.12, 1.13, 1.14, ...) to
+	have regressions that are addressed in subsequent micro-releases. When important regressions
+	are present, a warning will be noted at the top of the list of changes.
+      </para>
+
+      <para>
+	More importantly, when features (variables, macros, …) are marked as deprecated, their use
+	is causing a warning to be printed, as long as the <option>-Wobsolete</option> option is
+	passed (which is not, by default). If this option is paired with <option>-Werror</option>,
+	it can cause features that are still present, but deprecated, to trigger a failure in
+	Makefile generation.
+      </para>
+    </note>
+
     <xi:include parse="xml"
 		href="forwardporting/automake/1.12.xmli" />
 
     <xi:include parse="xml"
 		href="forwardporting/automake/1.13.xmli" />
+
+    <xi:include parse="xml"
+		href="forwardporting/automake/1.14.xmli" />
   </section>
 
   <section xml:id="forwardporting.libtool">

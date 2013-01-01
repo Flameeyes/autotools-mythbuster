@@ -4,49 +4,45 @@
 	 xmlns:xi="http://www.w3.org/2001/XInclude">
   <title><application>automake</application> 1.12</title>
 
+  <warning>
+    <para>
+      Versions 1.12 and 1.12.1 of <application>automake</application> have been released with a
+      regression in the behaviour, related to the deprecation of
+      <function>AM_PROG_MKDIR_P</function>, as noted later in this section. It is thus of the utmost
+      importance to not rely on the behaviour of these versions.
+    </para>
+  </warning>
+
   <itemizedlist>
-    <title>Unsupported behaviour in
-    <application>automake</application> starting from version
-    1.12</title>
+    <title>
+      Unsupported behaviour in <application>automake</application> starting from version 1.12
+    </title>
 
     <listitem>
       <indexterm>
 	<primary>AM_PROG_MKDIR_P (macro, deprecated)</primary>
       </indexterm>
 
-      <indexterm>
-	<primary>AC_PROG_MKDIR_P (macro)</primary>
-      </indexterm>
-
       <para>
 	The long-deprecated <function>AM_PROG_MKDIR_P</function> macro (previously called by default
 	by <function>AM_INIT_AUTOMAKE</function>) is now reporting itself as such; this, if combined
-	witht he <option>-Werror</option> option, will cause <command>automake</command> to fail on
+	with the <option>-Werror</option> option, will cause <command>automake</command> to fail on
 	projects that are calling the macro, either explicitly, or through another macro, for
 	example <application>gettext</application>'s, which is still unfixed as of December
-	2012. The complete removal of this macro is scheduled for automake 1.14.
+	2012.
       </para>
 
       <para>
 	This function enabled the use of <varname>$(mkdir_p)</varname> and
-	<literal>@mkdir_p@</literal> in <filename>Makefile.am</filename>, and while they are still
-	present, they are considered deprecated, and should thus not be used in new build systems.
-	Please also note that automake releases 1.12 and 1.12.1 mistakenly removed the expansions
-	for <varname>$(mkdir_p)</varname> and <literal>@mkdir_p@</literal> altogether, breaking more
-	than a few packages in the process.
+	<literal>@mkdir_p@</literal> in <filename>Makefile.am</filename>, which are still present
+	and will still be available for version 1.14, but are also considered deprecated, and should
+	thus not be used in new build systems. Please also note that automake releases 1.12 and
+	1.12.1 mistakenly removed the expansions for <varname>$(mkdir_p)</varname> and
+	<literal>@mkdir_p@</literal> altogether, breaking more than a few packages in the process.
       </para>
 
       <para>
-	To execute <command>mkdir -p</command> (or a replacement) use instead the
-	<application>autoconf</application> macro <function>AC_PROG_MKDIR_P</function> and the
-	corresponding <varname>$(MKDIR_P)</varname> variable. This macro is called implicitly by
-	<function>AM_INIT_AUTOMAKE</function> in automake 1.12 and later, but it's recommended to
-	not rely on that, and instead call the macro explicitly (it will only be expanded once
-	anyway), for backward and forward compatibility.
-      </para>
-
-      <para>
-	See also <xref linkend="automake.parallel.install" /> for further details.
+	See <xref linkend="automake.parallel.install" /> for further details.
       </para>
     </listitem>
 

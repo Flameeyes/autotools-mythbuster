@@ -4,23 +4,19 @@
 	 xmlns:xi="http://www.w3.org/2001/XInclude">
   <title><application>automake</application> 1.13</title>
 
+  <warning>
+    <para>
+      Version 1.13 of <application>automake</application> has been released with a regression in its
+      behaviour, related to the deprecation of <function>AM_PROG_CC_STDC</function> and
+      <function>AM_CONFIG_HEADER</function> macros. It is thus of the utmost importance to not rely
+      on the behaviour of this version.
+    </para>
+  </warning>
+
   <itemizedlist>
     <title>Unsupported and changed behaviour in
     <application>automake</application> starting from version
     1.13</title>
-
-    <listitem>
-      <indexterm>
-	<primary>configure.in (file)</primary>
-      </indexterm>
-
-      <para>
-	Projects still using the old <filename>configure.in</filename>
-	name for the <application>autoconf</application> script are no
-	longer supported. Simply rename the file to the modern name of
-	<filename>configure.ac</filename>.
-      </para>
-    </listitem>
 
     <listitem>
       <indexterm>
@@ -47,9 +43,10 @@
       </indexterm>
 
       <para>
-	The multi-argument <function>AM_INIT_AUTOMAKE</function>
-	syntax is no longer supported. This syntax was long
-	discontinued and has never been documented in this guide.
+	The multi-argument <function>AM_INIT_AUTOMAKE</function> syntax is now considered fully
+	obsolete. This syntax was long discontinued and has never been documented in this guide, but
+	it's still being used for projects using dynamic version definition, due to a bug in
+	<application>autoconf</application> which is still unfixed as of January 2013.
       </para>
     </listitem>
 
@@ -64,9 +61,25 @@
       </indexterm>
 
       <para>
-	The <literal>cygnus</literal> flavour for Automake has been
-	removed. This might require a vast overhaul of the very few
-	projects who still relied on this build flavour.
+	The <literal>cygnus</literal> flavour for Automake has been removed. This might require a
+	vast overhaul of the very few projects who still relied on this build flavour.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	A number of internal, deprecated aliases, not starting with the canonical
+	<literal>AM_</literal> prefix, have been removed. These were part of the
+	<filename>m4/obsolete.m4</filename> macro file and should not really be of importance as
+	they were mostly used by the projects that implemented them before being merged in automake.
+      </para>
+
+      <para>
+	Together with this, as of the original 1.13 release two more macros where removed:
+	<function>AM_PROG_CC_STDC</function> (replaced by <function>AC_PROG_CC</function> as
+	provided by <application>autoconf</application>) and <function>AM_CONFIG_HEADER</function>
+	(replaced by <function>AC_CONFIG_HEADERS</function>). These were later reintroduced, as
+	deprecated, in 1.13.1.
       </para>
     </listitem>
   </itemizedlist>
