@@ -6,10 +6,15 @@
 
   <warning>
     <para>
-      Version 1.13 of <application>automake</application> has been released with a regression in its
-      behaviour, related to the deprecation of <function>AM_PROG_CC_STDC</function> and
-      <function>AM_CONFIG_HEADER</function> macros. It is thus of the utmost importance to not rely
-      on the behaviour of this version.
+      Versions 1.13 and 1.13.1 of <application>automake</application> have been released with
+      regressions in their behaviour, related to the deprecation of
+      <function>AM_PROG_CC_STDC</function> and <function>AM_CONFIG_HEADER</function> macros. It is
+      thus of the utmost importance to not rely on the behaviour of any version before 1.13.2.
+    </para>
+
+    <para>
+      Furthermore, Fedora patched version 1.13.1 to re-introduce the aforementioned macros, which
+      means that the behaviour of any automake version 1.13.1 is distribution-dependent.
     </para>
   </warning>
 
@@ -78,8 +83,9 @@
 	Together with this, as of the original 1.13 release two more macros where removed:
 	<function>AM_PROG_CC_STDC</function> (replaced by <function>AC_PROG_CC</function> as
 	provided by <application>autoconf</application>) and <function>AM_CONFIG_HEADER</function>
-	(replaced by <function>AC_CONFIG_HEADERS</function>). These were later reintroduced, as
-	deprecated, in 1.13.1.
+	(replaced by <function>AC_CONFIG_HEADERS</function>). Version 1.13.1 re-introduced the
+	macros, but only to throw a proper error message; version 1.13.2 finally reintroduced these,
+	as deprecated, to catch-up with Fedora's 1.13.1 patched version.
       </para>
     </listitem>
   </itemizedlist>
