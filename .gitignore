@@ -1,6 +1,7 @@
 *.html
 *.olinkdb
 *~
+.sass-cache/
 autom4te.cache
 chunk.toc.new
 config.log
@@ -9,3 +10,4 @@ configure
 configure.correct
 configure.wrong
 generate
+public/stylesheets/

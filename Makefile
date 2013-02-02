@@ -2,7 +2,9 @@ XSLTPROC = xsltproc
 
 XSL-NS-SS = http://docbook.sourceforge.net/release/xsl-ns/current/
 
-generate: main.docbook
+all: public/index.html public/stylesheets/mythbuster.css
+
+public/index.html: main.docbook $(wildcard *.xmli) stylesheets/mythbuster.xsl
 	$(XSLTPROC) \
 		--xinclude \
 		--stringparam base.dir public/ \
@@ -11,7 +13,9 @@ generate: main.docbook
 		--stringparam collect.xref.targets "yes" \
 		--stringparam toc.section.depth 1 \
 		--stringparam targets.filename "$(patsubst %.xhtml,%.olinkdb,$@)" \
-		stylesheets/flameeyes.eu.xsl \
+		--stringparam html.stylesheet stylesheets/mythbuster.css \
+		--stringparam suppress.navigation 1 \
+		stylesheets/mythbuster.xsl \
 		$<
 
 chunk.toc.new:
@@ -23,6 +27,10 @@ chunk.toc.new:
 		--stringparam use.id.as.filename 1 \
 		$(XSL-NS-SS)/xhtml-1_1/maketoc.xsl \
 		main.docbook
+
+public/stylesheets/mythbuster.css: stylesheets/mythbuster.scss
+	mkdir -p $(dir $@)
+	scss -t compressed $< $@
 
 clean:
 	rm -f *~ *.olinkdb

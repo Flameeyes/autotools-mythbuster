@@ -1,0 +1,363 @@
+$darkbg1: #FFCC66;
+$darkfg1: #FF6633;
+$darkfg2: #993300;
+$darkfg3: #996600;
+$lightfg1: #FF6633;
+
+/* notes' background */
+$lightbg1: #FFFFC5;
+$lightbg2: lighten($darkbg1, 20%);
+
+$darkcontrast1: #003366;
+$lightcontrast1: #6699CC;
+$lightcontrast2: #336666;
+
+$bannerheight: 90px;
+$navigationheight: 30px;
+$headersheight: $bannerheight + 4 + $navigationheight;
+
+@mixin title {
+    font-family: sans-serif;
+    line-height: 1.3;
+    font-weight: bold;
+    color: $darkfg1;
+}
+
+div#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: $bannerheight + 4;
+    width: 100%;
+    background: $darkbg1;
+    overflow: hidden;
+
+    div.book-title {
+	z-index: 1;
+	float: left;
+	font-size: 2.5em;
+	padding: 0.5em;
+	a {
+	    @include title;
+	    text-decoration: none;
+	}
+    }
+
+    div.adsense {
+	float: right;
+	margin: 2px;
+	width: 728px;
+	height: $bannerheight;
+	z-index: -1;
+    }
+}
+
+div#navigation {
+    background: $lightfg1;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: $bannerheight + 4;
+    height: $navigationheight;
+
+    a {
+	line-height: $navigationheight;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	color: $lightcontrast2;
+    }
+
+    .left {
+	float: left;
+    }
+
+    .right {
+	float: right;
+    }
+}
+
+div#footer {
+    border-top: 2px solid $lightcontrast1;
+    width: 100%;
+    background: $darkbg1;
+
+    padding-top: 0.8em;
+    padding-bottom: 1em;
+
+    div#flattr {
+	float: right;
+	margin-right: 1em;
+    }
+
+    p {
+	margin-left: 1em;
+	font-size: small;
+    }
+}
+
+div#widgets {
+    float: left;
+    text-align: center;
+}
+
+div#widgets > div {
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+
+a img {
+    border: 0;
+}
+
+/* Debug borders */
+p, li, dt, dd, div, pre, h1, h2, h3, h4, h5, h6 {
+/*
+  border: 1px solid red;
+  */
+}
+
+body {
+    margin: 0;
+    background: $lightbg2;
+}
+
+body > div:nth-child(3) {
+    background: white;
+    margin: 1em auto;
+    max-width: 860px;
+    padding: 30px;
+    padding-top: $bannerheight + 4;
+}
+
+p { text-align: justify; }
+.filename { color: $darkfg2; }
+pre {
+    color: $darkcontrast1;
+    padding: 0;
+    margin: 0;
+    margin-top: 1.5em;
+}
+
+div.note {
+    padding: 0em 1em 1em 1em;
+    border: 1px solid $lightcontrast1;
+    background: $lightbg1;
+    -moz-border-radius: 0.5em;
+}
+
+a { color: $darkcontrast1; }
+a:visited { color: $darkfg3; }
+
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @include title;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    padding-top: 0.5em;
+}
+
+div.sectionbody {
+    font-family: serif;
+    margin-left: 0;
+}
+
+hr {
+    display: none;
+}
+
+p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+span#author {
+    color: $lightfg1;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+span#email {
+}
+
+span#revision {
+    font-family: sans-serif;
+}
+
+div#preamble,
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+    margin-right: 10%;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+div.admonitionblock {
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+}
+
+div.content { /* Block element content. */
+    padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 1.0em;
+    margin-bottom: 0.5em;
+}
+
+div.title + * {
+    margin-top: 0;
+}
+
+td div.title:first-child {
+    margin-top: 0.0em;
+}
+
+div.content div.title:first-child {
+    margin-top: 0.0em;
+}
+
+div.content + div.title {
+    margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+    background: #ffffee;
+    border: 1px solid $lightcontrast1;
+    padding: 0.5em;
+}
+
+div.listingblock > div.content, pre {
+    border: 1px solid $lightcontrast1;
+    background: $lightbg2;
+    padding: 0.5em;
+}
+
+div.quoteblock > div.content {
+    padding-left: 2.0em;
+}
+
+div.quoteblock .attribution {
+    text-align: right;
+}
+
+div.admonitionblock .icon {
+    vertical-align: top;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #FF6633;
+    padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+    padding-left: 0.5em;
+    border-left: 2px solid $lightcontrast1;
+}
+
+div.exampleblock > div.content {
+    border-left: 2px solid $lightcontrast1;
+    padding: 0.5em;
+}
+
+div.verseblock div.content {
+    white-space: pre;
+}
+
+div.imageblock div.content { padding-left: 0; }
+div.imageblock img { border: 1px solid $lightcontrast1; }
+span.image img { border-style: none; }
+
+dl {
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+dt {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+dd > *:first-child {
+    margin-top: 0;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.olist2 {
+    list-style-type: lower-alpha;
+}
+
+div.tableblock > table {
+    border-color: #FF6633;
+    border-width: 3px;
+}
+thead {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+tfoot {
+    font-weight: bold;
+}
+
+div.hlist {
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+td.hlist1 {
+    vertical-align: top;
+    font-style: italic;
+    padding-right: 0.8em;
+}
+td.hlist2 {
+    vertical-align: top;
+}
+
+/* Workarounds for IE6's broken and incomplete CSS2. */
+
+div.sidebar-content {
+    background: #ffffee;
+    border: 1px solid $lightcontrast1;
+    padding: 0.5em;
+}
+div.sidebar-title, div.image-title {
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 0.0em;
+    margin-bottom: 0.5em;
+}
+
+div.listingblock div.content {
+    border: 1px solid $lightcontrast1;
+    background: #f4f4f4;
+    padding: 0.5em;
+}
+
+div.quoteblock-content {
+    padding-left: 2.0em;
+}
+
+div.exampleblock-content {
+    border-left: 2px solid $lightcontrast1;
+    padding-left: 0.5em;
+}
+
+@media print {
+    div#header .adsense, div#widgets, div#footer-badges { display: none; }
+}
