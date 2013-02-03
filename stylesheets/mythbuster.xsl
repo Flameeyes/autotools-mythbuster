@@ -27,13 +27,13 @@
     </div>
 
     <div class="adsense">
-      <script type="text/javascript"><![CDATA[<!--
-					 google_ad_client = "ca-pub-8947005214934111";
-					 /* Autotools Mythbuster (3) */
-					 google_ad_slot = "7982249742";
-					 google_ad_width = 728;
-					 google_ad_height = 90;
-					 //-->]]>
+      <script type="text/javascript">
+	<![CDATA[
+		 google_ad_client = "ca-pub-8947005214934111";
+		 google_ad_slot = "7982249742";
+		 google_ad_width = 728;
+		 google_ad_height = 90;
+	]]>
       </script>
       <script type="text/javascript"
 	      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
