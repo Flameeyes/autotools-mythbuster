@@ -16,8 +16,10 @@ $bannerheight: 90px;
 $navigationheight: 30px;
 $headersheight: $bannerheight + 4 + $navigationheight;
 
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);
+$font: 'Lato', sans-serif;
+
 @mixin title {
-    font-family: sans-serif;
     line-height: 1.3;
     font-weight: bold;
     color: $darkfg1;
@@ -119,6 +121,7 @@ p, li, dt, dd, div, pre, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
+    font-family: $font;
     margin: 0;
     background: $lightbg2;
 }
@@ -169,7 +172,6 @@ h2 {
 }
 
 div.sectionbody {
-    font-family: serif;
     margin-left: 0;
 }
 
@@ -184,7 +186,6 @@ p {
 
 span#author {
     color: $lightfg1;
-    font-family: sans-serif;
     font-weight: bold;
     font-size: 1.2em;
 }
@@ -193,7 +194,6 @@ span#email {
 }
 
 span#revision {
-    font-family: sans-serif;
 }
 
 div#preamble,
@@ -216,7 +216,6 @@ div.content { /* Block element content. */
 
 /* Block element titles. */
 div.title, caption.title {
-    font-family: sans-serif;
     font-weight: bold;
     text-align: left;
     margin-top: 1.0em;
@@ -308,11 +307,7 @@ div.tableblock > table {
     border-color: #FF6633;
     border-width: 3px;
 }
-thead {
-    font-family: sans-serif;
-    font-weight: bold;
-}
-tfoot {
+thead, tfoot {
     font-weight: bold;
 }
 
@@ -337,7 +332,6 @@ div.sidebar-content {
     padding: 0.5em;
 }
 div.sidebar-title, div.image-title {
-    font-family: sans-serif;
     font-weight: bold;
     margin-top: 0.0em;
     margin-bottom: 0.5em;
