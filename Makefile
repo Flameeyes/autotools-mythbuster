@@ -4,7 +4,7 @@ XSL-NS-SS = http://docbook.sourceforge.net/release/xsl-ns/current/
 
 all: public/index.html public/stylesheets/mythbuster.css
 
-public/index.html: main.docbook $(wildcard *.xmli) stylesheets/mythbuster.xsl
+public/index.html: main.docbook $(wildcard *.xmli) $(wildcard examples/*) stylesheets/mythbuster.xsl
 	$(XSLTPROC) \
 		--xinclude \
 		--stringparam base.dir public/ \

@@ -56,13 +56,15 @@
 
   <xi:include parse="xml" href="chapters/forwardporting.xmli" />
 
+  <xi:include parse="xml" href="chapters/glossary.xmli" />
+
+  <index xml:id="index" />
+
   <xi:include parse="xml" href="license/cc-by-nc-sa.xmli" />
 
   <xi:include parse="xml" href="chapters/furtherreadings.xmli" />
 
-  <xi:include parse="xml" href="chapters/glossary.xmli" />
-
-  <index xml:id="index" />
+  <xi:include parse="xml" href="chapters/examples.xmli" />
 </book>
 <!--
    Local Variables:

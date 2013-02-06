@@ -66,17 +66,13 @@
     </para>
 
     <para>
-      As an example, take two almost identical
-      <filename>configure.ac</filename> files available as examples of
-      this guide: a <link
-      xl:href="../examples/autoconf/caching/whynot/configure.c.ac">default
-      C variant</link> and a <link
-      xl:href="../examples/autoconf/caching/whynot/configure.c99.ac">C99
-      variant</link>. These two scripts only check for <link
-      xl:href="../examples/autoconf/caching/whynot/thisonlyworksonc99.h"><filename>thisonlyworksonc99.h</filename></link>
-      simply changing the language dialect (not even the full
-      language) changes the results coming from the two different
-      runs:
+      As an example, take two almost identical <filename>configure.ac</filename> files available as
+      examples of this guide: a <link linkend="autoconf.caching.whynot.ex1">default C variant</link>
+      and a <link linkend="autoconf.caching.whynot.ex2">C99 variant</link>. These two scripts only
+      check for <link
+      linkend="autoconf.caching.whynot.ex3"><filename>thisonlyworksonc99.h</filename></link> simply
+      changing the language dialect (not even the full language) changes the results coming from the
+      two different runs:
     </para>
 
     <programlisting><![CDATA[

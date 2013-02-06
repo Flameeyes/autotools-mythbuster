@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appendix xmlns="http://docbook.org/ns/docbook"
+	  xmlns:xl="http://www.w3.org/1999/xlink"
+	  xmlns:xi="http://www.w3.org/2001/XInclude"
+	  version="5.0" xml:lang="en"
+	  xml:id="examples">
+  <title>Examples</title>
+
+  <section role="notoc">
+    <title>From <xref linkend="autoconf.caching.whynot" /></title>
+
+    <example xml:id="autoconf.caching.whynot.ex1">
+      <title><filename>configure.c.ac</filename></title>
+
+      <programlisting><xi:include parse="text" href="../examples/autoconf/caching/whynot/configure.c.ac" /></programlisting>
+    </example>
+
+    <example xml:id="autoconf.caching.whynot.ex2">
+      <title><filename>configure.c99.ac</filename></title>
+
+      <programlisting><xi:include parse="text" href="../examples/autoconf/caching/whynot/configure.c99.ac" /></programlisting>
+    </example>
+
+    <example xml:id="autoconf.caching.whynot.ex3">
+      <title><filename>thisonlyworksonc99.h</filename></title>
+
+      <programlisting><xi:include parse="text" href="../examples/autoconf/caching/whynot/thisonlyworksonc99.h" /></programlisting>
+    </example>
+  </section>
+</appendix>
+<!--
+    Local Variables:
+    mode: nxml
+    mode: auto-fill
+    mode: flyspell
+    ispell-local-dictionary: "british"
+    fill-column: 100
+    End:
+-->
