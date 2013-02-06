@@ -2,9 +2,11 @@ XSLTPROC = xsltproc
 
 XSL-NS-SS = http://docbook.sourceforge.net/release/xsl-ns/current/
 
+SOURCES := main.docbook $(shell find . -type f -name '*.xmli') $(shell find examples -type f)
+
 all: public/index.html public/stylesheets/mythbuster.css
 
-public/index.html: main.docbook $(wildcard *.xmli) $(wildcard examples/*) stylesheets/mythbuster.xsl
+public/index.html: $(SOURCES) stylesheets/mythbuster.xsl
 	$(XSLTPROC) \
 		--xinclude \
 		--stringparam base.dir public/ \
