@@ -25,8 +25,19 @@ public/stylesheets/mythbuster.css: stylesheets/mythbuster.scss
 	mkdir -p $(dir $@)
 	scss -t compressed $< $@
 
+mythbuster.epub: epub/mimetype
+	cd epub && zip -r -X ../mythbuster.epub mimetype \
+		&& zip -u -r -X ../mythbuster.epub META-INF OEBPS
+
+epub/mimetype: $(SOURCES)
+	rm -rf epub
+	xsltproc \
+		--xinclude \
+		--stringparam base.dir epub/OEBPS/ \
+		$(XSL-NS-SS)/epub3/chunk.xsl \
+		$< >/dev/null
+
 clean:
-	rm -f *~ *.olinkdb
-	find public -name '*.html' -delete
+	rm -rf *~ *.olinkdb public epub mythbuster.epub
 
 .PHONY: clean

@@ -9,5 +9,7 @@ config.status
 configure
 configure.correct
 configure.wrong
+epub/
 generate
-public/stylesheets/
+mythbuster.epub
+public/
