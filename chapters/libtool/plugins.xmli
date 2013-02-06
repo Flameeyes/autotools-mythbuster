@@ -3,6 +3,8 @@
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="libtool.plugins">
+  <?dbhtml filename="libtool/plugins.html" ?>
+
   <title>Building plugins</title>
 
   <para>

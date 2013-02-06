@@ -4,6 +4,7 @@
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 version="5.0" xml:lang="en"
 	 xml:id="main">
+  <?dbhtml filename="index.html" ?>
   <info>
     <title>Autotools Mythbuster</title>
 
@@ -58,7 +59,9 @@
 
   <xi:include parse="xml" href="chapters/glossary.xmli" />
 
-  <index xml:id="index" />
+  <index xml:id="index">
+    <?dbhtml filename="terms-index.html" ?>
+  </index>
 
   <xi:include parse="xml" href="license/cc-by-nc-sa.xmli" />
 

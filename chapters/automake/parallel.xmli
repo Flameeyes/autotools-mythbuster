@@ -3,6 +3,8 @@
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="automake.parallel">
+  <?dbhtml filename="automake/parallel.html" ?>
+
   <title>Parallel Building Tricks</title>
 
   <para>

@@ -3,6 +3,8 @@
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="autoconf.caching">
+  <?dbhtml filename="autoconf/caching.html" ?>
+
   <title>Caching Results</title>
 
   <indexterm zone="autoconf.caching">

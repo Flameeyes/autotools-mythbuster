@@ -3,6 +3,7 @@
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="autoconf">
+  <?dbhtml filename="autoconf/index.html" ?>
   <title>Configuring The Build —
   <application>autoconf</application></title>
 
@@ -39,6 +40,7 @@
   <xi:include parse="xml" href="autoconf/adding-options.xmli" />
 
   <section xml:id="autoconf.lib-discovery">
+    <?dbhtml filename="autoconf/finding.html" ?>
     <title>Finding Libraries</title>
 
     <xi:include parse="xml" href="autoconf/system-libraries.xmli" />

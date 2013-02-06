@@ -3,6 +3,8 @@
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="forwardporting">
+  <?dbhtml filename="forwardporting/index.html" ?>
+
   <title>Forward Porting Notes</title>
 
   <para>
@@ -36,6 +38,8 @@
   </para>
 
   <section xml:id="forwardporting.autoconf">
+    <?dbhtml filename="forwardporting/autoconf.html" ?>
+
     <title>Changes in <application>autoconf</application>
     releases</title>
 
@@ -50,6 +54,8 @@
   </section>
 
   <section xml:id="forwardporting.automake">
+    <?dbhtml filename="forwardporting/automake.html" ?>
+
     <title>Changes in <application>automake</application>
     release</title>
 
@@ -94,6 +100,8 @@
   </section>
 
   <section xml:id="forwardporting.libtool">
+    <?dbhtml filename="forwardporting/libtool.html" ?>
+
     <title>Changes in <application>libtool</application>
     releases</title>
 

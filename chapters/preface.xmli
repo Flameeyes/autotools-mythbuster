@@ -2,6 +2,9 @@
 <preface xmlns="http://docbook.org/ns/docbook"
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xml:id="preface">
+  <?dbhtml filename="preface.html" ?>
+  <?dbhtml stop-chunking ?>
+
   <title>Preface</title>
 
   <section>

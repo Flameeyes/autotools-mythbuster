@@ -4,6 +4,8 @@
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 version="5.0" xml:lang="en"
 	 xml:id="license">
+  <?dbhtml filename="license.html" ?>
+  <?dbhtml stop-chunking ?>
 
   <title>License</title>
 
