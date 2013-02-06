@@ -27,7 +27,7 @@
     OF SUCH TERMS AND CONDITIONS.
   </para>
 
-  <section>
+  <section role="notoc">
     <title>Definitions</title>
 
     <orderedlist numeration="loweralpha">
@@ -150,7 +150,7 @@
     </orderedlist>
   </section>
 
-  <section>
+  <section role="notoc">
     <title>Fair Dealing Rights.</title>
 
     <para>
@@ -162,7 +162,7 @@
     </para>
   </section>
     
-  <section>
+  <section role="notoc">
     <title>License Grant.</title>
 
     <para>
@@ -210,7 +210,7 @@
     </para>
   </section>
 
-  <section>
+  <section role="notoc">
     <title>Restrictions.</title>
 
     <para>
@@ -394,7 +394,7 @@
     </orderedlist>
   </section>
 
-  <section>
+  <section role="notoc">
     <title>Representations, Warranties and Disclaimer</title>
 
     <para>
@@ -411,7 +411,7 @@
     </para>
   </section>
 
-  <section>
+  <section role="notoc">
     <title>Limitation on Liability.</title>
 
     <para>
@@ -423,7 +423,7 @@
     </para>
   </section>
 
-  <section>
+  <section role="notoc">
     <title>Termination</title>
 
     <orderedlist numeration="loweralpha">
@@ -453,7 +453,7 @@
     </orderedlist>
   </section>
 
-  <section>
+  <section role="notoc">
     <title>Miscellaneous</title>
 
     <orderedlist numeration="loweralpha">
