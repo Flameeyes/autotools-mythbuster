@@ -63,7 +63,7 @@
     <?dbhtml filename="terms-index.html" ?>
   </index>
 
-  <xi:include parse="xml" href="license/cc-by-nc-sa.xmli" />
+  <xi:include parse="xml" href="chapters/license.xmli" />
 
   <xi:include parse="xml" href="chapters/furtherreadings.xmli" />
 
