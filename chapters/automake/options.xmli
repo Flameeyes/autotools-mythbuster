@@ -16,19 +16,20 @@
   </indexterm>
 
   <para>
-    There is a series of options that can be given to
-    <application>automake</application>, to change its default
-    behaviour to something that more suits the need of the single
-    project.
+    There is a series of options that can be given to <application>automake</application>, to change
+    its default behaviour to something that more suits the need of the single project.
   </para>
 
   <para>
-    These options are usually passed to the
-    <function>AM_INIT_AUTOMAKE</function> macro, but can also be
-    passed via the variable <varname>AUTOMAKE_OPTIONS</varname> in the
-    top-level <filename>Makefile.am</filename>. Of the two
-    alternatives, the former is preferred. In either case, the list of
-    options is a simple list of tokens separated by whitespace.
+    These options are usually passed to the <function>AM_INIT_AUTOMAKE</function> macro, but
+    <emphasis>most</emphasis> can also be passed via the variable
+    <varname>AUTOMAKE_OPTIONS</varname> in the top-level <filename>Makefile.am</filename>. In both
+    representation, it is just a space-separated list of tokens, described further on.
+  </para>
+
+  <para>
+    Since not all the options can be passed through <filename>Makefile.am</filename>, it is
+    recommended to always pass the options through a call to <function>AM_INIT_AUTOMAKE</function>.
   </para>
 
   <example>
