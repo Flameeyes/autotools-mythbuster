@@ -317,8 +317,8 @@ checking testing... ok
     </para>
 
     <para>
-      In particular, since <link linkend="automake.maintainer-mode">maintainer mode</link> will be
-      able to re-execute <application>aclocal</application> and <application>autoconf</application>,
+      In particular, since <link linkend="automake.maintainer">maintainer mode</link> will be able
+      to re-execute <application>aclocal</application> and <application>autoconf</application>,
       it'll have to know where to look for the macro files. It thus has to know what paths to look
       for macros in.
     </para>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="automake.maintainer">
+  <?dbhtml filename="automake/maintainer.html" ?>
+
+  <title>Maintainer mode and the <filename>missing</filename> script</title>
+
+  <para>
+    It is common, both during the development of a project, or during the packaging phase, to edit
+    the source files of the build system, <filename>configure.ac</filename>,
+    <filename>Makefile.am</filename> and so on. Depending on which files are modified, it is
+    possible that one or more tools of the Autotools stack need to be executed to produce a new
+    build system, or part of it.
+  </para>
+
+  <para>
+    To facilitate the work of both developers and users, <application>automake</application> makes
+    available what is called <emphasis>maintainer mode</emphasis>, a set of rules that regenerate
+    the build system out of its source files, when the modification times no longer match. So if you
+    edit <filename>Makefile.am</filename>, <application>automake</application> will run, and then
+    <command>./config.status</command> will recheck <filename>Makefile.in</filename> to produce the
+    final <filename>Makefile</filename>.
+  </para>
+
+  <para>
+    At the centre of these rules is the <filename>missing</filename> script, which is usually copied
+    over when generating the build system. This script is designed to check for the presence of, and
+    execute, a given tool. When this fails, because the tool is not present, or for other reasons
+    not compatible, it will warn the user, and mangle the timestamps, as if the tool did its job.
+  </para>
+
+  <para>
+    The tool has, of course, limitations; if a tool is missing, which is required to build either an
+    intermediary, or final target which is not already present in the source tree, the build cannot
+    proceed. Another limitation is that, while it does not limit itself to the Autotools stack
+    proper, it only includes support for a handful of tools, and it's not possible to extend it
+    above and beyond those without implementing it in a new version of Automake.
+  </para>
+
+  <para>
+    The <filename>missing</filename> script has been designed to work for source trees where the
+    generated build system is wholly committed to a source control manager, or, conversely, on
+    source trees coming from a distribution tarball where all the files have been already generated
+    once. As committing generated files is generally not recommended, the second case is the one
+    covered in this guide.
+  </para>
+
+  <para>
+    As mentioned earlier, by default, generated <filename>Makefile</filename> will include rules
+    that execute <application>autoconf</application> and <application>automake</application> through
+    <filename>missing</filename> is either of their source file has a later modification time than
+    their output. Another common situation is to use it with <application>help2man</application>:
+    a man page is generated when creating the distribution; users who have the tool installed can
+    ensure it is kept up-to-date with the command itself, but at the same time those without the
+    tool installed will not be stopped because of the <application>make</application> rule.
+  </para>
+
+  <section>
+    <title>Execution of <command>./configure</command></title>
+
+    <para>
+      When <filename>configure.ac</filename> is modified, and the maintainer mode rules cause a
+      regeneration of the <filename>configure</filename> script, they also need to execute it, to
+      make sure that the changes take effect, this is achieved through the <command>./config.status
+      --recheck</command> command. Usually, this also leads to the re-execution of a number of other
+      tools including <application>automake</application>.
+    </para>
+
+    <para>
+      The parameters passed to the original <command>./configure</command> call are cached in the
+      generated <filename>Makefile</filename> and are used again, together with any variable that
+      was marked as precious (see <xref linkend="autoconf.adding-options.ac_arg_var" />).
+    </para>
+
+    <para>
+      If <filename>configure.ac</filename> is untouched, but the files that are substituted at the
+      end of <command>./configure</command> changed (by themselves, or because of
+      <application>automake</application>), a faster <command>./config.status</command> command is
+      executed instead. This will re-generate the files that go through the final substitution
+      without executing all the previous checks.
+    </para>
+  </section>
+
+  <section>
+    <title>Disabling maintainer mode</title>
+
+    <para>
+      While this configuration works out quite well to protect against clock skews on pristine,
+      properly generated source archives, often times it leads to unexpected behaviour when the
+      archive is not generated through <command>make dist</command>, as there is no guarantee that
+      the generated build system is up to date with its sources.
+    </para>
+
+    <para>
+      A similar problem happens to distributions' packagers: if a patch is applied that modifies the
+      build system, you need to ensure that it gets regenerated fully. Simply relying on maintainer
+      mode does not always fit the process, as the wrong version of automake might be present,
+      causing the <filename>missing</filename> script to just touch the files, without regenerating
+      them. Even when explicitly running the Autotools stack, there has been corner cases where
+      maintainer mode got in the way, mainly due to timestamp skew.
+    </para>
+
+    <para>
+      A macro called <function>AM_MAINTAINER_MODE</function> exists that controls the behaviour of
+      the self-regenerating rules. If no call to the macro is present, maintainer mode is enabled,
+      and it's not possible to disable it at the configuration time. If a call is present without
+      any parameter, maintainer mode is disabled by default and can be re-enabled with
+      <command>./configure --enable-maintainer-mode</command>.
+    </para>
+
+    <para>
+      The suggested call would be like in the following example, as that enables maintainer mode by
+      default (which does the right thing for developers, and for power users), but allows packaging
+      software to disable the automatic rules, which would only be hindering the process.
+    </para>
+
+    <example>
+      <title>Suggested configuration for <application>automake</application> maintainer mode</title>
+
+      <programlisting><![CDATA[
+AM_INIT_AUTOMAKE([foreign])
+
+AM_MAINTAINER_MODE([enable])
+]]></programlisting>
+    </example>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "british"
+   fill-column: 100
+   End:
+-->

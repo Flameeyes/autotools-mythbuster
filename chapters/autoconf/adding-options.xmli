@@ -445,7 +445,7 @@ AC_ARG_VAR(var-name, help-string)
 	<para>
 	  the variable is saved for re-execution when using
 	  <command>./config.status --recheck</command> (as used by
-	  <link linkend="automake.maintainer-mode">maintainer
+	  <link linkend="automake.maintainer">maintainer
 	  mode</link>).
 	</para>
       </listitem>
