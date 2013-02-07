@@ -96,7 +96,9 @@
 
       <para>
 	The <varname>INCLUDES</varname> variable in <filename>Makefile.am</filename> has been marked
-	as fully obsolete. Users of the variable should be now using <varname>AM_CPPFLAGS</varname>.
+	as fully obsolete. Users of the variable should be now using
+	<varname>AM_CPPFLAGS</varname>. This does not yet remove support for the variable, as it's
+	still commonly in use.
       </para>
     </listitem>
   </itemizedlist>
