@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="pkgconfig.dependencies">
+  <?dbhtml filename="pkgconfig/dependencies.html" ?>
+
+  <title>Dependencies</title>
+
+  <para>
+    The <application>pkg-config</application> file format provides two main interfaces to declare
+    dependencies between libraries (and other project using these files), as described in <xref
+    linkend="pkgconfig.file-format" />: the <varname>Requires</varname> definitions and the
+    <varname>Libs</varname> definition. Both of them also provide a <varname>.private</varname>
+    variant. While this might sound redundant, their use is different enough to warrant their
+    presence.
+  </para>
+
+  <para>
+    The <varname>Requires</varname> definition allows to import dependency information directly from
+    another <filename>.pc</filename> data file, including compiler flags
+    (<varname>Cflags</varname>), libraries, and its own set of required libraries.
+  </para>
+
+  <para>
+    The <varname>Libs</varname> definition instead only lists libraries, without inspecting their
+    dependencies; this should usually be used for libraries that do not provide a
+    <filename>.pc</filename> file, such as system libraries.
+  </para>
+
+  <para>
+    The reason why two sets of definitions are present has to be found in the way the link editors
+    work in the UNIX world (Windows and Mac OS X are different worlds), and in particular in the
+    world of <acronym linkend="glossary.elf">ELF</acronym>: shared libraries carry internally the
+    list of their dependencies, but static libraries (archives) do not. This means that if you're
+    linking statically to something, you need to provide its dependencies explicitly.
+  </para>
+
+  <para>
+    The decision on where to list a given dependency should follow a semantic approach: does the
+    current library augment the dependency, or wrap around it? If the consumers of the current
+    library still need to use interfaces from the former, the dependency should be visible directly
+    to the consumers, so declare it as <varname>Requires</varname> or <varname>Libs</varname>. If,
+    on the other hand, the dependency's interface is wrapper and hidden from the consumers, it
+    should be declared in <varname>Requires.private</varname> or <varname>Libs.private</varname>.
+  </para>
+
+
+  <section xml:id="pkgconfig.static-link">
+    <title>Static linking</title>
+
+    <para>
+      When using the private definitions for dependencies, the behaviour of
+      <application>pkg-config</application> will change depending on whether it's targeting dynamic
+      or static linking. In the former case, private dependencies will not be listed in the output,
+      as they are not exposed to the consumer directly, and shared libraries will handle
+      them.
+    </para>
+
+    <para>
+      Contrarily, when the link is static, it'll expand (recursively) all the private dependencies
+      so that all the libraries are brought in. This is once again needed because of the way UNIX
+      link editors work, as archives do not list their own dependencies directly. While <link
+      linkend="libtool">libtool</link> actually provides a wrapper around these archives, they are
+      getting less and less common, so relying on them is not a good idea.
+    </para>
+
+    <para>
+      Unfortunately, at least as of February 2013, there is no easy way to tell at once to an
+      Autotools-based build system that you intend to link statically; this means that the most
+      common way to signal this to <application>pkg-config</application> becomes the command
+      <command>./configure LDFLAGS="-static" PKG_CONFIG="pkg-config --static"</command>.
+    </para>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "british"
+   fill-column: 100
+   End:
+-->

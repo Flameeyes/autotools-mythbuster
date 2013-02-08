@@ -49,6 +49,7 @@
   </para>
 
   <xi:include parse="xml" href="pkgconfig/file-format.xmli" />
+  <xi:include parse="xml" href="pkgconfig/dependencies.xmli" />
   <xi:include parse="xml" href="pkgconfig/pkg_check_modules.xmli" />
   <xi:include parse="xml" href="pkgconfig/cross-compiling.xmli" />
 </chapter>

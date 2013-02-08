@@ -100,7 +100,7 @@
 	  It's important not to list the entries related to further
 	  dependencies, since <application>pkg-config</application> will
 	  take care of running transitive dependency discovery, see
-	  also <xref linkend="pkgconfig.file-format.dependencies" />.
+	  also <xref linkend="pkgconfig.dependencies" />.
 	</para>
       </listitem>
     </varlistentry>
@@ -110,9 +110,8 @@
       <term>Libs.private</term>
       <listitem>
 	<para>
-	  More specific details about the dependencies of a
-	  module. Will be discussed in much detail in <xref
-	  linkend="pkgconfig.static-linking" />.
+	  More specific details about the dependencies of a module, see <xref
+	  linkend="pkgconfig.static-link" />.
 	</para>
       </listitem>
     </varlistentry>
@@ -151,12 +150,83 @@
     </para>
 
     <para>
-      You can add further paths to its search by defining the
-      <varname>PKG_CONFIG_PATH</varname>, or you can replace the
-      default search paths by setting the
-      <varname>PKG_CONFIG_LIBDIR</varname>. These tricks are often
-      used to create wrappers to <application>pkg-config</application>
-      for cross-compilation.
+      You can add further paths to its search by defining the <varname>PKG_CONFIG_PATH</varname>, or
+      you can replace the default search paths by setting the
+      <varname>PKG_CONFIG_LIBDIR</varname>. These tricks are often used to create wrappers to
+      <application>pkg-config</application> for cross-compilation. As described in <xref
+      linkend="pkgconfig.cross-compiling" />.
+    </para>
+  </section>
+
+  <section>
+    <title>Include and library paths</title>
+
+    <para>
+      When providing the compiler and linker flags, you should always provide those to direct said
+      tool to the paths where the library and its headers are to be found (namely,
+      <option>-I</option> and <option>-L</option>, respectively). It is thus common practice to get
+      the <filename>configure</filename> script to substitute variables on a template file, and use
+      them to set the flags.
+    </para>
+
+    <example>
+      <title>Simple project's template file and <filename>configure.ac</filename> code.</title>
+
+      <para>
+	The following code is a (snippet of) a template file that would then be named along the
+	lines of <filename>foo.pc.in</filename>:
+      </para>
+
+      <programlisting><![CDATA[
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+[...]
+
+Cflags: -I${includedir}
+Libs: -L${libdir} -lfoo
+]]></programlisting>
+
+      <para>
+	In the <filename>configure.ac</filename> files you would have, toward the end:
+      </para>
+
+      <programlisting><![CDATA[
+AC_CONFIG_FILES([foo.pc])
+AC_OUTPUT
+]]></programlisting>
+    </example>
+
+    <para>
+      In the template files this way, it's common to have, beside the obvious definition of
+      <varname>libdir</varname> and <varname>includedir</varname>, the definition for
+      <varname>prefix</varname> and <varname>exec_prefix</varname>. The reason for this, is that the
+      variables are defined by default, in <application>autoconf</application>-generated code, as
+      relative to another variable, like this:
+    </para>
+
+    <programlisting><![CDATA[
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+]]></programlisting>
+
+    <para>
+      These values require the user to only override the origin point (<varname>prefix</varname>)
+      and offsets all the other paths at the same time. Since <application>pkg-config</application>
+      has been designed to work in pair with the rest of the autotools stack, the same expansion
+      rules apply, making it easy to deal with, as long as the previously shown example is followed.
+    </para>
+
+    <para>
+      It is important to note that, when the paths are known to
+      <application>pkg-config</application> as matching the system default search paths, they are
+      not emitted in the output usage, to avoid contaminating the compile and link command lines
+      with duplicate search paths that could slow it down considerably and, in some cases, cause
+      cross-compiling wrappers to fail.
     </para>
   </section>
 </section>
