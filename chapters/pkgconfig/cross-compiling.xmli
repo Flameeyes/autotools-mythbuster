@@ -90,6 +90,13 @@
       setting <varname>PKG_CONFIG_LIBDIR</varname> to override the default base search paths.
     </para>
 
+    <para>
+      As of <application>pkg-config</application> version 0.28, a tool-prefixed executable, with the
+      same name as the wrapper documented in this section, is installed by default, both when cross
+      compiling and when not, to support multiple ABI on the same system. This does not, though,
+      make the wrapper approach obsolete, yet.
+    </para>
+
     <example>
       <title>Common <command>pkg-config</command> wrapper script for cross-compilation</title>
 
