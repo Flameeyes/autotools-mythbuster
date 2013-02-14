@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="libtool.version">
+  <?dbhtml filename="libtool/version.html" ?>
+
+  <title>Library Versioning</title>
+
+  <para>
+    One of the hardest part during the development of a library package is handling of version
+    information, as it relates to the binary interface exposed by said libraries and is, thus,
+    governed by those rules rather than what is a more human readable release version.
+  </para>
+
+  <para>
+    To understand what <application>libtool</application> support, in term of version handling, it's
+    important to know what that version refers to. Libraries written in compiled languages – such as
+    C, C++ and so on – have, in addition to the interface that the programmers need to know, an
+    interface that the dynamic loader, and the consumers, know. The former is called <acronym
+    linkend="glossary.api">API</acronym>, the latter is called <acronym
+    linkend="glossary.abi">ABI</acronym>.
+  </para>
+
+  <para>
+    The former includes, among others, the names of the functions, the meaning of the parameters,
+    and the elements within structures. The latter adds to this the data types used for parameters
+    and return values, and the order of the structures themselves. As you can imagine, it's easy to
+    change the ABI without changing the API — a common way to do so is to change the type of a
+    parameter from <type>int</type> to <type>long</type>: users of the library will not have to
+    change their code, but the size expected in the function, between the two versions, will change.
+  </para>
+
+  <para>
+    The rule of thumb, when writing libraries, is basing the release version on the API, which comes
+    down to changing the major version when the interfaces are changed in a completely incompatible
+    way, changing the minor version when interfaces are added, or changed in mostly-compatible ways,
+    and finally increasing the micro, or “patch level” version at each release. Obviously, all the
+    version components to the right of the one that is increased should then be reset to zero.
+  </para>
+
+  <para>
+    For what concerns the version of the ABI, it should not, generally, be tied to the release
+    version; exceptions are possible, but will be documented later on. To solve the issue of ABI
+    compatibility, both ELF and Mach-O provide a simple version number attached to the shared
+    libraries. In the case of ELF, the pair of library name and version is recorded into a data
+    field called <varname>DT_SONAME</varname> tag, and is used for listing dependencies within the
+    <varname>DT_NEEDED</varname> tags of the library's consumer.
+  </para>
+
+  <para>
+    Since the version attached to a library refers to its ABI, whenever the ABI changes, the version
+    need to change, even if this happens within the same minor version, just with a new
+    release. This is the reason why the two versions are not supposed to have the same
+    value. Whenever the ABI changes in an incompatible way, the <varname>DT_SONAME</varname> (and
+    its equivalent for non-ELF systems) need to change, to make sure that the library is not loaded
+    by incompatible consumers.
+  </para>
+
+  <section>
+    <title>Setting the proper Shared Object Version</title>
+
+    <para>
+      Developers working on Linux workstations will probably have noticed that most libraries built
+      through <application>libtool</application> have three numbers at the end of their name, such
+      as <filename>libfoo.so.0.0.0</filename>; this brings to an unfortunately incorrect implication
+      that the version of the shared object uses the full three components. This is not the
+      case. The version of the library is the one indicated in the <varname>DT_SONAME</varname> tag
+      and is, generally, only one component, so in the aforementioned case, that would be
+      <varname>libfoo.so.0</varname>.
+    </para>
+
+    <para>
+      To set the version of the library, <application>libtool</application> provides the
+      <option>-version-info</option> parameter, which accepts three numbers, separated by colons,
+      that are called respectively, <emphasis>current</emphasis>, <emphasis>revision</emphasis> and
+      <emphasis>age</emphasis>. Both their name and their behaviour, nowadays, have to be considered
+      fully arbitrary, as the explanation provided in the official documentation is confusing to say
+      the least, and can be, in some cases, considered completely wrong.
+    </para>
+
+    <warning>
+      <para>
+	A common mistake is to assume that the three values passed to <option>-version-info</option>
+	map directly into the three numbers at the end of the library name. This is not the case,
+	and indeed, current, revision and age are applied differently depending on the operating
+	system that one is using.
+      </para>
+
+      <para>
+	For Linux, for instance, while the last two values map directly from the command-line, the
+	first is calculated by subtracting <varname>age</varname> from
+	<varname>current</varname>. On the other hand, on modern FreeBSD, only one component is used
+	in the library version, which corresponds to <varname>current</varname>.
+      </para>
+    </warning>
+
+    <para>
+      The rules of thumb, when dealing with these values are:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+	<para>
+	  Always increase the revision value.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  Increase the current value whenever an interface has been added, removed or changed.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  Increase the age value only if the changes made to the ABI are backward compatible.
+	</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      The main reason for which <application>libtool</application> uses this scheme for version
+      information, is that it allows to have multiple version of a given library installed, with
+      both link editor and dynamic linker choosing the latest available at build and run time. With
+      modern distributions packaging standards, this situation should not be happening anyway.
+    </para>
+  </section>
+
+  <section>
+    <title>Internal libraries' versions</title>
+
+    <para>
+      As noted in the previous section, the rules on versions for shared libraries are complex, and
+      bothersome to maintain, but they are fundamental for the compatibility of the consumers of the
+      library. On the other hand, sometimes it's possible to get away without having to follow these
+      rules.
+    </para>
+
+    <para>
+      For internal libraries, that are shared among executables of the same package, but are not
+      supposed to have any other consumer, and as such do not install headers, it's possible to
+      simply use the <option>-release</option> option to provide a different name for the library at
+      each release.
+    </para>
+  </section>
+
+  <section>
+    <title>Multiple libraries versions</title>
+
+    <para>
+      While <application>libtool</application> was designed to handle the presence of multiple
+      libraries implementing the same API (and even ABI) on the system, distributions made that
+      necessity moot. On the other hand, it is not uncommon for multiple versions of a library to be
+      installed, with multiple API implemented, allowing consumers to pick their supported
+      version. This is the case, for instance, of Gtk+ and Glib.
+    </para>
+
+    <para>
+      The first reaction would be to combine the two options, <option>-release</option> and
+      <option>-version-info</option>; this would, though, be wrong. When using
+      <option>-release</option> the static archive, the one with <filename>.a</filename> extension,
+      the libtool archive (see <xref linkend="libtool.lafiles" />) and the <filename>.so</filename>
+      file used by the link editor would <emphasis>not</emphasis> have a revision appended, which
+      means that two different version of the library can't be installed at the same time.
+    </para>
+
+    <para>
+      In this situation, the best option is to append part of the library's version information to
+      the library's name, which is exemplified by Glib's <filename>libglib-2.0.so.0</filename>
+      soname. To do so, the declaration in the <filename>Makefile.am</filename> has to be like this:
+     </para>
+
+     <programlisting><![CDATA[
+lib_LTLIBRARIES = libtest-1.0.la
+
+libtest_1_0_la_LDFLAGS = -version-info 0:0:0
+]]></programlisting>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "british"
+   fill-column: 100
+   End:
+-->

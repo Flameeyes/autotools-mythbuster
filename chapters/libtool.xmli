@@ -96,6 +96,8 @@
   <xi:include parse="xml" href="libtool/wrappers.xmli" />
   <xi:include parse="xml" href="libtool/plugins.xmli" />
   <xi:include parse="xml" href="libtool/symbols.xmli" />
+  <xi:include parse="xml" href="libtool/version.xmli" />
+  <xi:include parse="xml" href="libtool/lafiles.xmli" />
 </chapter>
 <!--
    Local Variables:

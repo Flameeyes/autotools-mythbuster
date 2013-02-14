@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="libtool.lafiles">
+  <?dbhtml filename="libtool/lafiles.html" ?>
+
+  <title>Libtool Archives</title>
+
+  <para>
+    One of the most commonly misunderstood features of <application>libtool</application>,
+    especially in modern days, is the presence of the <filename>*.la</filename> files, the so-called
+    <emphasis>libtool archives</emphasis>. These files are simple textual file descriptors of a
+    library built with <application>libtool</application> and are consumed only by
+    <application>libtool</application> and, in some circumstances, libltdl.
+  </para>
+
+  <para>
+    The reason for their existence has to be found in the classical UNIX link editors, especially
+    before the introduction of ELF for executables and shared objects. While this modern format
+    carries over metadata for the libraries within the file itself, in particular version
+    information (see <xref linkend="libtool.version" />) and dependencies, static archives and even
+    older shared object formats do not provide that kind of information, so the eponymous
+    <filename>.la</filename> is used to augment them.
+  </para>
+
+  <para>
+    These are the most important variables to be found in a libtool archive file (a one-liner
+    description is available within the file itself):
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term><varname>dlname</varname></term>
+
+      <listitem>
+	<para>
+	  Purportedly this is the name used when calling <function>dlopen()</function>; on ELF
+	  systems, this corresponds to the <varname>DT_SONAME</varname> tag on the shared object.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><varname>library_names</varname></term>
+
+      <listitem>
+	<para>
+	  This is a list of equivalent names for the same library; it lists both the unversioned
+	  filename, the <varname>DT_SONAME</varname> one, and the fully-versioned file. More
+	  detailed information on the topic of versions within <application>libtool</application>
+	  are to be found in <xref linkend="libtool.version" />.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><varname>old_library</varname></term>
+
+      <listitem>
+	<para>
+	  The name of the static archive, if any has been built, otherwise an empty string. This
+	  allows <application>libtool</application> to know whether static link against the library
+	  is possible at all.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><varname>inherited_linker_flags</varname></term>
+
+      <listitem>
+	<para>
+	  This variable lists selected link editor flags that are needed to ensure the correct ABI
+	  is used with the library, for instance. In most cases, all you'll be seeing in here is
+	  <option>-pthread</option>, as it's probably the only such flag used on modern systems.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><varname>dependency_libs</varname></term>
+
+      <listitem>
+	<para>
+	  With this list, <application>libtool</application> aim to compensate the lack of
+	  dependency information in static archives; indeed this list provides a similar list to the
+	  one in <varname>DT_NEEDED</varname> tags for ELF files.
+	</para>
+
+	<para>
+	  Contrarily to the ELF dependencies, the list does not include version information of any
+	  kind, as it's designed to work in turn with static archives, which do not have version
+	  information either. Also, these dependencies are used for both static and dynamic link,
+	  causing no small headache for developers and distributors alike, as it is well possible
+	  that different versions of the same dependency are brought in, due to this list.
+	</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+  <section>
+    <title>Usefulness of Libtool Archives in today's age</title>
+
+    <para>
+      While <filename>.la</filename> files have been introduced with the aim of solving a real
+      problem, as ELF systems weren't common at the time, their presence on most modern systems is
+      vestigial at best. The only modern consumer of these files, as has been indicated, is
+      <application>libtool</application> itself, which already reduces their usefulness, as projects
+      shy away from it, or even from the whole Autotools stack as a build system.
+    </para>
+
+    <note>
+      <para>
+	It might not be obvious, but <application>automake</application> by default will not consult
+	the Libtool Archives at all, when linking an executable. To make use of these files, you
+	have to initialize and use <application>libtool</application>, even when building a project
+	that consists only of executables.
+      </para>
+
+      <para>
+	Since initializing <application>libtool</application> in these situations will increase
+	build time and complexity, even most Autotools based projects do not use it.
+      </para>
+    </note>
+
+    <para>
+      Historically, KDE 3 used to use a modified libltdl to load its architectural modules, which
+      relied on the presence of the <filename>.la</filename> files for all the plugins. Other than
+      that, even software using libltdl nowadays is not relying on these files, and rather access
+      directly the generated plugin files (either in ELF or other formats).
+    </para>
+
+    <para>
+      Dependency tracking for static linking is, nowadays, mostly supplanted by the use of
+      <application>pkg-config</application>, as can be read in <xref linkend="pkgconfig.static-link"
+      />. Since most build systems, custom and not, have easy access to the data stored in
+      <filename>.pc</filename> files, without the need to use libtool when linking the consumer, the
+      whole idea of Libtool Archives is, nowadays, considered obsolete.
+    </para>
+
+    <para>
+      Indeed, it is not uncommon for distributions to skip packaging of <filename>.la</filename>
+      files altogether, at least for those packages whose detection is possible through
+      <application>pkg-config</application>.
+    </para>
+  </section>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "british"
+   fill-column: 100
+   End:
+-->
