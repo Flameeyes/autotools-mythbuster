@@ -58,8 +58,8 @@ make[1]: Leaving directory `/home/flame/test-hellow'
     to be told to generate the silent-capable Makefiles first, after which it's possible to enable
     said silent rules at the time of build. This has been done because the generated rules are only
     compatible with the GNU implementation of <application>make</application>, which meant that it
-    would break portability and, for that reason, disable the <link
-    linkend="automake.portability">portability warnings</link>.
+    would break portability and, for that reason, disable the portability warnings<!-- [TBW] <link
+    linkend="automake.portability">portability warnings</link> -->.
   </para>
 
   <para>

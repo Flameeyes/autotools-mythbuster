@@ -64,9 +64,11 @@
 	<literal>dist-xz</literal> option.
       </para>
 
+<!-- [TBW]
       <para>
 	See also <xref linkend="automake.dist" /> for further details.
       </para>
+-->
     </listitem>
 
     <listitem>

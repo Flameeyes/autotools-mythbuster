@@ -23,8 +23,8 @@
     commonly-documented solution to this, which involves the use of
     the <function>AC_CHECK_LIBS</function> macro, leads to either
     wrong solutions, or over-engineered ones. This macro is used to
-    check for the presence of a known (usually, third-party) library —
-    as documented in <xref linkend="autoconf.library-presence" /> —
+    check for the presence of a known (usually, third-party) library <!-- [TBW] —
+    as documented in <xref linkend="autoconf.library-presence" /> — -->
     but it does not work that well when you have a list of
     alternatives to check.
   </para>

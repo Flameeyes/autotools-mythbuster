@@ -37,8 +37,8 @@
       <para>
 	Tests are now executed in parallel, rather than in series. You
 	can return to the the old behaviour with the
-	<literal>serial-tests</literal> option. For more information
-	see <xref linkend="automake.parallel.tests" />.
+	<literal>serial-tests</literal> option. <!-- [TBW] For more information
+	see <xref linkend="automake.parallel.tests" />. -->
       </para>
     </listitem>
 

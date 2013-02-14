@@ -73,9 +73,9 @@
     Because of these changes, the <application>libtool</application>
     package is probably the most complex part of the autotools
     stack, and also one that is often avoided by those looking for a
-    simpler build system. Alternatives to using straight
+    simpler build system. <!-- [TBW] Alternatives to using straight
     <application>libtool</application> are explained in the section
-    <xref linkend="libtool.alternatives" />.
+    <xref linkend="libtool.alternatives" />. -->
   </para>
 
   <warning>

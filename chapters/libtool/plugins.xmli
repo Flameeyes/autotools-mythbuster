@@ -64,7 +64,7 @@
 	by <application>libtool</application>, even the recent version
 	2, support three styles for bundling
 	<application>libltdl</application>: sub-configured
-	directory (see <xref linkend="autoconf.subconfigure" />),
+	directory<!-- [TBW] (see <xref linkend="autoconf.subconfigure" />) -->,
 	non-recursive inline build, or finally recursive inline
 	build.
       </para>
@@ -159,8 +159,8 @@ include libltdl/Makefile.inc
       <para>
 	Whatever option you choose to follow at this point, you must
 	actually bundle the sources in your tree. You probably
-	don't want to add them to your source control system (see
-	<xref linkend="tricks.generated-scm" />), but you want to add
+	don't want to add them to your source control system<!-- [TBW] (see
+	<xref linkend="tricks.generated-scm" />) -->, but you want to add
 	the <command>libtoolize --ltdl</command> command to your
 	<filename>autogen.sh</filename> script or similar.
       </para>

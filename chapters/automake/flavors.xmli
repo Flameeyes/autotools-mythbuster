@@ -93,8 +93,8 @@
       <filename>Makefile.am</filename> so that they are actually
       installed in the correct place; the <literal>gnu</literal>
       flavour only requires them to be distributed, not to be
-      actually installed. See <xref
-      linkend="automake.install.documentation" />.
+      actually installed. <!-- [TBW] See <xref
+      linkend="automake.install.documentation" />. -->
     </para>
   </note>
 

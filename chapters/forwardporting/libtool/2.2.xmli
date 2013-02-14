@@ -99,7 +99,7 @@ AC_PROG_LIBTOOL
 	<function>LT_INIT</function>. Since the error shown above
 	happens during porting <emphasis>to</emphasis>
 	<application>libtool</application> 2.2, it's unlikely that the
-	new form is found. See <link linkend="libtool.init" />.
+	new form is found. <!-- [TBW] See <link linkend="libtool.init" />. -->
       </para>
     </example>
   </section>
