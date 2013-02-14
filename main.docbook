@@ -16,9 +16,11 @@
       </personname>
 
       <email>flameeyes@flameeyes.eu</email>
+
+      <contrib>Author and Publisher</contrib>
     </author>
 
-    <editor>
+    <author>
       <personname>
 	<firstname>David J.</firstname>
 	<othername>“user99”</othername>
@@ -26,7 +28,9 @@
       </personname>
 
       <email>olbrannon@gmail.com</email>
-    </editor>
+
+      <contrib>Miscellaneous Editing</contrib>
+    </author>
 
     <date>2013-02</date>
 
