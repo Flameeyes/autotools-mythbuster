@@ -6,7 +6,7 @@ SOURCES := main.docbook $(shell find . -type f -name '*.xmli') $(shell find exam
 
 all: public/index.html public/stylesheets/mythbuster.css
 
-public/index.html: $(SOURCES) stylesheets/mythbuster.xsl
+public/index.html: $(SOURCES) stylesheets/flameeyes.eu.xsl
 	$(XSLTPROC) \
 		--xinclude \
 		--stringparam base.dir public/ \
@@ -18,7 +18,7 @@ public/index.html: $(SOURCES) stylesheets/mythbuster.xsl
 		--stringparam targets.filename "$(patsubst %.xhtml,%.olinkdb,$@)" \
 		--stringparam html.stylesheet stylesheets/mythbuster.css \
 		--stringparam suppress.navigation 1 \
-		stylesheets/mythbuster.xsl \
+		stylesheets/flameeyes.eu.xsl \
 		$<
 
 public/stylesheets/mythbuster.css: stylesheets/mythbuster.scss
