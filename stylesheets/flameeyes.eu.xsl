@@ -3,15 +3,34 @@
      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
      xmlns:d="http://docbook.org/ns/docbook"
      xmlns="http://www.w3.org/1999/xhtml"
+     exclude-result-prefixes="d"
      version="1.0">
 
 <xsl:import href="http://docbook.sourceforge.net/release/xsl-ns/current/xhtml/chunk.xsl"/>
 
 <xsl:template name="user.head.content">
   <meta name="description" content="A no-nonsense guide to Autotools by Diego Elio Pettenò" />
+
+  <script type="text/javascript"><![CDATA[
+    (function() {
+    var s = document.createElement('script');
+    var t = document.getElementsByTagName('script')[0];
+
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+      '//api.flattr.com/js/0.6/load.js?mode=auto';
+
+    t.parentNode.insertBefore(s, t);
+    })();
+]]></script>
 </xsl:template>
 
-<xsl:template name="user.header.content">
+<xsl:template name="user.header.navigation">
+  <xsl:param name="prev" select="/d:foo"/>
+  <xsl:param name="next" select="/d:foo"/>
+  <xsl:param name="nav.context"/>
+
   <xsl:variable name="home" select="/*[1]"/>
 
   <div id="header">
@@ -36,17 +55,9 @@
 	]]>
       </script>
       <script type="text/javascript"
-	      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-      </script>
+	      src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script>
     </div>
   </div>
-</xsl:template>
-
-
-<xsl:template name="user.header.navigation">
-  <xsl:param name="prev" select="/d:foo"/>
-  <xsl:param name="next" select="/d:foo"/>
-  <xsl:param name="nav.context"/>
 
   <div id="navigation">
     <xsl:if test="count($prev)&gt;0">
@@ -90,15 +101,14 @@
 <xsl:template name="user.footer.navigation">
   <div id="footer">
     <div id="flattr">
-      <script type="text/javascript">
-	var flattr_url = 'http://www.flameeyes.eu/autotools-mythbuster/';
-	var flattr_btn = 'default';
-      </script>
-      <script src="http://api.flattr.com/button/load.js" type="text/javascript"></script>
+      <a class="FlattrButton"
+	 href="http://www.flameeyes.eu/autotools-mythbuster/"
+	 title="Autotools Mythbuster"
+	 lang="en"> </a>
     </div>
 
     <p>
-      Autotools Mythbuster by <a href="flameeyes@flameeyes.eu">Diego
+      Autotools Mythbuster by <a href="mailto:flameeyes@flameeyes.eu">Diego
       Elio Pettenò</a>.
     </p>
     <p>
