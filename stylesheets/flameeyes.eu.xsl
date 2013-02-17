@@ -10,6 +10,7 @@
 
 <xsl:template name="user.head.content">
   <meta name="description" content="A no-nonsense guide to Autotools by Diego Elio Pettenò" />
+  <meta name="keywords" content="autoconf, automake, libtool, gnu, build system, pkg-config, pkgconfig" />
 
   <script type="text/javascript"><![CDATA[
     (function() {
