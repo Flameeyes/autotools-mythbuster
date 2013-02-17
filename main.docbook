@@ -47,6 +47,21 @@
 	the license.
       </para>
     </legalnotice>
+
+    <abstract>
+      <para>
+	Autotools Mythbuster is a no-nonsense guide to Autotools, written with the idea of providing
+	a full, integrated view of the tools in the GNU build chain: autoconf, automake, libtool,
+	pkg-config, and so on.
+      </para>
+
+      <para>
+	Instead of providing a full detailing of the workings of the components, which most
+	consumers are not interested on, this guide focuses on building useful, solid and
+	distribution-friendly packages, that developers can submit to distributions without having
+	to jump through hoops to get them accepted.
+      </para>
+    </abstract>
   </info>
 
   <xi:include parse="xml" href="chapters/preface.xmli" />
