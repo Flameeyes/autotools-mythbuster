@@ -186,7 +186,7 @@
       The tuples commonly used with
       <application>autoconf</application> are triples and quadruples,
       which define three components:
-      <emphasis>architecture</emphasis>, <emphasis>evendor</emphasis>
+      <emphasis>architecture</emphasis>, <emphasis>vendor</emphasis>
       and <emphasis>operating system</emphasis>. These three
       components usually map directly into the triples, but for
       quadruple you have to split the operating system into
