@@ -172,13 +172,12 @@
     </para>
 
     <para>
-      The number of elements in these tuples is variable, for some
-      uses that only deal with very low-level code, there can be just
-      a single element, the system architecture (i386, x86_64,
-      powerpc, …); others will have two, defining either the operating
-      system or, most often for definition pairs, the executable
-      format (elf, coff, …). These two formats though are usually, only
-      related to components of the toolchain and not to
+      The number of elements in these tuples is variable, for some uses that only deal with very
+      low-level code, there can be just a single element, the system architecture
+      (<literal>i386</literal>, <literal>x86_64</literal>, <literal>powerpc</literal>, …); others
+      will have two, defining either the operating system or, most often for definition pairs, the
+      executable format (<literal>elf</literal>, <literal>coff</literal>, …). These two formats
+      though are usually, only related to components of the toolchain and not to
       <application>autoconf</application> directly.
     </para>
 
@@ -195,38 +194,31 @@
     </para>
 
     <para>
-      While the architecture is most obvious; and operating systems
-      differ slightly from one another (still being
-      probably the most important data), the
-      <emphasis>vendor</emphasis> value is usually just ignored. It is
-      meant to actually be the vendor of the hardware system, rather
-      than the vendor of the software, although presently it is mostly
-      used by distributions to brand their toolchain
-      (i386-redhat-linux-gnu) or their special systems
-      (i386-gentoo-freebsd7.0) and by vendors that provide their own
-      specific toolchain (i686-apple-darwin9).
+      While the architecture is most obvious; and operating systems differ slightly from one another
+      (still being probably the most important data), the <emphasis>vendor</emphasis> value is
+      usually just ignored. It is meant to actually be the vendor of the hardware system, rather
+      than the vendor of the software, although presently it is mostly used by distributions to
+      brand their toolchain (<literal>i386-redhat-linux-gnu</literal>) or their special systems
+      (<literal>i386-gentoo-freebsd7.0</literal>) and by vendors that provide their own specific
+      toolchain (<literal>i686-apple-darwin9</literal>).
     </para>
 
     <para>
-      Most operating systems don't split their definitions
-      further in kernel and userland because they only work as an
-      “ensemble”: FreeBSD, (Open)Solaris, Darwin, … There are, though,
-      a few operating systems that have a split between kernel and
-      userland, being managed by different projects or even being
-      replaceable independently. This is the case for instance of
-      Linux, which can use either the GNU C Library (GNU/Linux) or
-      uClibc, which become respectively *-linux-gnu and
-      *-linux-uclibc.
+      Most operating systems don't split their definitions further in kernel and userland because
+      they only work as an “ensemble”: FreeBSD, (Open)Solaris, Darwin, … There are, though, a few
+      operating systems that have a split between kernel and userland, being managed by different
+      projects or even being replaceable independently. This is the case for instance of Linux,
+      which can use (among others) the GNU C Library (GNU/Linux) or uClibc, which become
+      respectively <literal>*-linux-gnu</literal> and <literal>*-linux-uclibc</literal>.
     </para>
 
     <para>
-      Also, most operating systems using triples also have a single
-      standardised version for both kernel and userland, and thus
-      provide it as a suffix to the element (*-freebsd7.0,
-      *-netbsd4.0). For a few operating systems, this value might differ
-      from the one that is used as the “product version” used in
-      public. For instance Solaris 10 uses as a definition *-solaris2.10
-      and Apple's Mac OS X 10.5 uses *-darwin9.
+      Also, most operating systems using triples also have a single standardised version for both
+      kernel and userland, and thus provide it as a suffix to the element
+      (<literal>*-freebsd7.0</literal>, <literal>*-netbsd4.0</literal>). For a few operating
+      systems, this value might differ from the one that is used as the “product version” used in
+      public. For instance Solaris 10 uses as a definition <literal>*-solaris2.10</literal> and
+      Apple's Mac OS X 10.5 uses <literal>*-darwin9</literal>.
     </para>
   </section>
 
