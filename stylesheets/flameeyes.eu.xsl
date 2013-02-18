@@ -20,8 +20,7 @@
 
     s.type = 'text/javascript';
     s.async = true;
-    s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-      '//api.flattr.com/js/0.6/load.js?mode=auto';
+    s.src = '//api.flattr.com/js/0.6/load.js?mode=auto';
 
     t.parentNode.insertBefore(s, t);
     })();
@@ -57,7 +56,7 @@
 	]]>
       </script>
       <script type="text/javascript"
-	      src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script>
+	      src="//pagead2.googlesyndication.com/pagead/show_ads.js"> </script>
     </div>
   </div>
 
