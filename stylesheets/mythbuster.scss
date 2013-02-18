@@ -18,7 +18,7 @@ $bannerheight: 90px;
 $navigationheight: 30px;
 $headersheight: $bannerheight + 4 + $navigationheight;
 
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);
+@import url(//fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);
 $font: 'Lato', sans-serif;
 
 @mixin title {
