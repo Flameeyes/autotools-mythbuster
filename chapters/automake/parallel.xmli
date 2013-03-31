@@ -37,7 +37,7 @@
 
     <para>
       Parallelising the <command>make install</command> process is
-      something that is often overseen simply because it's an
+      something that is often overlooked simply because it's an
       I/O-bound task, rather than a CPU-bound one. Unfortunately, in
       some cases, <command>libtool</command> will have to perform
       again the linking on libraries, if the destination folders don't
