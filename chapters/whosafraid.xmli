@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appendix xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 version="5.0" xml:lang="en"
+	 xml:id="whosafraid">
+  <?dbhtml filename="whosafraid.html" ?>
+  <?dbhtml stop-chunking ?>
+
+  <title>Who's afraid of Autotools?</title>
+  <subtitle>Quick tutorial for autotoolizing a project</subtitle>
+
+  <para>
+    While the whole guide is designed toward explaining the mechanisms and the behaviour of
+    autotools, it was never meant, by itself, to be a tutorial. This appendix should cover those
+    basis, by providing an easy path on writing an autotools build system for your project.
+  </para>
+
+  <section>
+    <title>Basic Autotoolization</title>
+
+    <para>
+      As already described in the rest of this guide, the name “Autotools”, we refer to a number of
+      different tools. If you have a very simple program (not hellow-simple, but still simple), you
+      definitely want to use at the very least two: <application>autoconf</application> and
+      <application>automake</application>. While you could use the former without the latter, you
+      really don't want to. This means that you need two files: <filename>configure.ac</filename>
+      and <filename>Makefile.am</filename>.
+    </para>
+
+    <para>
+      The first of the two files is processed to produce a <filename>configure</filename> script
+      which the user will be executing at build time. It is also the bane of most people because, if
+      you look at one for a complex project, you'll see lots of content (and logic) and next to no
+      comments on what things do.
+    </para>
+
+    <para>
+      Lots of it is cargo-culting and I’m afraid I cannot help but just show you a possible basic
+      <filename>configure.ac</filename> file:
+    </para>
+
+    <programlisting><![CDATA[
+AC_INIT([myproject], [123], [flameeyes@flameeyes.eu], [http://blog.flameeyes.eu/tag/autotoolsmythbuster])
+AM_INIT_AUTOMAKE([foreign no-dist-gz dist-xz])
+
+AC_PROG_CC
+
+AC_OUTPUT([Makefile])
+]]></programlisting>
+
+    <para>
+      The first two lines are used to initialize <application>autoconf</application> and
+      <application>automake</application> respectively. The former is being told the name and
+      version of the project, the place to report bugs, and an URL for the package to use in
+      documentation. The latter is told that we’re not a GNU project (seriously, this is important —
+      this way you can avoid creating 0-sized files just because they are mandatory in the default
+      GNU layout, like <filename>NEWS</filename>), and that we want a <filename>.tar.xz</filename>
+      tarball and not a <filename>.tar.gz</filename> one (which is the default). See <xref
+      linkend="automake.options" /> for more details.
+    </para>
+
+    <para>
+      After initializing the tools, you need to, at the very least, ask for a C compiler. You could
+      have asked for a C++ compiler as well, but I’ll leave that as an exercise to the
+      reader. Finally, you got to tell it to output <filename>Makefile</filename> (it’ll use
+      <filename>Makefile.in</filename> but we’ll create <filename>Makefile.am</filename> instead
+      soon).
+    </para>
+
+    <para>
+      To build a program, you need then to create a <filename>Makefile.am</filename> similar to
+      this:
+    </para>
+
+    <programlisting><![CDATA[
+bin_PROGRAMS = hellow
+
+dist_doc_DATA = README
+]]></programlisting>
+
+    <para>
+      Here we’re telling <application>automake</application> that we have a program called
+      <filename>hellow</filename> (which sources are by default <filename>hellow.c</filename>) which
+      has to be installed in the binary directory, and a <filename>README</filename> file that has
+      to be distributed in the tarball and installed as a documentation piece. Yes this is really
+      enough as a very basic <filename>Makefile.am</filename>.
+    </para>
+
+    <para>
+      If you were to have two programs, <filename>hellow</filename> and <filename>hellou</filename>,
+      and a convenience library between the two you could do it this way:
+    </para>
+
+    <programlisting><![CDATA[
+bin_PROGRAMS = hellow hellou
+
+hellow_SOURCES = src/hellow.c
+hellow_LDADD = libhello.a
+
+hellou_SOURCES = src/hellou.c
+hellow_LDADD = libhello.a
+
+noinst_LIBRARIES = libhello.a
+libhello_a_SOURCES = lib/libhello.c lib/libhello.h
+
+dist_doc_DATA = README
+]]></programlisting>
+
+    <para>
+      But then you’d have to add <function>AC_PROG_RANLIB</function> to the
+      <filename>configure.ac</filename> calls. My suggestion is that if you want to link things
+      statically and it’s just one or two files, just go for building it twice… it can actually
+      makes it faster to build (one less serialization step) and with the new LTO options it should
+      very well improve the optimization as well.
+    </para>
+  </section>
+
+  <section>
+    <title>Adding <application>libtool</application></title>
+
+    <para>
+      Let’s start from a fundamental rule: if you’re not going to install a library, you don’t want
+      to use <application>libtool</application>. Some projects that only ever deal with programs
+      still use it because that way they can rely on <filename>.la</filename> files for static
+      linking. My suggestion is (very simply) not to rely on them as much as you can. Doing it this
+      way means that you no longer have to care about using <application>libtool</application> for
+      non-library-providing projects.
+    </para>
+
+    <para>
+      But in the case you are building any library, using <application>libtool</application> is
+      important. Even if the library is internal only, trying to build it without
+      <application>libtool</application> is just going to be a big headache for the packager that
+      looks into your project. Before entering the details on how you use this tool, though, let’s
+      look into something else: what you need to make sure you think about, in your library.
+    </para>
+
+    <para>
+      First of all, make sure to have an unique prefix to your public symbols, be them constants,
+      variables or functions. You might also want to have one for symbols that you use within your
+      library on different translation units — my suggestion in this example is going to be that
+      symbols starting with <function>foo_</function> are public, while symbols starting with
+      <function>foo__</function> are private to the library. You’ll soon see why this is important.
+    </para>
+
+    <para>
+      Reducing the amount of symbols that you expose is not only a good performance consideration,
+      but it also means that you avoid the off-chance to have symbol collisions which is a big
+      problem to debug. So do pay attention. There is another thing that you should consider when
+      building a shared library and that’s the way the library’s ABI is versioned but it’s a topic
+      that goes in quite deep, so just see <xref linkend="libtool.version" /> for further details.
+    </para>
+
+    <para>
+      Once you got these details sorted out, you should start by slightly change the configure.ac
+      file from the previous post so that it initializes libtool as well:
+    </para>
+
+    <programlisting><![CDATA[
+AC_INIT([myproject], [123], [flameeyes@flameeyes.eu], [http://blog.flameeyes.eu/tag/autotoolsmythbuster])
+AM_INIT_AUTOMAKE([foreign no-dist-gz dist-xz])
+LT_INIT
+
+AC_PROG_CC
+
+AC_OUTPUT([Makefile])
+]]></programlisting>
+
+    <para>
+      Now it is possible to provide a few options to <function>LT_INIT</function> for instance to
+      disable by default the generation of static archives. My personal recommendation is not to
+      touch those options in most cases. Packagers will disable static linking when it makes sense,
+      and if the user does not know much about static and dynamic linking, they are better off
+      getting everything by default on a manual install.
+    </para>
+
+    <para>
+      On the <filename>Makefile.am</filename> side, the changes are very simple. Libraries built
+      with <application>libtool</application> have a different class than programs and static
+      archives, so you declare them as <literal>lib_LTLIBRARIES</literal> with a
+      <filename>.la</filename> extension (at build time this is unavoidable). The only real
+      difference between <literal>_LTLIBRARIES</literal> and <literal>_PROGRAMS</literal> is that
+      the former gets its additional links from <literal>_LIBADD</literal> rather than
+      <literal>_LDADD</literal> like the latter.
+    </para>
+
+    <programlisting><![CDATA[
+bin_PROGRAMS = fooutil1 fooutil2 fooutil3
+lib_LTLIBRARIES = libfoo.la
+
+libfoo_la_SOURCES = lib/foo1.c lib/foo2.c lib/foo3.c
+libfoo_la_LIBADD = -lz
+libfoo_la_LDFLAGS = -export-symbols-regex '^foo_[^_]'
+
+fooutil1_LDADD = libfoo.la
+fooutil2_LDADD = libfoo.la
+fooutil3_LDADD = libfoo.la -ldl
+
+pkginclude_HEADERS = lib/foo1.h lib/foo2.h lib/foo3.h
+]]></programlisting>
+
+    <para>
+      The <literal>_HEADERS</literal> variable is used to define which header files to install and
+      where. In this case, it goes into <filename>${prefix}/include/${PACKAGE}</filename>, as I
+      declared it a <literal>pkginclude</literal> install.
+    </para>
+
+    <para>
+      The use of -export-symbols-regex (See also <xref linkend="libtool.symbols" />) ensures that
+      only the symbols that we want to have publicly available are exported and does so in an easy
+      way.
+    </para>
+  </section>
+</appendix>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "british"
+   fill-column: 100
+   End:
+-->
