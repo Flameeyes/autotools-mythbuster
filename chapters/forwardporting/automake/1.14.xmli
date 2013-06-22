@@ -12,93 +12,31 @@
 
     <listitem>
       <indexterm>
-	<primary>configure.in (file)</primary>
+	<primary>AM_PROG_CC_C_O (macro, deprecated)</primary>
       </indexterm>
 
       <para>
-	Projects still using the old <filename>configure.in</filename> name for the
-	<application>autoconf</application> script are no longer supported. Simply rename the file
-	to the modern name of <filename>configure.ac</filename>.
+	The <function>AM_PROG_CC_C_O</function> macro has been deprecated, and its use now is a
+	no-op. Instead, the <filename>compile</filename> script is now required for all builds, and
+	the tests executed by this macro have been bolted on the <function>AC_PROG_CC</function>
+	basic macro instead. Removal of this macro is scheduled for version 2.0.
       </para>
-    </listitem>
-
-    <listitem>
-      <para>
-	A number of macros that have been marked as deprecated in the previous versions are removed
-	starting from this <application>automake</application> version. What follows is the current
-	list of removed macros and replacements.
-      </para>
-
-      <variablelist>
-	<varlistentry>
-	  <term><function>AM_PROG_MKDIR_P</function></term>
-
-	  <listitem>
-	    <indexterm>
-	      <primary>AM_PROG_MKDIR_P (macro, deprecated)</primary>
-	    </indexterm>
-
-	    <para>
-	      Deprecated as of <application>automake</application> 1.12, this function has been
-	      dropped. This function would be replaced by <application>autoconf</application>'s
-	      <function>AC_PROG_MKDIR_P</function> macro, which is called by
-	      <function>AM_INIT_AUTOMAKE</function> itself. It's still suggested to explicit a call
-	      to the macro, as it would only be expanded once anyway.
-	    </para>
-
-	    <para>
-	      The <varname>$(mkdir_p)</varname> variable and <literal>@mkdir_p@</literal>
-	      substitutions are kept as aliases to <varname>$(MKDIR_P)</varname> for compatibility,
-	      but should not be used on new <filename>Makefile.am</filename>.
-	    </para>
-	  </listitem>
-	</varlistentry>
-
-	<varlistentry>
-	  <term><function>AM_PROG_CC_STDC</function></term>
-
-	  <listitem>
-	    <indexterm>
-	      <primary>AM_PROG_CC_STDC (macro, deprecated)</primary>
-	    </indexterm>
-
-	    <para>
-	      Deprecated as of <application>automake</application> 1.13, this function has been
-	      replaced by <function>AC_PROG_CC</function> as provided by
-	      <application>autoconf</application>.
-	    </para>
-	  </listitem>
-	</varlistentry>
-
-	<varlistentry>
-	  <term><function>AM_CONFIG_HEADER</function></term>
-
-	  <listitem>
-	    <indexterm>
-	      <primary>AM_CONFIG_HEADER (macro, deprecated)</primary>
-	    </indexterm>
-
-	    <para>
-	      Deprecated as of <application>automake</application> 1.13, this function has been
-	      replaced by <function>AC_CONFIG_HEADERS</function> as provided by
-	      <application>autoconf</application>.
-	    </para>
-	  </listitem>
-	</varlistentry>
-      </variablelist>
     </listitem>
 
     <listitem>
       <indexterm>
-	<primary><filename>Makefile.am</filename> variables</primary>
-	<secondary>INCLUDES (deprecated)</secondary>
+	<primary>automake options</primary>
+	<secondary>dist-shar (deprecated)</secondary>
+      </indexterm>
+
+      <indexterm>
+	<primary>automake options</primary>
+	<secondary>dist-tarZ (deprecated)</secondary>
       </indexterm>
 
       <para>
-	The <varname>INCLUDES</varname> variable in <filename>Makefile.am</filename> has been marked
-	as fully obsolete. Users of the variable should be now using
-	<varname>AM_CPPFLAGS</varname>. This does not yet remove support for the variable, as it's
-	still commonly in use.
+	The <literal>dist-shar</literal> and <literal>dist-tarZ</literal> options have been
+	deprecated and are scheduled to be removed for version 2.0.
       </para>
     </listitem>
   </itemizedlist>

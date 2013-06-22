@@ -241,7 +241,7 @@ checking pkg-config is at least version 0.9.0... yes
     </para>
 
     <para>
-      For what concerns local macros, all versions of <command>aclocal</command> will look into the
+      For what concerns local macros, older versions of <command>aclocal</command> will look into the
       directories passed through <option>-I</option>, and starting from
       <application>automake</application> version 1.13, it will also use the values passed through
       <function>AM_CONFIG_MACRO_DIR</function> and <function>AM_CONFIG_MACRO_DIRS</function>.
@@ -347,7 +347,8 @@ ACLOCAL_AMFLAGS = -I m4
       passed to <function>AC_CONFIG_MACRO_DIR</function> and
       <function>AC_CONFIG_MACRO_DIRS</function>. Support for the aforementioned
       <varname>ACLOCAL_AMFLAGS</varname> is deprecated starting from
-      <application>automake</application> 1.14, and will likely be ignored in the future.
+      <application>automake</application> 1.14, and will likely be ignored in the future 2.0
+      version.
     </para>
   </section>
 </section>
