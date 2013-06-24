@@ -116,48 +116,6 @@ AUTOTOOLS_MYTHBUSTER
     </para>
 
     <section>
-      <title>What About <function>AC_CONFIG_MACRO_DIR</function>?</title>
-
-      <indexterm>
-	<primary>AC_CONFIG_MACRO_DIR (macro)</primary>
-      </indexterm>
-
-      <indexterm>
-	<primary>AC_CONFIG_MACRO_DIRS (macro)</primary>
-      </indexterm>
-
-      <para>
-	Starting from version 2.58, <application>autoconf</application> provide two macros to
-	declare where local macro files are to be put and found:
-	<function>AC_CONFIG_MACRO_DIR</function> (which takes a single, preferred directory where to
-	put the macro files) and <function>AC_CONFIG_MACRO_DIRS</function> (which takes any number
-	of directories to search for macros in). The most common situation involves passing
-	<literal>m4</literal> to the former macro.
-      </para>
-
-      <para>
-	While the introduction of these macros is not recent at all, they have been left lingering
-	without much use for a long time. Indeed, these are only used by <link
-	linkend="libtool"><application>libtool</application></link> starting from version 2.0, and
-	by <link linkend="automake"><application>automake</application></link> starting from version
-	1.13.
-      </para>
-
-      <para>
-	In <application>libtool</application>, the value of <function>AC_CONFIG_MACRO_DIR</function>
-	is used by <command>libtoolize</command> to know where to put the macro files, when copying
-	them to the package's source.
-      </para>
-
-      <para>
-	In <application>automake</application>, the combined values of the two macros are used as
-	base search paths for macro files by <command>aclocal</command>. Starting from version 1.13,
-	this is replacing the previous <varname>ACLOCAL_AMFLAGS</varname> variable, as explained
-	further on in this section.
-      </para>
-    </section>
-
-    <section>
       <title>What About <command>-I m4</command>?</title>
 
       <para>
@@ -191,25 +149,51 @@ PKG_PROG_PKG_CONFIG
   </section>
 
   <section>
-    <title>Using the <application>aclocal</application> tool from
-    <application>automake</application></title>
+    <title>Using <function>AC_CONFIG_MACRO_DIR</function> (and aclocal)</title>
+
+    <indexterm>
+      <primary>AC_CONFIG_MACRO_DIR (macro)</primary>
+    </indexterm>
+
+    <indexterm>
+      <primary>AC_CONFIG_MACRO_DIRS (macro)</primary>
+    </indexterm>
 
     <indexterm>
       <primary>aclocal</primary>
     </indexterm>
 
+    <indexterm>
+      <primary><filename>Makefile.am</filename> variables</primary>
+      <secondary>ACLOCAL_AMFLAGS (deprecated)</secondary>
+    </indexterm>
+
     <para>
-      While there is no strict requirement for <application>automake</application> when using
-      <application>autoconf</application>, it's often said that the two of them need to always go in
-      pair, in the installed system at least. The reason for this is that there are many projects
-      that make use of the <application>aclocal</application> tool to overcome the limitations shown
-      above.
+      Starting from version 2.58, <application>autoconf</application> provide the macro
+      <function>AC_CONFIG_MACRO_DIR</function> to declare where additional macro files are to be put
+      and found. The argument passed to this macro is commonly <literal>m4</literal>.
     </para>
 
     <para>
-      Even without using <application>automake</application> at all in your project, you can easily
-      rely on that tool to create an “index” of macro files that need to be included for the script
-      to be properly expanded.
+      This macro, for the longest time, has been used only by <link
+      linkend="libtool"><application>libtool</application></link> starting from version 2.0, to
+      identify where to copy its own macro files when using <command>libtoolize --copy</command>.
+    </para>
+
+    <para>
+      Starting from version 1.13, <link
+      linkend="automake"><application>automake</application></link> augments autoconf with a macro
+      called <function>AC_CONFIG_MACRO_DIRS</function>, that provides a space-separated list of
+      directories to use for looking up m4 files. The same macro will be available as part of
+      autoconf 2.70.
+    </para>
+
+    <para>
+      The list of directories declared in these macros will be used by the
+      <application>aclocal</application> tool to look up the macros called by the
+      <filename>configure.ac</filename> file. After all the macros (and their dependencies) have
+      been gathered, it will create a <filename>aclocal.m4</filename> file that
+      <application>autoconf</application> will use.
     </para>
 
     <programlisting><![CDATA[
@@ -236,32 +220,34 @@ checking pkg-config is at least version 0.9.0... yes
       <application>aclocal</application> takes its macro files from the
       <filename>/usr/share/aclocal</filename> path, where most software installs them, and copies
       the macro files where they are defined directly inside <filename>aclocal.m4</filename>,
-      appending them to one another. As we've seen, <application>autoconf</application> reads that
-      file when looking for macros to expand.
+      appending them to one another. Then <application>autoconf</application> reads the
+      file as if it was part of its macros' library.
     </para>
 
     <para>
-      For what concerns local macros, older versions of <command>aclocal</command> will look into the
-      directories passed through <option>-I</option>, and starting from
-      <application>automake</application> version 1.13, it will also use the values passed through
-      <function>AM_CONFIG_MACRO_DIR</function> and <function>AM_CONFIG_MACRO_DIRS</function>.
+      Local macros will also be looked up, but their content will not be appended to
+      <filename>aclocal.m4</filename>. Instead, it will use the <function>m4_include</function>
+      directive, to include the local file.
     </para>
 
     <para>
-      Instead of copying and appending in the same way as system macros, when the macro is locally
-      available, the generated <filename>aclocal.m4</filename> will contain
-      <function>m4_include</function> directives, equivalent to the ones explained above for manual
-      handling.
+      The search path for local files, as of version 1.13 of <application>automake</application>, is
+      defined by the directories listed in <function>AC_CONFIG_MACRO_DIR</function> and
+      <function>AC_CONFIG_MACRO_DIRS</function> arguments. You can also use
+      <varname>ACLOCAL_AMFLAGS</varname> to pass an extra <parameter>-I m4</parameter> to
+      <application>aclocal</application>, but that behaviour is deprecated, and should not be used.
     </para>
 
     <programlisting><![CDATA[
 % cat configure.ac
 AC_INIT
 
+AC_CONFIG_MACRO_DIR([m4])
+
 AUTOTOOLS_MYTHBUSTER
-% aclocal -I m4
+% aclocal
 % cat aclocal.m4
-# generated automatically by aclocal 1.11 -*- Autoconf -*-
+# generated automatically by aclocal 1.13 -*- Autoconf -*-
 
 dnl […] snip […]
 
@@ -285,7 +271,7 @@ checking testing... ok
       <para>
 	This file is often used to put together multiple macros from different macro files, without
 	having to use an <filename>m4/</filename> directory or equivalent. This usage is discouraged
-	by this guide, because it often leads to overly long files, with no logic distinction
+	by this guide, because it often leads to overly long files, with no logical distinction
 	between macros.
       </para>
 
@@ -295,61 +281,6 @@ checking testing... ok
 	adding new macros to a project.
       </para>
     </section>
-  </section>
-
-  <section>
-    <title>With <application>automake</application> and
-    <application>aclocal</application></title>
-
-    <indexterm>
-      <primary>aclocal</primary>
-    </indexterm>
-
-    <indexterm>
-      <primary><filename>Makefile.am</filename> variables</primary>
-      <secondary>ACLOCAL_AMFLAGS (deprecated)</secondary>
-    </indexterm>
-
-    <para>
-      When using <application>automake</application> for the build, external macro files are not
-      just handled as before with just <application>aclocal</application>, but require a few more
-      details to be taken care of.
-    </para>
-
-    <para>
-      In particular, since <link linkend="automake.maintainer">maintainer mode</link> will be able
-      to re-execute <application>aclocal</application> and <application>autoconf</application>,
-      it'll have to know where to look for the macro files. It thus has to know what paths to look
-      for macros in.
-    </para>
-
-    <para>
-      Up to <application>automake</application> 1.14, a special variable in the top-level
-      <filename>Makefile.am</filename> file is used to keep the <application>aclocal</application>
-      options: <varname>ACLOCAL_AMFLAGS</varname>.
-    </para>
-
-    <para>
-      This variable is also used by the <application>autoreconf</application> tool, that executes
-      all the stages of processing for a particular <filename>configure.ac</filename>. For a
-      limitation in that tool, though, the variable should be written in a single line (no line
-      continuations) and without using other indirect variables.
-    </para>
-
-    <programlisting><![CDATA[
-% head -1 Makefile.am
-ACLOCAL_AMFLAGS = -I m4
-]]></programlisting>
-
-    <para>
-      As noted previously, though, starting from version 1.13 of
-      <application>automake</application>, <command>aclocal</command> will actually use the paths
-      passed to <function>AC_CONFIG_MACRO_DIR</function> and
-      <function>AC_CONFIG_MACRO_DIRS</function>. Support for the aforementioned
-      <varname>ACLOCAL_AMFLAGS</varname> is deprecated starting from
-      <application>automake</application> 1.14, and will likely be ignored in the future 2.0
-      version.
-    </para>
   </section>
 </section>
 <!--
