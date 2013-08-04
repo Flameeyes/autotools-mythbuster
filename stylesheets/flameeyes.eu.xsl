@@ -12,19 +12,8 @@
   <meta name="description" content="A no-nonsense guide to Autotools by Diego Elio Pettenò" />
   <meta name="keywords" content="autoconf, automake, libtool, gnu, build system, pkg-config, pkgconfig" />
   <link rel="author" href="https://plus.google.com/111148791763071482364?rel=author" />
-
-  <script type="text/javascript"><![CDATA[
-    (function() {
-    var s = document.createElement('script');
-    var t = document.getElementsByTagName('script')[0];
-
-    s.type = 'text/javascript';
-    s.async = true;
-    s.src = '//api.flattr.com/js/0.6/load.js?mode=auto';
-
-    t.parentNode.insertBefore(s, t);
-    })();
-]]></script>
+  <script type="text/javascript" async="true" src="https://api.flattr.com/js/0.6/load.js?mode=auto"></script>
+  <script type="text/javascript" async="true" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </xsl:template>
 
 <xsl:template name="user.header.navigation">
@@ -47,16 +36,10 @@
     </div>
 
     <div class="adsense">
-      <script type="text/javascript">
-	<![CDATA[
-		 google_ad_client = "ca-pub-8947005214934111";
-		 google_ad_slot = "7982249742";
-		 google_ad_width = 728;
-		 google_ad_height = 90;
-	]]>
+      <ins class="adsbygoogle" style="width: 728px; height: 90px;" data-ad-client="ca-pub-8947005214934111" data-ad-slot="7982249742"></ins>
+      <script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-      <script type="text/javascript"
-	      src="//pagead2.googlesyndication.com/pagead/show_ads.js"> </script>
     </div>
   </div>
 
