@@ -12,7 +12,6 @@
   <meta name="description" content="A no-nonsense guide to Autotools by Diego Elio Pettenò" />
   <meta name="keywords" content="autoconf, automake, libtool, gnu, build system, pkg-config, pkgconfig" />
   <link rel="author" href="https://plus.google.com/111148791763071482364?rel=author" />
-  <script type="text/javascript" async="true" src="https://api.flattr.com/js/0.6/load.js?mode=auto"></script>
   <script type="text/javascript" async="true" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </xsl:template>
 
@@ -84,13 +83,6 @@
 
 <xsl:template name="user.footer.navigation">
   <div id="footer">
-    <div id="flattr">
-      <a class="FlattrButton"
-	 href="http://www.flameeyes.eu/autotools-mythbuster/"
-	 title="Autotools Mythbuster"
-	 lang="en"> </a>
-    </div>
-
     <p>
       Autotools Mythbuster by <a href="mailto:flameeyes@flameeyes.eu">Diego
       Elio Pettenò</a>.
