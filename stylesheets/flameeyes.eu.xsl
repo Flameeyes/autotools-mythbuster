@@ -10,8 +10,7 @@
 
 <xsl:template name="user.head.content">
   <meta name="description" content="A no-nonsense guide to Autotools by Diego Elio Pettenò" />
-  <meta name="keywords" content="autoconf, automake, libtool, gnu, build system, pkg-config, pkgconfig" />
-  <link rel="author" href="https://plus.google.com/111148791763071482364?rel=author" />
+  <meta name="viewport" content="width=device-width" />
   <script type="text/javascript" async="true" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </xsl:template>
 
@@ -35,7 +34,11 @@
     </div>
 
     <div class="adsense">
-      <ins class="adsbygoogle" style="width: 728px; height: 90px;" data-ad-client="ca-pub-8947005214934111" data-ad-slot="7982249742"></ins>
+      <div>
+        <ins class="adsbygoogle"
+             data-ad-client="ca-pub-8947005214934111" data-ad-slot="7982249742"
+             data-ad-format="auto"></ins>
+      </div>
       <script>
 	(adsbygoogle = window.adsbygoogle || []).push({});
       </script>

@@ -14,10 +14,6 @@ $darkcontrast1: #003366;
 $lightcontrast1: #6699CC;
 $lightcontrast2: #336666;
 
-$bannerheight: 90px;
-$navigationheight: 30px;
-$headersheight: $bannerheight + 4 + $navigationheight;
-
 @import url(//fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);
 $font: 'Lato', sans-serif;
 
@@ -28,17 +24,24 @@ $font: 'Lato', sans-serif;
 }
 
 div#header {
-    position: fixed;
     top: 0;
     left: 0;
-    height: $bannerheight + 4;
+    @media (min-width: 700px) {
+        height: 6em;
+    }
+    @media (max-width: 699px) {
+        padding-bottom: 1em;
+        text-align: center;
+    }
     width: 100%;
     background: $darkbg1;
     overflow: hidden;
 
     div.book-title {
-	z-index: 1;
-	float: left;
+        @media (min-width: 700px) {
+	    z-index: 1;
+	    float: left;
+        }
 	font-size: 2.5em;
 	padding: 0.5em;
 	a {
@@ -48,24 +51,35 @@ div#header {
     }
 
     div.adsense {
-	float: right;
-	margin: 2px;
-	width: 728px;
-	height: $bannerheight;
-	z-index: -1;
+        @media (min-width: 700px) {
+	    float: right;
+	    margin: 2px;
+	    width: 50%;
+            height: 100%;
+	    z-index: -1;
+            display: table;
+            div {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+        @media (max-width: 699px) {
+            width: 90%;
+            margin: auto;
+        }
+        ins {
+            display: block;
+        }
     }
 }
 
 div#navigation {
     background: $lightfg1;
     width: 100%;
-    position: fixed;
-    left: 0;
-    top: $bannerheight + 4;
-    height: $navigationheight;
+    height: 2em;
 
     a {
-	line-height: $navigationheight;
+	line-height: 2em;
 	margin-left: 0.5em;
 	margin-right: 0.5em;
 	color: $lightcontrast2;
@@ -95,7 +109,8 @@ div#footer {
 
     p {
 	margin-left: 1em;
-	font-size: small;
+	font-size: 0.8em;
+        text-align: left;
     }
 }
 
@@ -126,14 +141,17 @@ body {
     font-family: $font;
     margin: 0;
     background: $lightbg2;
+
+    @media (min-width: 1500px) {
+        font-size: 200%;
+    }
 }
 
 body > div:nth-child(3) {
     background: white;
-    margin: 1em auto;
-    max-width: 860px;
-    padding: 30px;
-    padding-top: $bannerheight + 4;
+    margin: 0 auto;
+    max-width: 56em;
+    padding: 1em;
 }
 
 p { text-align: justify; }
@@ -355,5 +373,5 @@ div.exampleblock-content {
 }
 
 @media print {
-    div#header .adsense, div#widgets, div#footer-badges { display: none; }
+    div#header .adsense { display: none; }
 }
