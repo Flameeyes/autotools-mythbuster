@@ -142,7 +142,11 @@ body {
     margin: 0;
     background: $lightbg2;
 
-    @media (min-width: 1500px) {
+    /* For HiDPI devices */
+    @media only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 4/2),
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-device-pixel-ratio: 2) {
         font-size: 200%;
     }
 }
