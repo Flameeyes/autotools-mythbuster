@@ -87,19 +87,15 @@
 <xsl:template name="user.footer.navigation">
   <div id="footer">
     <p>
-      Autotools Mythbuster by <a href="mailto:flameeyes@flameeyes.eu">Diego
-      Elio Pettenò</a>.
+      Autotools Mythbuster by <a href="mailto:flameeyes@flameeyes.eu">Diego Elio Pettenò</a>.
     </p>
     <p>
-      Licensed under a <a
-      href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative
-      Commons Attribution-Noncommercial-Share Alike 3.0 Unported
-      License</a>.
+      Licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons
+      Attribution-Noncommercial-Share Alike 3.0 Unported License</a>.
     </p>
 
     <p>
-      Based on a work at <a
-      href="http://www.flameeyes.eu/autotools-mythbuster/">www.flameeyes.eu</a>.
+      Based on a work at <a href="https://autotools.io/">autotools.io</a>.
     </p>
   </div>
 </xsl:template>
