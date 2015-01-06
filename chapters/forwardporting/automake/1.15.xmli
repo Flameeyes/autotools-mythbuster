@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title><application>automake</application> 1.15</title>
+
+  <itemizedlist>
+    <title>
+      Unsupported and changed behaviour in <application>automake</application> starting from version
+      1.15
+    </title>
+
+    <listitem>
+      <indexterm>
+	<primary>distcheck</primary>
+      </indexterm>
+
+      <para>
+        The <command>make distcheck</command> target has been changed to use
+        <filename class="directory">$(distdir)/_build/sub</filename> as its working directory. Code
+        making assumption on the value of <varname>srcdir</varname> and
+        <varname>top_srcdir</varname> during <command>make distcheck</command> will fail.
+      </para>
+    </listitem>
+  </itemizedlist>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "british"
+   fill-column: 100
+   End:
+-->

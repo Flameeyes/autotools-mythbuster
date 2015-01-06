@@ -34,6 +34,19 @@
 	to the modern name of <filename>configure.ac</filename>.
       </para>
     </listitem>
+
+    <listitem>
+      <indexterm>
+        <primary><filename>Makefile.am</filename> variables</primary>
+        <secondary>ACLOCAL_AMFLAGS (deprecated)</secondary>
+      </indexterm>
+
+      <para>
+        The <varname>ACLOCAL_AMFLAGS</varname> variable in <filename>Makefile.am</filename> is no
+        longer supported. See <xref linkend="autoconf.macros.external" /> for alternatives on how to
+        make use external macro file definitions.
+      </para>
+    </listitem>
   </itemizedlist>
 </section>
 <!--
