@@ -21,7 +21,7 @@
   <para>
     This is one of the most common things to test, but the
     commonly-documented solution to this, which involves the use of
-    the <function>AC_CHECK_LIBS</function> macro, leads to either
+    the <function>AC_CHECK_LIB</function> macro, leads to either
     wrong solutions, or over-engineered ones. This macro is used to
     check for the presence of a known (usually, third-party) library <!-- [TBW] —
     as documented in <xref linkend="autoconf.library-presence" /> — -->
@@ -151,7 +151,7 @@ AC_SEARCH_LIBS([dlopen], [dl dld], [], [
 
 dnl Haiku does not use libm for the math functions, they are part
 dnl of the C library
-AC_SEACH_LIBS([cos], [m], [], [
+AC_SEARCH_LIBS([cos], [m], [], [
   AC_MSG_ERROR([unable to find the cos() function])
 ])
 
