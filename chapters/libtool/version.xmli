@@ -125,6 +125,37 @@
       both link editor and dynamic linker choosing the latest available at build and run time. With
       modern distributions packaging standards, this situation should not be happening anyway.
     </para>
+
+    <para>
+      Another common mistake is to match the value of <option>-version-info</option> with the
+      package version or vice-versa. The two values are not designed to match:
+      <varname>current</varname> increases with any interface change, compatible or not, and
+      <varname>revision</varname> should be incremented with any package version.
+    </para>
+
+    <para>
+      If the package version were to match the <option>-version-info</option> options, you would
+      obtain a sequence of 0.0.0, 0.0.1, 0.0.2… which would appear correct. It would keep correct
+      if every release had backward-incompatible ABI changes (0.0.0, 1.0.0, 2.0.0, 3.0.0, …), but
+      it becomes confusing when each release has backward-compatible ABI changes (0.0.0, 1.1.1,
+      2.2.2, 3.3.3, …), or when different type of changes happen: (0.0.0, 0.0.1, 1.0.2, 2.1.3,
+      2.2.4, …).
+    </para>
+
+    <para>
+      While this versioning scheme is monotonically increasing, its format is exceedingly
+      complicated and is due to cause confusion in packagers and users, as a non-backward-compatible
+      ABI change might still be fully source compatible, and thus a jump from version 1.0.2 to 2.1.3
+      would provide the wrong impression to all. It is suggested to refrain from idiosyncratic
+      versioning for packages, in favour of more relaible and understandable semantic versioning.
+    </para>
+
+    <para>
+      Following semantic versioning for the package while trying to apply the same to the library
+      would also lead to confusing and inconvenient behaviour as the parameters are mangled by
+      <application>libtool</application> according to the system it is building for and are thus
+      going to produce incorrect results in some cases.
+    </para>
   </section>
 
   <section>
