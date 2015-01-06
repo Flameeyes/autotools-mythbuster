@@ -233,9 +233,10 @@ checking pkg-config is at least version 0.9.0... yes
     <para>
       The search path for local files, as of version 1.13 of <application>automake</application>, is
       defined by the directories listed in <function>AC_CONFIG_MACRO_DIR</function> and
-      <function>AC_CONFIG_MACRO_DIRS</function> arguments. You can also use
-      <varname>ACLOCAL_AMFLAGS</varname> to pass an extra <parameter>-I m4</parameter> to
-      <application>aclocal</application>, but that behaviour is deprecated, and should not be used.
+      <function>AC_CONFIG_MACRO_DIRS</function> arguments. Previously, it was common to use a
+      variable defined in <filename>Makefile.am</filename> (<varname>ACLOCAL_AMFLAGS</varname>) to
+      pass extra parameters to <application>aclocal</application>. This behaviour is deprecated and
+      will soon not be supported.
     </para>
 
     <programlisting><![CDATA[
