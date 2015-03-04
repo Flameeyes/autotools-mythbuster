@@ -133,11 +133,9 @@
       </para>
 
       <para>
-	The sources for this text are available, in <link
-	xl:href="http://www.docbook.org/">DocBook format</link>, at
-	the <link
-	xl:href="http://gitorious.org/autotools-mythbuster">Gitorious
-	project.</link>
+	The sources for this text are available, in <link xl:href="http://www.docbook.org/">DocBook
+	format</link>, at the <link
+	xl:href="http://github.com/Flameeyes/autotools-mythbuster">GitHub project.</link>
       </para>
 
       <para>
