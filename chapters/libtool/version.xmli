@@ -147,7 +147,7 @@
       complicated and is due to cause confusion in packagers and users, as a non-backward-compatible
       ABI change might still be fully source compatible, and thus a jump from version 1.0.2 to 2.1.3
       would provide the wrong impression to all. It is suggested to refrain from idiosyncratic
-      versioning for packages, in favour of more relaible and understandable semantic versioning.
+      versioning for packages, in favour of more reliable and understandable semantic versioning.
     </para>
 
     <para>
