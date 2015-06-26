@@ -107,7 +107,7 @@
 	<programlisting><![CDATA[
 # automake needed when not using sub-configured libltdl
 # subdir-objects only needed when using non-recursive inline build
-AM_INIT_AUTOMAKE([subdir-objects]
+AM_INIT_AUTOMAKE([subdir-objects])
 
 # the inline build *requires* the configure header, although the name
 # is not really important
