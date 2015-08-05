@@ -299,7 +299,7 @@ AC_CHECK_HEADER([ltdl.h],
       usage</title>
 
       <programlisting><![CDATA[
-pkglibdir_LTLIBRARIES = foo_example_plugin.la
+pkglib_LTLIBRARIES = foo_example_plugin.la
 
 foo_example_plugin_la_SOURCES = example.c
 foo_example_plugin_la_LDFLAGS = -avoid-version -module -shared -export-dynamic
