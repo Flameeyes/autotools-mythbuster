@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="libtool.windows">
+  <?dbhtml filename="libtool/windows.html" ?>
+
+  <title>Notes on Windows Support</title>
+
+  <para>
+    While <application>libtool</application> has been written to bridge gaps in the support and
+    implementation of shared libraries across operating systems, its design is centred around UNIX
+    style libraries. Support for <acronym>PE</acronym> <acronym>DLL</acronym> (Portable Executable
+    Dynamic Linking Library) is available when using the MinGW compiler suite, but requires some
+    special considerations.
+  </para>
+
+  <section>
+    <title>Explicit Symbol Tables</title>
+    
+    <para>
+      The first thing to know about PE DLLs is that, unlike UNIX shared objects, these require
+      explicit tables for both imported and exported symbols. These can be declared in the code by
+      using <link xl:href="http://gcc.gnu.org/onlinedocs/gcc-4.0.0/gcc/Function-Attributes.html">GCC's
+      function attributes</link>, by using <link linkend="libtool.symbols">symbol export
+      options</link> or by relying on linker options that makes it behave more like a UNIX system.
+    </para>
+
+    <para>
+      Different solutions have different advantages and problems, for instance relying on the linker
+      hiding these quirks is convenient, but might have performance impact, while marking the imports
+      and exports explicitly in the code is more convoluted, but has no performance impact. Discussing
+      these solutions is outside the scope of this documentation.
+    </para>
+  </section>
+
+  <section>
+    <title>Undefined Symbols</title>
+
+    <para>
+      Because of the explicit nature of the table of imported symbols, it is not possible to leave a
+      symbol in a PE DLL undefined at link time, to be satisfied at runtime, as it is instead
+      possible with most UNIX shared objects.
+    </para>
+
+    <para>
+      It is possible to instruct <application>libtool</application> to not allow unbound undefined
+      symbols when linking a shared library by using <option>-no-undefined</option>:
+    </para>
+
+    <programlisting><![CDATA[
+lib_LTLIBRARIES = libfoo.la
+libfoo_la_LIBADD = -lws2_32
+libfoo_la_LDFLAGS = -no-undefined
+]]></programlisting>
+  </section>
+
+  <section>
+    <title>Opt-In Initialization</title>
+
+    <para>
+      Modern MinGW toolchain makes it very easy to not have to explicitly design a shared library to
+      work as a PE DLL, but <application>libtool</application> was developed at time when this was
+      not possible, so it does, by default, refuse to build PE DLLs even when using newer versions
+      of the toolchain.
+    </para>
+
+    <para>
+      To enable support for building PE DLLs, it is necessary to opt-in during the
+      <application>libtool</application> initialization (<function>LT_INIT</function>):
+    </para>
+
+    <programlisting><![CDATA[
+dnl configure.ac
+LT_INIT([win32-dll])
+]]></programlisting>
+  </section>
+
+  <section xml:id="libtool.windows.version">
+    <title>Library Version Support</title>
+
+    <para>
+      In <xref linkend="libtool.version" /> the description assumes UNIX semantics for library
+      version handling. PE and Windows do not support the same concept of versions or
+      <varname>DT_SONAME</varname>, so only the actual filename of the library is used in
+      determining which library to load.
+    </para>
+
+    <para>
+      Because of this reason, the final filename of the produced DLL file contains the calculated
+      single-number version of the library (the same as the version number used for
+      <varname>DT_SONAME</varname>.) If you want a filename that does not contain a version, you
+      should use <option>-avoid-version</option>.
+    </para>
+
+    <example>
+      <title>Library versions for PE DLL</title>
+
+      <programlisting><![CDATA[
+libfoo_la_LDFLAGS = -no-undefined -version-info 2:4:1]]></programlisting>
+
+      <para>
+        These parameters would produce a library named <filename>libfoo.so.1.1.4</filename> (with
+        <filename>libfoo.so.1</filename> being the <varname>DT_SONAME</varname>) on Linux and
+        <filename>libfoo-1.dll</filename> on Microsoft Windows.
+      </para>
+    </example>
+  </section>
+  
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "british"
+   fill-column: 100
+   End:
+-->

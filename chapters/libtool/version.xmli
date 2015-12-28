@@ -57,6 +57,11 @@
     by incompatible consumers.
   </para>
 
+  <para>
+    For library version support on Microsoft Windows and other PE environments, please see <xref
+    linkend="libtool.windows.version" />.
+  </para>
+
   <section>
     <title>Setting the proper Shared Object Version</title>
 
