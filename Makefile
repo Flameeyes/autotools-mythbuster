@@ -25,10 +25,9 @@ public/stylesheets/mythbuster.css: stylesheets/mythbuster.scss
 	mkdir -p $(dir $@)
 	scss -t compressed $< $@
 
-ifeq "$(EPUB_VERSION)" "3"
-mythbuster.epub: epub/mimetype
-	cd epub && zip -r -X ../mythbuster.epub mimetype \
-		&& zip -u -r -X ../mythbuster.epub META-INF OEBPS
+mythbuster-v3.epub: epub/mimetype
+	cd epub && zip -r -X ../$@ mimetype \
+		&& zip -u -r -X ../$@ META-INF OEBPS
 
 epub/mimetype: $(SOURCES)
 	rm -rf epub
@@ -37,10 +36,9 @@ epub/mimetype: $(SOURCES)
 		--stringparam base.dir epub/OEBPS/ \
 		$(XSL-NS-SS)/epub3/chunk.xsl \
 		$< >/dev/null
-else
+
 mythbuster.epub: $(SOURCES)
 	dbtoepub-ns $< -o $@
-endif
 
 clean:
 	rm -rf *~ *.olinkdb public epub mythbuster.epub
