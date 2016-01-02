@@ -121,7 +121,7 @@ AC_SUBST([FOO_LIBS])
     </para>
   </section>
 
-  <section>
+  <section xml:id="pkgconfig.pkg_check_modules.specification">
     <title>Modules specification</title>
 
     <para>

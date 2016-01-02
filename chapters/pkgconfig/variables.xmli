@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="pkgconfig.variables">
+  <?dbhtml filename="pkgconfig/variables.html" ?>
+
+  <title>Additional Variables</title>
+
+  <indexterm>
+    <primary>PKG_CHECK_VAR (macro)</primary>
+  </indexterm>
+
+  <para>
+    As seen in <xref linkend="pkgconfig.file-format" />, <application>pkg-config</application>
+    allows the definition of arbitrary variables, in addition to the fixed-meaning keywords.
+  </para>
+
+  <para>
+    The use of arbitrary variables is often used to provide information decided at build-time but
+    not necessarily consumed by the compiler and linked, for example the path in which to install
+    plug-in objects for some software.
+  </para>
+
+  <para>
+    Defining a custom variable is the same as defining pre-defined and temporary variables, such as
+    <varname>libdir</varname>. To query these variables within <application>autoconf</application>
+    you should use the <function>PKG_CHECK_VAR</function> macro, provided by
+    <application>pkg-config</application>.
+  </para>
+
+  <section>
+    <title><function>PKG_CHECK_VAR</function> Syntax</title>
+
+    <para>
+      The syntax of this macro follows part of the conventions of <xref
+      linkend="pkgconfig.pkg_check_modules" />, and is effectively a wrapper around <link
+      linkend="autoconf.adding-options.ac_arg_var"><function>AC_ARG_VAR</function></link>.
+    </para>
+
+    <programlisting><![CDATA[
+PKG_CHECK_VAR(var-name, module, pkgconfig-variable, action-if-found, action-if-not-found)
+]]></programlisting>
+
+    <para>
+      The <parameter>var-name</parameter> parameter defines the name of the variable, to be used in
+      <filename>configure.ac</filename>, <filename>Makefile.am</filename> and other similar
+      files. Since this is declared through <filename>AC_ARG_VAR</filename>, defining this variable
+      in the environment or command-line will skip the execution of
+      <application>pkg-config</application>.
+    </para>
+
+    <para>
+      The <parameter>module</parameter> and <parameter>pkgconfig-variable</parameter> parameters are
+      used to identify the file and the variable to fetch through
+      <application>pkg-config</application>. You can request explicitly a minimum or maximum version
+      number for the module, as described in <xref
+      linkend="pkgconfig.pkg_check_modules.specification" />, but unlike
+      <function>PKG_CHECK_MODULES</function> you can only provide a single module to query.
+    </para>
+
+    <para>
+      While the <parameter>action-if-found</parameter> and
+      <parameter>action-if-not-found</parameter> follow the usual semantics of
+      <application>autoconf</application> macros, the latter is a catch-all for failures, and is
+      invoked in either of the following cases: module not found, module version constraints not
+      fulfilled, missing variable in module file.
+    </para>
+
+    <para>
+      Additionally, unlike <function>PKG_CHECK_MODULES</function>, this macro does not, by default,
+      error out if the variable cannot be defined. Together with the above-noted caveat of being a
+      no-op if the variable is already defined, it is possible to call the macro multiple times with
+      the same <parameter>var-name</parameter> to find the variable in one of multiple possible
+      modules.
+    </para>
+  </section>
+
+  <section>
+    <title>A Practical Example</title>
+
+    <example>
+      <title>Reading target path for plugins via <function>PKG_CHECK_VAR</function></title>
+
+      <para>
+        The following example assumes that there is an application called Foo that provides a plug-in
+        interface. Details of building flags can be seen in <xref linkend="libtool.plugins" />.
+      </para>
+
+      <programlisting><![CDATA[
+dnl In configure.ac
+PKG_CHECK_VAR([FOO_PLUGINDIR], [foo], [plugindir])
+AC_MSG_CHECKING([foo plugins path])
+AS_IF([test "x$FOO_PLUGINDIR" = "x"], [
+  AC_MSG_FAILURE([Unable to identify foo plugin path.])
+])
+
+# In Makefile.am
+fooplugindir = $(FOO_PLUGINDIR)
+fooplugin_LTLIBRARIES = myplugin.la
+]]></programlisting>
+    </example>
+  </section>
+
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "british"
+   fill-column: 100
+   End:
+-->

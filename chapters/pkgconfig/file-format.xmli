@@ -8,28 +8,24 @@
   <title>File Format of <filename>*.pc</filename> Files</title>
 
   <para>
-    The heart of <application>pkg-config</application> lies 
-    in the data files that the various applications install. These
-    data files are actually simple text files with some special syntax
-    thrown in. They are neither INI-style configuration files, nor
-    simple key-value pairs and are not even complete scripts.
+    The heart of <application>pkg-config</application> lies in the data files that the various
+    applications install. These data files are actually simple text files with some special syntax
+    thrown in. They are neither INI-style configuration files, nor simple key-value pairs and are
+    not even complete scripts.
   </para>
 
   <para>
-    The name of the file is the name of the module that can be tested
-    with <link
+    The name of the file is the name of the module that can be tested with <link
     linkend="pkgconfig.pkg_check_modules"><function>PKG_CHECK_MODULES</function></link>
-    function. The content is simple text, which can be
-    divided into variables definitions and keyword declaration. Both
-    are designed to be kept in a single line.
+    function. The content is simple text, which can be divided into variables definitions and
+    keyword declaration. Both are designed to be kept in a single line.
   </para>
 
   <para>
-    Variables can be used to define temporary values, but they can
-    also provide arbitrary information to
-    <application>pkg-config</application> users when needed. Keywords
-    instead are pre-defined and are used by the commands available as
-    part of <application>pkg-config</application> itself.
+    Variables can be used to define temporary values, but they can also provide arbitrary
+    information to <application>pkg-config</application> users when needed (see <xref
+    linkend="pkgconfig.variables" />). Keywords instead are pre-defined and are used by the commands
+    available as part of <application>pkg-config</application> itself.
   </para>
 
   <variablelist>
