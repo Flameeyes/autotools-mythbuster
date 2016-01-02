@@ -7,6 +7,20 @@
 
   <title>Notes on Windows Support</title>
 
+  <indexterm>
+    <primary>Portable Executable</primary>
+    <secondary>DLL</secondary>
+  </indexterm>
+
+  <indexterm>
+    <primary>Microsoft Windows</primary>
+  </indexterm>
+
+  <indexterm>
+    <primary>LT_INIT (macro)</primary>
+    <secondary>win32-dll</secondary>
+  </indexterm>
+
   <para>
     While <application>libtool</application> has been written to bridge gaps in the support and
     implementation of shared libraries across operating systems, its design is centred around UNIX
