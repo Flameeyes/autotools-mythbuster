@@ -7,7 +7,8 @@
   <para>
     Starting with version 1.13, <application>automake</application> versioning scheme has changes so
     that backward-incompatible changes are only present in major version. The next major version of
-    <application>automake</application> is version 2.0 due out in 2015.
+    <application>automake</application> is version 2.0. This new version was promised for 2013, but
+    has not been released yet as of writing in 2016.
   </para>
 
   <warning>
