@@ -96,6 +96,22 @@ foo_SOURCES = \
 	src/main.c
 ]]></programlisting>
 
+    <warning>
+      <para>
+        Even though repeating the same path prefix for each source file might seem a useless
+        repetition, it is a common mistake to try using a variable to hold the prefix. Indeed
+        <application>automake</application> does not expand variables in <varname>_SOURCES</varname>
+        definitions.
+      </para>
+
+      <para>
+        While this is likely going to be addressed in future versions of
+        <application>automake</application>, at the time of writing (January 2016) no released
+        version contains a fix for this. Even if they did, it is recommended against relying on it
+        for maximum compatibility.
+      </para>
+    </warning>
+
     <para>
       This will compile all the source files in object files directly
       inside the top build directory; this works fine for most cases,
