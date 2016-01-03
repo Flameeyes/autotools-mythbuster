@@ -41,7 +41,7 @@
     </para>
 
     <programlisting><![CDATA[
-AC_INIT([myproject], [123], [flameeyes@flameeyes.eu], [http://blog.flameeyes.eu/tag/autotoolsmythbuster])
+AC_INIT([myproject], [123], [flameeyes@flameeyes.eu], [https://blog.flameeyes.eu/tag/autotoolsmythbuster])
 AM_INIT_AUTOMAKE([foreign no-dist-gz dist-xz])
 
 AC_PROG_CC
@@ -158,7 +158,7 @@ dist_doc_DATA = README
     </para>
 
     <programlisting><![CDATA[
-AC_INIT([myproject], [123], [flameeyes@flameeyes.eu], [http://blog.flameeyes.eu/tag/autotoolsmythbuster])
+AC_INIT([myproject], [123], [flameeyes@flameeyes.eu], [https://blog.flameeyes.eu/tag/autotoolsmythbuster])
 AM_INIT_AUTOMAKE([foreign no-dist-gz dist-xz])
 LT_INIT
 
