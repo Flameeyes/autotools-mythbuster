@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="libtool.windows">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="libtool.windows">
   <?dbhtml filename="libtool/windows.html" ?>
 
   <title>Notes on Windows Support</title>
@@ -31,7 +31,7 @@
 
   <section>
     <title>Explicit Symbol Tables</title>
-    
+
     <para>
       The first thing to know about PE DLLs is that, unlike UNIX shared objects, these require
       explicit tables for both imported and exported symbols. These can be declared in the code by
@@ -120,7 +120,7 @@ libfoo_la_LDFLAGS = -no-undefined -version-info 2:4:1]]></programlisting>
       </para>
     </example>
   </section>
-  
+
 </section>
 <!--
    Local Variables:

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude">
   <title><application>libtool</application> 2.2</title>
 
   <para>
@@ -21,7 +21,7 @@
 
   <section>
     <title>The C++ and Fortran support</title>
-    
+
     <para>
       Before <application>libtool 2.2</application>, as soon as a
       project started using the support provided by this package,
@@ -93,13 +93,13 @@ AC_PROG_LIBTOOL
 ]]></programlisting>
 
       <para>
-	Please note here, that the function
-	<function>AC_PROG_LIBTOOL</function> in this snipped is the
-	deprecated 1.5-compatible form of
-	<function>LT_INIT</function>. Since the error shown above
-	happens during porting <emphasis>to</emphasis>
-	<application>libtool</application> 2.2, it's unlikely that the
-	new form is found. <!-- [TBW] See <link linkend="libtool.init" />. -->
+        Please note here, that the function
+        <function>AC_PROG_LIBTOOL</function> in this snipped is the
+        deprecated 1.5-compatible form of
+        <function>LT_INIT</function>. Since the error shown above
+        happens during porting <emphasis>to</emphasis>
+        <application>libtool</application> 2.2, it's unlikely that the
+        new form is found. <!-- [TBW] See <link linkend="libtool.init" />. -->
       </para>
     </example>
   </section>

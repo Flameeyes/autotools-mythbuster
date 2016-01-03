@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude">
   <title><application>automake</application> 1.15</title>
 
   <itemizedlist>
@@ -12,7 +12,7 @@
 
     <listitem>
       <indexterm>
-	<primary>distcheck</primary>
+        <primary>distcheck</primary>
       </indexterm>
 
       <para>

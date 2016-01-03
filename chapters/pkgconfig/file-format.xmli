@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="pkgconfig.file-format">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="pkgconfig.file-format">
   <?dbhtml filename="pkgconfig/file-format.html" ?>
 
   <title>File Format of <filename>*.pc</filename> Files</title>
@@ -32,24 +32,24 @@
     <varlistentry>
       <term>Name</term>
       <listitem>
-	<para>
-	  Provides a human-readable name for the package; it does not
-	  have to be the same as the module name, that is instead
-	  decided based on the datafile's name.
-	</para>
+        <para>
+          Provides a human-readable name for the package; it does not
+          have to be the same as the module name, that is instead
+          decided based on the datafile's name.
+        </para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>Version</term>
       <listitem>
-	<para>
-	  Complete version of the package; it supports most of the
-	  sane version specifications. Please note that only a single
-	  data file for a module can be used so you might have to
-	  duplicate part of the version information in both the module
-	  name and this keyword.
-	</para>
+        <para>
+          Complete version of the package; it supports most of the
+          sane version specifications. Please note that only a single
+          data file for a module can be used so you might have to
+          duplicate part of the version information in both the module
+          name and this keyword.
+        </para>
       </listitem>
     </varlistentry>
 
@@ -57,25 +57,25 @@
       <term>Requires</term>
       <term>Conflicts</term>
       <listitem>
-	<para>
-	  These terms specify the dependencies of a module, with or without
-	  version limitations. As the names of the terms indicate,
-	  <varname>Requires</varname> lists the other modules that
-	  need to be present, while <varname>Conflicts</varname>
-	  lists the packages that <emphasis>cannot</emphasis> be
-	  present when making use of the current module.
-	</para>
+        <para>
+          These terms specify the dependencies of a module, with or without
+          version limitations. As the names of the terms indicate,
+          <varname>Requires</varname> lists the other modules that
+          need to be present, while <varname>Conflicts</varname>
+          lists the packages that <emphasis>cannot</emphasis> be
+          present when making use of the current module.
+        </para>
 
-	<para>
-	  You cannot list the same module more than once in the
-	  requirements, but you can list it as many time as you want
-	  in the conflicts. All the modules can optionally have a
-	  version specifier, and you can use the seven basic
-	  comparisons as defined by the C language:
-	  <function>=</function>, <function>&lt;</function>,
-	  <function>&gt;</function>, <function>&lt;=</function> and
-	  <function>&gt;=</function>.
-	</para>
+        <para>
+          You cannot list the same module more than once in the
+          requirements, but you can list it as many time as you want
+          in the conflicts. All the modules can optionally have a
+          version specifier, and you can use the seven basic
+          comparisons as defined by the C language:
+          <function>=</function>, <function>&lt;</function>,
+          <function>&gt;</function>, <function>&lt;=</function> and
+          <function>&gt;=</function>.
+        </para>
       </listitem>
     </varlistentry>
 
@@ -83,21 +83,21 @@
       <term>Cflags</term>
       <term>Libs</term>
       <listitem>
-	<para>
-	  The two fundamental specifications that the
-	  <application>pkg-config</application> call will report to
-	  its caller, such as the macro discussed in <xref
-	  linkend="pkgconfig.pkg_check_modules" />. They represent the
-	  parameters to pass to the compiler and linker command-lines
-	  to make use of the current module.
-	</para>
+        <para>
+          The two fundamental specifications that the
+          <application>pkg-config</application> call will report to
+          its caller, such as the macro discussed in <xref
+          linkend="pkgconfig.pkg_check_modules" />. They represent the
+          parameters to pass to the compiler and linker command-lines
+          to make use of the current module.
+        </para>
 
-	<para>
-	  It's important not to list the entries related to further
-	  dependencies, since <application>pkg-config</application> will
-	  take care of running transitive dependency discovery, see
-	  also <xref linkend="pkgconfig.dependencies" />.
-	</para>
+        <para>
+          It's important not to list the entries related to further
+          dependencies, since <application>pkg-config</application> will
+          take care of running transitive dependency discovery, see
+          also <xref linkend="pkgconfig.dependencies" />.
+        </para>
       </listitem>
     </varlistentry>
 
@@ -105,10 +105,10 @@
       <term>Requires.private</term>
       <term>Libs.private</term>
       <listitem>
-	<para>
-	  More specific details about the dependencies of a module, see <xref
-	  linkend="pkgconfig.static-link" />.
-	</para>
+        <para>
+          More specific details about the dependencies of a module, see <xref
+          linkend="pkgconfig.static-link" />.
+        </para>
       </listitem>
     </varlistentry>
 
@@ -116,9 +116,9 @@
       <term>Description</term>
       <term>URL</term>
       <listitem>
-	<para>
-	  Brief information about the package, mostly self-explaining.
-	</para>
+        <para>
+          Brief information about the package, mostly self-explaining.
+        </para>
       </listitem>
     </varlistentry>
   </variablelist>
@@ -169,8 +169,8 @@
       <title>Simple project's template file and <filename>configure.ac</filename> code.</title>
 
       <para>
-	The following code is a (snippet of) a template file that would then be named along the
-	lines of <filename>foo.pc.in</filename>:
+        The following code is a (snippet of) a template file that would then be named along the
+        lines of <filename>foo.pc.in</filename>:
       </para>
 
       <programlisting><![CDATA[
@@ -186,7 +186,7 @@ Libs: -L${libdir} -lfoo
 ]]></programlisting>
 
       <para>
-	In the <filename>configure.ac</filename> files you would have, toward the end:
+        In the <filename>configure.ac</filename> files you would have, toward the end:
       </para>
 
       <programlisting><![CDATA[

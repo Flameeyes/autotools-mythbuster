@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="autoconf.macros.external">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="autoconf.macros.external">
   <title>External Macro Files</title>
 
   <para>
@@ -102,9 +102,9 @@ AUTOTOOLS_MYTHBUSTER
 ]]></programlisting>
 
       <para>
-	The <function>m4_include</function> directive works quite like the
-	<function>#include</function> directive of the C programming language, and simply copies
-	over the content of the file.
+        The <function>m4_include</function> directive works quite like the
+        <function>#include</function> directive of the C programming language, and simply copies
+        over the content of the file.
       </para>
     </example>
 
@@ -119,15 +119,15 @@ AUTOTOOLS_MYTHBUSTER
       <title>What About <command>-I m4</command>?</title>
 
       <para>
-	The <application>autoconf</application> tool has a parameter <command>-I</command> that
-	allows adding a directory to the search path for the conversion. This command is also not
-	used to discover macro files.
+        The <application>autoconf</application> tool has a parameter <command>-I</command> that
+        allows adding a directory to the search path for the conversion. This command is also not
+        used to discover macro files.
       </para>
 
       <para>
-	What it is useful for is to avoid using the full path name of a macro file, letting it be
-	picked up either from the system or from the local directory (giving priority to the system
-	copy).
+        What it is useful for is to avoid using the full path name of a macro file, letting it be
+        picked up either from the system or from the local directory (giving priority to the system
+        copy).
       </para>
 
       <programlisting><![CDATA[
@@ -139,11 +139,11 @@ PKG_PROG_PKG_CONFIG
 ]]></programlisting>
 
       <para>
-	In this case, the macro file is included with the generic base name value of
-	<filename>pkg.m4</filename> instead of <filename>m4/pkg.m4</filename>. If the macro file is
-	available to the system (in <filename>/usr/share/autoconf</filename> for instance) the macro
-	will be picked up from there; otherwise, if <command>autoconf -I m4</command> is used, the
-	one in the <filename>m4</filename> directory will be used.
+        In this case, the macro file is included with the generic base name value of
+        <filename>pkg.m4</filename> instead of <filename>m4/pkg.m4</filename>. If the macro file is
+        available to the system (in <filename>/usr/share/autoconf</filename> for instance) the macro
+        will be picked up from there; otherwise, if <command>autoconf -I m4</command> is used, the
+        one in the <filename>m4</filename> directory will be used.
       </para>
     </section>
   </section>
@@ -263,23 +263,23 @@ checking testing... ok
       <title>The <filename>acinclude.m4</filename> file.</title>
 
       <para>
-	In addition to searching its own directory and the include path given on the command line,
-	the <application>aclocal</application> tool takes into consideration another file:
-	<filename>acinclude.m4</filename>. This file is also copied (rather than included) in the
-	final output of the tool, and then picked up by <application>autoconf</application>.
+        In addition to searching its own directory and the include path given on the command line,
+        the <application>aclocal</application> tool takes into consideration another file:
+        <filename>acinclude.m4</filename>. This file is also copied (rather than included) in the
+        final output of the tool, and then picked up by <application>autoconf</application>.
       </para>
 
       <para>
-	This file is often used to put together multiple macros from different macro files, without
-	having to use an <filename>m4/</filename> directory or equivalent. This usage is discouraged
-	by this guide, because it often leads to overly long files, with no logical distinction
-	between macros.
+        This file is often used to put together multiple macros from different macro files, without
+        having to use an <filename>m4/</filename> directory or equivalent. This usage is discouraged
+        by this guide, because it often leads to overly long files, with no logical distinction
+        between macros.
       </para>
 
       <para>
-	Once again, this has to be considered an old interface kept for compatibility; the
-	<filename>m4/</filename> macro directory with its macro files is the suggested method of
-	adding new macros to a project.
+        Once again, this has to be considered an old interface kept for compatibility; the
+        <filename>m4/</filename> macro directory with its macro files is the suggested method of
+        adding new macros to a project.
       </para>
     </section>
   </section>

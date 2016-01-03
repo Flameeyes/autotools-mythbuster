@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="libtool.version">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="libtool.version">
   <?dbhtml filename="libtool/version.html" ?>
 
   <title>Library Versioning</title>
@@ -86,17 +86,17 @@
 
     <warning>
       <para>
-	A common mistake is to assume that the three values passed to <option>-version-info</option>
-	map directly into the three numbers at the end of the library name. This is not the case,
-	and indeed, current, revision and age are applied differently depending on the operating
-	system that one is using.
+        A common mistake is to assume that the three values passed to <option>-version-info</option>
+        map directly into the three numbers at the end of the library name. This is not the case,
+        and indeed, current, revision and age are applied differently depending on the operating
+        system that one is using.
       </para>
 
       <para>
-	For Linux, for instance, while the last two values map directly from the command-line, the
-	first is calculated by subtracting <varname>age</varname> from
-	<varname>current</varname>. On the other hand, on modern FreeBSD, only one component is used
-	in the library version, which corresponds to <varname>current</varname>.
+        For Linux, for instance, while the last two values map directly from the command-line, the
+        first is calculated by subtracting <varname>age</varname> from
+        <varname>current</varname>. On the other hand, on modern FreeBSD, only one component is used
+        in the library version, which corresponds to <varname>current</varname>.
       </para>
     </warning>
 
@@ -106,21 +106,21 @@
 
     <itemizedlist>
       <listitem>
-	<para>
-	  Always increase the revision value.
-	</para>
+        <para>
+          Always increase the revision value.
+        </para>
       </listitem>
 
       <listitem>
-	<para>
-	  Increase the current value whenever an interface has been added, removed or changed.
-	</para>
+        <para>
+          Increase the current value whenever an interface has been added, removed or changed.
+        </para>
       </listitem>
 
       <listitem>
-	<para>
-	  Increase the age value only if the changes made to the ABI are backward compatible.
-	</para>
+        <para>
+          Increase the age value only if the changes made to the ABI are backward compatible.
+        </para>
       </listitem>
     </itemizedlist>
 

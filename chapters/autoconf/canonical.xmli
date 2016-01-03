@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="autoconf.canonical">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="autoconf.canonical">
   <?dbhtml filename="autoconf/canonical.html" ?>
   <title>Canonical Systems</title>
 
@@ -30,19 +30,19 @@
       <term>host (<varname>CHOST</varname>)</term>
 
       <listitem>
-	<indexterm>
-	  <primary>CHOST (variable)</primary>
-	</indexterm>
+        <indexterm>
+          <primary>CHOST (variable)</primary>
+        </indexterm>
 
-	<indexterm>
-	  <primary>$host (variable)</primary>
-	  <see>CHOST (variable)</see>
-	</indexterm>
+        <indexterm>
+          <primary>$host (variable)</primary>
+          <see>CHOST (variable)</see>
+        </indexterm>
 
-	<para>
-	  The system that is going to run the software once it is built, which is the main
-	  actor. Once the software has been built, it will execute on this particular system.
-	</para>
+        <para>
+          The system that is going to run the software once it is built, which is the main
+          actor. Once the software has been built, it will execute on this particular system.
+        </para>
       </listitem>
     </varlistentry>
 
@@ -50,19 +50,19 @@
       <term>build (<varname>CBUILD</varname>)</term>
 
       <listitem>
-	<indexterm>
-	  <primary>CBUILD (variable)</primary>
-	</indexterm>
+        <indexterm>
+          <primary>CBUILD (variable)</primary>
+        </indexterm>
 
-	<indexterm>
-	  <primary>$build (variable)</primary>
-	  <see>CBUILD (variable)</see>
-	</indexterm>
+        <indexterm>
+          <primary>$build (variable)</primary>
+          <see>CBUILD (variable)</see>
+        </indexterm>
 
-	<para>
-	  The system where the build process is being executed. For most uses this would be the same
-	  as the host system, but in case of cross-compilation the two obviously differ.
-	</para>
+        <para>
+          The system where the build process is being executed. For most uses this would be the same
+          as the host system, but in case of cross-compilation the two obviously differ.
+        </para>
       </listitem>
     </varlistentry>
 
@@ -70,22 +70,22 @@
       <term>target (<varname>CTARGET</varname>)</term>
 
       <listitem>
-	<indexterm>
-	  <primary>CTARGET (variable)</primary>
-	</indexterm>
+        <indexterm>
+          <primary>CTARGET (variable)</primary>
+        </indexterm>
 
-	<indexterm>
-	  <primary>$target (variable)</primary>
-	  <see>CTARGET (variable)</see>
-	</indexterm>
+        <indexterm>
+          <primary>$target (variable)</primary>
+          <see>CTARGET (variable)</see>
+        </indexterm>
 
-	<para>
-	  The system against which the software being built will run on. This actor only exists, or
-	  rather has a meaning, when the software being built may interact specifically with a
-	  system that differs from the one it's being executed on (our
-	  <emphasis>host</emphasis>). This is the case for compilers, debuggers, profilers and
-	  analyzers and other tools in general.
-	</para>
+        <para>
+          The system against which the software being built will run on. This actor only exists, or
+          rather has a meaning, when the software being built may interact specifically with a
+          system that differs from the one it's being executed on (our
+          <emphasis>host</emphasis>). This is the case for compilers, debuggers, profilers and
+          analyzers and other tools in general.
+        </para>
       </listitem>
     </varlistentry>
   </variablelist>

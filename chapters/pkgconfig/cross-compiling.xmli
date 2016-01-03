@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="pkgconfig.cross-compiling">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="pkgconfig.cross-compiling">
   <?dbhtml filename="pkgconfig/cross-compiling.html" ?>
 
   <title>Supporting Cross-Compilation</title>
@@ -38,15 +38,15 @@
 
     <important>
       <para>
-	The content of <varname>PKG_CONFIG_SYSROOT_DIR</varname> is not injected in paths that are
-	returned by <command>pkg-config --variable</command>, which makes them unsuitable to use
-	during cross-compilation unless specifically designed to be used at that time.
+        The content of <varname>PKG_CONFIG_SYSROOT_DIR</varname> is not injected in paths that are
+        returned by <command>pkg-config --variable</command>, which makes them unsuitable to use
+        during cross-compilation unless specifically designed to be used at that time.
       </para>
 
       <para>
-	To design a variable to contain a path that needs to be used at build time, such as the path
-	where a generation script is, you can prefix it in the <filename>.pc</filename> file with
-	the built-in variable <literal>${pc_sysrootdir}</literal>.
+        To design a variable to contain a path that needs to be used at build time, such as the path
+        where a generation script is, you can prefix it in the <filename>.pc</filename> file with
+        the built-in variable <literal>${pc_sysrootdir}</literal>.
       </para>
     </important>
   </section>
@@ -71,14 +71,14 @@
 
     <important>
       <para>
-	When using the tool to identify variables within a <filename>configure.ac</filename> or
-	<filename>Makefile.am</filename> file, it is thus important to not call it directly, but to
-	rather call <varname>$PKG_CONFIG</varname> so to not bypass sysroot awareness.
+        When using the tool to identify variables within a <filename>configure.ac</filename> or
+        <filename>Makefile.am</filename> file, it is thus important to not call it directly, but to
+        rather call <varname>$PKG_CONFIG</varname> so to not bypass sysroot awareness.
       </para>
 
       <para>
-	It also requires other build systems to respect the value set into the environment, the code
-	for which depends on a system by system basis.
+        It also requires other build systems to respect the value set into the environment, the code
+        for which depends on a system by system basis.
       </para>
     </important>
 

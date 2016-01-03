@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude">
   <title><application>automake</application> 1.14</title>
 
   <itemizedlist>
@@ -12,31 +12,31 @@
 
     <listitem>
       <indexterm>
-	<primary>AM_PROG_CC_C_O (macro, deprecated)</primary>
+        <primary>AM_PROG_CC_C_O (macro, deprecated)</primary>
       </indexterm>
 
       <para>
-	The <function>AM_PROG_CC_C_O</function> macro has been deprecated, and its use now is a
-	no-op. Instead, the <filename>compile</filename> script is now required for all builds, and
-	the tests executed by this macro have been bolted on the <function>AC_PROG_CC</function>
-	basic macro instead. Removal of this macro is scheduled for version 2.0.
+        The <function>AM_PROG_CC_C_O</function> macro has been deprecated, and its use now is a
+        no-op. Instead, the <filename>compile</filename> script is now required for all builds, and
+        the tests executed by this macro have been bolted on the <function>AC_PROG_CC</function>
+        basic macro instead. Removal of this macro is scheduled for version 2.0.
       </para>
     </listitem>
 
     <listitem>
       <indexterm>
-	<primary>automake options</primary>
-	<secondary>dist-shar (deprecated)</secondary>
+        <primary>automake options</primary>
+        <secondary>dist-shar (deprecated)</secondary>
       </indexterm>
 
       <indexterm>
-	<primary>automake options</primary>
-	<secondary>dist-tarZ (deprecated)</secondary>
+        <primary>automake options</primary>
+        <secondary>dist-tarZ (deprecated)</secondary>
       </indexterm>
 
       <para>
-	The <literal>dist-shar</literal> and <literal>dist-tarZ</literal> options have been
-	deprecated and are scheduled to be removed for version 2.0.
+        The <literal>dist-shar</literal> and <literal>dist-tarZ</literal> options have been
+        deprecated and are scheduled to be removed for version 2.0.
       </para>
     </listitem>
   </itemizedlist>

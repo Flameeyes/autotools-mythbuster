@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="pkgconfig.pkg_check_modules">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="pkgconfig.pkg_check_modules">
   <?dbhtml filename="pkgconfig/pkg_check_modules.html" ?>
 
   <title>The <function>PKG_CHECK_MODULES</function> Macro</title>
@@ -29,59 +29,59 @@ PKG_CHECK_MODULES(prefix, list-of-modules, action-if-found, action-if-not-found)
 
     <variablelist>
       <varlistentry>
-	<term><parameter>prefix</parameter></term>
-	<listitem>
-	  <para>
-	    Each call to <function>PKG_CHECK_MODULES</function> should
-	    have a different <parameter>prefix</parameter> value (with
-	    a few exceptions discussed later on). This value, usually
-	    provided in uppercase, is used as prefix to the variables
-	    holding the compiler flags and libraries reported by
-	    <application>pkg-config</application>.
-	  </para>
+        <term><parameter>prefix</parameter></term>
+        <listitem>
+          <para>
+            Each call to <function>PKG_CHECK_MODULES</function> should
+            have a different <parameter>prefix</parameter> value (with
+            a few exceptions discussed later on). This value, usually
+            provided in uppercase, is used as prefix to the variables
+            holding the compiler flags and libraries reported by
+            <application>pkg-config</application>.
+          </para>
 
-	  <para>
-	    For instance, if your prefix was to be
-	    <literal>FOO</literal> you'll be provided two variables
-	    <varname>FOO_CFLAGS</varname> and
-	    <varname>FOO_LIBS</varname>.
-	  </para>
+          <para>
+            For instance, if your prefix was to be
+            <literal>FOO</literal> you'll be provided two variables
+            <varname>FOO_CFLAGS</varname> and
+            <varname>FOO_LIBS</varname>.
+          </para>
 
-	  <para>
-	    This will also be used as message during the configure
-	    checks: <literal>checking for FOO...</literal>.
-	  </para>
-	</listitem>
+          <para>
+            This will also be used as message during the configure
+            checks: <literal>checking for FOO...</literal>.
+          </para>
+        </listitem>
       </varlistentry>
 
       <varlistentry>
-	<term><parameter>list-of-modules</parameter></term>
-	<listitem>
-	  <para>
-	    A single call to the macro can check for the presence of
-	    one or more packages; you'll see later how to make good
-	    use of this feature. Each entry in the list can have a
-	    version comparison specifier, with the same syntax as the
-	    <link
-	    linkend="pkgconfig.file-format.requires"><varname>Requires</varname>
-	    keyword</link> in the data files themselves.
-	  </para>
-	</listitem>
+        <term><parameter>list-of-modules</parameter></term>
+        <listitem>
+          <para>
+            A single call to the macro can check for the presence of
+            one or more packages; you'll see later how to make good
+            use of this feature. Each entry in the list can have a
+            version comparison specifier, with the same syntax as the
+            <link
+            linkend="pkgconfig.file-format.requires"><varname>Requires</varname>
+            keyword</link> in the data files themselves.
+          </para>
+        </listitem>
       </varlistentry>
 
       <varlistentry>
-	<term><parameter>action-if-found</parameter></term>
-	<term><parameter>action-if-not-found</parameter></term>
+        <term><parameter>action-if-found</parameter></term>
+        <term><parameter>action-if-not-found</parameter></term>
 
-	<listitem>
-	  <para>
-	    As most of the original <application>autoconf</application> macros, there are boolean
-	    values provided, for the cases when the check succeeded or failed. In contrast with
-	    almost all of the original macros, though, the default
-	    <parameter>action-if-not-found</parameter> will end the execution with an error for not
-	    having found the dependency.
-	  </para>
-	</listitem>
+        <listitem>
+          <para>
+            As most of the original <application>autoconf</application> macros, there are boolean
+            values provided, for the cases when the check succeeded or failed. In contrast with
+            almost all of the original macros, though, the default
+            <parameter>action-if-not-found</parameter> will end the execution with an error for not
+            having found the dependency.
+          </para>
+        </listitem>
       </varlistentry>
     </variablelist>
   </section>

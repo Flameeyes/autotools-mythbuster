@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <glossary xmlns="http://docbook.org/ns/docbook"
-	  xmlns:xl="http://www.w3.org/1999/xlink"
-	  xmlns:xi="http://www.w3.org/2001/XInclude"
-	  xml:id="glossary">
+          xmlns:xl="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xml:id="glossary">
   <?dbhtml filename="glossary.html" ?>
 
   <title>Glossary</title>
@@ -57,15 +57,15 @@
       <glossterm>Application Binary Interface</glossterm>
 
       <glossdef>
-	<para>
-	  With ABI we refer to the interface of a library, as exposed to its consumers (other
-	  libraries or executables alike), after the build step. In case of software written in
-	  languages similar to C, the ABI is comprised of at least the name of the functions, the type
-	  and order of their parameters, the type and size of the data it exports, and the content,
-	  order and size of its structures.
-	</para>
+        <para>
+          With ABI we refer to the interface of a library, as exposed to its consumers (other
+          libraries or executables alike), after the build step. In case of software written in
+          languages similar to C, the ABI is comprised of at least the name of the functions, the type
+          and order of their parameters, the type and size of the data it exports, and the content,
+          order and size of its structures.
+        </para>
 
-	<glossseealso otherterm="glossary.api" />
+        <glossseealso otherterm="glossary.api" />
       </glossdef>
     </glossentry>
 
@@ -73,14 +73,14 @@
       <glossterm>Application Programming Interface</glossterm>
 
       <glossdef>
-	<para>
-	  The generic term API refers to all the interfaces (or points of contact) between one
-	  application and another. When referring to libraries, the term takes the specific meaning of
-	  the set of functions, constants and variables defined in the library's public headers, to be
-	  further transformed into an ABI during the build step.
-	</para>
+        <para>
+          The generic term API refers to all the interfaces (or points of contact) between one
+          application and another. When referring to libraries, the term takes the specific meaning of
+          the set of functions, constants and variables defined in the library's public headers, to be
+          further transformed into an ABI during the build step.
+        </para>
 
-	<glossseealso otherterm="glossary.abi" />
+        <glossseealso otherterm="glossary.abi" />
       </glossdef>
     </glossentry>
 
@@ -93,14 +93,14 @@
       <glossterm>Executable and Linkable Format</glossterm>
 
       <glossdef>
-	<para>
-	  The file format used in Linux, Solaris, FreeBSD and other operating systems to represent
-	  executable files (programs), shared objects as well as intermediate object files. The format
-	  is designed to be extensible, so that not all modern features are supported on each
-	  operating system.
-	</para>
+        <para>
+          The file format used in Linux, Solaris, FreeBSD and other operating systems to represent
+          executable files (programs), shared objects as well as intermediate object files. The format
+          is designed to be extensible, so that not all modern features are supported on each
+          operating system.
+        </para>
 
-	<glossseealso otherterm="glossary.pe" />
+        <glossseealso otherterm="glossary.pe" />
       </glossdef>
     </glossentry>
 
@@ -108,15 +108,15 @@
       <glossterm>Link Editor</glossterm>
 
       <glossdef>
-	<para>
-	  The application used to transform any number of translation units into a different object of
-	  different nature. Loosely referred to as <emphasis>linker</emphasis>, or by the common
-	  shorthand <command>ld</command> used on Unix systems to execute it. Not to be confused with
-	  the <emphasis>dynamic linker</emphasis>, which in this context is referred to as runtime
-	  loader.
-	</para>
+        <para>
+          The application used to transform any number of translation units into a different object of
+          different nature. Loosely referred to as <emphasis>linker</emphasis>, or by the common
+          shorthand <command>ld</command> used on Unix systems to execute it. Not to be confused with
+          the <emphasis>dynamic linker</emphasis>, which in this context is referred to as runtime
+          loader.
+        </para>
 
-	<glossseealso otherterm="glossary.runtimeloader" />
+        <glossseealso otherterm="glossary.runtimeloader" />
       </glossdef>
     </glossentry>
 
@@ -128,16 +128,16 @@
     <glossentry xml:id="glossary.pe">
       <glossterm>Portable Executable</glossterm>
       <glossdef>
-	<para>
-	  The file format used by Microsoft Windows to represent executable files (programs) as well
-	  as shared objects. While for a long time it was almost impossible to find PE files for
-	  architectures different from i386, the format was originally designed to be usable on a wide
-	  range of CPU architectures, at Windows NT originally supported MIPS, PowerPC and Alpha as
-	  well as i386; nowadays non-i386 PE files are commonly used on Windows CE embedded systems as
-	  well as alternative Windows-based platforms.
-	</para>
+        <para>
+          The file format used by Microsoft Windows to represent executable files (programs) as well
+          as shared objects. While for a long time it was almost impossible to find PE files for
+          architectures different from i386, the format was originally designed to be usable on a wide
+          range of CPU architectures, at Windows NT originally supported MIPS, PowerPC and Alpha as
+          well as i386; nowadays non-i386 PE files are commonly used on Windows CE embedded systems as
+          well as alternative Windows-based platforms.
+        </para>
 
-	<glossseealso otherterm="glossary.elf" />
+        <glossseealso otherterm="glossary.elf" />
       </glossdef>
 
     </glossentry>
@@ -146,14 +146,14 @@
       <glossterm>Runtime Loader</glossterm>
 
       <glossdef>
-	<para>
-	  The software component, usually invoked by the kernel, that reads, loads in memory, and sets
-	  up a dynamic executable file and its dependencies. Loosely referred to as <emphasis>dynamic
-	  linker</emphasis>, <emphasis>runtime linker</emphasis> or <emphasis>dynamic
-	  loader</emphasis> or by its shorthand <command>ld.so</command> as it is called on Unix
-	  systems. Not to be confused with the <emphasis>linker</emphasis>, which in this context is
-	  referred to as link editor.
-	</para>
+        <para>
+          The software component, usually invoked by the kernel, that reads, loads in memory, and sets
+          up a dynamic executable file and its dependencies. Loosely referred to as <emphasis>dynamic
+          linker</emphasis>, <emphasis>runtime linker</emphasis> or <emphasis>dynamic
+          loader</emphasis> or by its shorthand <command>ld.so</command> as it is called on Unix
+          systems. Not to be confused with the <emphasis>linker</emphasis>, which in this context is
+          referred to as link editor.
+        </para>
       </glossdef>
     </glossentry>
 

@@ -26,7 +26,7 @@
     actually content I have written for various different targets, and
     that is available online already. If compatible with the goal of this
     guide and the license of the published content, it will be merged
-	in this guide, in due time.
+        in this guide, in due time.
   </para>
 
   <bibliolist>
@@ -151,22 +151,22 @@
       <abbrev>MillerRecursiveMake</abbrev>
 
       <title>
-	<link
-	    xl:href="http://miller.emu.id.au/pmiller/books/rmch/"
-	    >Recursive Make Considered Harmful</link>
+        <link
+            xl:href="http://miller.emu.id.au/pmiller/books/rmch/"
+            >Recursive Make Considered Harmful</link>
       </title>
 
       <biblioid class="uri">
-	http://miller.emu.id.au/pmiller/books/rmch/
+        http://miller.emu.id.au/pmiller/books/rmch/
       </biblioid>
 
       <author>
-	<personname>
-	  <firstname>Peter</firstname>
-	  <surname>Miller</surname>
-	</personname>
+        <personname>
+          <firstname>Peter</firstname>
+          <surname>Miller</surname>
+        </personname>
 
-	<email>millerp@canb.auug.org.au</email>
+        <email>millerp@canb.auug.org.au</email>
       </author>
 
       <date>1997</date>

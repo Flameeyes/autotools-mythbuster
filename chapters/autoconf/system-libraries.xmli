@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="autoconf.system-libraries">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="autoconf.system-libraries">
   <title>Searching For System Libraries</title>
 
   <indexterm zone="autoconf.system-libraries">
@@ -67,7 +67,7 @@ AC_SEARCH_LIBS(function, libraries-list, action-if-found, action-if-not-found, e
       <term><parameter>function</parameter></term>
 
       <listitem><para>
-	The name of the symbol to look for in the libraries.
+        The name of the symbol to look for in the libraries.
       </para></listitem>
     </varlistentry>
 
@@ -75,12 +75,12 @@ AC_SEARCH_LIBS(function, libraries-list, action-if-found, action-if-not-found, e
       <term><parameter>libraries-list</parameter></term>
 
       <listitem><para>
-	A whitespace-separated list of libraries, in library-name
-	format, <!-- document what library-name format is! --> that
-	have to be searched for the function listed before. This list
-	does not require the C library to be specified, as the first
-	test will be done with just the libraries present in the
-	<varname>LIBS</varname> variable.
+        A whitespace-separated list of libraries, in library-name
+        format, <!-- document what library-name format is! --> that
+        have to be searched for the function listed before. This list
+        does not require the C library to be specified, as the first
+        test will be done with just the libraries present in the
+        <varname>LIBS</varname> variable.
       </para></listitem>
     </varlistentry>
 
@@ -89,12 +89,12 @@ AC_SEARCH_LIBS(function, libraries-list, action-if-found, action-if-not-found, e
       <term><parameter>action-if-not-found</parameter></term>
 
       <listitem><para>
-	As usual, the macro supports expanding code for success and
-	failure. In this instance, each will be called at most once,
-	and the default <parameter>action-if-found</parameter> code,
-	adding the library to the <varname>LIBS</varname> variables,
-	is <emphasis>always</emphasis> executed, even if a parameter
-	is passed.
+        As usual, the macro supports expanding code for success and
+        failure. In this instance, each will be called at most once,
+        and the default <parameter>action-if-found</parameter> code,
+        adding the library to the <varname>LIBS</varname> variables,
+        is <emphasis>always</emphasis> executed, even if a parameter
+        is passed.
       </para></listitem>
     </varlistentry>
 
@@ -102,29 +102,29 @@ AC_SEARCH_LIBS(function, libraries-list, action-if-found, action-if-not-found, e
       <term><parameter>extra-libraries</parameter></term>
 
       <listitem>
-	<para>
-	  Technically, on some if not most operating systems, it is
-	  possible for libraries to have undefined symbols that require
-	  other libraries to be linked in to satisfy. This is the case
-	  for most static libraries, but it can also happen for some
-	  shared libraries.
-	</para>
+        <para>
+          Technically, on some if not most operating systems, it is
+          possible for libraries to have undefined symbols that require
+          other libraries to be linked in to satisfy. This is the case
+          for most static libraries, but it can also happen for some
+          shared libraries.
+        </para>
 
-	<para>
-	  To make it possible to search in the libraries, the macro
-	  provides this parameter. There is an implicit value for
-	  the parameter: the <varname>LIBS</varname> variable, which
-	  is always passed at link-time after the value of this
-	  parameter. This list is <emphasis>not</emphasis> added to
-	  the variable even on success.
-	</para>
+        <para>
+          To make it possible to search in the libraries, the macro
+          provides this parameter. There is an implicit value for
+          the parameter: the <varname>LIBS</varname> variable, which
+          is always passed at link-time after the value of this
+          parameter. This list is <emphasis>not</emphasis> added to
+          the variable even on success.
+        </para>
 
-	<para>
-	  It is important to note that if you were to find the symbol
-	  in one of these libraries, you'd be hitting the same case as
-	  if the symbol is already available in the libraries listed
-	  in <varname>LIBS</varname>.
-	</para>
+        <para>
+          It is important to note that if you were to find the symbol
+          in one of these libraries, you'd be hitting the same case as
+          if the symbol is already available in the libraries listed
+          in <varname>LIBS</varname>.
+        </para>
       </listitem>
     </varlistentry>
   </variablelist>

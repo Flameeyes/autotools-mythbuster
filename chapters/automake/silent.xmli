@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="automake.silent">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="automake.silent">
   <?dbhtml filename="automake/silent.html" ?>
 
   <title>Silent Building with Automake</title>
@@ -42,7 +42,7 @@ make  all-am
 make[1]: Entering directory `/home/flame/test-hellow'
 gcc -DHAVE_CONFIG_H -I.     -g -O2 -MT hellow.o -MD -MP -MF .deps/hellow.Tpo -c -o hellow.o hellow.c
 mv -f .deps/hellow.Tpo .deps/hellow.Po
-gcc  -g -O2   -o hellow hellow.o  
+gcc  -g -O2   -o hellow hellow.o
 make[1]: Leaving directory `/home/flame/test-hellow'
 
 test-hellow % make V=0
@@ -70,14 +70,14 @@ make[1]: Leaving directory `/home/flame/test-hellow'
   <itemizedlist>
     <listitem>
       <para>
-	passing the <option>silent-rules</option> option at the call to
-	<function>AM_INIT_AUTOMAKE</function> as is done with many other options;
+        passing the <option>silent-rules</option> option at the call to
+        <function>AM_INIT_AUTOMAKE</function> as is done with many other options;
       </para>
     </listitem>
 
     <listitem>
       <para>
-	using the <function>AM_SILENT_RULES</function> macro directly after the initialisation;
+        using the <function>AM_SILENT_RULES</function> macro directly after the initialisation;
       </para>
     </listitem>
   </itemizedlist>
@@ -103,19 +103,19 @@ make[1]: Leaving directory `/home/flame/test-hellow'
     silent. The silent rules are turned off by default, and the user has to enable them when
     building with one of the following two methods:
   </para>
-    
+
   <itemizedlist>
     <listitem>
       <para>
-	running <command>./configure --enable-silent-rules</command>
-	that enable the silent rules by default;
+        running <command>./configure --enable-silent-rules</command>
+        that enable the silent rules by default;
       </para>
     </listitem>
 
     <listitem>
       <para>
-	running <command>make V=0</command> to disable the “verbose”
-	build;
+        running <command>make V=0</command> to disable the “verbose”
+        build;
       </para>
     </listitem>
   </itemizedlist>
@@ -165,24 +165,24 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 ]]></programlisting>
 
       <para>
-	This fragment (the actual important part is the call to <function>m4_ifdef</function>, but
-	it <emphasis>has</emphasis> to go after <function>AM_INIT_AUTOMAKE</function>, will call the
-	silent rules macro only if it's actually defined. On older
-	<application>automake</application> versions, this will not be defined and the whole macro
-	will be skipped.
+        This fragment (the actual important part is the call to <function>m4_ifdef</function>, but
+        it <emphasis>has</emphasis> to go after <function>AM_INIT_AUTOMAKE</function>, will call the
+        silent rules macro only if it's actually defined. On older
+        <application>automake</application> versions, this will not be defined and the whole macro
+        will be skipped.
       </para>
 
       <note>
-	<para>
-	  While this allows for backward compatibility, it is suggested never to keep an overly long
-	  backward compatibility, as that increases the number of workarounds and tricks needed to
-	  avoid breaking the older versions, as features are implemented and made use of.
-	</para>
+        <para>
+          While this allows for backward compatibility, it is suggested never to keep an overly long
+          backward compatibility, as that increases the number of workarounds and tricks needed to
+          avoid breaking the older versions, as features are implemented and made use of.
+        </para>
 
-	<para>
-	  As of today, this trick should probably be used only to keep backward compatibility with
-	  very old systems where only <application>automake</application> 1.10 is available.
-	</para>
+        <para>
+          As of today, this trick should probably be used only to keep backward compatibility with
+          very old systems where only <application>automake</application> 1.10 is available.
+        </para>
       </note>
     </example>
   </section>
@@ -214,7 +214,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 
       <programlisting><![CDATA[
 %-bar.pc: %.pc
-	$(AM_V_GEN)$(LN_S) $(notdir $^) $@
+        $(AM_V_GEN)$(LN_S) $(notdir $^) $@
 ]]></programlisting>
     </example>
   </section>

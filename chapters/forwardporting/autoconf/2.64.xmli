@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude">
   <title><application>autoconf</application> 2.64</title>
 
   <para>
@@ -17,36 +17,36 @@
 
     <listitem>
       <indexterm>
-	<primary>AC_CHECK_HEADER</primary>
+        <primary>AC_CHECK_HEADER</primary>
       </indexterm>
 
       <para>
-	After eight years, <function>AC_CHECK_HEADER</function> takes
-	as authoritative the result from the compiler, rather than the
-	preprocessor, when the <quote>header present but cannot be
-	compiled</quote> warning is issued. Refer to <xref
-	linkend="autoconf.headers.present-not-compiled" /> for the
-	details on how to fix the related issues.
+        After eight years, <function>AC_CHECK_HEADER</function> takes
+        as authoritative the result from the compiler, rather than the
+        preprocessor, when the <quote>header present but cannot be
+        compiled</quote> warning is issued. Refer to <xref
+        linkend="autoconf.headers.present-not-compiled" /> for the
+        details on how to fix the related issues.
       </para>
     </listitem>
 
     <listitem>
       <indexterm>
-	<primary>AH_CHECK_HEADERS (macro)</primary>
+        <primary>AH_CHECK_HEADERS (macro)</primary>
       </indexterm>
 
       <para>
-	The internal macro <function>AH_CHECK_HEADERS</function> has
-	been removed; while this is an internal change that should not
-	mean anything to properly-written autotools, this actually
-	breaks packages using the KDE 3.x autotools-based build
-	system, in particular the
-	<function>KDE_CHECK_HEADERS</function> macro. To work with
-	<application>autoconf</application> 2.64, KDE3-based software
-	should replace the calls to the KDE-specific macro with
-	equivalent calls to the proper, standard
-	<function>AC_CHECK_HEADERS</function> macro, after properly
-	setting up the language to C++ if needed.
+        The internal macro <function>AH_CHECK_HEADERS</function> has
+        been removed; while this is an internal change that should not
+        mean anything to properly-written autotools, this actually
+        breaks packages using the KDE 3.x autotools-based build
+        system, in particular the
+        <function>KDE_CHECK_HEADERS</function> macro. To work with
+        <application>autoconf</application> 2.64, KDE3-based software
+        should replace the calls to the KDE-specific macro with
+        equivalent calls to the proper, standard
+        <function>AC_CHECK_HEADERS</function> macro, after properly
+        setting up the language to C++ if needed.
       </para>
     </listitem>
   </itemizedlist>

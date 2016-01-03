@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="automake.parallel">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="automake.parallel">
   <?dbhtml filename="automake/parallel.html" ?>
 
   <title>Parallel Building Tricks</title>
@@ -67,18 +67,18 @@
 bin_PROGRAMS = multicall
 
 install-exec-local:
-	cd $(DESTDIR)/$(bindir) && \
-		$(LN_S) multicall command1 && \
-		$(LN_S) multicall command2
+        cd $(DESTDIR)/$(bindir) && \
+                $(LN_S) multicall command1 && \
+                $(LN_S) multicall command2
 ]]></programlisting>
 
       <para>
-	In this case, the <literal>multicall</literal> executable
-	changes its behaviour depending on the name it has been called
-	as. The build system intends to create multiple symlinks for
-	it during install, but the first call to
-	<command>cd</command> is likely going to fail during a
-	parallel <command>make install</command> execution.
+        In this case, the <literal>multicall</literal> executable
+        changes its behaviour depending on the name it has been called
+        as. The build system intends to create multiple symlinks for
+        it during install, but the first call to
+        <command>cd</command> is likely going to fail during a
+        parallel <command>make install</command> execution.
       </para>
     </example>
 
@@ -100,18 +100,18 @@ install-exec-local:
 bin_PROGRAMS = multicall
 
 install-exec-local:
-	test -d $(DESTDIR)/$(bindir) || mkdir $(DESTDIR)/$(bindir)
-	cd $(DESTDIR)/$(bindir) && \
-		$(LN_S) multicall command1 && \
-		$(LN_S) multicall command2
+        test -d $(DESTDIR)/$(bindir) || mkdir $(DESTDIR)/$(bindir)
+        cd $(DESTDIR)/$(bindir) && \
+                $(LN_S) multicall command1 && \
+                $(LN_S) multicall command2
 ]]></programlisting>
 
       <para>
-	This tries to solve the issue noted in the previous example,
-	but if the <filename>Makefile.am</filename> is complex enough,
-	parallel targets execution can likely cause
-	<varname>$(bindir)</varname> to be created after the test,
-	before the <command>mkdir</command>.
+        This tries to solve the issue noted in the previous example,
+        but if the <filename>Makefile.am</filename> is complex enough,
+        parallel targets execution can likely cause
+        <varname>$(bindir)</varname> to be created after the test,
+        before the <command>mkdir</command>.
       </para>
     </example>
 
@@ -142,10 +142,10 @@ install-exec-local:
 bin_PROGRAMS = multicall
 
 install-exec-local:
-	$(MKDIR_P) $(DESTDIR)/$(bindir)
-	cd $(DESTDIR)/$(bindir) && \
-		$(LN_S) multicall command1 && \
-		$(LN_S) multicall command2
+        $(MKDIR_P) $(DESTDIR)/$(bindir)
+        cd $(DESTDIR)/$(bindir) && \
+                $(LN_S) multicall command1 && \
+                $(LN_S) multicall command2
 ]]></programlisting>
     </example>
   </section>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude">
   <title><application>automake</application> 1.12</title>
 
   <warning>
@@ -20,97 +20,97 @@
 
     <listitem>
       <indexterm>
-	<primary>AM_PROG_MKDIR_P (macro, deprecated)</primary>
+        <primary>AM_PROG_MKDIR_P (macro, deprecated)</primary>
       </indexterm>
 
       <para>
-	The long-deprecated <function>AM_PROG_MKDIR_P</function> macro (previously called by default
-	by <function>AM_INIT_AUTOMAKE</function>) is now reporting itself as such; this, if combined
-	with the <option>-Werror</option> option, will cause <command>automake</command> to fail on
-	projects that are calling the macro, either explicitly, or through another macro, for
-	example <application>gettext</application>'s, which is still unfixed as of December
-	2012.
+        The long-deprecated <function>AM_PROG_MKDIR_P</function> macro (previously called by default
+        by <function>AM_INIT_AUTOMAKE</function>) is now reporting itself as such; this, if combined
+        with the <option>-Werror</option> option, will cause <command>automake</command> to fail on
+        projects that are calling the macro, either explicitly, or through another macro, for
+        example <application>gettext</application>'s, which is still unfixed as of December
+        2012.
       </para>
 
       <para>
-	This function enabled the use of <varname>$(mkdir_p)</varname> and
-	<literal>@mkdir_p@</literal> in <filename>Makefile.am</filename>, which are still present
-	and will still be available for version 1.14, but are also considered deprecated, and should
-	thus not be used in new build systems. Please also note that automake releases 1.12 and
-	1.12.1 mistakenly removed the expansions for <varname>$(mkdir_p)</varname> and
-	<literal>@mkdir_p@</literal> altogether, breaking more than a few packages in the process.
+        This function enabled the use of <varname>$(mkdir_p)</varname> and
+        <literal>@mkdir_p@</literal> in <filename>Makefile.am</filename>, which are still present
+        and will still be available for version 1.14, but are also considered deprecated, and should
+        thus not be used in new build systems. Please also note that automake releases 1.12 and
+        1.12.1 mistakenly removed the expansions for <varname>$(mkdir_p)</varname> and
+        <literal>@mkdir_p@</literal> altogether, breaking more than a few packages in the process.
       </para>
 
       <para>
-	See <xref linkend="automake.parallel.install" /> for further details.
+        See <xref linkend="automake.parallel.install" /> for further details.
       </para>
     </listitem>
 
     <listitem>
       <indexterm>
-	<primary>automake options</primary>
-	<secondary>dist-lzma (deprecated)</secondary>
+        <primary>automake options</primary>
+        <secondary>dist-lzma (deprecated)</secondary>
       </indexterm>
 
       <para>
-	The <literal>dist-lzma</literal>, used to produce
-	<filename>.tar.lzma</filename> archives has been removed.
+        The <literal>dist-lzma</literal>, used to produce
+        <filename>.tar.lzma</filename> archives has been removed.
       </para>
 
       <para>
-	The LZMA compression format has undergone different,
-	incompatible revisions over its short life, and has been
-	deprecated for most uses. In its place you can use the new
-	<literal>dist-xz</literal> option.
+        The LZMA compression format has undergone different,
+        incompatible revisions over its short life, and has been
+        deprecated for most uses. In its place you can use the new
+        <literal>dist-xz</literal> option.
       </para>
 
 <!-- [TBW]
       <para>
-	See also <xref linkend="automake.dist" /> for further details.
+        See also <xref linkend="automake.dist" /> for further details.
       </para>
 -->
     </listitem>
 
     <listitem>
       <indexterm>
-	<primary>automake options</primary>
-	<secondary>ansi2knr (deprecated)</secondary>
+        <primary>automake options</primary>
+        <secondary>ansi2knr (deprecated)</secondary>
       </indexterm>
 
       <indexterm>
-	<primary>AM_C_PROTOTYPES (macro, deprecated)</primary>
+        <primary>AM_C_PROTOTYPES (macro, deprecated)</primary>
       </indexterm>
 
       <indexterm>
-	<primary>AC_C_PROTOTYPES (macro)</primary>
+        <primary>AC_C_PROTOTYPES (macro)</primary>
       </indexterm>
 
       <para>
-	The support for de-ANSI-fication (<literal>ansi2knr</literal>
-	Automake option) that was deprecated in version 1.11 has been
-	removed from this version.
+        The support for de-ANSI-fication (<literal>ansi2knr</literal>
+        Automake option) that was deprecated in version 1.11 has been
+        removed from this version.
       </para>
 
       <para>
-	This feature allowed for code to be written as
-	specially-formatted ANSI C code, to be translated at build
-	time through the <filename>ansi2knr</filename> tool, bundled
-	in the source distribution.
+        This feature allowed for code to be written as
+        specially-formatted ANSI C code, to be translated at build
+        time through the <filename>ansi2knr</filename> tool, bundled
+        in the source distribution.
       </para>
 
       <para>
-	Since C has been standardized first in 1989, there should be
-	no concern that any compiler will only accept pre-standard C
-	code. Furthermore, the use of <filename>ansi2knr</filename> is
-	not supported during cross-compilation, so there is no real
-	benefit in using this feature any longer.
+        Since C has been standardized first in 1989, there should be
+        no concern that any compiler will only accept pre-standard C
+        code. Furthermore, the use of <filename>ansi2knr</filename> is
+        not supported during cross-compilation, so there is no real
+        benefit in using this feature any longer.
       </para>
 
       <para>
-	Even though this feature is hardly ever used, there are
-	projects that still rely on the initialisation macro
-	<function>AM_C_PROTOTYPES</function>; this macro is defined in
-	automake 1.11 this way:
+        Even though this feature is hardly ever used, there are
+        projects that still rely on the initialisation macro
+        <function>AM_C_PROTOTYPES</function>; this macro is defined in
+        automake 1.11 this way:
       </para>
 
       <programlisting>
@@ -131,29 +131,29 @@ _AM_SUBST_NOTMAKE([ANSI2KNR])dnl
 </programlisting>
 
       <para>
-	This means that whenever the package is using
-	<function>AM_C_PROTOTYPES</function> but doesn't have the
-	<filename>ansi2knr.c</filename> source file in its
-	distribution, the intended behaviour was probably to call for
-	<function>AC_C_PROTOTYPES</function>.
+        This means that whenever the package is using
+        <function>AM_C_PROTOTYPES</function> but doesn't have the
+        <filename>ansi2knr.c</filename> source file in its
+        distribution, the intended behaviour was probably to call for
+        <function>AC_C_PROTOTYPES</function>.
       </para>
 
       <para>
-	Unfortunately as with other non-trivial macros, it's possible
-	that projects rely on more than just the main side-effect of
-	said macro, which means that if you want to replace its use,
-	you have to also verify that there is no reliance on calls to
-	<function>AC_HEADER_STDC</function> or on the check on
-	<filename>string.h</filename> header that is not otherwise
-	executed.
+        Unfortunately as with other non-trivial macros, it's possible
+        that projects rely on more than just the main side-effect of
+        said macro, which means that if you want to replace its use,
+        you have to also verify that there is no reliance on calls to
+        <function>AC_HEADER_STDC</function> or on the check on
+        <filename>string.h</filename> header that is not otherwise
+        executed.
       </para>
 
       <example>
-	<title>Safe conversion of a <filename>configure.ac</filename>
-	relying on <function>AM_C_PROTOTYPES</function> without
-	de-ANSI-fication.</title>
+        <title>Safe conversion of a <filename>configure.ac</filename>
+        relying on <function>AM_C_PROTOTYPES</function> without
+        de-ANSI-fication.</title>
 
-	<programlisting>
+        <programlisting>
 ⋮
 
 
@@ -162,22 +162,22 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS([string.h])
 
 ⋮
-	</programlisting>
+        </programlisting>
 
-	<note>
-	  <para>
-	    Please consider verifying whether the calls to
-	    <function>AC_HEADER_STDC</function> and
-	    <function>AC_CHECK_HEADERS</function> are actually needed.
-	  </para>
-	</note>
+        <note>
+          <para>
+            Please consider verifying whether the calls to
+            <function>AC_HEADER_STDC</function> and
+            <function>AC_CHECK_HEADERS</function> are actually needed.
+          </para>
+        </note>
       </example>
 
       <para>
-	It is important to note that as of writing (July 2012), the
-	<function>AC_C_PROTOTYPES</function> macro is not considered
-	deprecated by <application>autoconf</application> but it is
-	considered obsolete.
+        It is important to note that as of writing (July 2012), the
+        <function>AC_C_PROTOTYPES</function> macro is not considered
+        deprecated by <application>autoconf</application> but it is
+        considered obsolete.
       </para>
     </listitem>
   </itemizedlist>

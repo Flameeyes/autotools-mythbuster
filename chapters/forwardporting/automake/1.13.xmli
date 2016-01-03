@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude">
   <title><application>automake</application> 1.13</title>
 
   <warning>
@@ -25,67 +25,67 @@
 
     <listitem>
       <indexterm>
-	<primary>automake options</primary>
-	<secondary>parallel-tests</secondary>
+        <primary>automake options</primary>
+        <secondary>parallel-tests</secondary>
       </indexterm>
 
       <indexterm>
-	<primary>automake options</primary>
-	<secondary>serial-tests</secondary>
+        <primary>automake options</primary>
+        <secondary>serial-tests</secondary>
       </indexterm>
 
       <para>
-	Tests are now executed in parallel, rather than in series. You
-	can return to the the old behaviour with the
-	<literal>serial-tests</literal> option. <!-- [TBW] For more information
-	see <xref linkend="automake.parallel.tests" />. -->
+        Tests are now executed in parallel, rather than in series. You
+        can return to the the old behaviour with the
+        <literal>serial-tests</literal> option. <!-- [TBW] For more information
+        see <xref linkend="automake.parallel.tests" />. -->
       </para>
     </listitem>
 
     <listitem>
       <indexterm>
-	<primary>AM_INIT_AUTOMAKE (macro)</primary>
+        <primary>AM_INIT_AUTOMAKE (macro)</primary>
       </indexterm>
 
       <para>
-	The multi-argument <function>AM_INIT_AUTOMAKE</function> syntax is now considered fully
-	obsolete. This syntax was long discontinued and has never been documented in this guide, but
-	it's still being used for projects using dynamic version definition, due to a bug in
-	<application>autoconf</application> which is still unfixed as of January 2013.
+        The multi-argument <function>AM_INIT_AUTOMAKE</function> syntax is now considered fully
+        obsolete. This syntax was long discontinued and has never been documented in this guide, but
+        it's still being used for projects using dynamic version definition, due to a bug in
+        <application>autoconf</application> which is still unfixed as of January 2013.
       </para>
     </listitem>
 
     <listitem>
       <indexterm>
-	<primary>cygnus (automake flavour)</primary>
+        <primary>cygnus (automake flavour)</primary>
       </indexterm>
 
       <indexterm>
-	<primary>automake options</primary>
-	<secondary>cygnus</secondary>
+        <primary>automake options</primary>
+        <secondary>cygnus</secondary>
       </indexterm>
 
       <para>
-	The <literal>cygnus</literal> flavour for Automake has been removed. This might require a
-	vast overhaul of the very few projects who still relied on this build flavour.
+        The <literal>cygnus</literal> flavour for Automake has been removed. This might require a
+        vast overhaul of the very few projects who still relied on this build flavour.
       </para>
     </listitem>
 
     <listitem>
       <para>
-	A number of internal, deprecated aliases, not starting with the canonical
-	<literal>AM_</literal> prefix, have been removed. These were part of the
-	<filename>m4/obsolete.m4</filename> macro file and should not really be of importance as
-	they were mostly used by the projects that implemented them before being merged in automake.
+        A number of internal, deprecated aliases, not starting with the canonical
+        <literal>AM_</literal> prefix, have been removed. These were part of the
+        <filename>m4/obsolete.m4</filename> macro file and should not really be of importance as
+        they were mostly used by the projects that implemented them before being merged in automake.
       </para>
 
       <para>
-	Together with this, as of the original 1.13 release two more macros where removed:
-	<function>AM_PROG_CC_STDC</function> (replaced by <function>AC_PROG_CC</function> as
-	provided by <application>autoconf</application>) and <function>AM_CONFIG_HEADER</function>
-	(replaced by <function>AC_CONFIG_HEADERS</function>). Version 1.13.1 re-introduced the
-	macros, but only to throw a proper error message; version 1.13.2 finally reintroduced these,
-	as deprecated, to catch-up with Fedora's 1.13.1 patched version.
+        Together with this, as of the original 1.13 release two more macros where removed:
+        <function>AM_PROG_CC_STDC</function> (replaced by <function>AC_PROG_CC</function> as
+        provided by <application>autoconf</application>) and <function>AM_CONFIG_HEADER</function>
+        (replaced by <function>AC_CONFIG_HEADERS</function>). Version 1.13.1 re-introduced the
+        macros, but only to throw a proper error message; version 1.13.2 finally reintroduced these,
+        as deprecated, to catch-up with Fedora's 1.13.1 patched version.
       </para>
     </listitem>
   </itemizedlist>

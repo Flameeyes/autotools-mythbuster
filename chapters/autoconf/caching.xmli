@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="autoconf.caching">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="autoconf.caching">
   <?dbhtml filename="autoconf/caching.html" ?>
 
   <title>Caching Results</title>
@@ -131,7 +131,7 @@ checking for thisonlyworksonc99.h... yes
 configure.c99: updating cache config.cache
 configure.c99: creating ./config.status
 
-whynot % ./configure.c CPPFLAGS="-I." -C 
+whynot % ./configure.c CPPFLAGS="-I." -C
 configure.c: loading cache config.cache
 [ ... ]
 checking for thisonlyworksonc99.h... (cached) yes

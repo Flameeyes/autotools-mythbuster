@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="automake.nonrecursive">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="automake.nonrecursive">
   <?dbhtml filename="automake/nonrecursive.html" ?>
 
   <title>Non-recursive <application>Automake</application></title>
@@ -35,43 +35,43 @@
   <itemizedlist>
     <listitem>
       <para>
-	<application>make</application> knows all the dependencies of
-	all the files, and thus only rebuilds object files when their
-	sources (or the headers used by the sources) have changed;
+        <application>make</application> knows all the dependencies of
+        all the files, and thus only rebuilds object files when their
+        sources (or the headers used by the sources) have changed;
       </para>
     </listitem>
 
     <listitem>
       <para>
-	the sources from the sub-directories are compiled and linked
-	in directly in the final target, without requiring convenience
-	libraries to be created, which spend time for the archiving or
-	linking tasks;
+        the sources from the sub-directories are compiled and linked
+        in directly in the final target, without requiring convenience
+        libraries to be created, which spend time for the archiving or
+        linking tasks;
       </para>
     </listitem>
 
     <listitem>
       <para>
-	as an extension, <application>make</application> doesn't have to
-	serialize the calls to sub-directories, which allows for
-	a higher number of build processes to be executable in
-	parallel, if so requested; this is particularly important for
-	modern multi-core systems;
+        as an extension, <application>make</application> doesn't have to
+        serialize the calls to sub-directories, which allows for
+        a higher number of build processes to be executable in
+        parallel, if so requested; this is particularly important for
+        modern multi-core systems;
       </para>
     </listitem>
 
     <listitem>
       <para>
-	the entire builds working directory is not changed, which
-	allows for a single point of reference for relative paths;
+        the entire builds working directory is not changed, which
+        allows for a single point of reference for relative paths;
       </para>
     </listitem>
 
     <listitem>
       <para>
-	there is a single <filename>Makefile.am</filename> to edit,
-	and a single <filename>Makefile.in</filename> to be processed
-	during <command>./configure</command>.
+        there is a single <filename>Makefile.am</filename> to edit,
+        and a single <filename>Makefile.in</filename> to be processed
+        during <command>./configure</command>.
       </para>
     </listitem>
   </itemizedlist>
@@ -91,9 +91,9 @@
 bin_PROGRAMS = foo
 
 foo_SOURCES = \
-	src/component1/component1.c \
-	src/component2/component2.c \
-	src/main.c
+        src/component1/component1.c \
+        src/component2/component2.c \
+        src/main.c
 ]]></programlisting>
 
     <warning>
@@ -162,7 +162,7 @@ AM_INIT_AUTOMAKE([subdir-objects])
     <para>
       It is certainly common to desire some organisation of the
       build products. For grouping together libraries,
-      tools, examples and tests for instance and 
+      tools, examples and tests for instance and
     <application>automake</application> allows that
       without having to resort to the recursive variant.
     </para>
@@ -187,17 +187,17 @@ tests_foo_test3_LDADD = libfoo.la
 ]]></programlisting>
 
       <para>
-	In the fragment of <filename>Makefile.am</filename> above, you
-	can see that the tests for the package are listed with their
-	relative path even in the <varname>check_PROGRAMS</varname>
-	variable, where the output names are used.
+        In the fragment of <filename>Makefile.am</filename> above, you
+        can see that the tests for the package are listed with their
+        relative path even in the <varname>check_PROGRAMS</varname>
+        variable, where the output names are used.
       </para>
 
       <para>
-	Further down the file, the variables used for passing sources
-	and libraries to the tests also use the full relative path,
-	replacing the <constant>/</constant> character with the
-	safe value for variable names <constant>_</constant>.
+        Further down the file, the variables used for passing sources
+        and libraries to the tests also use the full relative path,
+        replacing the <constant>/</constant> character with the
+        safe value for variable names <constant>_</constant>.
       </para>
     </example>
   </section>
@@ -218,7 +218,7 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = pkgconfig/foo.pc pkgconfig/foo-bar.pc
 
 %-bar.pc: %.pc
-	$(LN_S) $^ $@
+        $(LN_S) $^ $@
 ]]></programlisting>
 
     <para>
@@ -241,7 +241,7 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = pkgconfig/foo.pc pkgconfig/foo-bar.pc
 
 %-bar.pc: %.pc
-	$(LN_S) $(notdir $^) $@
+        $(LN_S) $(notdir $^) $@
 ]]></programlisting>
   </section>
 </section>

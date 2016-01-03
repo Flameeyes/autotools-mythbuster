@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="autoconf.headers">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="autoconf.headers">
   <title>Checking For Headers</title>
 
   <indexterm zone="autoconf.headers">
@@ -76,10 +76,10 @@
 
     <programlisting><![CDATA[
 AC_CHECK_HEADERS([stdint.h inttypes.h sys/types.h],
-	[mypj_found_int_headers=yes; break;])
+        [mypj_found_int_headers=yes; break;])
 
 AS_IF([test "x$mypj_found_int_headers" != "xyes"],
-	[AC_MSG_ERROR([Unable to find the standard integers headers])])
+        [AC_MSG_ERROR([Unable to find the standard integers headers])])
 ]]></programlisting>
 
     <para>
@@ -149,45 +149,45 @@ AS_IF([test "x$mypj_found_int_headers" != "xyes"],
       dialect</title>
 
       <note>
-	<para>
-	  This example is based on an actual mistake in the
-	  <productname>KDE</productname>
-	  <productnumber>3.5.10</productnumber> build system for the
-	  <application>kdepim</application> package.
-	</para>
+        <para>
+          This example is based on an actual mistake in the
+          <productname>KDE</productname>
+          <productnumber>3.5.10</productnumber> build system for the
+          <application>kdepim</application> package.
+        </para>
       </note>
 
       <para>
-	One situation where the header files are present but cannot be
-	compiled is when they are not designed to work with a
-	particular language variety. For instance, a header might not
-	be compatible with the C99 dialect, or with C++, or on the
-	other hand it might require C99 or C++.
+        One situation where the header files are present but cannot be
+        compiled is when they are not designed to work with a
+        particular language variety. For instance, a header might not
+        be compatible with the C99 dialect, or with C++, or on the
+        other hand it might require C99 or C++.
       </para>
 
       <para>
-	If that particular language is selected, though, and the
-	header is tested for, the behaviour of rejecting the header is
-	indeed what the developers are expecting. On the other hand,
-	it's possible that the test is being done with a different
-	language than the one where the header is going to be used.
+        If that particular language is selected, though, and the
+        header is tested for, the behaviour of rejecting the header is
+        indeed what the developers are expecting. On the other hand,
+        it's possible that the test is being done with a different
+        language than the one where the header is going to be used.
       </para>
 
       <para>
-	For instance, take the following snippet, that tries to look
-	for the <filename>bluetooth/bluetooth.h</filename> header from
-	<application>bluez-libs</application>, using a strict C
-	compiler:
+        For instance, take the following snippet, that tries to look
+        for the <filename>bluetooth/bluetooth.h</filename> header from
+        <application>bluez-libs</application>, using a strict C
+        compiler:
       </para>
 
       <programlisting>
 <xi:include parse="text"
-	    href="../../examples/forwardporting/autoconf-2.64/headers/language/configure.ac.wrong"
-	    /></programlisting>
+            href="../../examples/forwardporting/autoconf-2.64/headers/language/configure.ac.wrong"
+            /></programlisting>
 
       <para>
-	This will issue the warning discussed above when running
-	<filename>configure</filename>:
+        This will issue the warning discussed above when running
+        <filename>configure</filename>:
       </para>
 
       <programlisting><![CDATA[
@@ -203,9 +203,9 @@ checking for bluetooth/bluetooth.h... yes
 ]]></programlisting>
 
       <para>
-	The reason for the above warnings can be found by looking at
-	the <filename>config.log</filename> file that the
-	<filename>configure</filename> script writes:
+        The reason for the above warnings can be found by looking at
+        the <filename>config.log</filename> file that the
+        <filename>configure</filename> script writes:
       </para>
 
       <programlisting><![CDATA[
@@ -218,23 +218,23 @@ configure:3362: $? = 1
 ]]></programlisting>
 
       <para>
-	Looking at those lines in the header file shows that it is
-	using the <emphasis>inline</emphasis> keyword, which is not
-	supported by the C90 language (without extensions). If the
-	header is checked for, though, it means it's going to be used,
-	and even if it does not work with the selected C90 dialect, it
-	might work with the C++ language used by the actual program.
+        Looking at those lines in the header file shows that it is
+        using the <emphasis>inline</emphasis> keyword, which is not
+        supported by the C90 language (without extensions). If the
+        header is checked for, though, it means it's going to be used,
+        and even if it does not work with the selected C90 dialect, it
+        might work with the C++ language used by the actual program.
       </para>
 
       <para>
-	The <filename>configure.ac</filename> file can then be fixed
-	by changing it to the following code:
+        The <filename>configure.ac</filename> file can then be fixed
+        by changing it to the following code:
       </para>
 
       <programlisting>
 <xi:include parse="text"
-	    href="../../examples/forwardporting/autoconf-2.64/headers/language/configure.ac.correct"
-	    /></programlisting>
+            href="../../examples/forwardporting/autoconf-2.64/headers/language/configure.ac.correct"
+            /></programlisting>
     </example>
   </section>
 </section>

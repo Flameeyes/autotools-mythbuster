@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preface xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xml:id="preface">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xml:id="preface">
   <?dbhtml filename="preface.html" ?>
   <?dbhtml stop-chunking ?>
 
@@ -126,29 +126,29 @@
       <title>How to contribute to the guide</title>
 
       <para>
-	This guide is an open publication, if you wish to contribute,
-	you're very welcome to do so, but you have to grant the
-	same license as the rest of the content (see <xref
-	linkend="license" />).
+        This guide is an open publication, if you wish to contribute,
+        you're very welcome to do so, but you have to grant the
+        same license as the rest of the content (see <xref
+        linkend="license" />).
       </para>
 
       <para>
-	The sources for this text are available, in <link xl:href="http://www.docbook.org/">DocBook
-	format</link>, at the <link
-	xl:href="http://github.com/Flameeyes/autotools-mythbuster">GitHub project.</link>
+        The sources for this text are available, in <link xl:href="http://www.docbook.org/">DocBook
+        format</link>, at the <link
+        xl:href="http://github.com/Flameeyes/autotools-mythbuster">GitHub project.</link>
       </para>
 
       <para>
-	If you are able to improve this guide grammatically or contextually,
-	you're welcome to submit your changes. You can either send me the
-	patches via email, or request a merge from the Gitorious interface.
+        If you are able to improve this guide grammatically or contextually,
+        you're welcome to submit your changes. You can either send me the
+        patches via email, or request a merge from the Gitorious interface.
       </para>
 
       <para>
-	Please note that if you wish to submit patches, you should
-	follow the same style as the rest of the book. You're going to
-	be credited among authors and editors after your second patch
-	or if your contribution is substantial.
+        Please note that if you wish to submit patches, you should
+        follow the same style as the rest of the book. You're going to
+        be credited among authors and editors after your second patch
+        or if your contribution is substantial.
       </para>
     </section>
   </section>

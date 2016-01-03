@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="libtool.lafiles">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="libtool.lafiles">
   <?dbhtml filename="libtool/lafiles.html" ?>
 
   <title>Libtool Archives</title>
@@ -34,10 +34,10 @@
       <term><varname>dlname</varname></term>
 
       <listitem>
-	<para>
-	  Purportedly this is the name used when calling <function>dlopen()</function>; on ELF
-	  systems, this corresponds to the <varname>DT_SONAME</varname> tag on the shared object.
-	</para>
+        <para>
+          Purportedly this is the name used when calling <function>dlopen()</function>; on ELF
+          systems, this corresponds to the <varname>DT_SONAME</varname> tag on the shared object.
+        </para>
       </listitem>
     </varlistentry>
 
@@ -45,12 +45,12 @@
       <term><varname>library_names</varname></term>
 
       <listitem>
-	<para>
-	  This is a list of equivalent names for the same library; it lists both the unversioned
-	  filename, the <varname>DT_SONAME</varname> one, and the fully-versioned file. More
-	  detailed information on the topic of versions within <application>libtool</application>
-	  are to be found in <xref linkend="libtool.version" />.
-	</para>
+        <para>
+          This is a list of equivalent names for the same library; it lists both the unversioned
+          filename, the <varname>DT_SONAME</varname> one, and the fully-versioned file. More
+          detailed information on the topic of versions within <application>libtool</application>
+          are to be found in <xref linkend="libtool.version" />.
+        </para>
       </listitem>
     </varlistentry>
 
@@ -58,11 +58,11 @@
       <term><varname>old_library</varname></term>
 
       <listitem>
-	<para>
-	  The name of the static archive, if any has been built, otherwise an empty string. This
-	  allows <application>libtool</application> to know whether static link against the library
-	  is possible at all.
-	</para>
+        <para>
+          The name of the static archive, if any has been built, otherwise an empty string. This
+          allows <application>libtool</application> to know whether static link against the library
+          is possible at all.
+        </para>
       </listitem>
     </varlistentry>
 
@@ -70,11 +70,11 @@
       <term><varname>inherited_linker_flags</varname></term>
 
       <listitem>
-	<para>
-	  This variable lists selected link editor flags that are needed to ensure the correct ABI
-	  is used with the library, for instance. In most cases, all you'll be seeing in here is
-	  <option>-pthread</option>, as it's probably the only such flag used on modern systems.
-	</para>
+        <para>
+          This variable lists selected link editor flags that are needed to ensure the correct ABI
+          is used with the library, for instance. In most cases, all you'll be seeing in here is
+          <option>-pthread</option>, as it's probably the only such flag used on modern systems.
+        </para>
       </listitem>
     </varlistentry>
 
@@ -82,19 +82,19 @@
       <term><varname>dependency_libs</varname></term>
 
       <listitem>
-	<para>
-	  With this list, <application>libtool</application> aim to compensate the lack of
-	  dependency information in static archives; indeed this list provides a similar list to the
-	  one in <varname>DT_NEEDED</varname> tags for ELF files.
-	</para>
+        <para>
+          With this list, <application>libtool</application> aim to compensate the lack of
+          dependency information in static archives; indeed this list provides a similar list to the
+          one in <varname>DT_NEEDED</varname> tags for ELF files.
+        </para>
 
-	<para>
-	  Contrarily to the ELF dependencies, the list does not include version information of any
-	  kind, as it's designed to work in turn with static archives, which do not have version
-	  information either. Also, these dependencies are used for both static and dynamic link,
-	  causing no small headache for developers and distributors alike, as it is well possible
-	  that different versions of the same dependency are brought in, due to this list.
-	</para>
+        <para>
+          Contrarily to the ELF dependencies, the list does not include version information of any
+          kind, as it's designed to work in turn with static archives, which do not have version
+          information either. Also, these dependencies are used for both static and dynamic link,
+          causing no small headache for developers and distributors alike, as it is well possible
+          that different versions of the same dependency are brought in, due to this list.
+        </para>
       </listitem>
     </varlistentry>
   </variablelist>
@@ -112,15 +112,15 @@
 
     <note>
       <para>
-	It might not be obvious, but <application>automake</application> by default will not consult
-	the Libtool Archives at all, when linking an executable. To make use of these files, you
-	have to initialize and use <application>libtool</application>, even when building a project
-	that consists only of executables.
+        It might not be obvious, but <application>automake</application> by default will not consult
+        the Libtool Archives at all, when linking an executable. To make use of these files, you
+        have to initialize and use <application>libtool</application>, even when building a project
+        that consists only of executables.
       </para>
 
       <para>
-	Since initializing <application>libtool</application> in these situations will increase
-	build time and complexity, even most Autotools based projects do not use it.
+        Since initializing <application>libtool</application> in these situations will increase
+        build time and complexity, even most Autotools based projects do not use it.
       </para>
     </note>
 

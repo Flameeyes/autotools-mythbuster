@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="libtool.plugins">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="libtool.plugins">
   <?dbhtml filename="libtool/plugins.html" ?>
 
   <title>Building plugins</title>
@@ -49,62 +49,62 @@
       <application>libtldl</application></title>
 
       <para>
-	Because of the wide adoption of
-	<application>libltdl</application> in many types of
-	applications, its support in autotools is available with great
-	flexibility. This is because it's wrapping abilities can easily be
-	used on systems where libtool proper is not usually installed,
-	and thus it's often convenient to have a local copy of it.
+        Because of the wide adoption of
+        <application>libltdl</application> in many types of
+        applications, its support in autotools is available with great
+        flexibility. This is because it's wrapping abilities can easily be
+        used on systems where libtool proper is not usually installed,
+        and thus it's often convenient to have a local copy of it.
       </para>
 
       <para>
-	But with bundling libraries, problems ensue, and it can especially
-	be a problem to choose between bundling a local copy of
-	the library or just using the system one. The macros provided
-	by <application>libtool</application>, even the recent version
-	2, support three styles for bundling
-	<application>libltdl</application>: sub-configured
-	directory<!-- [TBW] (see <xref linkend="autoconf.subconfigure" />) -->,
-	non-recursive inline build, or finally recursive inline
-	build.
+        But with bundling libraries, problems ensue, and it can especially
+        be a problem to choose between bundling a local copy of
+        the library or just using the system one. The macros provided
+        by <application>libtool</application>, even the recent version
+        2, support three styles for bundling
+        <application>libltdl</application>: sub-configured
+        directory<!-- [TBW] (see <xref linkend="autoconf.subconfigure" />) -->,
+        non-recursive inline build, or finally recursive inline
+        build.
       </para>
 
       <para>
-	As well as these three options, there is also the more “standard”
-	option of simply requesting the presence of the library in the
-	system, as is done for any other dependency and checking for it. This
-	method is neither assisted nor well-documented by the
-	<application>libtool</application> manual and is thus rarely
-	used.
+        As well as these three options, there is also the more “standard”
+        option of simply requesting the presence of the library in the
+        system, as is done for any other dependency and checking for it. This
+        method is neither assisted nor well-documented by the
+        <application>libtool</application> manual and is thus rarely
+        used.
       </para>
 
       <indexterm>
-	<primary>LT_CONFIG_LTDL_DIR (macro)</primary>
+        <primary>LT_CONFIG_LTDL_DIR (macro)</primary>
       </indexterm>
 
       <indexterm>
-	<primary>LTDL_INIT (macro)</primary>
+        <primary>LTDL_INIT (macro)</primary>
       </indexterm>
 
       <para>
-	For all three bundling styles as provided by
-	<application>libtool</application>, the reference macros in
-	the <filename>configure.ac</filename> file are
-	<function>LT_CONFIG_LTDL_DIR</function> and
-	<function>LTDL_INIT</function>. When using the sub-configured option,
-	these two are the only two calls that you need. When using the
-	inline build, you need some extra calls.
+        For all three bundling styles as provided by
+        <application>libtool</application>, the reference macros in
+        the <filename>configure.ac</filename> file are
+        <function>LT_CONFIG_LTDL_DIR</function> and
+        <function>LTDL_INIT</function>. When using the sub-configured option,
+        these two are the only two calls that you need. When using the
+        inline build, you need some extra calls.
       </para>
 
       <example>
-	<title>Buildsystem changes for bundled
-	<application>libltdl</application></title>
+        <title>Buildsystem changes for bundled
+        <application>libltdl</application></title>
 
-	<para>
-	  In <filename>configure.ac</filename>, for the various cases, commented
-	</para>
+        <para>
+          In <filename>configure.ac</filename>, for the various cases, commented
+        </para>
 
-	<programlisting><![CDATA[
+        <programlisting><![CDATA[
 # automake needed when not using sub-configured libltdl
 # subdir-objects only needed when using non-recursive inline build
 AM_INIT_AUTOMAKE([subdir-objects])
@@ -128,17 +128,17 @@ LTDL_INIT([recursive])
 LTDL_INIT([nonrecursive])
 ]]></programlisting>
 
-	<para>
-	  The changes for <filename>Makefile.am</filename> (or
-	  equivalent) are trivial for the sub-configured and recursive
-	  options (just add the new directory to
-	  <varname>SUBDIRS</varname>), but are a bit more complicated
-	  for the non-recursive case. The following is a snippet from
-	  the <application>libtool</application> manual to support
-	  non-recursive <application>libltdl</application> inline builds.
-	</para>
+        <para>
+          The changes for <filename>Makefile.am</filename> (or
+          equivalent) are trivial for the sub-configured and recursive
+          options (just add the new directory to
+          <varname>SUBDIRS</varname>), but are a bit more complicated
+          for the non-recursive case. The following is a snippet from
+          the <application>libtool</application> manual to support
+          non-recursive <application>libltdl</application> inline builds.
+        </para>
 
-	<programlisting><![CDATA[
+        <programlisting><![CDATA[
 AM_CPPFLAGS =
 AM_LDFLAGS =
 
@@ -157,54 +157,54 @@ include libltdl/Makefile.inc
       </example>
 
       <para>
-	Whatever option you choose to follow at this point, you must
-	actually bundle the sources in your tree. You probably
-	don't want to add them to your source control system<!-- [TBW] (see
-	<xref linkend="tricks.generated-scm" />) -->, but you want to add
-	the <command>libtoolize --ltdl</command> command to your
-	<filename>autogen.sh</filename> script or similar.
+        Whatever option you choose to follow at this point, you must
+        actually bundle the sources in your tree. You probably
+        don't want to add them to your source control system<!-- [TBW] (see
+        <xref linkend="tricks.generated-scm" />) -->, but you want to add
+        the <command>libtoolize --ltdl</command> command to your
+        <filename>autogen.sh</filename> script or similar.
       </para>
 
       <para>
-	As the title of this section suggests, you can technically
-	even install the <application>libltdl</application> that you
-	just built. This is not enabled by default, and rightly so
-	(you'd be installing unrequired software outside of the scope of the build process).
-	The reason why this is at all possible is that the macros
-	used by the <application>libtool</application> package are
-	exactly the same as is provided to third-party developers.
+        As the title of this section suggests, you can technically
+        even install the <application>libltdl</application> that you
+        just built. This is not enabled by default, and rightly so
+        (you'd be installing unrequired software outside of the scope of the build process).
+        The reason why this is at all possible is that the macros
+        used by the <application>libtool</application> package are
+        exactly the same as is provided to third-party developers.
       </para>
 
       <para>
-	Finally there is no provided macro to check for the library in the system to 
-	rely on; since it also does not provide a <link
-	linkend="pkgconfig">pkg-config</link> datafile. The
-	best practices choice is simply to <link
-	linkend="autoconf.lib-discovery"> discover the
-	library through <function>AC_CHECK_LIB</function></link>.
+        Finally there is no provided macro to check for the library in the system to
+        rely on; since it also does not provide a <link
+        linkend="pkgconfig">pkg-config</link> datafile. The
+        best practices choice is simply to <link
+        linkend="autoconf.lib-discovery"> discover the
+        library through <function>AC_CHECK_LIB</function></link>.
       </para>
 
       <para>
-	To do that you can use the following snippet of code, for instance:
+        To do that you can use the following snippet of code, for instance:
       </para>
 
       <example>
-	<title>Checking for <application>libltdl</application></title>
+        <title>Checking for <application>libltdl</application></title>
 
-	<programlisting><![CDATA[
+        <programlisting><![CDATA[
 AC_CHECK_HEADER([ltdl.h],
     [AC_CHECK_LIB([ltdl], [lt_dladvise_init],
         [LIBLTDL=-lltdl], [LIBLTDL=])],
     [LIBLTDL=])
 ]]></programlisting>
 
-	<para>
-	  It's important to check for a function that is present in
-	  the currently supported version of
-	  <application>libltdl</application>. This snippet checks for
-	  the <function>lt_dladvise_init</function> function that is a
-	  new interface present in libtool 2.2 and later.
-	</para>
+        <para>
+          It's important to check for a function that is present in
+          the currently supported version of
+          <application>libltdl</application>. This snippet checks for
+          the <function>lt_dladvise_init</function> function that is a
+          new interface present in libtool 2.2 and later.
+        </para>
       </example>
     </section>
   </section>
@@ -230,67 +230,67 @@ AC_CHECK_HEADER([ltdl.h],
 
     <variablelist>
       <varlistentry>
-	<term><parameter>-module</parameter></term>
+        <term><parameter>-module</parameter></term>
 
-	<listitem>
-	  <para>
-	    Ignore the restriction about the <filename>lib-</filename>
-	    prefix for the plug-in file name, allowing free-form
-	    names.
-	  </para>
-	</listitem>
+        <listitem>
+          <para>
+            Ignore the restriction about the <filename>lib-</filename>
+            prefix for the plug-in file name, allowing free-form
+            names.
+          </para>
+        </listitem>
       </varlistentry>
 
       <varlistentry>
-	<term><parameter>-avoid-version</parameter></term>
+        <term><parameter>-avoid-version</parameter></term>
 
-	<listitem>
-	  <para>
-	    Allow the target to not provide any version information,
-	    removing the need to provide it. Almost all the plug-in
-	    systems don't use the library version to decide whether
-	    to load the objects, and rely instead on the path they find.
-	  </para>
-	</listitem>
+        <listitem>
+          <para>
+            Allow the target to not provide any version information,
+            removing the need to provide it. Almost all the plug-in
+            systems don't use the library version to decide whether
+            to load the objects, and rely instead on the path they find.
+          </para>
+        </listitem>
       </varlistentry>
 
       <varlistentry>
-	<term><parameter>-shared</parameter></term>
+        <term><parameter>-shared</parameter></term>
 
-	<listitem>
-	  <para>
-	    Disable entirely the build of the static version of the
-	    object, this reduces the number of installed files, as
-	    well as avoiding the double-build that would be needed for
-	    all the systems where static libraries and shared objects
-	    have different build requirements.
-	  </para>
+        <listitem>
+          <para>
+            Disable entirely the build of the static version of the
+            object, this reduces the number of installed files, as
+            well as avoiding the double-build that would be needed for
+            all the systems where static libraries and shared objects
+            have different build requirements.
+          </para>
 
-	  <note>
-	    <para>
-	      This option will make the package incompatible with the
-	      <parameter>--disable-shared</parameter> option during
-	      <command>./configure</command> call, as well as stopping
-	      the build when shared objects are not supported at all.
-	    </para>
-	  </note>
-	</listitem>
+          <note>
+            <para>
+              This option will make the package incompatible with the
+              <parameter>--disable-shared</parameter> option during
+              <command>./configure</command> call, as well as stopping
+              the build when shared objects are not supported at all.
+            </para>
+          </note>
+        </listitem>
       </varlistentry>
 
       <varlistentry>
-	<term><parameter>-export-dynamic</parameter></term>
+        <term><parameter>-export-dynamic</parameter></term>
 
-	<listitem>
-	  <para>
-	    The current object's exposed symbols have to be accessible
-	    through <function>dlsym()</function> or equivalent
-	    interfaces.
-	  </para>
+        <listitem>
+          <para>
+            The current object's exposed symbols have to be accessible
+            through <function>dlsym()</function> or equivalent
+            interfaces.
+          </para>
 
-	  <para>
-	    See <xref linkend="libtool.symbols.export_dynamic" />.
-	  </para>
-	</listitem>
+          <para>
+            See <xref linkend="libtool.symbols.export_dynamic" />.
+          </para>
+        </listitem>
       </varlistentry>
     </variablelist>
 
@@ -337,9 +337,9 @@ foo_example_plugin_la_LDFLAGS = -avoid-version -module -shared -export-dynamic
       <title>Exposing symbols for plugins with fixed interface</title>
 
       <para>
-	Since each plugin with a fixed interface exports the same set of symbols, and such interface
-	is rarely extended or reduced, the easiest solution here is to use the static
-	<option>-export-symbols</option> option with a fixed list of symbols:
+        Since each plugin with a fixed interface exports the same set of symbols, and such interface
+        is rarely extended or reduced, the easiest solution here is to use the static
+        <option>-export-symbols</option> option with a fixed list of symbols:
       </para>
 
       <programlisting><![CDATA[
@@ -360,16 +360,16 @@ baz_SOURCES = baz1.c baz2.c baz3.c
       <title>Exposing symbols for plugins with variable interface</title>
 
       <para>
-	When the interface is variable, it is common to have either a prefix or a suffix with the
-	name of the plugin itself; you could then use a generic list of symbols and produce its
-	specific symbol list, or you can make use of <option>-export-symbols-regex</option> with a
-	wider match on the interface.
+        When the interface is variable, it is common to have either a prefix or a suffix with the
+        name of the plugin itself; you could then use a generic list of symbols and produce its
+        specific symbol list, or you can make use of <option>-export-symbols-regex</option> with a
+        wider match on the interface.
       </para>
 
       <para>
-	One of the downsides of using this method is that you then have to carefully name the
-	functions within the plugin's translation units, but the build system should not be used to
-	add workarounds for badly written code.
+        One of the downsides of using this method is that you then have to carefully name the
+        functions within the plugin's translation units, but the build system should not be used to
+        add workarounds for badly written code.
       </para>
 
       <programlisting><![CDATA[
@@ -396,4 +396,3 @@ baz_SOURCES = baz1.c baz2.c baz3.c
    fill-column: 100
    End:
 -->
-

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xmlns="http://docbook.org/ns/docbook"
-	 xmlns:xl="http://www.w3.org/1999/xlink"
-	 xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xml:id="autoconf.arguments">
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="autoconf.arguments">
   <?dbhtml filename="autoconf/arguments.html" ?>
   <title>Adding Options</title>
 
@@ -24,29 +24,29 @@
   <variablelist>
     <varlistentry>
       <term>
-	<command>--enable-*</command>/<command>--disable-*</command>
-	arguments
+        <command>--enable-*</command>/<command>--disable-*</command>
+        arguments
       </term>
 
       <listitem><para>
-	The arguments starting with <command>--enable-</command>
-	prefix are usually used to enable features of the
-	program. They usually add or remove dependencies only if they
-	are needed for that particular feature being enabled or
-	disabled.
+        The arguments starting with <command>--enable-</command>
+        prefix are usually used to enable features of the
+        program. They usually add or remove dependencies only if they
+        are needed for that particular feature being enabled or
+        disabled.
       </para></listitem>
     </varlistentry>
 
     <varlistentry>
       <term>
-	<command>--with-*</command>/<command>--without-*</command>
-	arguments
+        <command>--with-*</command>/<command>--without-*</command>
+        arguments
       </term>
 
       <listitem><para>
-	The arguments starting with <command>--with-</command> prefix
-	are usually used to add or remove dependencies on external
-	projects. These might add or remove features from the project.
+        The arguments starting with <command>--with-</command> prefix
+        are usually used to add or remove dependencies on external
+        projects. These might add or remove features from the project.
       </para></listitem>
     </varlistentry>
 
@@ -54,9 +54,9 @@
       <term>environment variables</term>
 
       <listitem><para>
-	Environment variables that are used by the
-	<filename>configure</filename> script should also be declared
-	as arguments; their use will be explained below in detail.
+        Environment variables that are used by the
+        <filename>configure</filename> script should also be declared
+        as arguments; their use will be explained below in detail.
       </para></listitem>
     </varlistentry>
   </variablelist>
@@ -111,7 +111,7 @@
       Keeping in mind what has been said above, about the parameters
       actually taking a value, and defaulting to either
       <constant>yes</constant> or <constant>no</constant>, the
-      parameters of the macro are as follows 
+      parameters of the macro are as follows
     </para>
 
     <programlisting><![CDATA[
@@ -120,76 +120,76 @@ AC_ARG_ENABLE(option-name, help-string, action-if-present, action-if-not-present
 
     <variablelist>
       <varlistentry>
-	<term><parameter>option-name</parameter></term>
-	<listitem>
-	  <para>
-	    Name of the argument, this will be used for both the
-	    actual argument option and for the variable to store the
-	    result in. It's useful to keep to a subset of characters
-	    here, since it'll be translated to a string compatible
-	    with sh variable names.
-	  </para>
-	</listitem>
+        <term><parameter>option-name</parameter></term>
+        <listitem>
+          <para>
+            Name of the argument, this will be used for both the
+            actual argument option and for the variable to store the
+            result in. It's useful to keep to a subset of characters
+            here, since it'll be translated to a string compatible
+            with sh variable names.
+          </para>
+        </listitem>
       </varlistentry>
 
       <varlistentry>
-	<term><parameter>help-string</parameter></term>
+        <term><parameter>help-string</parameter></term>
 
-	<listitem>
-	  <para>
-	    This is the string used to describe the parameter when
-	    running <command>./configure --help</command>. Often it's
-	    passed raw directly to the macro, but that will likely
-	    make the text not align or fill properly in the help
-	    text. It's customary to use then the <link
-	    linkend="autoconf.arguments.helpstrings">AS_HELP_STRING</link>
-	    parameter to create the string.
-	  </para>
-	</listitem>
+        <listitem>
+          <para>
+            This is the string used to describe the parameter when
+            running <command>./configure --help</command>. Often it's
+            passed raw directly to the macro, but that will likely
+            make the text not align or fill properly in the help
+            text. It's customary to use then the <link
+            linkend="autoconf.arguments.helpstrings">AS_HELP_STRING</link>
+            parameter to create the string.
+          </para>
+        </listitem>
       </varlistentry>
 
       <varlistentry>
-	<term><parameter>action-if-present</parameter></term>
+        <term><parameter>action-if-present</parameter></term>
 
-	<listitem>
-	  <para>
-	    This is the M4sh code used when the user has passed a
-	    parameter through <command>--enable-foo</command>; the
-	    value of the parameter, if any, is given through the
-	    <varname>$enableval</varname> (or
-	    <varname>$withval</varname>) local variable.
-	  </para>
-	</listitem>
+        <listitem>
+          <para>
+            This is the M4sh code used when the user has passed a
+            parameter through <command>--enable-foo</command>; the
+            value of the parameter, if any, is given through the
+            <varname>$enableval</varname> (or
+            <varname>$withval</varname>) local variable.
+          </para>
+        </listitem>
       </varlistentry>
 
       <varlistentry>
-	<term><parameter>action-if-not-present</parameter></term>
+        <term><parameter>action-if-not-present</parameter></term>
 
-	<listitem>
-	  <para>
-	    This is the M4sh code executed when no parameter of any
-	    kind for the given option name has been given at
-	    <command>./configure</command>; this allows to set the
-	    default value for variables that are otherwise calculated
-	    in the previous action.
-	  </para>
-	</listitem>
+        <listitem>
+          <para>
+            This is the M4sh code executed when no parameter of any
+            kind for the given option name has been given at
+            <command>./configure</command>; this allows to set the
+            default value for variables that are otherwise calculated
+            in the previous action.
+          </para>
+        </listitem>
       </varlistentry>
     </variablelist>
 
     <warning>
       <para>
-	The most common mistake for this macro is to consider the two
-	actions as <parameter>action-if-enabled</parameter> and
-	<parameter>action-if-disabled</parameter>.
+        The most common mistake for this macro is to consider the two
+        actions as <parameter>action-if-enabled</parameter> and
+        <parameter>action-if-disabled</parameter>.
       </para>
 
       <para><emphasis>This is not the case!</emphasis> </para>
 
       <para>
-	Since using <command>--disable-foo</command> or
-	<command>--enable-foo=no</command> are equivalent, for the
-	macro, you cannot really use this macro with those meanings.
+        Since using <command>--disable-foo</command> or
+        <command>--enable-foo=no</command> are equivalent, for the
+        macro, you cannot really use this macro with those meanings.
       </para>
     </warning>
 
@@ -224,19 +224,19 @@ AS_IF([test "x$enable_bar" = "xyes"], [
 ]]></programlisting>
 
       <para>
-	In the above example, only the recognised options of
-	<constant>no</constant> and <constant>yes</constant>
-	(respectively for each case) are used; any other value given
-	(e.g. <command>--enable-foo=baz</command> or
-	<command>--enable-bar=fnord</command>) would be ignored and
-	treated in the same way as the default value of no parameter
-	given.
+        In the above example, only the recognised options of
+        <constant>no</constant> and <constant>yes</constant>
+        (respectively for each case) are used; any other value given
+        (e.g. <command>--enable-foo=baz</command> or
+        <command>--enable-bar=fnord</command>) would be ignored and
+        treated in the same way as the default value of no parameter
+        given.
       </para>
 
       <para>
-	Further safety checking of the value to exclude anything but
-	<constant>yes</constant> or <constant>no</constant> can be
-	added, but is usually not necessary for the simplest cases.
+        Further safety checking of the value to exclude anything but
+        <constant>yes</constant> or <constant>no</constant> can be
+        added, but is usually not necessary for the simplest cases.
       </para>
     </example>
 
@@ -244,27 +244,27 @@ AS_IF([test "x$enable_bar" = "xyes"], [
       <title>The Help Strings</title>
 
       <para>
-	Some discussion of the help strings used for declaring parameters with both
-	<function>AC_ARG_ENABLE</function> and <function>AC_ARG_WITH</function> is
-	 warranted; since past versions have changed <application>autoconf</application> and
-	they tend to be often mistakenly used.
+        Some discussion of the help strings used for declaring parameters with both
+        <function>AC_ARG_ENABLE</function> and <function>AC_ARG_WITH</function> is
+         warranted; since past versions have changed <application>autoconf</application> and
+        they tend to be often mistakenly used.
       </para>
 
       <para>
-	The second parameter for the two macros above is the
-	description string as output by <command>./configure
-	--help</command>; since proper formatting of that string is
-	almost impossible to achieve by hand, there is a macro that
-	<application>autoconf</application> provides to generate it:
-	<function>AS_HELP_STRING</function> (replacing the former,
-	deprecated macro <function>AC_HELP_STRING</function>, which is
-	virtually identical, but has a less clear name).
+        The second parameter for the two macros above is the
+        description string as output by <command>./configure
+        --help</command>; since proper formatting of that string is
+        almost impossible to achieve by hand, there is a macro that
+        <application>autoconf</application> provides to generate it:
+        <function>AS_HELP_STRING</function> (replacing the former,
+        deprecated macro <function>AC_HELP_STRING</function>, which is
+        virtually identical, but has a less clear name).
       </para>
 
       <para>
-	This macro takes care of properly aligning the text, breaking
-	the lines where needed. For instance take the following
-	fragment:
+        This macro takes care of properly aligning the text, breaking
+        the lines where needed. For instance take the following
+        fragment:
       </para>
 
       <programlisting><![CDATA[
@@ -287,22 +287,22 @@ AC_ARG_ENABLE([bar],
 ]]></programlisting>
 
       <para>
-	As you can see the text that is not typeset through the use of
-	<function>AS_HELP_STRING</function> is not properly aligned
-	(the distance used in the example is two tabulations, at most
-	sixteen spaces, depending on the length of the option text,
-	which falls short of two spaces).
+        As you can see the text that is not typeset through the use of
+        <function>AS_HELP_STRING</function> is not properly aligned
+        (the distance used in the example is two tabulations, at most
+        sixteen spaces, depending on the length of the option text,
+        which falls short of two spaces).
       </para>
 
       <para>
-	It's not really important for what concerns the functionality
-	of the script, but it's useful to keep for consistency. Also,
-	this allows software inspecting
-	<filename>configure.ac</filename> files to identify the
-	available options (for eventual graphical frontends to
-	<command>./configure</command> or auto-generation of
-	packaging description files (RPM specifications, Gentoo
-	ebuilds, …).
+        It's not really important for what concerns the functionality
+        of the script, but it's useful to keep for consistency. Also,
+        this allows software inspecting
+        <filename>configure.ac</filename> files to identify the
+        available options (for eventual graphical frontends to
+        <command>./configure</command> or auto-generation of
+        packaging description files (RPM specifications, Gentoo
+        ebuilds, …).
       </para>
     </section>
   </section>
@@ -366,19 +366,19 @@ AS_IF([test "x$have_foo" = "xyes"],
 ]]></programlisting>
 
       <para>
-	Once again, the empty value, and any other value from
-	<constant>yes</constant> and <constant>no</constant> are
-	handled together as a default case (that we could call the
-	<constant>auto</constant> case), and no extra sanity check is
-	added.
+        Once again, the empty value, and any other value from
+        <constant>yes</constant> and <constant>no</constant> are
+        handled together as a default case (that we could call the
+        <constant>auto</constant> case), and no extra sanity check is
+        added.
       </para>
 
       <para>
-	The library is checked for unless explicitly requested not to,
-	and the <varname>$have_foo</varname> variable is set
-	accordingly. If foo hasn't been found, but there was an
-	explicit request for it, an error message is displayed and the
-	<filename>configure</filename> script stops there.
+        The library is checked for unless explicitly requested not to,
+        and the <varname>$have_foo</varname> variable is set
+        accordingly. If foo hasn't been found, but there was an
+        explicit request for it, an error message is displayed and the
+        <filename>configure</filename> script stops there.
       </para>
     </example>
   </section>
@@ -435,19 +435,19 @@ AC_ARG_VAR(var-name, help-string)
 
     <itemizedlist>
       <listitem>
-	<para>
-	  the variable is compared for consistency between different
-	  cached runs, to avoid re-using an incompatible cache file;
-	</para>
+        <para>
+          the variable is compared for consistency between different
+          cached runs, to avoid re-using an incompatible cache file;
+        </para>
       </listitem>
 
       <listitem>
-	<para>
-	  the variable is saved for re-execution when using
-	  <command>./config.status --recheck</command> (as used by
-	  <link linkend="automake.maintainer">maintainer
-	  mode</link>).
-	</para>
+        <para>
+          the variable is saved for re-execution when using
+          <command>./config.status --recheck</command> (as used by
+          <link linkend="automake.maintainer">maintainer
+          mode</link>).
+        </para>
       </listitem>
     </itemizedlist>
   </section>
