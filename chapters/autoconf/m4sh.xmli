@@ -71,7 +71,7 @@ else
 fi
 
 AS_IF([test1], [true], [test2], [true2], [false])
-if test; then
+if test1; then
   true
 elif test2; then
   true2
