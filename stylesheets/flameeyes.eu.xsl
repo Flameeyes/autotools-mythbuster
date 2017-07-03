@@ -11,7 +11,7 @@
 <xsl:template name="user.head.content">
   <meta name="description" content="A no-nonsense guide to Autotools by Diego Elio Pettenò" />
   <meta name="viewport" content="width=device-width, user-scalable=no" />
-  <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&amp;adInstanceId=8c179be5-6662-4f74-9993-73d6d9a805a8"></script>
+  <script type="text/javascript" src="https://z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&amp;adInstanceId=8c179be5-6662-4f74-9993-73d6d9a805a8"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
