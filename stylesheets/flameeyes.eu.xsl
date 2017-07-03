@@ -11,7 +11,6 @@
 <xsl:template name="user.head.content">
   <meta name="description" content="A no-nonsense guide to Autotools by Diego Elio Pettenò" />
   <meta name="viewport" content="width=device-width, user-scalable=no" />
-  <script type="text/javascript" async="true" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&amp;adInstanceId=8c179be5-6662-4f74-9993-73d6d9a805a8"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -42,17 +41,6 @@
         </xsl:attribute>
 	<xsl:text>Autotools Mythbuster</xsl:text>
       </a>
-    </div>
-
-    <div class="adsense">
-      <div>
-        <ins class="adsbygoogle"
-             data-ad-client="ca-pub-8947005214934111" data-ad-slot="7982249742"
-             data-ad-format="auto"></ins>
-      </div>
-      <script>
-	(adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
     </div>
   </div>
 
