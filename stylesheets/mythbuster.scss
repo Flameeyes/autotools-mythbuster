@@ -52,28 +52,6 @@ div#header {
 	    text-decoration: none;
 	}
     }
-
-    div.adsense {
-        @media (min-width: $mediamin) {
-	    float: right;
-	    margin: 2px;
-	    width: 50%;
-            height: 100%;
-	    z-index: -1;
-            display: table;
-            div {
-                display: table-cell;
-                vertical-align: middle;
-            }
-        }
-        @media (max-width: $mediamax) {
-            width: 90%;
-            margin: auto;
-        }
-        ins {
-            display: block;
-        }
-    }
 }
 
 div#navigation {
