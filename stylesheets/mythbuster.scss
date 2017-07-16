@@ -146,7 +146,7 @@ body {
     background: $lightbg2;
 }
 
-body > div.book {
+body > div.book, body > div.chapter, body > div.section, body > div.preface, body > div.appendix, body > div.index, body > div.glossary {
     background: white;
     margin: 0 auto;
     max-width: 56em;
