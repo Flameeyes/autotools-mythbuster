@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xml:id="automake.conditional">
+  <?dbhtml filename="automake/conditional.html" ?>
+
+  <title>Conditional Builds</title>
+
+  <indexterm zone="automake.conditional">
+    <primary>AM_CONDITIONAL (macro)</primary>
+  </indexterm>
+
+  <para>
+    It is common for source files or build flags to only be needed conditionally, for example if
+    they are only needed on particular host operating systems, or they implement an optional
+    feature.
+  </para>
+
+  <para>
+    To implement conditionality, <application>automake</application> provides the
+    <function>AM_CONDITIONAL</function> macro, and conditional blocks in
+    <filename>Makefile.am</filename> files.
+  </para>
+
+  <para>
+    The parameters of <function>AM_CONDITIONAL</function> are as follows
+  </para>
+
+  <programlisting><![CDATA[AM_CONDITIONAL(block-name, test-expression)]]></programlisting>
+
+  <variablelist>
+    <varlistentry>
+      <term><parameter>block-name</parameter></term>
+      <listitem>
+        <para>
+          A literal string that will be used to reference the conditional case. A valid block name
+          starts with a letter and includes only letters, numbers and the underscore symbol. By
+          unwritten convention, this is usually all capitals.
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term><parameter>test-expression</parameter></term>
+      <listitem>
+        <para>
+          A conditional expression that will be evaluated within a <link
+          linkend="autoconf.m4sh"><function>AS_IF</function></link> block. A shell expression the
+          return value of which is used to determine whether the block is true or false. Commonly
+          using <function>test</function> for comparison of strings.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+  <para>
+    The block syntax is extremely simple, as it is implemented as simple
+    <function>if</function>/<function>else</function>/<function>endif</function> blocks in
+    <filename>Makefile.am</filename>:
+  </para>
+
+  <programlisting><![CDATA[
+if block-name
+  # Normal syntax
+else
+  # More normal syntax
+endif
+]]></programlisting>
+
+  <warning>
+    <title>Caveat: <function>AM_CONDITIONAL</function> Cannot be Conditional</title>
+
+    <para>
+      Because of a quirk of implementation, the calls to <function>AM_CONDITIONAL</function> have to
+      be expanded unconditionally in the <filename>configure</filename> script. This means that you
+      cannot use <function>AM_CONDITIONAL</function> within an <function>AS_IF</function> block or
+      equivalent.
+    </para>
+
+    <para>
+      Instead, you should either repeat the same test as the block, or (if the conditionals
+      themselves are complicated) use a convenience variable to hold the value the conditional can
+      provide:
+    </para>
+
+    <programlisting><![CDATA[
+AS_IF([test "x$host_os" != "xdarwin"], [needextralib=yes],
+    [test "x$host_cpu" = "xpowerpc"], [needextralib=yes])
+
+AM_CONDITIONAL([EXTRALIB], [test "x$needextralib" = "xyes"])
+]]></programlisting>
+  </warning>
+
+  <example>
+    <title>
+      Using <function>AM_CONDITIONAL</function> with <filename>configure</filename> Options
+    </title>
+
+    <para>
+      Another common usage pattern for conditionals is to enable optional features. In this case,
+      the conditional is subordinate to an <application>autoconf</application> option, see <xref
+      linkend="autoconf.arguments" />.
+    </para>
+
+    <programlisting><![CDATA[
+AC_ARG_ENABLE([feature],
+    AS_HELP_STRING([--disable-feature], [Disable feature]))
+AM_CONDITIONAL([FEATURE], [test "x$enable_feature" != "xno"])
+]]></programlisting>
+  </example>
+</section>
+<!--
+   Local Variables:
+   mode: nxml
+   mode: auto-fill
+   mode: flyspell
+   ispell-local-dictionary: "british"
+   fill-column: 100
+   End:
+-->
