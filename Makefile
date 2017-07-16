@@ -41,6 +41,6 @@ mythbuster.epub: $(SOURCES)
 	dbtoepub-ns $< -o $@
 
 clean:
-	rm -rf *~ *.olinkdb public epub mythbuster.epub
+	rm -rf *~ *.olinkdb public epub mythbuster.epub mythbuster-v3.epub
 
 .PHONY: clean
