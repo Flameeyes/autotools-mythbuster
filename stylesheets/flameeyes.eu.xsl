@@ -32,17 +32,6 @@
 	<xsl:text>Autotools Mythbuster</xsl:text>
       </a>
     </div>
-
-    <div class="adsense">
-      <div>
-        <ins class="adsbygoogle"
-             data-ad-client="ca-pub-8947005214934111" data-ad-slot="7982249742"
-             data-ad-format="auto"></ins>
-      </div>
-      <script>
-	(adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
   </div>
 
   <div id="navigation">
