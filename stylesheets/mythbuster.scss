@@ -348,7 +348,3 @@ div.exampleblock-content {
     border-left: 2px solid $lightcontrast1;
     padding-left: 0.5em;
 }
-
-@media print {
-    div#header .adsense { display: none; }
-}
