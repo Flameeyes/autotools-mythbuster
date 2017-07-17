@@ -11,7 +11,6 @@
 <xsl:template name="user.head.content">
   <meta name="description" content="A no-nonsense guide to Autotools by Diego Elio Pettenò" />
   <meta name="viewport" content="width=device-width, user-scalable=no" />
-  <script type="text/javascript" async="true" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </xsl:template>
 
 <xsl:template name="user.header.navigation">
