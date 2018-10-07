@@ -40,7 +40,11 @@ epub/mimetype: $(SOURCES)
 mythbuster.epub: $(SOURCES)
 	dbtoepub-ns $< -o $@
 
+mythbuster.pdf: stylesheets/passthrough.xsl main.docbook
+	$(XSLTPROC) --xinclude $^ \
+		| pandoc --pdf-engine=xelatex -s -f docbook -o $@
+
 clean:
-	rm -rf *~ *.olinkdb public epub mythbuster.epub mythbuster-v3.epub
+	rm -rf *~ *.olinkdb public epub mythbuster.epub mythbuster-v3.epub mythbuster.pdf
 
 .PHONY: clean
