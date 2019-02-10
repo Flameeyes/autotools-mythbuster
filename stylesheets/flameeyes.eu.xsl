@@ -75,7 +75,7 @@
 <xsl:template name="user.footer.navigation">
   <div id="footer">
     <p>
-      Autotools Mythbuster by <a href="mailto:flameeyes@flameeyes.eu">Diego Elio Pettenò</a>.
+      Autotools Mythbuster by <a href="mailto:flameeyes@flameeyes.com">Diego Elio Pettenò</a>.
     </p>
     <p>
       Licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons

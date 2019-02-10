@@ -157,7 +157,7 @@ PKG_CHECK_MODULES([DEPENDENCIES], [foo >= 3 bar baz <= 4])
     </example>
   </section>
 
-  <section>
+  <section xml:id="pkgconfig.pkg_check_modules.optional">
     <title>Optional Modules</title>
 
     <para>
@@ -191,9 +191,8 @@ PKG_CHECK_MODULES([GLIB], [glib-2.0])
 ]]></programlisting>
 
     <para>
-      Since the check for GTK+ will not work by default, you'll
-      receive the following error if you try to execute
-      <filename>configure</filename> without any argument:
+      Since the check for GTK+ will not execute by default, you'll receive the following error if
+      you try to execute <filename>configure</filename> without any argument:
     </para>
 
     <programlisting><![CDATA[
