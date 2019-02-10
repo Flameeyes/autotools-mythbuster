@@ -51,6 +51,7 @@
   <xi:include parse="xml" href="pkgconfig/dependencies.xmli" />
   <xi:include parse="xml" href="pkgconfig/pkg_check_modules.xmli" />
   <xi:include parse="xml" href="pkgconfig/variables.xmli" />
+  <xi:include parse="xml" href="pkgconfig/optional.xmli" />
   <xi:include parse="xml" href="pkgconfig/cross-compiling.xmli" />
 </chapter>
 <!--

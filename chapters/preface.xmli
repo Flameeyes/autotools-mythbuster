@@ -20,7 +20,7 @@
 
     <para>
       This collection finds its roots in my <link
-      xl:href="https://blog.flameeyes.eu/">blog</link>. I've been writing notes, quick and dirty
+      xl:href="https://flameeyes.blog/">blog</link>. I've been writing notes, quick and dirty
       tutorials and commentaries about autotools usage and their practices. The intent is to
       facilitate solving common problems found during Gentoo Linux development. While these entries
       were always as accurate as I could make them; they had some obvious limits imposed by the form
@@ -116,9 +116,8 @@
     </para>
 
     <para>
-      If you are interested in a particular topic related to
-      autotools, you're still welcome to contact me at <link
-      xl:href="mailto:flameeyes@flameeyes.eu">flameeyes@flameeyes.eu</link>
+      If you are interested in a particular topic related to autotools, you're still welcome to
+      contact me at <link xl:href="mailto:flameeyes@flameeyes.com">flameeyes@flameeyes.com</link>
       and make suggestions.
     </para>
 
@@ -135,7 +134,7 @@
       <para>
         The sources for this text are available, in <link xl:href="http://www.docbook.org/">DocBook
         format</link>, at the <link
-        xl:href="http://github.com/Flameeyes/autotools-mythbuster">GitHub project.</link>
+        xl:href="https://github.com/Flameeyes/autotools-mythbuster">GitHub project.</link>
       </para>
 
       <para>
