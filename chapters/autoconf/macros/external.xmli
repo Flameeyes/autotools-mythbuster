@@ -106,6 +106,12 @@ AUTOTOOLS_MYTHBUSTER
         <function>#include</function> directive of the C programming language, and simply copies
         over the content of the file.
       </para>
+
+      <para>
+        To not include comments starting with <literal>#</literal> in the generated
+        <filename>configure</filename> script call the <function>m4_include</function> before the
+        <function>AC_INIT</function>.
+      </para>
     </example>
 
     <para>
