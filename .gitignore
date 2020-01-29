@@ -1,7 +1,9 @@
 *.html
 *.olinkdb
 *~
+.bundle/
 .sass-cache/
+Gemfile.lock
 autom4te.cache
 chunk.toc.new
 config.log
@@ -11,6 +13,7 @@ configure.correct
 configure.wrong
 epub/
 generate
-mythbuster.epub
 mythbuster-v3.epub
+mythbuster.epub
 public/
+vendor/
