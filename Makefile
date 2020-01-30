@@ -23,8 +23,7 @@ public/index.html: $(SOURCES) stylesheets/flameeyes.eu.xsl
 
 public/stylesheets/mythbuster.css: stylesheets/mythbuster.scss
 	mkdir -p $(dir $@)
-	bundler install --path vendor/
-	bundler exec scss -t compressed --sourcemap=none $< $@
+	scss -t compressed --sourcemap=none $< $@
 
 mythbuster-v3.epub: epub/mimetype
 	cd epub && zip -r -X ../$@ mimetype \
@@ -43,5 +42,8 @@ mythbuster.epub: $(SOURCES)
 
 clean:
 	rm -rf *~ *.olinkdb public epub mythbuster.epub mythbuster-v3.epub
+
+sass-install:
+	pub global activate sass
 
 .PHONY: clean
