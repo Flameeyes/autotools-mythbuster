@@ -86,7 +86,7 @@
       The wrapper script should not only set the <varname>PKG_CONFIG_SYSROOT_DIR</varname> variable:
       when cross-compiling you want to ignore the packages installed in the system, and instead rely
       only on those installed in the cross-compiled environment. This is achieved by resetting
-      <varname>PKG_CONFIG_DIR</varname> (which lists additional search paths), and at the same time
+      <varname>PKG_CONFIG_PATH</varname> (which lists additional search paths), and at the same time
       setting <varname>PKG_CONFIG_LIBDIR</varname> to override the default base search paths.
     </para>
 
@@ -105,7 +105,7 @@
 
 SYSROOT=/build/root
 
-export PKG_CONFIG_DIR=
+export PKG_CONFIG_PATH=
 export PKG_CONFIG_LIBDIR=${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig
 export PKG_CONFIG_SYSROOT_DIR=${SYSROOT}
 
