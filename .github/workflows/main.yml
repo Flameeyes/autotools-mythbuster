@@ -1,0 +1,17 @@
+name: Merge staging branch to uat
+on:
+  push:
+    branches:
+      - 'master'
+jobs:
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Merge to published branch
+        uses: devmasx/merge-branch@v1.1.0
+        with:
+          type: now
+          target_branch: 'published'
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
