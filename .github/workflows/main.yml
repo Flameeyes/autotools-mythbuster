@@ -1,4 +1,4 @@
-name: Merge staging branch to uat
+name: Merge master branch to published
 on:
   push:
     branches:
