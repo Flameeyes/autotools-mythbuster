@@ -1,3 +1,7 @@
+dnl SPDX-FileCopyrightText: 2009- Diego Elio Pettenò
+dnl
+dnl SPDX-License-Identifier: CC0-1.0
+
 AC_INIT([test], [0.1])
 
 m4_include([pkg.m4])

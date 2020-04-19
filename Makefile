@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2009- Diego Elio Pettenò
+#
+# SPDX-License-Identifier: CC-BY-SA-3.0
+
 XSLTPROC = xsltproc
 
 XSL-NS-SS = http://docbook.sourceforge.net/release/xsl-ns/current/
