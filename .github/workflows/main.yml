@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2009- Diego Elio Pettenò
 #
-# SPDX-License-Identifier: CC0-1.0
+# SPDX-License-Identifier: MIT
 
 name: Merge master branch to published
 on:

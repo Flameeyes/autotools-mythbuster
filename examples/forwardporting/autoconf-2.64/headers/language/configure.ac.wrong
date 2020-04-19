@@ -1,6 +1,6 @@
 dnl SPDX-FileCopyrightText: 2009- Diego Elio Pettenò
 dnl
-dnl SPDX-License-Identifier: CC0-1.0
+dnl SPDX-License-Identifier: MIT
 
 AC_INIT
 
