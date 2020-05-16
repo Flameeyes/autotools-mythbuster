@@ -13,4 +13,3 @@ if test "x$with_gtk" = "xyes"; then
 fi
 
 PKG_CHECK_MODULES([GLIB], [glib-2.0])
-

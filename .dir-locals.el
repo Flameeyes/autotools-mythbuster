@@ -1,6 +1,6 @@
 ; SPDX-FileCopyrightText: 2009- Diego Elio Pettenò
 ;
-; SPDX-License-Identifier: MIT
+; SPDX-License-Identifier: Unlicense
 
 ((nil . ((indent-tabs-mode . nil)))
  (nxml-mode . ((fill-column . 100)
