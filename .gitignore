@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2009- Diego Elio Pettenò
 #
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: Unlicense
 
 *.html
 *.olinkdb
