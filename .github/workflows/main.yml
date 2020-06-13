@@ -2,11 +2,11 @@
 #
 # SPDX-License-Identifier: MIT
 
-name: Merge master branch to published
+name: Merge main branch to published
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 jobs:
   merge-branch:
     runs-on: ubuntu-latest
