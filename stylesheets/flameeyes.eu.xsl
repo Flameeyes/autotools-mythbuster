@@ -88,7 +88,7 @@ SPDX-License-Identifier: CC-BY-SA-3.0
     </p>
 
     <p>
-      Based on a work at <a href="https://autotools.io/">autotools.io</a>.
+      Based on a work at <a href="https://autotools.info/">autotools.info</a>.
     </p>
   </div>
 </xsl:template>
