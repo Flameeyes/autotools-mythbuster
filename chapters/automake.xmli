@@ -1,10 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
 SPDX-FileCopyrightText: 2009- Diego Elio Pettenò
 
 SPDX-License-Identifier: CC-BY-SA-3.0
 -->
 
-<?xml version="1.0" encoding="utf-8"?>
 <chapter xmlns="http://docbook.org/ns/docbook"
          xmlns:xl="http://www.w3.org/1999/xlink"
          xmlns:xi="http://www.w3.org/2001/XInclude"
