@@ -16,7 +16,6 @@ SPDX-License-Identifier: CC-BY-SA-3.0
 <xsl:template name="user.head.content">
   <meta name="description" content="A no-nonsense guide to Autotools by Diego Elio Pettenò" />
   <meta name="viewport" content="width=device-width, user-scalable=no" />
-  <script type="text/javascript" src="https://z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&amp;adInstanceId=8c179be5-6662-4f74-9993-73d6d9a805a8&amp;dontInject=true"></script>
 </xsl:template>
 
 <xsl:template name="user.header.navigation">
