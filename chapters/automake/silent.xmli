@@ -172,7 +172,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 
       <para>
         This fragment (the actual important part is the call to <function>m4_ifdef</function>, but
-        it <emphasis>has</emphasis> to go after <function>AM_INIT_AUTOMAKE</function>, will call the
+        it <emphasis>has</emphasis> to go after <function>AM_INIT_AUTOMAKE</function>) will call the
         silent rules macro only if it's actually defined. On older
         <application>automake</application> versions, this will not be defined and the whole macro
         will be skipped.
