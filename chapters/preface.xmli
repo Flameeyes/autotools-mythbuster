@@ -78,7 +78,7 @@ SPDX-License-Identifier: CC-BY-SA-3.0
     </para>
 
     <para>
-      For a while I wanted to just drop it, but then the time I spend on fixing build systems for
+      For a while I wanted to just drop it, but then the time I spent on fixing build systems for
       packages I maintain piled up enough that I decided spending time on the guide would probably
       be better employed. The idea behind my guide was to present an integrated guide that shows the
       best practices, rather than showing all the possibilities, including those that distributions
