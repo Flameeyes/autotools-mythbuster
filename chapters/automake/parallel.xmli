@@ -122,7 +122,7 @@ install-exec-local:
     </example>
 
     <para>
-      All modern <command>mkdir</command> implementations, though
+      All modern <command>mkdir</command> implementations, though,
       provide the option <option>-p</option> which not only creates
       the directory's parents, but also will consider it a success if
       the directory exists already, contary to its default behaviour.
