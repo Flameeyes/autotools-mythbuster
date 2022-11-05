@@ -26,7 +26,7 @@ SPDX-License-Identifier: CC-BY-SA-3.0
     tests are quite expensive, in terms of the required work from the
     system running the <filename>configure</filename> script. For this
     reason, in the design of <application>autoconf</application> there
-    is place for a caching system.
+    is a place for a caching system.
   </para>
 
   <para>
