@@ -57,7 +57,7 @@ SPDX-License-Identifier: CC-BY-SA-3.0
     </para>
 
     <para>
-      Since the predefined tests don't cover the whole range of tests that could be needed (e.g.:
+      Since the predefined tests don't cover the whole range of tests that could be needed (e.g.,
       they don't provide a way to check for a reported minimum version of an API library),
       <application>autoconf</application> exports macros that allows to check whether some given
       source code preprocesses, compiles or links properly: <function>AC_PREPROC_IFELSE</function>
