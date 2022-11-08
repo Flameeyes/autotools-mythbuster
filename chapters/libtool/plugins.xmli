@@ -58,7 +58,7 @@ SPDX-License-Identifier: CC-BY-SA-3.0
         Because of the wide adoption of
         <application>libltdl</application> in many types of
         applications, its support in autotools is available with great
-        flexibility. This is because it's wrapping abilities can easily be
+        flexibility. This is because its wrapping abilities can easily be
         used on systems where libtool proper is not usually installed,
         and thus it's often convenient to have a local copy of it.
       </para>
