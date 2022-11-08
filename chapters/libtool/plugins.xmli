@@ -111,24 +111,24 @@ SPDX-License-Identifier: CC-BY-SA-3.0
         </para>
 
         <programlisting><![CDATA[
-# automake needed when not using sub-configured libltdl
-# subdir-objects only needed when using non-recursive inline build
+dnl automake needed when not using sub-configured libltdl
+dnl subdir-objects only needed when using non-recursive inline build
 AM_INIT_AUTOMAKE([subdir-objects])
 
-# the inline build *requires* the configure header, although the name
-# is not really important
+dnl the inline build *requires* the configure header, although the name
+dnl is not really important
 AC_CONFIG_HEADERS([config.h])
 
-# the inline build *requires* libtool with dlopen support
+dnl the inline build *requires* libtool with dlopen support
 LT_INIT([dlopen])
 
-# find the libltdl sources in the libltdl sub-directory
+dnl find the libltdl sources in the libltdl sub-directory
 LT_CONFIG_LTDL_DIR([libltdl])
 
-# only for the recursive case
+dnl only for the recursive case
 AC_CONFIG_FILES([libltdl/Makefile])
 
-# choose one
+dnl choose one
 LTDL_INIT([subproject])
 LTDL_INIT([recursive])
 LTDL_INIT([nonrecursive])
