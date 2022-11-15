@@ -15,7 +15,7 @@ SPDX-License-Identifier: CC-BY-SA-3.0
 
   <para>
     While <application>autoconf</application> provides a number of pre-written tests to identify
-    presence of headers, symbols and libraries, they obviously don't cover the whole range of
+    the presence of headers, symbols and libraries, they obviously don't cover the whole range of
     possible situations that software developers might be facing to recognise the environment that
     their software is being built on.
   </para>
