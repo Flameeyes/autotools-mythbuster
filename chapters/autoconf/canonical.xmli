@@ -176,7 +176,7 @@ SPDX-License-Identifier: CC-BY-SA-3.0
     </para>
 
     <para>
-      While the architecture is most obvious; and operating systems differ slightly from one another
+      While the architecture is most obvious, and operating systems differ slightly from one another
       (still being probably the most important data), the <emphasis>vendor</emphasis> value is
       usually just ignored. It is meant to actually be the vendor of the hardware system, rather
       than the vendor of the software, although presently it is mostly used by distributions to
