@@ -203,7 +203,7 @@ AC_RUN_IFELSE(input, [action-if-true], [action-if-false], [action-if-cross-compi
             Finally, this block of M4sh code is executed if the <command>./configure</command>
             script is executed for cross-compilation. The default content of this section causes the
             script to abort (through <function>AC_MSG_FAILURE</function>), which is the main reason
-            why “run tests” are frown upon on cross-compiling prone environments.
+            why “run tests” are frowned upon on cross-compiling prone environments.
           </para>
         </listitem>
       </varlistentry>
