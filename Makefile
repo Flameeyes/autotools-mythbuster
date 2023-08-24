@@ -27,7 +27,7 @@ public/index.html: $(SOURCES) stylesheets/flameeyes.eu.xsl
 
 public/stylesheets/mythbuster.css: stylesheets/mythbuster.scss
 	mkdir -p $(dir $@)
-	scss -t compressed --sourcemap=none $< $@
+	sass --style compressed --no-source-map $< $@
 
 mythbuster-v3.epub: epub/mimetype
 	cd epub && zip -r -X ../$@ mimetype \
