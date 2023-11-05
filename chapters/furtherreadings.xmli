@@ -158,12 +158,12 @@ SPDX-License-Identifier: CC-BY-SA-3.0
 
       <title>
         <link
-            xl:href="http://miller.emu.id.au/pmiller/books/rmch/"
+            xl:href="https://web.archive.org/web/20150330111905/http://miller.emu.id.au/pmiller/books/rmch/"
             >Recursive Make Considered Harmful</link>
       </title>
 
       <biblioid class="uri">
-        http://miller.emu.id.au/pmiller/books/rmch/
+        https://web.archive.org/web/20150330111905/http://miller.emu.id.au/pmiller/books/rmch/
       </biblioid>
 
       <author>
@@ -171,8 +171,6 @@ SPDX-License-Identifier: CC-BY-SA-3.0
           <firstname>Peter</firstname>
           <surname>Miller</surname>
         </personname>
-
-        <email>millerp@canb.auug.org.au</email>
       </author>
 
       <date>1997</date>
