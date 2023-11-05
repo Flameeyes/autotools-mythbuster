@@ -85,7 +85,7 @@ SPDX-License-Identifier: CC-BY-SA-3.0
       <abbrev>AutotoolsBestPractices</abbrev>
       <title>
         <link
-            xl:href="http://www.linux.com/archive/articles/114061"
+            xl:href="https://www.linux.com/news/best-practices-autotools/"
             >Best Practices With Autotools
         </link>
       </title>
