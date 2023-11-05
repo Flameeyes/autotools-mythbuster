@@ -16,6 +16,19 @@ SPDX-License-Identifier: CC-BY-SA-3.0
 <xsl:template name="user.head.content">
   <meta name="description" content="A no-nonsense guide to Autotools by Diego Elio Pettenò" />
   <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <script><![CDATA[
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="https://s.defp.uk/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '4']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  ]]>
+  </script>
 </xsl:template>
 
 <xsl:template name="user.header.navigation">
