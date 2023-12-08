@@ -73,11 +73,11 @@ SPDX-License-Identifier: CC-BY-SA-3.0
       The macro <function>AC_CHECK_HEADERS</function> provides all the
       needed parameters to implement just that. The first parameter of
       the macro is a sh-compatible list, rather than an M4 list, and
-      it's argument to a <function>for</function> call in the
-      <filename>configure</filename> file and there is an action
+      it's an argument to a <function>for</function> call in the
+      <filename>configure</filename> file. There is also an action
       executed once the header is found (actually, there is one also
       when the header is <emphasis>not</emphasis> found, but we're not
-      going to use that one.
+      going to use that one).
     </para>
 
     <programlisting><![CDATA[
