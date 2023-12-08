@@ -224,7 +224,7 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = pkgconfig/foo.pc pkgconfig/foo-bar.pc
 
 %-bar.pc: %.pc
-        $(LN_S) $^ $@
+        $(LN_S) $< $@
 ]]></programlisting>
 
     <para>
@@ -235,9 +235,8 @@ pkgconfig_DATA = pkgconfig/foo.pc pkgconfig/foo-bar.pc
     </para>
 
     <para>
-      To avoid this kind of problem, you can make use of
-      <application>GNU make</application> extended functions in the
-      rules, to transform the path from full-relative form to base
+      To avoid this kind of problem, you can make use of the alternative
+      forms to transform the path from full-relative form to base
       form (without the path). For instance the fragment above should
       be replaced by the following:
     </para>
@@ -247,7 +246,7 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = pkgconfig/foo.pc pkgconfig/foo-bar.pc
 
 %-bar.pc: %.pc
-        $(LN_S) $(notdir $^) $@
+        $(LN_S) $(<F) $@
 ]]></programlisting>
   </section>
 </section>

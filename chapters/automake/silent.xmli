@@ -220,7 +220,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 
       <programlisting><![CDATA[
 %-bar.pc: %.pc
-        $(AM_V_GEN)$(LN_S) $(notdir $^) $@
+        $(AM_V_GEN)$(LN_S) $(<F) $@
 ]]></programlisting>
     </example>
   </section>
